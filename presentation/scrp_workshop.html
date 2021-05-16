@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Automated Web Scraping with R</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+    <link href="libs/countdown/countdown.css" rel="stylesheet" />
+    <script src="libs/countdown/countdown.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+
+
+class: inverse, center, middle
+
+
+
+&lt;style type="text/css"&gt;
+
+.hljs-github .hljs {
+    background: #e5e5e5;
+}
+
+.inline-c, remark-inline-code {
+   background: #e5e5e5;
+   border-radius: 3px;
+   padding: 4px;
+   font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;
+}
+
+
+.yellow-h{
+   background: #ffff88;
+}
+
+
+.out-t, remark-inline-code {
+   background: #9fff9f;
+   border-radius: 3px;
+   padding: 4px;
+   
+}
+
+.pull-left-c {
+    float: left;
+    width: 58%;
+    
+}
+
+.pull-right-c {
+    float: right;
+    width: 38%;
+    
+}
+
+.medium {
+    font-size: 75%
+    
+}
+
+.small {
+    font-size: 50%
+    }
+
+.action {
+    background-color: #f2eecb;
+  
+}
+
+
+&lt;/style&gt;
+
+
+# Automated Web Scraping with R
+
+&lt;br&gt;
+
+### Resul Umit
+
+### May 2021
+
+.footnote[
+
+[Skip intro &amp;mdash; To the contents slide](#contents-slide).
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;a href="mailto:resuluy@uio.no?subject=Twitter workshop"&gt;I can teach this workshop at your institution &amp;mdash; Email me&lt;/a&gt;.
+
+]
+
+---
+## Who am I?
+
+Resul Umit
+
+- post-doctoral researcher in political science at the University of Oslo
+
+- teaching and studying representation, elections, and parliaments
+    - [a recent publication](https://doi.org/10.1177%2F1478929920967588):
+    Parliamentary communication allowances do not increase electoral turnout or incumbents’ vote share
+
+--
+
+&lt;br&gt;
+
+- teaching workshops, also on
+
+  - [writing reproducible research papers](https://resulumit.com/blog/rmd-workshop/)
+  - [version control and collaboration](https://resulumit.com/teaching/git_workshop.html)
+  - [working with Twitter data](https://resulumit.com/teaching/twtr_workshop.html)
+  - [creating academic websites](https://resulumit.com/teaching/rbd_workshop.html)
+    
+--
+
+&lt;br&gt;
+
+- more information available at [resulumit.com](https://resulumit.com/)
+
+---
+## The Workshop &amp;mdash; Overview
+
+- One day, on how to automate the process of extracting data from websites
+
+  - 200+ slides, 75+ exercises
+  - a [demonstration website](https://parliament-luzland.netlify.app/) for practice
+
+--
+
+&lt;br&gt;
+
+- Designed for researchers with basic knowledge of R programming language
+
+  - does not cover programming with R
+      - e.g., we will use existing functions and packages   
+&lt;br&gt;
+  - ability to work with R will be very helpful
+      - but not absolutely necessary &amp;mdash; this ability can be developed during and after the workshop as well
+        
+---
+## The Workshop &amp;mdash; Motivation
+
+- Data available on websites provide attractive opportunities for academic research
+
+  - e.g., parliamentary websites were the main source of data for my PhD
+
+--
+
+&lt;br&gt;
+
+- Acquiring such data requires 
+
+  - either a lot of resources, such as time
+  - or a set of skills, such as automated web scraping
+
+--
+
+&lt;br&gt;
+
+- Typically, such skills are not part of academic training
+
+  - for my PhD, I hand-visited close to 3000 webpages to collect data manually
+      - on members of ten parliaments
+      - multiple times, to update the dataset as needed
+
+---
+## The Workshop &amp;mdash; Motivation &amp;mdash; Aims
+
+- To provide you with an understanding of what is ethically possible
+
+  - we will cover a large breath of issues, not all of it is for long-term memory
+      - hence the slides are designed for self study as well    
+&lt;br&gt;
+  - awareness of what is ethical and possible, `Google`, and perseverance are all you need
+
+--
+
+&lt;br&gt;
+
+- To start you with acquiring and practicing the skills needed 
+
+  - practice with the demonstration website
+     - plenty of data, stable structure, and an ethical playground
+  - start working on a real project
+
+---
+name: contents-slide
+
+## The Workshop &amp;mdash; Contents
+
+.pull-left[
+
+[Part 1. Getting the Tools Ready](#part1)
+   - e.g., installing packages
+   
+[Part 2. Preliminary Considerations](#part2)
+   - e.g., ethics of web scraping
+
+
+[Part 3. Data Collection](#part3)
+   - e.g., acquiring a user's tweets
+   
+[Part 4. Data Preperation](#part4)
+   - e.g., creating a tidy dataset of tweets
+   
+]
+
+.pull-right[
+   
+
+   
+]
+
+.footnote[
+
+[To the list of references](#reference-slide).
+
+] 
+
+---
+## The Workshop &amp;mdash; Organisation
+
+- ~~Sit in groups of two~~ Breakout in groups of two for exercises
+
+  - participants learn as much from their partner as from instructors
+  - switch partners after every other part
+  - leave your breakout room manually, when everyone in the group is ready
+
+&lt;br&gt; 
+
+- Type, rather than copy and paste, the code that you will find on these slides
+
+  - typing is a part of the learning process
+  - slides are, and will remain, available at [resulumit.com/teaching/scrp_workshop.html](https://resulumit.com/teaching/scrp_workshop.html)
+
+&lt;br&gt; 
+
+- When you have a question
+
+  - ask your partner
+  - google together
+  - ask me
+
+---
+class: action
+
+## The Workshop &amp;mdash; Organisation &amp;mdash; Slides
+
+Slides with this background colour indicate that your action is required, for
+
+- setting the workshop up
+    - e.g., installing R 
+    
+- completing the exercises
+    - e.g., downloading tweets
+    - there are 75+ exercises
+    - these slides have countdown timers
+        - as a guide, not to be followed strictly
+    
+<div class="countdown" id="timer_60a0e631" style="top:0;right:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+## The Workshop &amp;mdash; Organisation &amp;mdash; Slides
+
+- Codes and texts that go in R console or scripts .inline-c[appear as such &amp;mdash; in a different font, on gray background]    
+
+    - long codes and texts will have their own line(s)
+
+
+```r
+# read in  the tweets dataset
+df &lt;- read_rds("tweets.rds") %&gt;%
+  
+# split the variable text, create a new variable called da_tweets   
+  unnest_tokens(output = da_tweets, input = text, token = "tweets") %&gt;%
+ 
+# remove rows that match any of the stop words as stored in the stop_words dataset 
+  anti_join(stop_words, by = c("da_tweets" = "word")) 
+```
+
+---
+## The Workshop &amp;mdash; Organisation &amp;mdash; Slides
+
+- Codes and texts that go in R console or scripts .inline-c[appear as such &amp;mdash; in a different font, on gray background]    
+
+    - long codes and texts will have their own line(s)
+
+&lt;br&gt;
+
+- Results that come out as output .out-t[appear as such &amp;mdash; in the same font, on green background]    
+
+    - except very obvious results, such as figures and tables
+    
+--
+
+&lt;br&gt;
+
+    
+- Specific sections are .yellow-h[highlighted yellow as such] for emphasis
+
+    - these could be for anything &amp;mdash; codes and texts in input, results in output, and/or texts on slides
+    
+--
+
+&lt;br&gt;
+
+- The slides are designed for self-study as much as for the workshop
+
+    - *accessible*, in substance and form, to go through on your own
+
+---
+name: part1
+class: inverse, center, middle
+
+# Part 1. Getting the Tools Ready
+
+.footnote[
+
+[Back to the contents slide](#contents-slide).
+
+]
+
+---
+class: action
+
+## Workshop Slides &amp;mdash; Access on Your Browser
+
+- Having the workshop slides&lt;sup&gt;*&lt;/sup&gt; on your own machine might be helpful
+
+  - flexibility to go back and forward on your own
+      - especially while in a breakout room
+  - ability to scroll across long codes on some slides
+
+&lt;br&gt;
+
+- Access at &lt;https://resulumit.com/teaching/scrp_workshop.html&gt;
+
+  - will remain accessible after the workshop
+  - might crash for some Safari users
+      - if using a different browser application is not an option, view the [PDF version of the slides](https://github.com/resulumit/twtr_workshop/blob/master/presentation/twtr_workshop.pdf) on GitHub
+  
+.footnote[
+
+&lt;sup&gt;*&lt;/sup&gt; These slides are produced in R, with the `xaringan` package ([Xie, 2020](https://cran.r-project.org/web/packages/xaringan/xaringan.pdf)).
+
+]
+
+---
+name: download-zip
+class: action
+
+## Course Materials &amp;mdash; Download from the Internet
+
+- Download the materials from &lt;https://github.com/resulumit/twtr_workshop/tree/materials&gt;
+
+  - on the webpage, follow
+
+&gt; `Code -&gt; Download ZIP`
+
+&lt;br&gt;
+
+- Unzip and rename the folder
+
+  - unzip to a location that is not synced
+     - e.g., perhaps to *Documents*, but not Dropbox
+
+---
+## Course Materials &amp;mdash; Overview
+
+Materials have the following structure
+
+```
+
+twtr_workshop-materials
+   |
+   |- data
+   |  |
+   |  |- mps.csv
+   |  |- status_ids.rds
+   |  |- tweets.rds
+   |
+   |- analysis
+   |  |
+   |  |- tweet_based.Rmd
+   |  |- tweet_based_answers.Rmd
+   |  |- user_based.Rmd
+   |  |- user_based_answers.Rmd
+
+```
+---
+## Course Materials &amp;mdash; Contents
+
+- `data/mps.csv`
+
+  - a dataset on the members of parliament (MPs) in the British House of Commons, at the end of January 2021
+  - it includes variables on electoral results as well as Twitter usernames
+
+&lt;br&gt;
+
+- `data/status_ids.rds`
+
+  - a dataset with a single variable: `status_id`
+  - lists the status IDs of all tweets posted by the MPs listed in `mps.csv`, during January 2021
+  
+&lt;br&gt;
+
+- `data/tweets.rds`
+
+  - similar to `data/status_ids`, except that
+      - the time period is now limited to 15 to 31 January, reducing the number of observations below 50,000, allowing for all variables to be posted online
+
+---
+## Course Materials &amp;mdash; Contents
+
+- `tweet_based.Rmd`
+
+  - an R Markdown file with exercises for [Part 6](#part-6)
+  - the solution to these exercises are in `tweet_based_answers.Rmd`
+
+&lt;br&gt;
+
+- `user_based.Rmd`
+
+  - an R Markdown file with exercises for [Part 5](#part-5)
+  - the solution to these exercises are in `user_based_answers.Rmd`
+
+---
+class: action
+
+## R &amp;mdash; Download from the Internet and Install
+
+- Programming language of this workshop
+
+  - created for data analysis, extending for other purposes
+      - e.g., accessing APIs
+  - allows for all three steps in one environment
+      - collecting, processing, and analysing Twitter data
+  - an alternative: [python](https://www.python.org/)
+
+&lt;br&gt;
+
+- Optional, if you have R already installed
+
+  - consider updating your copy, if it is not up to date
+     - type the `R.version.string` command in R to check the version of your copy
+     - compare with the latest official release at [https://cran.r-project.org/sources.html](https://cran.r-project.org/sources.html)
+
+&lt;br&gt;
+
+- Download R from [https://cloud.r-project.org](https://cloud.r-project.org)
+
+    - choose the version for your operating system
+
+---
+class: action
+
+## RStudio &amp;mdash; Download from the Internet and Install
+
+- Optional, but highly recommended
+
+  - facilitates working with Twitter data in R
+
+&lt;br&gt;
+
+- A popular integrated development environment (IDE) for R
+
+  - an alternative: [GNU Emacs](https://www.gnu.org/software/emacs/)
+
+&lt;br&gt;
+
+- Download RStudio from [https://rstudio.com/products/rstudio/download](https://rstudio.com/products/rstudio/download)
+
+  - choose the free version
+  - consider updating your copy, if it is not up to date, following from the RStudio menu:
+
+&gt; `Help -&gt; Check for Updates`
+
+---
+class: action
+name: rstudio-project
+
+## RStudio Project &amp;mdash; Create from within RStudio 
+
+- RStudio allows for dividing your work with R into separate projects
+
+  - each project gets dedicated workspace, history, and source documents
+  - [this page](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects) has more information on why projects are recommended
+
+&lt;br&gt;
+
+- Create a new RStudio project for the existing&lt;sup&gt;*&lt;/sup&gt; workshop directory `...\twtr_workshop-materials` from the RStudio menu:
+
+&gt; `File -&gt; New Project -&gt; Existing Directory -&gt; Browse -&gt; ...\twtr_workshop-materials -&gt; Open`
+
+
+.footnote[
+
+&lt;sup&gt;*&lt;/sup&gt; Recall that we have downloaded this earlier from GitHub. [Back to the relevant slide](#download-zip).
+
+]
+
+---
+class: action
+
+## R Packages &amp;mdash; Install from within RStudio&lt;sup&gt;*&lt;/sup&gt;
+
+
+```r
+install.packages(c("rtweet", "httpuv", "tidyverse", "tidytext"))
+```
+
+
+.footnote[
+
+&lt;sup&gt;*&lt;/sup&gt; You may already have a copy of one or more of these packages. In that case, I recommend updating by re-installing them now.
+
+]
+
+---
+class: action
+
+## R Packages &amp;mdash; Install from within RStudio
+
+
+```r
+install.packages(c("rtweet", "httpuv", "tidyverse", "tidytext"))
+```
+
+- `rtweet` ([Kearney, 2020](https://cran.r-project.org/web/packages/rtweet/index.html)), for collecting tweets
+
+    - alternatives: used to be `twitteR` ([Gentry, 2015](https://cran.r-project.org/web/packages/twitteR/index.html)), but not anymore; [running Python code in R](https://blog.twitter.com/developer/en_us/topics/tips/2020/running-the-python-package-for-search-tweets-in-r.html)
+
+--
+&lt;br&gt;
+
+- `httpuv` ([Cheng &amp; Chang, 2020](https://cran.r-project.org/web/packages/httpuv/index.html)), for API authorization
+
+    - alternative: using your own access tokens
+        - necessitates making an application through a developer
+        - has advantages that we will discuss later on
+
+---
+class: action
+
+## R Packages &amp;mdash; Install from within RStudio
+
+
+```r
+install.packages(c("rtweet", "httpuv", "tidyverse", "tidytext"))
+```
+
+- `tidyverse` ([Wickham &amp; RStudio 2019](https://cran.r-project.org/web/packages/tidyverse/index.html)), for various tasks
+
+    - including data manipulation, visualisation
+    - alternative: e.g., `base` R
+
+--
+&lt;br&gt;
+
+- `tidytext` ([Robinson &amp; Silge, 2021](https://cran.r-project.org/web/packages/tidytext/index.html)), for working with text as data
+
+    - alternative: e.g., `quanteda` ([Benoit et al., 2020](https://cran.r-project.org/web/packages/quanteda/index.html))
+
+---
+## Twitter &amp;mdash; Authorisation
+
+Authorization to use Twitter APIs requires at least three steps&lt;sup&gt;*&lt;/sup&gt;
+
+1) open a user account on Twitter
+  - a personal or an institutional (perhaps, for a research project) one
+  - done once, takes minutes
+      
+2) with that user account, apply for a developer account
+  - so that you are recognised as a developer, have access to the [developer portal](https://developer.twitter.com/en/portal)
+  - done once per account, .yellow-h[takes days to get approved manually]
+      
+3) with that developer account, register a Twitter app
+  - so that you have the keys and tokens for authorisation
+  - repeated for every project, takes minutes
+      
+      
+.footnote[
+
+&lt;sup&gt;*&lt;/sup&gt; There may be additional steps, such as registering for the [Academic Research product track](https://developer.twitter.com/en/portal/petition/academic/is-it-right-for-you).
+
+]
+
+---
+## Twitter &amp;mdash; Authorisation &amp;mdash; Notes
+
+- It is possible to interact with Twitter APIs without steps 2 and 3
+
+  - `rtweet` has a its own Twitter app &amp;mdash; `rstats2twitter` &amp;mdash; that anyone can use
+      - anyone with a Twitter account, who authorises `rstats2twitter` via a pop-up browser
+
+--
+
+&lt;br&gt;
+
+- I recommend
+   
+   - following only the step 1 (open an account) now, which
+       - you might already have done
+       - is otherwise automatic
+       - allows us to use `rstats2twitter` and follow the workshop   
+&lt;br&gt;
+   - leaving the remaining steps until [Part 8](#part-8)
+       - to allow you to think and write your applications carefully
+       - to get my feedback if you prefer to do so
+       
+---
+class: action
+
+## Twitter &amp;mdash; Open an Account
+
+Sign up for Twitter at [https://twitter.com/](twitter.com)
+
+- a pre-condition for interacting with Twitter APIs
+
+    - e.g., you must be authorized 
+       - even to use `rtweet`'s app &amp;mdash; `rstats2twitter`
+    
+&lt;br&gt;
+- helpful for getting to know what you study
+
+    - e.g., the written and unwritten rules that mediate the behaviour on Twitter
+        - as discussed [in Part 1](#potential-biases)
+
+&lt;br&gt;
+- with a strategic username
+
+  - usernames are changeable, but nevertheless public
+      - either choose an anonymous username (e.g., `asdf029348`)
+      - or choose one carefully &amp;mdash; they become a part of users' online presence
+
+---
+## Other Resources&lt;sup&gt;*&lt;/sup&gt;
+
+- R for Data Science ([Wickham &amp; Grolemund, 2019](https://r4ds.had.co.nz/))
+  
+   - open access at [https://r4ds.had.co.nz](https://r4ds.had.co.nz/)
+   
+--
+
+&lt;br&gt;
+
+- Text Mining with R: A Tidy Approach ([Silge &amp; Robinson, 2017](https://www.tidytextmining.com/))
+ 
+   - open access at [tidytextmining.com](https://www.tidytextmining.com/)
+   - comes with [a course website](https://juliasilge.shinyapps.io/learntidytext/) where you can practice
+   
+--
+
+&lt;br&gt;
+
+- A Tutorial for Using Twitter Data in the Social Sciences: Data Collection, Preparation, and Analysis ([Jürgens &amp; Jungherr, 2016](http://dx.doi.org/10.2139/ssrn.2710146))
+
+   - open access at [http://dx.doi.org/10.2139/ssrn.2710146](http://dx.doi.org/10.2139/ssrn.2710146)
+   
+   
+.footnote[
+
+&lt;sup&gt;*&lt;/sup&gt; I recommend these to be consulted not during but after the workshop.
+
+]
+
+---
+name: part2
+class: inverse, center, middle
+
+# Part 2. Preliminary Considerations
+
+.footnote[
+
+[Back to the contents slide](#contents-slide).
+
+]
+
+---
+## Considerations &amp;mdash; Law
+
+- Web scraping might be illegal
+   - 
+
+
+
+
+---
+## Considerations &amp;mdash; Research Questions &amp; Hypotheses
+
+- Ideally, we have one or more research questions, hypotheses
+
+  - developed prior to data collection, analysis
+     - based on, e.g., theory, claims, observations   
+&lt;br&gt;
+  - perhaps, even pre-registered
+     - e.g., at [OSF Registries](https://osf.io/registries)
+
+--
+
+&lt;br&gt;
+
+- Not all questions can be answered with Twitter data
+
+  - see relevant literature for what works, what does not
+     - e.g., for political science, the review by [Jungherr (2016)](https://doi.org/10.1080/19331681.2015.1132401)
+        - for public health, the review by [Sinnenberg et al. (2017)](https://doi.org/10.2105/AJPH.2016.303512)
+
+---
+## Considerations &amp;mdash; Potential Biases
+
+There are at least two potential sources of bias in Twitter data
+
+- sampling
+
+  - Twitter users are not representative of the people out there
+     - see, for example, [Mellon and Prosser (2017)](https://doi.org/10.1177%2F2053168017720008)    
+&lt;br&gt;
+  - Tweeting behaviour has a strategic component 
+     - see, for example, [Umit (2017)](https://doi.org/10.1080/13572334.2017.1283166)
+
+
+--
+name: potential-biases
+
+- mediation
+
+  - the behaviour on Twitter is mediated through written and unwritten rules
+     - e.g., there is a button to like, but no dislike
+         - might systematically bias the replies towards negative   
+&lt;br&gt;
+     - e.g., the common use of the like function as a bookmark
+         - what would a study of Twitter likes be measuring?
+
+---
+## Considerations &amp;mdash; Constraints over Data Access
+
+- Twitter has restrictions on data access
+
+  - how much data is available to download
+  - how quickly, how frequently, how far dating back *etc*.
+     
+--
+&lt;br&gt;
+
+- These restrictions vary across API types
+
+  - e.g., [Standard v1.1](https://developer.twitter.com/en/docs/twitter-api/v1) is the most restrictive APIs
+      - other first generation APIs are the [Premium v1.1](https://developer.twitter.com/en/products/twitter-api/premium-apis) and [Enterprise: Gnip 2.0](https://developer.twitter.com/en/products/twitter-api/enterprise) APIs &amp;mdash; both with paid subscriptions
+      - there are also the second generation APIs, including the newly announced [Academic Research product track](https://blog.twitter.com/developer/en_us/topics/tips/2021/enabling-the-future-of-academic-research-with-the-twitter-api.html)
+
+--
+&lt;br&gt;
+
+- These restrictions also vary within APIs types, across different operations
+
+  - e.g., collecting tweets in real time *vs*. collecting historical tweets
+     - but also, collecting historical tweets from a specific user *vs*. tweets from any user
+
+---
+## Considerations &amp;mdash; Constraints over Data Redistribution
+
+- Twitter restricts content redistribution
+
+   - e.g., only the tweet and/or user IDs can be made publicly available in datasets over 50,000 observations
+      - e.g., not the tweets themselves
+      - and no more than 1.5M IDs
+         - with some exceptions for academic research   
+&lt;br&gt;
+   - see [Twitter Developer terms](https://developer.twitter.com/en/developer-terms/agreement-and-policy) for further details   
+
+--
+&lt;br&gt;
+
+- Reproducibility of research based on Twitter data is limited in practice
+
+  - i.e., reproducibility after publication, by others
+  - technically, they can retrieve the same tweets with IDs
+      - demanding for reproducers
+      - may even be impossible
+          - e.g., some tweets, or whole accounts, might be deleted before replication attempts
+
+---
+## Considerations &amp;mdash; Changes in the Twitter APIs
+
+- Twitter is currently switching to a new generation of APIs
+
+  - replacing APIs v1 with v2
+      - each with various types of APIs   
+&lt;br&gt;
+  - the switch is not complete, outcome is not clear
+     - see the [early access](https://developer.twitter.com/en/docs/twitter-api/early-access) options
+     
+--
+&lt;br&gt;
+
+- Twitter might change the rules of the APIs game at any anytime, again
+
+  - making the existing restrictions more or less strict
+     - e.g., while you are in the middle of data collection     
+&lt;br&gt;
+  - breaking your plans, code
+
+  
+---
+## Considerations &amp;mdash; Changes in the Twitter APIs &amp;mdash; Notes
+
+- Existing codes to collect tweets may or may not be affected, depending on
+
+   - how the APIs v2 will look in the end
+       - it is still a work in progress   
+&lt;br&gt;
+   - how the `rtweet` package&lt;sup&gt;*&lt;/sup&gt; will adopt
+       - it is currently going through a major revision
+
+
+.footnote[
+
+&lt;sup&gt;*&lt;/sup&gt; This is the R package that we will use to collect tweets. More details are in [Part 2](#part2). 
+
+]   
+
+---
+## Considerations &amp;mdash; Changes in the Twitter APIs &amp;mdash; Notes
+
+- Existing codes to collect tweets may or may not be affected, depending on
+
+   - how the APIs V2 will look in the end
+       - it is still a work in progress   
+&lt;br&gt;
+   - whether and how the `rtweet` package will adopt
+       - it is currently going through a major revision
+
+&lt;br&gt;
+
+- Not all changes are bad
+
+   - among others, APIs v2 introduces the [Academic Research product track](https://blog.twitter.com/developer/en_us/topics/tips/2021/enabling-the-future-of-academic-research-with-the-twitter-api.html)    
+&lt;br&gt;
+       - 'to serve the unique needs and challenges of academic researchers'
+           - ranging from master's students to professors    
+&lt;br&gt;
+       - access to all public tweets
+          - by up to 1.5M a month at a time
+       
+---
+## Considerations &amp;mdash; Law and Ethics
+
+- It is often impossible to get users' consent
+
+  - i.e., for collecting and analysing their data on Twitter    
+&lt;br&gt;
+  - Twitter itself has no problem with it, but others might disagree
+      - e.g., your law makers, (funding and/or research) institution, subjects, conscience
+    
+--
+
+&lt;br&gt;
+
+- Check the rules that apply to your case
+   
+  - rules and regulations in your country, at your institution
+  
+--
+
+&lt;br&gt;
+
+- Reflect on whether using Twitter data for research is ethical
+
+  - even where it is legal and allowed, it may not be moral
+
+---
+## Considerations &amp;mdash; Data Storage
+
+Twitter data frequently requires 
+
+- large amounts of digital storage space
+
+  - Twitter data is typically big data
+      - many tweets, up to 90 variables   
+&lt;br&gt;
+  - e.g., a dataset of 1M tweets requires about 300MB 
+      - when stored in R data formats
+
+--
+
+- private, safe storage spaces
+
+  - due to [Twitter Developer terms](https://developer.twitter.com/en/developer-terms/agreement-and-policy)
+  - but also local rules, institutional requirements
+
+---
+## Considerations &amp;mdash; Language and Context
+
+- Some tools of text analysis are developed for a specific language and/or context
+
+   - e.g., dictionaries for sentiment analysis
+       - might be in English, for political texts, only
+       
+   - these may not be useful, valid for different languages, and/or contexts
+   
+--
+
+&lt;br&gt;
+
+- Some tools of text analysis are developed for general use
+
+   - e.g., a dictionary for sentiments in everyday language
+   
+   - these may not be useful, valid for a specific context
+      - e.g., political texts
+
+---
+name: part3
+class: inverse, center, middle
+
+# Part 3. Data Collection
+
+.footnote[
+
+[Back to the contents slide](#contents-slide).
+
+]
+
+---
+name: part4
+class: inverse, center, middle
+
+# Part 4. Data Preperation
+
+.footnote[
+
+[Back to the contents slide](#contents-slide).
+
+]
+
+---
+## Data Preperation &amp;mdash; Overview
+
+- The `rtweet` package does a very good job with data preperation to start with
+
+   - returns data frames, with mostly tidy data
+   - although Twitter APIs return nested lists
+   - some variables are still lists
+      - e.g., `hastags`
+
+--
+
+&lt;br&gt;
+
+- Further data preparation depends on your research project
+
+   - most importantly, on whether you will work with texts or not
+   - we will cover some common preparation steps
+
+---
+## Data Preperation &amp;mdash; Overview &amp;mdash; Strings
+
+- Most researchers would be interested in textual Twitter data
+
+   - tweets as a whole, but also specifically hashtags *etc*.
+
+--
+
+&lt;br&gt;
+
+- There are many components of tweets as texts
+
+   - e.g., mentions, hashtags, emojis, links *etc*.
+   - but also punctuation, white spaces, upper case letters *etc*.
+   - some of these may need to be taken out before analysis
+
+--
+
+&lt;br&gt;
+
+- I use the `stringr` package ([Wickham, 2019](https://cran.r-project.org/web/packages/stringr/index.html)) for string operations
+
+   - part of the `tidyverse` family
+   - you might have another favourite already
+       - no need to change as long as it does the job
+       
+---
+## Data Preperation &amp;mdash; Overview &amp;mdash; Numbers
+
+- There is more to Twitter data than just tweets
+      
+  - e.g., the number of followers, likes *etc*.
+     - see Silva and Proksch ([2020](https://doi.org/10.1017/S0003055420000817)) for a great example
+
+--
+&lt;br&gt;
+
+- I use the `dplyr` package ([Wickham et al, 2020](https://cran.r-project.org/web/packages/dplyr/index.html) for most data operations
+
+   - part of the `tidyverse` family
+   - you might have another favourite already
+       - no need to change as long as it does the job
+
+---
+## Data Preperation &amp;mdash; Remove Mentions
+
+
+```r
+tweet &lt;- "These from @handle1 are #socool. 👏 A #mustsee, @handle2! 
+          👉 t.co/aq7MJJ1
+          👉 https://t.co/aq7MJJ2"
+```
+
+
+```r
+str_remove_all(string = tweet, pattern = "[@][\\w_-]+")
+```
+
+
+.out-t[
+
+[1] "This from  are #socool. 👏 A #mustsee, ! 
+          👉 t.co/aq7MJJ1
+          👉 https://t.co/aq7MJJ2"
+
+]
+
+
+---
+## Data Preperation &amp;mdash; Remove Hashtags
+
+
+
+```r
+tweet &lt;- "These from @handle1 are #socool. 👏 A #mustsee, @handle2! 
+          👉 t.co/aq7MJJ1
+          👉 https://t.co/aq7MJJ2"
+```
+
+
+```r
+str_remove_all(string = tweet, pattern = "[`#`][\\w_-]+")
+```
+
+
+.out-t[
+
+[1] "These from @handle1 are . 👏 A , @handle2! 
+          👉 t.co/aq7MJJ1
+          👉 https://t.co/aq7MJJ2"
+
+]
+
+---
+## Data Preperation &amp;mdash; Remove Links
+
+
+```r
+tweet &lt;- "These from @handle1 are #socool. 👏 A #mustsee, @handle2! 
+          👉 t.co/aq7MJJ1
+          👉 https://t.co/aq7MJJ2"
+```
+
+
+```r
+str_remove_all(string = tweet, pattern = "http\\S+\\s*")
+```
+
+
+.out-t[
+
+[1] "These from @handle1 are. 👏 A, @handle2! 
+          👉 t.co/aq7MJJ1"
+
+]
+
+&lt;br&gt;
+
+- Notice that
+
+  - links come in various formats
+  - you may need multiple or complicated regular expression patterns
+
+---
+## Data Preperation &amp;mdash; Remove Links &amp;mdash; Alternative
+
+Use the `urls_t.co` variable to remove all links
+
+- if there are more than one link in a tweet, they are stored as a list in this variable
+
+
+
+```r
+# start with your existing dataset of tweets
+df_tweets &lt;- df_tweets %&gt;%
+  
+# limit the operation to within individual tweets  
+  group_by(status_id) %&gt;%
+  
+# create a new variable of tweets without links  
+  mutate(tidy_text = 
+           
+# by removing them from the existing variable `text`           
+           str_remove_all(string = text, 
+ 
+# that matches the `urls_t.co` variable, after being collapsed into a string      
+           pattern = str_c(unlist(urls_t.co), collapse = "|")))
+```
+
+--
+class: action
+
+<div class="countdown" id="timer_60a0e696" style="top:0;right:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+## Data Preperation &amp;mdash; Remove Emojis
+
+
+```r
+tweet &lt;- "These from @handle1 are #socool. 👏 A #mustsee, @handle2! 
+          👉 t.co/aq7MJJ1
+          👉 https://t.co/aq7MJJ2"
+```
+
+
+```r
+iconv(x = tweet, from = "latin1", to = "ASCII", sub = "")
+```
+
+
+.out-t[
+
+[1] "These from @handle1 are #socool. A #mustsee, @handle2! 
+          t.co/aq7MJJ1
+          https://t.co/aq7MJJ2"
+
+]
+
+
+---
+## Data Preperation &amp;mdash; Exercises &amp;mdash; Notes
+
+
+- The exercises in this part are best followed by
+
+  - using `tweets.rds` or similar dataset
+  - saving a new variable at every step of preparation
+  - observing the newly created variables 
+      - to confirm whether the code works as intended
+
+&lt;br&gt;
+
+- The `mutate` function, from the `dplyr` package, can be helpful, as follows
+
+   - recall that `text` is the variable for tweets
+
+
+```r
+tweets &lt;- read_rds("data/tweets.rds")
+
+clean_tweets &lt;- tweets %&gt;%
+  `mutate(no_mentions` = str_remove_all(string = `text`, pattern = "[@][\\w_-]+"))
+```
+
+---
+class: action
+
+## Exercises
+
+
+41) Remove mentions
+
+- hint: the pattern is `"[@][\\w_-]+"`
+
+42) Remove hastags
+- hint: the pattern is `"[#][\\w_-]+"`
+
+43) Remove links
+- by using the links from the `urls_t.co` variable
+
+44) Remove emojis
+- pull the help file for the `iconv` function first
+
+
+<div class="countdown" id="timer_60a0e675" style="top:0;right:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+
+---
+## Data Preperation &amp;mdash; Remove Punctuations
+
+
+```r
+tweet &lt;- "These from @handle1 are #socool. 👏 A #mustsee, @handle2! 
+          👉 t.co/aq7MJJ1
+          👉 https://t.co/aq7MJJ2"
+```
+
+
+```r
+str_remove_all(string = tweet, pattern = "[[:punct:]]")
+```
+
+
+.out-t[
+
+[1] "This from are socool 👏 A mustsee handle2
+          👉 tcoaq7MJJ1
+          👉 httpst.coaq7MJJ2"
+
+]
+
+Notice that
+   - this removed all punctuation, including those in mentions, hashtags, and links
+   - if tweets are typed with no spaces after punctuation, this might lead to merged pieces of text
+      - alternatively, try the `str_replace` function to replace punctuation with space
+      
+---
+## Data Preperation &amp;mdash; Remove Punctuations &amp;mdash; Alternative
+
+
+```r
+tweet &lt;- "This is a sentence.There is no space before this sentence."
+```
+
+
+```r
+str_`remove`_all(string = tweet, pattern = "[[:punct:]]")
+```
+
+.out-t[
+
+[1] "This is a sentenceThere is no space before this sentence"
+
+]
+
+--
+
+&lt;br&gt;
+
+
+
+```r
+str_`replace`_all(string = tweet, pattern = "[[:punct:]]", replacement = " ")
+```
+
+.out-t[
+
+[1] "This is a sentence There is no space before this sentence "
+
+]
+
+---
+## Data Preperation &amp;mdash; Remove Punctuations &amp;mdash; Alternative
+
+
+
+```r
+tweet &lt;- "This is a sentence.There is no space before this sentence."
+```
+
+
+```r
+str_replace_all(string = tweet, pattern = "[[:punct:]]", replacement = " ")
+```
+
+.out-t[
+
+[1] "This is a sentence There is no space before this sentence "
+
+]
+
+---
+## Data Preperation &amp;mdash; Remove Repeated Whitespace
+
+
+
+```r
+tweet &lt;- "There are too many spaces after this sentence.   This is a new sentence."
+```
+
+
+```r
+str_squish(string = tweet)
+```
+
+.out-t[
+
+[1] "There are too many spaces after this sentence. This is a new sentence."
+
+]
+
+Note that
+- white spaces can be introduced not only by users on Twitter, but also by us, while cleaning the data
+   - e.g., removing and/or replacing operations above
+   - hence, this function might be useful after other operations
+
+---
+## Data Preperation &amp;mdash; Change Case
+
+
+```r
+tweet &lt;- "lower case. Sentence case. Title Case. UPPER CASE."
+```
+
+
+```r
+str_to_lower(string = tweet)
+```
+
+.out-t[
+
+[1] "lower case. sentence case. title case. upper case."
+
+]
+
+Note that
+   - there are other functions in this family, including
+      - `str_to_sentence`, `str_to_title`, `str_to_upper`
+
+
+---
+class: action
+
+## Exercises
+
+45) Remove punctuations
+- by using the `str_replace_all` function
+- hint: the pattern is `[[:punct:]]`
+
+&lt;br&gt;
+
+46) Remove whitespace
+- hint: the function is called `str_squish`
+
+&lt;br&gt;
+
+47) Change case to lower case
+- hint: the function is called `str_to_lower`
+
+
+<div class="countdown" id="timer_60a0e6c6" style="top:0;right:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+## Data Preperation &amp;mdash; Change Unit of Observation
+
+Research designs might require changing the unit of observation
+   - aggregation
+      - e.g., at the level of users, locations, hashtags etc.
+      - summarise with `dplyr`
+   
+
+  - dis-aggregation
+     - e.g., to the level of words
+     - tokenise with `tidytext`
+     
+---
+## Data Preperation &amp;mdash; Change Unit of Observation &amp;mdash; Aggregation
+
+Aggregate at the level of users
+
+- the number of tweets per user
+
+
+```r
+# load the tweets dataset
+df &lt;- read_rds("tweets.rds") %&gt;%
+  
+# group by users for aggregation  
+  group_by(user_id) %&gt;%
+  
+# create summary statistics for variables of interest
+  summarise(sum_tweets = n())
+```
+
+---
+## Data Preperation &amp;mdash; Change Unit of Observation &amp;mdash; Aggregation
+
+What is aggregated at which level depends on your research design, such as
+   - aggregate the tweets into a single text
+   - at the level of users by source
+
+
+
+```r
+# load the tweets dataset
+df &lt;- read_rds("tweets.rds") %&gt;%
+  
+# group by users for aggregation  
+  group_by(user_id, `source`) %&gt;%
+  
+# create summary statistics for variables of interest
+  summarise(`merged_tweets = paste0(text, collapse = ". ")`) 
+```
+
+---
+## Data Preperation &amp;mdash; Change Unit of Observation &amp;mdash; Dis-aggregation
+
+Disaggregate the tweets, by splitting them into smaller units
+  - also called .yellow-h[tokenisation]
+
+Note that
+- by default `sep = "[^[:alnum:].]+"`, which works well with separating tweets into words
+   - change this argument with a regular expression of your choice
+- this creates a tidy dataset, where each observation is a word
+   - all other tweet-level variables are repeated for each observation
+
+
+```r
+# load the tweets dataset
+df &lt;- read_rds("tweets.rds") %&gt;%
+  
+# split the variable `text`  
+    separate_rows(text)
+```
+
+---
+## Data Preperation &amp;mdash; Change Unit of Observation &amp;mdash; Dis-aggregation
+
+The `tidytext` has a function that works better with tokenising tweets
+- with `token = "tweets"`, it dis-aggregates text into words
+   - except that it respects usernames, hashtags, and URLS 
+
+
+```r
+# load the tweets dataset
+df &lt;- read_rds("tweets.rds") %&gt;%
+  
+# split the variable `text`, create a new variable called `da_tweets`    
+    unnest_tokens(output = da_tweets, input = text, token = "tweets")
+```
+
+---
+## Data Preperation &amp;mdash; Change Unit of Observation &amp;mdash; Dis-aggregation
+
+Tokenise variables to levels other than words
+- e.g., characters, words (the default),  sentences, lines
+
+
+```r
+# load the tweets dataset
+df &lt;- read_rds("tweets.rds") %&gt;%
+  
+# split the variable `text` into sentences, create a new variable called `da_tweets`    
+    unnest_tokens(output = da_tweets, input = text, `token = "sentences"`)
+```
+
+---
+## Data Preperation &amp;mdash; Change Unit of Observation &amp;mdash; Dis-aggregation
+
+Tokenise variables other than tweets
+- recall that `rtweet` stores multiple hastags, mentions *etc*. as lists
+
+
+
+```r
+# load the tweets dataset
+df &lt;- read_rds("tweets.rds") %&gt;%
+  
+# unlist the lists of hashtags to create strings  
+  group_by(status_id) %&gt;%
+  mutate(tidy_hashtags = str_c(unlist(hashtags), collapse = " ")) %&gt;%
+  
+# split the string, create a new variable called `da_tweets`    
+  unnest_tokens(output = da_hashtags, input = tidy_hashtags, token = "words")
+```
+
+---
+## Data Preperation &amp;mdash; Remove Stop Words
+
+Remove the common, uninformative words
+- e.g., the, a, i
+
+Note that 
+- this operation requires a tokenised-to-word variable
+- stop words for English are stored in the `stop_words` dataset in the `tidytext` variable
+- list of words for other languages are available elsewhere, including 
+   - the `stopwordslangs` function from the `rtweet` package
+   - the `stopwords` function from the `tm` package
+      - e.g., use `tm::stopwords("german")` for German
+
+
+```r
+# load the tweets dataset
+df &lt;- read_rds("tweets.rds") %&gt;%
+  
+# split the variable `text`, create a new variable called `da_tweets`    
+  unnest_tokens(output = da_tweets, input = text, token = "tweets") %&gt;%
+ 
+# remove rows that match any of the stop words as stored in the stop_words dataset 
+  anti_join(stop_words, by = c("da_tweets" = "word"))
+```
+
+---
+class: action
+
+## Exercises
+
+48) Aggregate `text` to a higher level
+- e.g., if you are not using `tweets.rds`, to MP level
+   - if not, perhaps to `source` level
+
+&lt;br&gt;
+
+49) Dis-aggregate `text` to a lower level
+- e.g., to words
+
+&lt;br&gt;
+
+50) Dis-aggregate `hashtags`
+- i.e., make sure each row has at most one hashtag
+
+&lt;br&gt;
+
+51) Remove stop words
+
+
+<div class="countdown" id="timer_60a0e709" style="top:0;right:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+name: reference-slide
+class: inverse, center, middle
+
+# References
+
+.footnote[
+
+[Back to the contents slide](#contents-slide).
+
+]
+
+---
+## References
+
+Benoit, K., Watanabe, K., Wang, H., Nulty, P., Obeng, A., Müller, S., Matsuo, A., Lua, J. W., Kuha, J., &amp; Lowe, W. (2020). [quanteda: Quantitative Analysis of Textual Data](https://cran.r-project.org/web/packages/quanteda/index.html). R package, version 2.1.2.
+
+Robinson, D., &amp; Silge, J. (2021). [tidytext: Text mining using 'dplyr', 'ggplot2', and other tidy tools](https://cran.r-project.org/web/packages/tidytext/index.html). R package, version 0.3.0.
+
+Silge, J., &amp; Robinson, D. (2017). [Text mining with R: A tidy approach](https://www.tidytextmining.com). O'Reilly. Open access at
+
+Wickham, H. (2019). [stringr: Simple, Consistent Wrappers for Common String Operations](https://cran.r-project.org/web/packages/stringr/index.html). R package, version 1.4.0.
+
+Wickham, H., Chang, W., Henry, L., Pedersen, T. L., Takahashi, K., Wilke, C., Woo, K., Yutani, H. and Dunnington, D. (2020). [dplyr: A grammar of data manipulation](https://cran.r-project.org/web/packages/dplyr/index.html). R package, version 0.8.5.
+
+Wickham, H. and Grolemund, G. (2019). [R for data science](https://r4ds.had.co.nz). O'Reilly. Open access at [https://r4ds.had.co.nz](https://r4ds.had.co.nz/).
+
+Wickham, H., RStudio (2019). [https://cran.r-project.org/web/packages/tidyverse/index.html](tidyverse: Easily Install and Load the 'Tidyverse'). R package, version 3.3.3.
+
+Xie, Y. (2020). [xaringan: Presentation Ninja](https://cran.r-project.org/web/packages/xaringan/index.html). R package, version 0.19.
+
+---
+class: middle, center
+
+## The workshop ends here.
+## Congradulations for making it this far, and
+## thank you for joining me!
+
+.footnote[
+
+[Back to the contents slide](#contents-slide).
+
+]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"highlightSpans": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
