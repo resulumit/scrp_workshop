@@ -354,84 +354,32 @@ class: action
 ]
 
 ---
-name: download-zip
 class: action
 
-## Course Materials &mdash; Download from the Internet
+## Demonstration Website &mdash; Explore on Your Browser
 
-- Download the materials from <https://github.com/resulumit/twtr_workshop/tree/materials>
+- There is a demonstration website for this workshop
 
-  - on the webpage, follow
-
-> `Code -> Download ZIP`
-
-<br>
-
-- Unzip and rename the folder
-
-  - unzip to a location that is not synced
-     - e.g., perhaps to *Documents*, but not Dropbox
-
----
-## Course Materials &mdash; Overview
-
-Materials have the following structure
-
-```
-
-twtr_workshop-materials
-   |
-   |- data
-   |  |
-   |  |- mps.csv
-   |  |- status_ids.rds
-   |  |- tweets.rds
-   |
-   |- analysis
-   |  |
-   |  |- tweet_based.Rmd
-   |  |- tweet_based_answers.Rmd
-   |  |- user_based.Rmd
-   |  |- user_based_answers.Rmd
-
-```
----
-## Course Materials &mdash; Contents
-
-- `data/mps.csv`
-
-  - a dataset on the members of parliament (MPs) in the British House of Commons, at the end of January 2021
-  - it includes variables on electoral results as well as Twitter usernames
+   - available at <https://parliament-luzland.netlify.app/>
+   - includes fabricated data on the imaginary Parliament of Luzland
+   - provides us with plenty of data, stable structure, and an ethical playground
 
 <br>
 
-- `data/status_ids.rds`
+- Using this demonstration website for practice is recommended
 
-  - a dataset with a single variable: `status_id`
-  - lists the status IDs of all tweets posted by the MPs listed in `mps.csv`, during January 2021
-  
-<br>
-
-- `data/tweets.rds`
-
-  - similar to `data/status_ids`, except that
-      - the time period is now limited to 15 to 31 January, reducing the number of observations below 50,000, allowing for all variables to be posted online
-
----
-## Course Materials &mdash; Contents
-
-- `tweet_based.Rmd`
-
-  - an R Markdown file with exercises for [Part 6](#part-6)
-  - the solution to these exercises are in `tweet_based_answers.Rmd`
+   - tailored to exercises, no ethical concern
+   - but not compulsory &mdash; use a different one if you prefer so
 
 <br>
+ 
+- Explore the website now
+   - see the four sections
+   - click on the links to see an individual page for 
+       - states, constituencies, members, and documents
 
-- `user_based.Rmd`
-
-  - an R Markdown file with exercises for [Part 5](#part-5)
-  - the solution to these exercises are in `user_based_answers.Rmd`
-
+`r countdown(minutes = 5, seconds = 00, top = 0)`
+   
 ---
 class: action
 
@@ -440,9 +388,9 @@ class: action
 - Programming language of this workshop
 
   - created for data analysis, extending for other purposes
-      - e.g., accessing APIs
+      - e.g., accessing websites
   - allows for all three steps in one environment
-      - collecting, processing, and analysing Twitter data
+      - accessing websites; scraping and processing data
   - an alternative: [python](https://www.python.org/)
 
 <br>
@@ -466,7 +414,7 @@ class: action
 
 - Optional, but highly recommended
 
-  - facilitates working with Twitter data in R
+  - facilitates working with R
 
 <br>
 
@@ -496,16 +444,17 @@ name: rstudio-project
 
 <br>
 
-- Create a new RStudio project for the existing<sup>*</sup> workshop directory `...\twtr_workshop-materials` from the RStudio menu:
+- Create a new RStudio project for for this workshop, following from the RStudio menu:
 
-> `File -> New Project -> Existing Directory -> Browse -> ...\twtr_workshop-materials -> Open`
+> `File -> New Project -> New Directory -> New Project`
 
+<br>
 
-.footnote[
+- Choose a location for the project with `Browse...`
 
-<sup>*</sup> Recall that we have downloaded this earlier from GitHub. [Back to the relevant slide](#download-zip).
-
-]
+  - avoid choosing a synced location, e.g., `Dropbox`
+      - likely to cause warning and/or error messages
+      - if you must, pause syncing, or add an sync exclusion
 
 ---
 class: action
@@ -513,7 +462,7 @@ class: action
 ## R Packages &mdash; Install from within RStudio<sup>*</sup>
 
 ```{r eval=FALSE, tidy=FALSE}
-install.packages(c("rtweet", "httpuv", "tidyverse", "tidytext"))
+install.packages(c("rvest", "robotstxt", "polite", "tidyverse", "tidytext"))
 ```
 
 
@@ -523,27 +472,33 @@ install.packages(c("rtweet", "httpuv", "tidyverse", "tidytext"))
 
 ]
 
+`r countdown(minutes = 2, seconds = 00, top = 0)`
+
 ---
 class: action
 
 ## R Packages &mdash; Install from within RStudio
 
 ```{r eval=FALSE, tidy=FALSE}
-install.packages(c("rtweet", "httpuv", "tidyverse", "tidytext"))
+install.packages(c("rvest", "robotstxt", "polite", "tidyverse", "tidytext"))
 ```
 
-- `rtweet` ([Kearney, 2020](https://cran.r-project.org/web/packages/rtweet/index.html)), for collecting tweets
+<br>
 
-    - alternatives: used to be `twitteR` ([Gentry, 2015](https://cran.r-project.org/web/packages/twitteR/index.html)), but not anymore; [running Python code in R](https://blog.twitter.com/developer/en_us/topics/tips/2020/running-the-python-package-for-search-tweets-in-r.html)
+- `rvest` ([Wickham, 2021](https://cran.r-project.org/web/packages/rvest/index.html)), for scraping websites     
+
 
 --
 <br>
 
-- `httpuv` ([Cheng & Chang, 2020](https://cran.r-project.org/web/packages/httpuv/index.html)), for API authorization
+- `robotstxt` ([Meissner & Ren, 2020](https://cran.r-project.org/web/packages/robotstxt/index.html)), for checking permissions to scrape websites
 
-    - alternative: using your own access tokens
-        - necessitates making an application through a developer
-        - has advantages that we will discuss later on
+
+--
+<br>
+
+- `polite` ([Perepolkin, 2019](https://cran.r-project.org/web/packages/polite/index.html)), for compliance with permissions to scrape websites
+
 
 ---
 class: action
@@ -564,79 +519,30 @@ install.packages(c("rtweet", "httpuv", "tidyverse", "tidytext"))
 
 - `tidytext` ([Robinson & Silge, 2021](https://cran.r-project.org/web/packages/tidytext/index.html)), for working with text as data
 
-    - alternative: e.g., `quanteda` ([Benoit et al., 2020](https://cran.r-project.org/web/packages/quanteda/index.html))
 
----
-## Twitter &mdash; Authorisation
-
-Authorization to use Twitter APIs requires at least three steps<sup>*</sup>
-
-1) open a user account on Twitter
-  - a personal or an institutional (perhaps, for a research project) one
-  - done once, takes minutes
-      
-2) with that user account, apply for a developer account
-  - so that you are recognised as a developer, have access to the [developer portal](https://developer.twitter.com/en/portal)
-  - done once per account, .yellow-h[takes days to get approved manually]
-      
-3) with that developer account, register a Twitter app
-  - so that you have the keys and tokens for authorisation
-  - repeated for every project, takes minutes
-      
-      
-.footnote[
-
-<sup>*</sup> There may be additional steps, such as registering for the [Academic Research product track](https://developer.twitter.com/en/portal/petition/academic/is-it-right-for-you).
-
-]
-
----
-## Twitter &mdash; Authorisation &mdash; Notes
-
-- It is possible to interact with Twitter APIs without steps 2 and 3
-
-  - `rtweet` has a its own Twitter app &mdash; `rstats2twitter` &mdash; that anyone can use
-      - anyone with a Twitter account, who authorises `rstats2twitter` via a pop-up browser
-
---
-
-<br>
-
-- I recommend
-   
-   - following only the step 1 (open an account) now, which
-       - you might already have done
-       - is otherwise automatic
-       - allows us to use `rstats2twitter` and follow the workshop   
-<br>
-   - leaving the remaining steps until [Part 8](#part-8)
-       - to allow you to think and write your applications carefully
-       - to get my feedback if you prefer to do so
-       
 ---
 class: action
 
-## Twitter &mdash; Open an Account
+## ScrapeMate &mdash; Add Extension to Browser 
 
-Sign up for Twitter at [https://twitter.com/](twitter.com)
+- An [open source software](https://github.com/hermit-crab/ScrapeMate) extension to Chrome, Firefox  
 
-- a pre-condition for interacting with Twitter APIs
-
-    - e.g., you must be authorized 
-       - even to use `rtweet`'s app &mdash; `rstats2twitter`
-    
-<br>
-- helpful for getting to know what you study
-
-    - e.g., the written and unwritten rules that mediate the behaviour on Twitter
-        - as discussed [in Part 1](#potential-biases)
+   - facilitates selecting what to scrape from a webpage
+   - optional, but highly recommended
 
 <br>
-- with a strategic username
 
-  - usernames are changeable, but nevertheless public
-      - either choose an anonymous username (e.g., `asdf029348`)
-      - or choose one carefully &mdash; they become a part of users' online presence
+- Add the extension to your preferred browser
+   
+  - for Chrome, search at <https://chrome.google.com/webstore/category/extensions>
+  - for Firefox, search at <https://addons.mozilla.org/>
+
+<br>
+
+- If you cannot use Chrome or Safari
+   - drag and drop the following link to your bookmarks bar: <a href="javascript:(function(){var%20s=document.createElement('div');s.innerHTML='Loading...';s.style.color='black';s.style.padding='20px';s.style.position='fixed';s.style.zIndex='9999';s.style.fontSize='3.0em';s.style.border='2px%20solid%20black';s.style.right='40px';s.style.top='40px';s.setAttribute('class','selector_gadget_loading');s.style.background='white';document.body.appendChild(s);s=document.createElement('script');s.setAttribute('type','text/javascript');s.setAttribute('src','https://dv0akt2986vzh.cloudfront.net/unstable/lib/selectorgadget.js');document.body.appendChild(s);})();">SelectorGadget</a>
+       - another &mdash; similar but older &mdash; [open source software](https://github.com/cantino/selectorgadget) with the same functionality
+
 
 ---
 ## Other Resources<sup>*</sup>
@@ -654,14 +560,7 @@ Sign up for Twitter at [https://twitter.com/](twitter.com)
    - open access at [tidytextmining.com](https://www.tidytextmining.com/)
    - comes with [a course website](https://juliasilge.shinyapps.io/learntidytext/) where you can practice
    
---
 
-<br>
-
-- A Tutorial for Using Twitter Data in the Social Sciences: Data Collection, Preparation, and Analysis ([Jürgens & Jungherr, 2016](http://dx.doi.org/10.2139/ssrn.2710146))
-
-   - open access at [http://dx.doi.org/10.2139/ssrn.2710146](http://dx.doi.org/10.2139/ssrn.2710146)
-   
    
 .footnote[
 
@@ -682,10 +581,31 @@ class: inverse, center, middle
 ]
 
 ---
-## Considerations &mdash; Law
+## Considerations &mdash; the Law
 
-- Web scraping might be illegal
-   - 
+- Web scraping might be illegal     
+<br>
+   - depending on who is scraping what, why, how &mdash; and under which jurisdiction
+   - please reflect on, and check, before you scrape
+
+<br>
+
+- Web scraping might be more likely to be illegal if, for example,      
+<br>
+   - it is harmful to the source
+      - commercially
+          - e.g., scraping a commercial website to create a rival website     
+      - physically
+          - e.g., scraping a website so hard and fast that it collapses    
+<br>
+   - it gathers data that
+      - is under copyright
+      - is not meant for the public to see
+      - is then used for financial gain
+
+---
+## Considerations &mdash; the Law
+
 
 
 
@@ -1507,13 +1427,20 @@ class: inverse, center, middle
 ---
 ## References
 
-Benoit, K., Watanabe, K., Wang, H., Nulty, P., Obeng, A., Müller, S., Matsuo, A., Lua, J. W., Kuha, J., & Lowe, W. (2020). [quanteda: Quantitative Analysis of Textual Data](https://cran.r-project.org/web/packages/quanteda/index.html). R package, version 2.1.2.
+Meissner, P., & Ren, K. (2020). [robotstxt: A 'robots.txt' Parser and 'Webbot'/'Spider'/'Crawler' Permissions Checker](https://cran.r-project.org/web/packages/robotstxt/index.html). R package, version 0.7.13.
+
+Perepolkin, D. (2019). [polite: Be Nice on the Web](https://cran.r-project.org/web/packages/polite/index.html). R package, version 0.1.1.
 
 Robinson, D., & Silge, J. (2021). [tidytext: Text mining using 'dplyr', 'ggplot2', and other tidy tools](https://cran.r-project.org/web/packages/tidytext/index.html). R package, version 0.3.0.
 
 Silge, J., & Robinson, D. (2017). [Text mining with R: A tidy approach](https://www.tidytextmining.com). O'Reilly. Open access at
 
 Wickham, H. (2019). [stringr: Simple, Consistent Wrappers for Common String Operations](https://cran.r-project.org/web/packages/stringr/index.html). R package, version 1.4.0.
+
+Wickham, H. (2021). [rvest: Easily Harvest (Scrape) Web Pages](https://cran.r-project.org/web/packages/rvest/index.html). R package, version 1.0.0.
+
+
+
 
 Wickham, H., Chang, W., Henry, L., Pedersen, T. L., Takahashi, K., Wilke, C., Woo, K., Yutani, H. and Dunnington, D. (2020). [dplyr: A grammar of data manipulation](https://cran.r-project.org/web/packages/dplyr/index.html). R package, version 0.8.5.
 

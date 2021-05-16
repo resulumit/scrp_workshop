@@ -256,7 +256,7 @@ Slides with this background colour indicate that your action is required, for
     - these slides have countdown timers
         - as a guide, not to be followed strictly
     
-<div class="countdown" id="timer_60a0e631" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a128a8" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -347,84 +347,34 @@ class: action
 ]
 
 ---
-name: download-zip
 class: action
 
-## Course Materials &amp;mdash; Download from the Internet
+## Demonstration Website &amp;mdash; Explore on Your Browser
 
-- Download the materials from &lt;https://github.com/resulumit/twtr_workshop/tree/materials&gt;
+- There is a demonstration website for this workshop
 
-  - on the webpage, follow
-
-&gt; `Code -&gt; Download ZIP`
-
-&lt;br&gt;
-
-- Unzip and rename the folder
-
-  - unzip to a location that is not synced
-     - e.g., perhaps to *Documents*, but not Dropbox
-
----
-## Course Materials &amp;mdash; Overview
-
-Materials have the following structure
-
-```
-
-twtr_workshop-materials
-   |
-   |- data
-   |  |
-   |  |- mps.csv
-   |  |- status_ids.rds
-   |  |- tweets.rds
-   |
-   |- analysis
-   |  |
-   |  |- tweet_based.Rmd
-   |  |- tweet_based_answers.Rmd
-   |  |- user_based.Rmd
-   |  |- user_based_answers.Rmd
-
-```
----
-## Course Materials &amp;mdash; Contents
-
-- `data/mps.csv`
-
-  - a dataset on the members of parliament (MPs) in the British House of Commons, at the end of January 2021
-  - it includes variables on electoral results as well as Twitter usernames
+   - available at &lt;https://parliament-luzland.netlify.app/&gt;
+   - includes fabricated data on the imaginary Parliament of Luzland
+   - provides us with plenty of data, stable structure, and an ethical playground
 
 &lt;br&gt;
 
-- `data/status_ids.rds`
+- Using this demonstration website for practice is recommended
 
-  - a dataset with a single variable: `status_id`
-  - lists the status IDs of all tweets posted by the MPs listed in `mps.csv`, during January 2021
-  
-&lt;br&gt;
-
-- `data/tweets.rds`
-
-  - similar to `data/status_ids`, except that
-      - the time period is now limited to 15 to 31 January, reducing the number of observations below 50,000, allowing for all variables to be posted online
-
----
-## Course Materials &amp;mdash; Contents
-
-- `tweet_based.Rmd`
-
-  - an R Markdown file with exercises for [Part 6](#part-6)
-  - the solution to these exercises are in `tweet_based_answers.Rmd`
+   - tailored to exercises, no ethical concern
+   - but not compulsory &amp;mdash; use a different one if you prefer so
 
 &lt;br&gt;
+ 
+- Explore the website now
+   - see the four sections
+   - click on the links to see an individual page for 
+       - states, constituencies, members, and documents
 
-- `user_based.Rmd`
-
-  - an R Markdown file with exercises for [Part 5](#part-5)
-  - the solution to these exercises are in `user_based_answers.Rmd`
-
+<div class="countdown" id="timer_60a1282d" style="top:0;right:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+   
 ---
 class: action
 
@@ -433,9 +383,9 @@ class: action
 - Programming language of this workshop
 
   - created for data analysis, extending for other purposes
-      - e.g., accessing APIs
+      - e.g., accessing websites
   - allows for all three steps in one environment
-      - collecting, processing, and analysing Twitter data
+      - accessing websites; scraping and processing data
   - an alternative: [python](https://www.python.org/)
 
 &lt;br&gt;
@@ -459,7 +409,7 @@ class: action
 
 - Optional, but highly recommended
 
-  - facilitates working with Twitter data in R
+  - facilitates working with R
 
 &lt;br&gt;
 
@@ -489,16 +439,17 @@ name: rstudio-project
 
 &lt;br&gt;
 
-- Create a new RStudio project for the existing&lt;sup&gt;*&lt;/sup&gt; workshop directory `...\twtr_workshop-materials` from the RStudio menu:
+- Create a new RStudio project for for this workshop, following from the RStudio menu:
 
-&gt; `File -&gt; New Project -&gt; Existing Directory -&gt; Browse -&gt; ...\twtr_workshop-materials -&gt; Open`
+&gt; `File -&gt; New Project -&gt; New Directory -&gt; New Project`
 
+&lt;br&gt;
 
-.footnote[
+- Choose a location for the project with `Browse...`
 
-&lt;sup&gt;*&lt;/sup&gt; Recall that we have downloaded this earlier from GitHub. [Back to the relevant slide](#download-zip).
-
-]
+  - avoid choosing a synced location, e.g., `Dropbox`
+      - likely to cause warning and/or error messages
+      - if you must, pause syncing, or add an sync exclusion
 
 ---
 class: action
@@ -507,7 +458,7 @@ class: action
 
 
 ```r
-install.packages(c("rtweet", "httpuv", "tidyverse", "tidytext"))
+install.packages(c("rvest", "robotstxt", "polite", "tidyverse", "tidytext"))
 ```
 
 
@@ -517,6 +468,10 @@ install.packages(c("rtweet", "httpuv", "tidyverse", "tidytext"))
 
 ]
 
+<div class="countdown" id="timer_60a1282b" style="top:0;right:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
 ---
 class: action
 
@@ -524,21 +479,25 @@ class: action
 
 
 ```r
-install.packages(c("rtweet", "httpuv", "tidyverse", "tidytext"))
+install.packages(c("rvest", "robotstxt", "polite", "tidyverse", "tidytext"))
 ```
 
-- `rtweet` ([Kearney, 2020](https://cran.r-project.org/web/packages/rtweet/index.html)), for collecting tweets
+&lt;br&gt;
 
-    - alternatives: used to be `twitteR` ([Gentry, 2015](https://cran.r-project.org/web/packages/twitteR/index.html)), but not anymore; [running Python code in R](https://blog.twitter.com/developer/en_us/topics/tips/2020/running-the-python-package-for-search-tweets-in-r.html)
+- `rvest` ([Wickham, 2021](https://cran.r-project.org/web/packages/rvest/index.html)), for scraping websites     
+
 
 --
 &lt;br&gt;
 
-- `httpuv` ([Cheng &amp; Chang, 2020](https://cran.r-project.org/web/packages/httpuv/index.html)), for API authorization
+- `robotstxt` ([Meissner &amp; Ren, 2020](https://cran.r-project.org/web/packages/robotstxt/index.html)), for checking permissions to scrape websites
 
-    - alternative: using your own access tokens
-        - necessitates making an application through a developer
-        - has advantages that we will discuss later on
+
+--
+&lt;br&gt;
+
+- `polite` ([Perepolkin, 2019](https://cran.r-project.org/web/packages/polite/index.html)), for compliance with permissions to scrape websites
+
 
 ---
 class: action
@@ -560,79 +519,30 @@ install.packages(c("rtweet", "httpuv", "tidyverse", "tidytext"))
 
 - `tidytext` ([Robinson &amp; Silge, 2021](https://cran.r-project.org/web/packages/tidytext/index.html)), for working with text as data
 
-    - alternative: e.g., `quanteda` ([Benoit et al., 2020](https://cran.r-project.org/web/packages/quanteda/index.html))
 
----
-## Twitter &amp;mdash; Authorisation
-
-Authorization to use Twitter APIs requires at least three steps&lt;sup&gt;*&lt;/sup&gt;
-
-1) open a user account on Twitter
-  - a personal or an institutional (perhaps, for a research project) one
-  - done once, takes minutes
-      
-2) with that user account, apply for a developer account
-  - so that you are recognised as a developer, have access to the [developer portal](https://developer.twitter.com/en/portal)
-  - done once per account, .yellow-h[takes days to get approved manually]
-      
-3) with that developer account, register a Twitter app
-  - so that you have the keys and tokens for authorisation
-  - repeated for every project, takes minutes
-      
-      
-.footnote[
-
-&lt;sup&gt;*&lt;/sup&gt; There may be additional steps, such as registering for the [Academic Research product track](https://developer.twitter.com/en/portal/petition/academic/is-it-right-for-you).
-
-]
-
----
-## Twitter &amp;mdash; Authorisation &amp;mdash; Notes
-
-- It is possible to interact with Twitter APIs without steps 2 and 3
-
-  - `rtweet` has a its own Twitter app &amp;mdash; `rstats2twitter` &amp;mdash; that anyone can use
-      - anyone with a Twitter account, who authorises `rstats2twitter` via a pop-up browser
-
---
-
-&lt;br&gt;
-
-- I recommend
-   
-   - following only the step 1 (open an account) now, which
-       - you might already have done
-       - is otherwise automatic
-       - allows us to use `rstats2twitter` and follow the workshop   
-&lt;br&gt;
-   - leaving the remaining steps until [Part 8](#part-8)
-       - to allow you to think and write your applications carefully
-       - to get my feedback if you prefer to do so
-       
 ---
 class: action
 
-## Twitter &amp;mdash; Open an Account
+## ScrapeMate &amp;mdash; Add Extension to Browser 
 
-Sign up for Twitter at [https://twitter.com/](twitter.com)
+- An [open source software](https://github.com/hermit-crab/ScrapeMate) extension to Chrome, Firefox  
 
-- a pre-condition for interacting with Twitter APIs
-
-    - e.g., you must be authorized 
-       - even to use `rtweet`'s app &amp;mdash; `rstats2twitter`
-    
-&lt;br&gt;
-- helpful for getting to know what you study
-
-    - e.g., the written and unwritten rules that mediate the behaviour on Twitter
-        - as discussed [in Part 1](#potential-biases)
+   - facilitates selecting what to scrape from a webpage
+   - optional, but highly recommended
 
 &lt;br&gt;
-- with a strategic username
 
-  - usernames are changeable, but nevertheless public
-      - either choose an anonymous username (e.g., `asdf029348`)
-      - or choose one carefully &amp;mdash; they become a part of users' online presence
+- Add the extension to your preferred browser
+   
+  - for Chrome, search at &lt;https://chrome.google.com/webstore/category/extensions&gt;
+  - for Firefox, search at &lt;https://addons.mozilla.org/&gt;
+
+&lt;br&gt;
+
+- If you cannot use Chrome or Safari
+   - drag and drop the following link to your bookmarks bar: &lt;a href="javascript:(function(){var%20s=document.createElement('div');s.innerHTML='Loading...';s.style.color='black';s.style.padding='20px';s.style.position='fixed';s.style.zIndex='9999';s.style.fontSize='3.0em';s.style.border='2px%20solid%20black';s.style.right='40px';s.style.top='40px';s.setAttribute('class','selector_gadget_loading');s.style.background='white';document.body.appendChild(s);s=document.createElement('script');s.setAttribute('type','text/javascript');s.setAttribute('src','https://dv0akt2986vzh.cloudfront.net/unstable/lib/selectorgadget.js');document.body.appendChild(s);})();"&gt;SelectorGadget&lt;/a&gt;
+       - another &amp;mdash; similar but older &amp;mdash; [open source software](https://github.com/cantino/selectorgadget) with the same functionality
+
 
 ---
 ## Other Resources&lt;sup&gt;*&lt;/sup&gt;
@@ -650,14 +560,7 @@ Sign up for Twitter at [https://twitter.com/](twitter.com)
    - open access at [tidytextmining.com](https://www.tidytextmining.com/)
    - comes with [a course website](https://juliasilge.shinyapps.io/learntidytext/) where you can practice
    
---
 
-&lt;br&gt;
-
-- A Tutorial for Using Twitter Data in the Social Sciences: Data Collection, Preparation, and Analysis ([Jürgens &amp; Jungherr, 2016](http://dx.doi.org/10.2139/ssrn.2710146))
-
-   - open access at [http://dx.doi.org/10.2139/ssrn.2710146](http://dx.doi.org/10.2139/ssrn.2710146)
-   
    
 .footnote[
 
@@ -678,10 +581,31 @@ class: inverse, center, middle
 ]
 
 ---
-## Considerations &amp;mdash; Law
+## Considerations &amp;mdash; the Law
 
-- Web scraping might be illegal
-   - 
+- Web scraping might be illegal     
+&lt;br&gt;
+   - depending on who is scraping what, why, how &amp;mdash; and under which jurisdiction
+   - please reflect on, and check, before you scrape
+
+&lt;br&gt;
+
+- Web scraping might be more likely to be illegal if, for example,      
+&lt;br&gt;
+   - it is harmful to the source
+      - commercially
+          - e.g., scraping a commercial website to create a rival website     
+      - physically
+          - e.g., scraping a website so hard and fast that it collapses    
+&lt;br&gt;
+   - it gathers data that
+      - is under copyright
+      - is not meant for the public to see
+      - is then used for financial gain
+
+---
+## Considerations &amp;mdash; the Law
+
 
 
 
@@ -1107,7 +1031,7 @@ df_tweets &lt;- df_tweets %&gt;%
 --
 class: action
 
-<div class="countdown" id="timer_60a0e696" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a127f7" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1181,7 +1105,7 @@ class: action
 - pull the help file for the `iconv` function first
 
 
-<div class="countdown" id="timer_60a0e675" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a12773" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1339,7 +1263,7 @@ class: action
 - hint: the function is called `str_to_lower`
 
 
-<div class="countdown" id="timer_60a0e6c6" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a128cb" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1517,7 +1441,7 @@ class: action
 51) Remove stop words
 
 
-<div class="countdown" id="timer_60a0e709" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a12a7e" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1536,13 +1460,20 @@ class: inverse, center, middle
 ---
 ## References
 
-Benoit, K., Watanabe, K., Wang, H., Nulty, P., Obeng, A., Müller, S., Matsuo, A., Lua, J. W., Kuha, J., &amp; Lowe, W. (2020). [quanteda: Quantitative Analysis of Textual Data](https://cran.r-project.org/web/packages/quanteda/index.html). R package, version 2.1.2.
+Meissner, P., &amp; Ren, K. (2020). [robotstxt: A 'robots.txt' Parser and 'Webbot'/'Spider'/'Crawler' Permissions Checker](https://cran.r-project.org/web/packages/robotstxt/index.html). R package, version 0.7.13.
+
+Perepolkin, D. (2019). [polite: Be Nice on the Web](https://cran.r-project.org/web/packages/polite/index.html). R package, version 0.1.1.
 
 Robinson, D., &amp; Silge, J. (2021). [tidytext: Text mining using 'dplyr', 'ggplot2', and other tidy tools](https://cran.r-project.org/web/packages/tidytext/index.html). R package, version 0.3.0.
 
 Silge, J., &amp; Robinson, D. (2017). [Text mining with R: A tidy approach](https://www.tidytextmining.com). O'Reilly. Open access at
 
 Wickham, H. (2019). [stringr: Simple, Consistent Wrappers for Common String Operations](https://cran.r-project.org/web/packages/stringr/index.html). R package, version 1.4.0.
+
+Wickham, H. (2021). [rvest: Easily Harvest (Scrape) Web Pages](https://cran.r-project.org/web/packages/rvest/index.html). R package, version 1.0.0.
+
+
+
 
 Wickham, H., Chang, W., Henry, L., Pedersen, T. L., Takahashi, K., Wilke, C., Woo, K., Yutani, H. and Dunnington, D. (2020). [dplyr: A grammar of data manipulation](https://cran.r-project.org/web/packages/dplyr/index.html). R package, version 0.8.5.
 
