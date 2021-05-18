@@ -256,7 +256,7 @@ Slides with this background colour indicate that your action is required, for
     - these slides have countdown timers
         - as a guide, not to be followed strictly
     
-<div class="countdown" id="timer_60a128a8" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a418b8" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -371,7 +371,7 @@ class: action
    - click on the links to see an individual page for 
        - states, constituencies, members, and documents
 
-<div class="countdown" id="timer_60a1282d" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a41945" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
    
@@ -456,9 +456,12 @@ class: action
 
 ## R Packages &amp;mdash; Install from within RStudio&lt;sup&gt;*&lt;/sup&gt;
 
+Install the packages that we need
+
 
 ```r
-install.packages(c("rvest", "robotstxt", "polite", "tidyverse", "tidytext"))
+install.packages(c("rvest", "RSelenium", "robotstxt", "polite",
+                   "tidyverse", "tidytext"))
 ```
 
 
@@ -468,7 +471,7 @@ install.packages(c("rvest", "robotstxt", "polite", "tidyverse", "tidytext"))
 
 ]
 
-<div class="countdown" id="timer_60a1282b" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a41695" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -477,27 +480,28 @@ class: action
 
 ## R Packages &amp;mdash; Install from within RStudio
 
+Install the packages that we need
+
 
 ```r
-install.packages(c("rvest", "robotstxt", "polite", "tidyverse", "tidytext"))
+install.packages(c("rvest", "RSelenium", "robotstxt", "polite",
+                   "tidyverse", "tidytext"))
 ```
 
 &lt;br&gt;
 
-- `rvest` ([Wickham, 2021](https://cran.r-project.org/web/packages/rvest/index.html)), for scraping websites     
+We will use
 
+- `rvest` ([Wickham, 2021](https://cran.r-project.org/web/packages/rvest/index.html)), for scraping websites
 
 --
-&lt;br&gt;
+- `RSelenium` ([Harrison, 2020](https://cran.r-project.org/web/packages/RSelenium/index.html)), for browsing the web programmatically
 
+--
 - `robotstxt` ([Meissner &amp; Ren, 2020](https://cran.r-project.org/web/packages/robotstxt/index.html)), for checking permissions to scrape websites
 
-
 --
-&lt;br&gt;
-
 - `polite` ([Perepolkin, 2019](https://cran.r-project.org/web/packages/polite/index.html)), for compliance with permissions to scrape websites
-
 
 ---
 class: action
@@ -1031,7 +1035,7 @@ df_tweets &lt;- df_tweets %&gt;%
 --
 class: action
 
-<div class="countdown" id="timer_60a127f7" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a41604" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1105,7 +1109,7 @@ class: action
 - pull the help file for the `iconv` function first
 
 
-<div class="countdown" id="timer_60a12773" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a41903" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1263,7 +1267,7 @@ class: action
 - hint: the function is called `str_to_lower`
 
 
-<div class="countdown" id="timer_60a128cb" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a416bc" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1441,7 +1445,7 @@ class: action
 51) Remove stop words
 
 
-<div class="countdown" id="timer_60a12a7e" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a416ee" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1459,6 +1463,8 @@ class: inverse, center, middle
 
 ---
 ## References
+
+Harrison, J. (2020). [RSelenium: R Bindings for 'Selenium WebDriver'](https://cran.r-project.org/web/packages/RSelenium/index.html). R package, version 1.7.7.
 
 Meissner, P., &amp; Ren, K. (2020). [robotstxt: A 'robots.txt' Parser and 'Webbot'/'Spider'/'Crawler' Permissions Checker](https://cran.r-project.org/web/packages/robotstxt/index.html). R package, version 0.7.13.
 

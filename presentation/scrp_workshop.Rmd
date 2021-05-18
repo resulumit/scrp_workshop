@@ -461,8 +461,11 @@ class: action
 
 ## R Packages &mdash; Install from within RStudio<sup>*</sup>
 
+Install the packages that we need
+
 ```{r eval=FALSE, tidy=FALSE}
-install.packages(c("rvest", "robotstxt", "polite", "tidyverse", "tidytext"))
+install.packages(c("rvest", "RSelenium", "robotstxt", "polite",
+                   "tidyverse", "tidytext"))
 ```
 
 
@@ -479,26 +482,27 @@ class: action
 
 ## R Packages &mdash; Install from within RStudio
 
+Install the packages that we need
+
 ```{r eval=FALSE, tidy=FALSE}
-install.packages(c("rvest", "robotstxt", "polite", "tidyverse", "tidytext"))
+install.packages(c("rvest", "RSelenium", "robotstxt", "polite",
+                   "tidyverse", "tidytext"))
 ```
 
 <br>
 
-- `rvest` ([Wickham, 2021](https://cran.r-project.org/web/packages/rvest/index.html)), for scraping websites     
+We will use
 
+- `rvest` ([Wickham, 2021](https://cran.r-project.org/web/packages/rvest/index.html)), for scraping websites
 
 --
-<br>
+- `RSelenium` ([Harrison, 2020](https://cran.r-project.org/web/packages/RSelenium/index.html)), for browsing the web programmatically
 
+--
 - `robotstxt` ([Meissner & Ren, 2020](https://cran.r-project.org/web/packages/robotstxt/index.html)), for checking permissions to scrape websites
 
-
 --
-<br>
-
 - `polite` ([Perepolkin, 2019](https://cran.r-project.org/web/packages/polite/index.html)), for compliance with permissions to scrape websites
-
 
 ---
 class: action
@@ -1426,6 +1430,8 @@ class: inverse, center, middle
 
 ---
 ## References
+
+Harrison, J. (2020). [RSelenium: R Bindings for 'Selenium WebDriver'](https://cran.r-project.org/web/packages/RSelenium/index.html). R package, version 1.7.7.
 
 Meissner, P., & Ren, K. (2020). [robotstxt: A 'robots.txt' Parser and 'Webbot'/'Spider'/'Crawler' Permissions Checker](https://cran.r-project.org/web/packages/robotstxt/index.html). R package, version 0.7.13.
 
