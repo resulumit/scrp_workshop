@@ -395,17 +395,20 @@ class: action
 
 <br>
 
-- Optional, if you have R already installed
-
-  - consider updating your copy, if it is not up to date
-     - type the `R.version.string` command in R to check the version of your copy
-     - compare with the latest official release at [https://cran.r-project.org/sources.html](https://cran.r-project.org/sources.html)
-
-<br>
-
 - Download R from [https://cloud.r-project.org](https://cloud.r-project.org)
 
-    - choose the version for your operating system
+  - optional, if you have it already installed &mdash; but then consider updating<sup>*</sup>
+      - the `R.version.string` command checks the version of your copy
+      - compare with the latest official release at [https://cran.r-project.org/sources.html](https://cran.r-project.org/sources.html)
+
+
+
+.footnote[
+
+<sup>*</sup> The same applies to all software that follows &mdash; consider updating if you have them already installed. This ensures everyone works with the latest, exactly the same, tools.
+
+]
+
 
 ---
 class: action
@@ -427,7 +430,7 @@ class: action
 - Download RStudio from [https://rstudio.com/products/rstudio/download](https://rstudio.com/products/rstudio/download)
 
   - choose the free version
-  - consider updating your copy, if it is not up to date, following from the RStudio menu:
+  - to check for any updates, follow from the RStudio menu:
 
 > `Help -> Check for Updates`
 
@@ -510,7 +513,9 @@ class: action
 ## R Packages &mdash; Install from within RStudio
 
 ```{r eval=FALSE, tidy=FALSE}
-install.packages(c("rtweet", "httpuv", "tidyverse", "tidytext"))
+install.packages(c("rvest", "RSelenium", "robotstxt", "polite",
+                   "tidyverse", "tidytext"))
+
 ```
 
 - `tidyverse` ([Wickham & RStudio 2019](https://cran.r-project.org/web/packages/tidyverse/index.html)), for various tasks
@@ -523,6 +528,33 @@ install.packages(c("rtweet", "httpuv", "tidyverse", "tidytext"))
 
 - `tidytext` ([Robinson & Silge, 2021](https://cran.r-project.org/web/packages/tidytext/index.html)), for working with text as data
 
+
+---
+class: action
+
+## Java &mdash; Download from the Internet and Install
+
+
+- A language and software that `RSelenium` needs
+   - for automation scripts
+
+<br>
+
+- Download Java from <https://www.java.com/en/download/>
+   - requires restarting any browser that you might have open
+   
+---
+class: action
+
+## Chrome &mdash; Download from the Internet and Install
+
+
+- A browser that facilitates web scraping
+   - favoured by `RSelenium` and most programmers
+
+<br>
+
+- Download Chrome from <https://www.google.com/chrome/>
 
 ---
 class: action
@@ -543,7 +575,7 @@ class: action
 
 <br>
 
-- If you cannot use Chrome or Safari
+- If you cannot use Chrome or Firefox
    - drag and drop the following link to your bookmarks bar: <a href="javascript:(function(){var%20s=document.createElement('div');s.innerHTML='Loading...';s.style.color='black';s.style.padding='20px';s.style.position='fixed';s.style.zIndex='9999';s.style.fontSize='3.0em';s.style.border='2px%20solid%20black';s.style.right='40px';s.style.top='40px';s.setAttribute('class','selector_gadget_loading');s.style.background='white';document.body.appendChild(s);s=document.createElement('script');s.setAttribute('type','text/javascript');s.setAttribute('src','https://dv0akt2986vzh.cloudfront.net/unstable/lib/selectorgadget.js');document.body.appendChild(s);})();">SelectorGadget</a>
        - another &mdash; similar but older &mdash; [open source software](https://github.com/cantino/selectorgadget) with the same functionality
 
@@ -551,9 +583,17 @@ class: action
 ---
 ## Other Resources<sup>*</sup>
 
+- `RSelenium` vignettes
+
+   - available at <https://cran.r-project.org/web/packages/RSelenium/vignettes/basics.html>
+
+--
+
+<br>
+
 - R for Data Science ([Wickham & Grolemund, 2019](https://r4ds.had.co.nz/))
   
-   - open access at [https://r4ds.had.co.nz](https://r4ds.had.co.nz/)
+   - open access at <https://r4ds.had.co.nz>
    
 --
 
@@ -590,7 +630,9 @@ class: inverse, center, middle
 - Web scraping might be illegal     
 <br>
    - depending on who is scraping what, why, how &mdash; and under which jurisdiction
-   - please reflect on, and check, before you scrape
+   - reflect, and check, before you scrape
+
+--
 
 <br>
 
@@ -602,245 +644,433 @@ class: inverse, center, middle
       - physically
           - e.g., scraping a website so hard and fast that it collapses    
 <br>
-   - it gathers data that
-      - is under copyright
-      - is not meant for the public to see
-      - is then used for financial gain
+   - it gathers data that is
+      - under copyright
+      - not meant for the public to see
+      - then used for financial gain
 
 ---
-## Considerations &mdash; the Law
+## Considerations &mdash; the Ethics
 
-
-
-
-
----
-## Considerations &mdash; Research Questions & Hypotheses
-
-- Ideally, we have one or more research questions, hypotheses
-
-  - developed prior to data collection, analysis
-     - based on, e.g., theory, claims, observations   
-<br>
-  - perhaps, even pre-registered
-     - e.g., at [OSF Registries](https://osf.io/registries)
+- Web scraping might be unethical
+   - even when it is legal
+   - depending on who is scraping what, why, and how
+   - reflect before you scrape
 
 --
 
 <br>
 
-- Not all questions can be answered with Twitter data
+- Web scraping might be more likely to be unethical if, for example,    
+<br>
+   - it is &mdash; edging towards &mdash; illegal
+   - it does not respect the restrictions
+      - as defined in `robots.txt` files    
+<br>
+   - it harvests data 
+       - that is otherwise available to download, e.g., through APIs
+       - without purpose, at dangerous speed, repeatedly
 
-  - see relevant literature for what works, what does not
-     - e.g., for political science, the review by [Jungherr (2016)](https://doi.org/10.1080/19331681.2015.1132401)
-        - for public health, the review by [Sinnenberg et al. (2017)](https://doi.org/10.2105/AJPH.2016.303512)
 
 ---
-## Considerations &mdash; Potential Biases
+## Considerations &mdash; the Ethics &mdash; `robots.txt`
 
-There are at least two potential sources of bias in Twitter data
+- Most websites declare a robots exclusion protocol
 
-- sampling
+   - making their rules known with respect to programmatic access
+       - who is (not) allowed to scrape what, and sometimes, at what speed     
+<br>       
+   - within `robots.txt` files
+       - available at, e.g., www.websiteurl.com/robots.txt
 
-  - Twitter users are not representative of the people out there
-     - see, for example, [Mellon and Prosser (2017)](https://doi.org/10.1177%2F2053168017720008)    
-<br>
-  - Tweeting behaviour has a strategic component 
-     - see, for example, [Umit (2017)](https://doi.org/10.1080/13572334.2017.1283166)
-
-
---
-name: potential-biases
-
-- mediation
-
-  - the behaviour on Twitter is mediated through written and unwritten rules
-     - e.g., there is a button to like, but no dislike
-         - might systematically bias the replies towards negative   
-<br>
-     - e.g., the common use of the like function as a bookmark
-         - what would a study of Twitter likes be measuring?
-
----
-## Considerations &mdash; Constraints over Data Access
-
-- Twitter has restrictions on data access
-
-  - how much data is available to download
-  - how quickly, how frequently, how far dating back *etc*.
-     
---
 <br>
 
-- These restrictions vary across API types
-
-  - e.g., [Standard v1.1](https://developer.twitter.com/en/docs/twitter-api/v1) is the most restrictive APIs
-      - other first generation APIs are the [Premium v1.1](https://developer.twitter.com/en/products/twitter-api/premium-apis) and [Enterprise: Gnip 2.0](https://developer.twitter.com/en/products/twitter-api/enterprise) APIs &mdash; both with paid subscriptions
-      - there are also the second generation APIs, including the newly announced [Academic Research product track](https://blog.twitter.com/developer/en_us/topics/tips/2021/enabling-the-future-of-academic-research-with-the-twitter-api.html)
-
---
-<br>
-
-- These restrictions also vary within APIs types, across different operations
-
-  - e.g., collecting tweets in real time *vs*. collecting historical tweets
-     - but also, collecting historical tweets from a specific user *vs*. tweets from any user
-
----
-## Considerations &mdash; Constraints over Data Redistribution
-
-- Twitter restricts content redistribution
-
-   - e.g., only the tweet and/or user IDs can be made publicly available in datasets over 50,000 observations
-      - e.g., not the tweets themselves
-      - and no more than 1.5M IDs
-         - with some exceptions for academic research   
-<br>
-   - see [Twitter Developer terms](https://developer.twitter.com/en/developer-terms/agreement-and-policy) for further details   
-
---
-<br>
-
-- Reproducibility of research based on Twitter data is limited in practice
-
-  - i.e., reproducibility after publication, by others
-  - technically, they can retrieve the same tweets with IDs
-      - demanding for reproducers
-      - may even be impossible
-          - e.g., some tweets, or whole accounts, might be deleted before replication attempts
-
----
-## Considerations &mdash; Changes in the Twitter APIs
-
-- Twitter is currently switching to a new generation of APIs
-
-  - replacing APIs v1 with v2
-      - each with various types of APIs   
-<br>
-  - the switch is not complete, outcome is not clear
-     - see the [early access](https://developer.twitter.com/en/docs/twitter-api/early-access) options
-     
---
-<br>
-
-- Twitter might change the rules of the APIs game at any anytime, again
-
-  - making the existing restrictions more or less strict
-     - e.g., while you are in the middle of data collection     
-<br>
-  - breaking your plans, code
-
+- The rules in `robots.txt` cannot not enforced
+  - but should be respected for ethical reasons
   
----
-## Considerations &mdash; Changes in the Twitter APIs &mdash; Notes
-
-- Existing codes to collect tweets may or may not be affected, depending on
-
-   - how the APIs v2 will look in the end
-       - it is still a work in progress   
 <br>
-   - how the `rtweet` package<sup>*</sup> will adopt
-       - it is currently going through a major revision
 
-
-.footnote[
-
-<sup>*</sup> This is the R package that we will use to collect tweets. More details are in [Part 2](#part2). 
-
-]   
+- The language in `robots.txt` files is specific but intuitive
+  - easy to read and understand
+  - the `robotstxt` package makes it even easier
 
 ---
-## Considerations &mdash; Changes in the Twitter APIs &mdash; Notes
+## Considerations &mdash; the Ethics &mdash; `robots.txt` &mdash; Syntax
 
-- Existing codes to collect tweets may or may not be affected, depending on
+.pull-left[
 
-   - how the APIs V2 will look in the end
-       - it is still a work in progress   
-<br>
-   - whether and how the `rtweet` package will adopt
-       - it is currently going through a major revision
+- It has pre-defined keys, most importantly
 
-<br>
-
-- Not all changes are bad
-
-   - among others, APIs v2 introduces the [Academic Research product track](https://blog.twitter.com/developer/en_us/topics/tips/2021/enabling-the-future-of-academic-research-with-the-twitter-api.html)    
-<br>
-       - 'to serve the unique needs and challenges of academic researchers'
-           - ranging from master's students to professors    
-<br>
-       - access to all public tweets
-          - by up to 1.5M a month at a time
-       
----
-## Considerations &mdash; Law and Ethics
-
-- It is often impossible to get users' consent
-
-  - i.e., for collecting and analysing their data on Twitter    
-<br>
-  - Twitter itself has no problem with it, but others might disagree
-      - e.g., your law makers, (funding and/or research) institution, subjects, conscience
-    
---
-
-<br>
-
-- Check the rules that apply to your case
+   - `User-agent` indicates who the protocol is for
    
-  - rules and regulations in your country, at your institution
-  
---
+   - `Allow` indicates which part(s) of the website can be scraped
+   
+   - `Disallow` indicates which part(s) must not be scraped
+   
+   - `Crawl-delay` indicates how fast the website could be scraped
 
 <br>
 
-- Reflect on whether using Twitter data for research is ethical
+- In case you write your own protocol one day, note that
 
-  - even where it is legal and allowed, it may not be moral
+   - the keys start with capital letters
+   - they are followed by a colon .yellow-h[:]
+
+]
+
+.pull-right[
+
+```md
+`User-agent:`
+`Allow:`
+`Disallow:`
+`Crawl-delay:`
+
+```
+
+]
+
+---
+## Considerations &mdash; the Ethics &mdash; `robots.txt` &mdash; Syntax
+
+.pull-left[
+
+- Websites define their own values
+
+   - after the colon and a white space
+
+<br>
+
+- Note that
+
+   - &#42; indicates the protocol is for everyone
+   - `/` indicates all sections and pages
+   - `/about/` indicates a specific path
+   - values for `Crawl-delay` indicate seconds    
+<br>   
+   - this website allows anyone to scrape, provided that
+       - `/about/` is left out, and 
+       - the website is accessed at 5-seconds intervals
+
+]
+
+.pull-right[
+
+```md
+User-agent: `*`
+Allow: `/`
+Disallow: `/about/`
+Crawl-delay: `5`
+
+```
+
+]
+
+---
+## Considerations &mdash; the Ethics &mdash; `robots.txt` &mdash; Syntax
+
+Files might include optional comments, written after he number sign .yellow-h[&#x23;]
+
+
+```md
+`# thank you for respecting our protocol`
+
+User-agent: *
+Allow: /
+Disallow: /about/
+Crawl-delay: 5    `# five second delay, to ensure our servers are not overloaded`
+
+```
+
+---
+## Considerations &mdash; the Ethics &mdash; `robots.txt` &mdash; Syntax
+
+The protocol of this website only applies to Google
+
+- Google is allowed to scrape everything
+- there is no defined rule for anyone else
+
+<br>
+
+```md
+User-agent: `googlebot`
+Allow: /
+
+```
+
+---
+## Considerations &mdash; the Ethics &mdash; `robots.txt` &mdash; Syntax
+
+
+The protocol of this website only applies to Google
+
+- Google is .yellow-h[disallowed] to scrape .yellow-h[two] specific paths
+    - with no limit on speed
+- there is no defined rule for anyone else
+
+<br>
+
+```md
+User-agent: googlebot
+`Disallow: /about/`
+`Disallow: /history/`
+
+```
+
+---
+## Considerations &mdash; the Ethics &mdash; `robots.txt` &mdash; Syntax
+
+
+This website has different protocols for different agents
+
+- Google is allowed to scrape everything, with a 5-second delay
+- Bing is not allowed to scrape anything
+- everyone else can scrape the section or page located at www.websiteurl/about/
+
+<br>
+
+```md
+User-agent: googlebot
+Allow: /
+Crawl-delay: 5
+
+User-agent: bing
+Disallow: /
+
+User-agent: *
+Allow: /about/
+
+```
+
+---
+## Considerations &mdash; the Ethics &mdash; `robotstxt`
+
+- The `robotstxt` packages facilitates checking website protocols
+
+   - from within R &mdash; no need to visit websites via browser
+   - provides functions to check, among others, the rules for specific paths and/or agents
+
+<br>
+
+- There are two main functions
+
+   - `robotstxt`, which gets complete protocols
+   - `paths_allowed`, which checks protocols for one or more specific paths
+
+
+---
+## Considerations &mdash; the Ethics &mdash; `robotstxt`
+
+.pull-left[
+
+Use the `robotstxt` function to get a protocol
+- supply a base url with the `domain` argument
+   - as a string
+   - probably the only argument that you will need
+
+]
+
+
+.pull-right[
+
+```md
+
+robotstxt(
+  domain = NULL,
+  ...
+)
+
+```
+
+]
+
+---
+## Considerations &mdash; the Ethics &mdash; `robotstxt`
+
+```md
+library(robotstxt)
+robotstxt(domain = "https://parliament-luzland.netlify.app")
+```
+<br>
+
+.out-t[
+...
+
+User-agent: googlebot     
+Disallow: /states/
+
+User-agent: *     
+Allow: /
+
+$robexclobj
+
+&#60;Robots Exclusion Protocol Object>
+
+$bots
+[1] "googlebot" "*"  
+
+...
+]
+
+---
+## Considerations &mdash; the Ethics &mdash; `robotstxt`
+
+.pull-left[
+
+Use the `paths_allowed` function to checks protocols for one or more specific paths
+- supply a base url with the `domain` argument
+- `path` and `bot` are the other important arguments
+   - notice the default values    
+<br>
+- leads to either `TRUE` (allowed to scrape) or `FALSE` (not allowed)
+
+]
+
+
+.pull-right[
+
+```md
+
+paths_allowed(
+  domain = "auto",
+  paths = "/",
+  bot = "*",
+  ...
+)
+```
+
+]
+
+---
+## Considerations &mdash; the Ethics &mdash; `robotstxt`
+
+```md
+paths_allowed(domain = "https://parliament-luzland.netlify.app")
+```
+
+.out-t[
+
+[1] TRUE
+
+]
+
+```md
+paths_allowed(domain = "https://parliament-luzland.netlify.app", 
+              `paths = c("/states/", "/constituencies/")`)
+```
+
+.out-t[
+
+[1] TRUE  TRUE
+
+]
+
+```md
+paths_allowed(domain = "https://parliament-luzland.netlify.app", 
+              paths = c("/states/", "/constituencies/"), `bot = "googlebot"`)
+```
+
+.out-t[
+
+[1] FALSE  TRUE
+
+]
+
+---
+class: action
+
+## Exercises
+
+1) Check the protocols for <https://www.theguardian.com>
+
+   - via a browser and with the `robotstxt` function
+   - compare what you see
+   
+<br>
+
+2) Check a path with the `paths_allowed` function
+
+   - such that it will return `FALSE`
+   
+<br>
+
+3) Check the protocols for any website that you might wish to scrape
+
+  - with the `robotstxt` function
+
+`r countdown(minutes = 7, seconds = 30, top = 0)`
+
+---
+## Considerations &mdash; the Ethics &mdash; Speed
+
+- Websites are designed for visitors with human-speed in mind
+
+   - computer-speed visits can overload servers, depending on their bandwidth
+      - popular websites might have more bandwidth
+      - but, they might attract multiple scrapers at the same time
+
+<br>
+
+- Waiting a little between two visits makes scraping more ethical
+    
+  - waiting time may or may not be defined in the protocol
+      - lookout for, and respect, the `Crawl-delay` key in `robots.txt`     
+<br>
+  - [Part 4](#part4) covers how to wait
+  
+<br>
+
+- Not waiting enough might lead to a ban
+    - by site owners, administrators
+    - for IP addresses with undesirably high number of visits in a short period of time
+      
+---
+## Considerations &mdash; the Ethics &mdash; Purpose
+
+Ideally, we scrape for a purpose
+  
+- e.g., for academics, to answer one or more research questions, test hypotheses    
+<br>
+      - developed prior to data collection, analysis
+          - based on, e.g., theory, claims, observations   
+<br>
+      - perhaps, even pre-registered
+          - e.g., at [OSF Registries](https://osf.io/registries)
 
 ---
 ## Considerations &mdash; Data Storage
 
-Twitter data frequently requires 
+Scraped data frequently requires 
 
 - large amounts of digital storage space
-
-  - Twitter data is typically big data
-      - many tweets, up to 90 variables   
+  - internet data is typically big data    
 <br>
-  - e.g., a dataset of 1M tweets requires about 300MB 
-      - when stored in R data formats
-
---
-
 - private, safe storage spaces
-
-  - due to [Twitter Developer terms](https://developer.twitter.com/en/developer-terms/agreement-and-policy)
-  - but also local rules, institutional requirements
-
----
-## Considerations &mdash; Language and Context
-
-- Some tools of text analysis are developed for a specific language and/or context
-
-   - e.g., dictionaries for sentiment analysis
-       - might be in English, for political texts, only
-       
-   - these may not be useful, valid for different languages, and/or contexts
-   
---
-
-<br>
-
-- Some tools of text analysis are developed for general use
-
-   - e.g., a dictionary for sentiments in everyday language
-   
-   - these may not be useful, valid for a specific context
-      - e.g., political texts
+  - due to local rules, institutional requirements
 
 ---
 name: part3
+class: inverse, center, middle
+
+# Part 3. HTML Basics
+
+.footnote[
+
+[Back to the contents slide](#contents-slide).
+
+]
+
+---
+
+
+
+
+
+
+
+
+---
+name: part4
 class: inverse, center, middle
 
 # Part 3. Data Collection
@@ -1468,3 +1698,7 @@ class: middle, center
 [Back to the contents slide](#contents-slide).
 
 ]
+
+```{r, print, eval=FALSE, echo=FALSE, message=FALSE}
+pagedown::chrome_print("scrp_workshop.html", output = "scrp_workshop.pdf")
+```
