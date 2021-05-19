@@ -51,7 +51,7 @@ library(RSelenium)
 
 Finally, try starting a browser from within R. The R code below should lead to a Chrome window, as shown in Figure \ref{pop_up}, popping up. It should not disappear on its own.
 
-If this works, congratulations, you are ready for the workshop. You can close the browser and R or RStudio.
+If this works, congratulations, you are ready for the workshop.
 
 ```{r, run, eval=FALSE}
 rD <- rsDriver(port = sample(4500:4600, 1))
@@ -64,17 +64,14 @@ knitr::include_graphics("chrome_works.PNG")
 
 ```
 
-
 If it does not work as expected --- it happens --- please see the next section.
 
 ## 3. Troubleshooting
 
-The instructions above may not work for everyone --- this is perfectly normal for working with `RSelenium`. There might be multiple reasons for this.
+The instructions above may not work, for various reasons. In this section, I will provide you with a solution to one of the most common problems: a mismatch between the versions of *ChromeDriver* that comes with `RSelenium` and the *Chrome browser* on your computer. There are two main symptoms of this problem:
 
-Here, I will provide you with a solution to one of the most common problems: a mismatch between the ChromeDriver that comes with `RSelenium` and the Chrome browser version on your computer. There are two symptoms of this problem:
-
-- It might be that a window pops up for a split second, and then disappears without any error messages. 
-- It might also be that nothing pops up, and you get an error message similar to:
+- a window pops up for a split second, and then disappears without any error messages
+- nothing pops up, leading to an error message as follows:
 
 ```{r, error, eval=FALSE}
 Selenium message:session not created: This version of ChromeDriver 
@@ -85,23 +82,20 @@ only supports Chrome version XX
 If any of these is the case for you, run the following code in R Console. This will result in a list of numbers (driver versions):
 
 ```{r, binman}
-
 binman::list_versions("chromedriver")
-
 ```
 
 One of the resulting numbers that *you* get is what you possibly need, but we do not know which one. It is a trial-and-error situation. Try supplying them *one by one* to the `rsDriver` function, with the `chromever` argument. 
 
-For me, it is the middle number that works. This might be different for you. Please note that you should use *the numbers that you get, not the numbers on this document*.
+For me, it is the middle number that works. This might be different for you. Please note that you should try *the numbers that you get, not the numbers on this document*.
 
 ```{r, run_again, eval=FALSE}
-rD <- rsDriver(port = sample(4500:4600, 1),
-               chromever = "90.0.4430.24")
+rD <- rsDriver(port = sample(4500:4600, 1), chromever = "90.0.4430.24")
 remDr <- rD[["client"]]
 ```
 
 If this does not help, or if you get a different error message, please google the message to see if there is a solution available on the internet. 
 
-If googling doesn't solve the issue, please send me an email with as much information as possible, including the exact error message.
+If googling does not solve the issue, please send me an email with as much information as possible, including the exact error message.
 
 If we cannot solve the issue via emails, we can set up a pre-workshop meeting.
