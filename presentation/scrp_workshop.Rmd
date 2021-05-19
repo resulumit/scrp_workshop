@@ -1699,6 +1699,6 @@ class: middle, center
 
 ]
 
-```{r, print, eval=FALSE, echo=FALSE, message=FALSE}
+```{r, print, eval=TRUE, echo=FALSE, message=FALSE}
 pagedown::chrome_print("scrp_workshop.html", output = "scrp_workshop.pdf")
 ```
