@@ -258,7 +258,7 @@ Slides with this background colour indicate that your action is required, for
     - these slides have countdown timers
         - as a guide, not to be followed strictly
     
-<div class="countdown" id="timer_60a66925" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a6b052" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -373,7 +373,7 @@ class: action
    - click on the links to see an individual page for 
        - states, constituencies, members, and documents
 
-<div class="countdown" id="timer_60a66b2c" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a6b249" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
    
@@ -476,7 +476,7 @@ install.packages(c("rvest", "RSelenium", "robotstxt", "polite",
 
 ]
 
-<div class="countdown" id="timer_60a667da" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a6afdb" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -999,7 +999,7 @@ class: action
 
   - with the `robotstxt` function
 
-<div class="countdown" id="timer_60a66ae9" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a6b018" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">07</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
 </div>
 
@@ -1122,7 +1122,7 @@ class: action
 &lt;br&gt;   
 - compare the look of the front- and back-end
 
-<div class="countdown" id="timer_60a66b7e" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a6b208" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1147,6 +1147,9 @@ class: action
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
+    &lt;style&gt;
+      h1 {color: blue;}
+    &lt;/style&gt;
   &lt;/head&gt;
   &lt;body&gt;
     &lt;h1&gt;A header&lt;/h1&gt;      
@@ -1163,7 +1166,7 @@ class: action
 ]
 
 ---
-## Webpage Source Code &amp;mdash; HTML &amp;mdash; Anatomy
+## Webpage Source Code &amp;mdash; HTML &amp;mdash; Syntax
 
 HTML consists of .yellow-h[elements]
 
@@ -1187,7 +1190,7 @@ Note that
    - a paragraph
 
 ---
-## Webpage Source Code &amp;mdash; HTML &amp;mdash; Anatomy
+## Webpage Source Code &amp;mdash; HTML &amp;mdash; Syntax
 
 Most elements have opening and closing .yellow-h[tags]
 
@@ -1211,7 +1214,7 @@ Note that
 - the closing tag has a forward slash .yellow-h[/] before the element name
 
 ---
-## Webpage Source Code &amp;mdash; HTML &amp;mdash; Anatomy
+## Webpage Source Code &amp;mdash; HTML &amp;mdash; Syntax
 
 Most elements have some content
 
@@ -1227,7 +1230,7 @@ This is a one sentence paragraph.
 ]
 
 ---
-## Webpage Source Code &amp;mdash; HTML &amp;mdash; Anatomy
+## Webpage Source Code &amp;mdash; HTML &amp;mdash; Syntax
 
 Elements can be nested
 
@@ -1254,7 +1257,7 @@ Note that
 - paragraph is said to be the parent of the strong element
 
 ---
-## Webpage Source Code &amp;mdash; HTML &amp;mdash; Anatomy
+## Webpage Source Code &amp;mdash; HTML &amp;mdash; Syntax
 
 Elements can have .yellow-h[attributes]
 
@@ -1280,7 +1283,7 @@ Note that
 
 
 ---
-## Webpage Source Code &amp;mdash; HTML &amp;mdash; Anatomy
+## Webpage Source Code &amp;mdash; HTML &amp;mdash; Syntax
 
 There could be more than one attribute in an element
 
@@ -1310,10 +1313,363 @@ Note that
    - while the `id` attibute must be unique on a page
 
 ---
-## Webpage Source Code &amp;mdash; HTML &amp;mdash; Anatomy &amp;mdash; Notes
+## Webpage Source Code &amp;mdash; HTML &amp;mdash; Important Elements &amp; Attibutes 
+
+Links
+
+```md
+&lt;p&gt;Click &lt;a href="https://www.google.com/"&gt;here&lt;/a&gt; to google things.&lt;/p&gt;
+
+```
+
+.out-t[
+&lt;p&gt;Click &lt;a href="https://www.google.com/"&gt;here&lt;/a&gt; to google things.&lt;/p&gt;
+]
+
+&lt;br&gt;
+
+Note that
+
+- `href` (hypertext reference) is a required attribute for the the `a` (anchor) tag
+- most attributes are optional, some are required
+
+---
+## Webpage Source Code &amp;mdash; HTML &amp;mdash; Links 
+
+Links
+
+```md
+&lt;p&gt;Click &lt;a title="This text appears when visitors hover over the link" 
+            href="https://www.google.com/"&gt;here&lt;/a&gt; to google things.&lt;/p&gt;
+
+```
+
+.out-t[
+&lt;p&gt;Click &lt;a title="This text appears when visitors hover over the link" 
+            href="https://www.google.com/"&gt;here&lt;/a&gt; to google things.&lt;/p&gt;
+]
+
+&lt;br&gt;
+
+Note that
+
+- the `a` (anchor) tag is used with `href` (hypertext reference)
 
 
+---
+## Webpage Source Code &amp;mdash; HTML &amp;mdash; Lists
 
+The `&lt;lu&gt;` tag introduces unordered lists, while the `&lt;li&gt;` tag defines lists items
+
+
+```r
+&lt;ul&gt;
+  &lt;li&gt;books&lt;/li&gt;
+  &lt;li&gt;journal articles&lt;/li&gt;
+  &lt;li&gt;reports&lt;/li&gt;
+&lt;/ul&gt;
+```
+
+.out-t[
+
+&lt;ul&gt;
+  &lt;li&gt;books&lt;/li&gt;
+  &lt;li&gt;journal articles&lt;/li&gt;
+  &lt;li&gt;reports&lt;/li&gt;
+&lt;/ul&gt;
+
+
+]
+
+&lt;br&gt;
+
+Note that
+
+- Ordered lists are introduced with the the `&lt;lo&gt;` tag instead
+
+---
+## Webpage Source Code &amp;mdash; HTML &amp;mdash; Notes
+
+By default, multiple spaces and/or lines breaks are not meaningful
+
+
+```r
+&lt;ul&gt;&lt;li&gt;books&lt;/li&gt;&lt;li&gt;journal                     articles&lt;/li&gt;&lt;li&gt;reports
+&lt;/li&gt;
+  
+  
+&lt;/ul&gt;
+```
+
+.out-t[
+
+&lt;ul&gt;&lt;li&gt;books&lt;/li&gt;&lt;li&gt;journal                     articles&lt;/li&gt;&lt;li&gt;reports
+&lt;/li&gt;
+  
+  
+&lt;/ul&gt;
+
+]
+
+&lt;br&gt;
+
+Note that
+
+- plain source code may or may not be written in a readable manner
+- this is one reason why DOM is helpful
+
+---
+## Webpage Source Code &amp;mdash; CSS &amp;mdash; Overview
+
+
+- CSS stands for Cascading Stylesheets
+
+   - it gives the style to what is visible to visitors
+       - text, images, links      
+&lt;br&gt;
+   - would a piece of text appear in black or blue?
+       - depends on the CSS for that text
+       
+&lt;br&gt;
+
+- CSS can be defined
+   
+   - inline, as an attribute of an element
+   - internally, as a child element of the `head` element
+   - externally, but then linked in the `head` element
+
+---
+## Webpage Source Code &amp;mdash; CSS &amp;mdash; Syntax
+
+.pull-left[
+CSS is written in .yellow-h[rules]
+
+]
+
+.pull-right[
+```md
+`p {font-size:12px;}`
+
+`.count {background-color:yellow;}`
+
+`#sentence-count {color:red;}`
+
+```
+
+]
+
+---
+## Webpage Source Code &amp;mdash; CSS &amp;mdash; Syntax
+
+.pull-left[
+CSS is written in rules, with a syntax consisting of
+- one or more .yellow-h[selectors]
+
+]
+
+.pull-right[
+```md
+`p` {font-size:14px;}
+
+`h1 h2` {color:blue;}
+
+`.count` {background-color:yellow;}
+
+`#sentence-count` {color:red; font-size:14px;}
+
+```
+]
+
+&lt;br&gt;
+
+Note that
+
+- selector type defines the syntax
+   - elements are plain
+       - e.g., p, h1, h2
+   - classes start with a full stop
+   - ids start with a number sign
+
+---
+## Webpage Source Code &amp;mdash; CSS &amp;mdash; Syntax
+
+.pull-left[
+CSS is written in rules, with a syntax consisting of
+- one or more selectors
+- a .yellow-h[decleration]
+
+]
+
+.pull-right[
+```md
+p `{font-size:14px;}`
+
+h1 h2 `{color:blue;}`
+
+.count `{background-color:yellow;}`
+
+#sentence-count `{color:red; font-size:14px;}`
+
+```
+]
+
+&lt;br&gt;
+
+Note that
+
+- declerations are written in between two curly brackets
+
+---
+## Webpage Source Code &amp;mdash; CSS &amp;mdash; Syntax
+
+.pull-left[
+CSS is written in rules, with a syntax consisting of
+- one or more selectors
+- a decleration, with one or more .yellow-h[properties]
+
+]
+
+.pull-right[
+```md
+p {`font-size:`14px;}
+
+h1 h2 {`color:`blue;}
+
+.count {`background-color:`yellow;}
+
+#sentence-count {`color:`red;` font-size:`14px;}
+
+```
+]
+
+&lt;br&gt;
+
+Note that
+
+- properties are followed by a colon
+
+---
+## Webpage Source Code &amp;mdash; CSS &amp;mdash; Syntax
+
+.pull-left[
+CSS is written in rules, with a syntax consisting of
+- one or more selectors
+- a decleration, with one or more properties and .yellow-h[values]
+
+]
+
+.pull-right[
+```md
+p {font-size:`14px;`}
+
+h1 h2 {color:`blue;`}
+
+.count {background-color:`yellow;`}
+
+#sentence-count {color:`red;` font-size:`14px;`}
+
+```
+]
+
+&lt;br&gt;
+
+Note that
+
+- values are followed by a semicolon
+- `property:value;` pairs are seperated by a white space
+
+
+---
+## Webpage Source Code &amp;mdash; CSS &amp;mdash; Internal
+
+.pull-left[
+
+- CSS rules can be defined internally
+   - within the `style` element
+   - as a child of the `head` element
+
+- Internally defined rules apply to all matching selectors
+   - on the same page
+]
+
+.pull-right[
+
+
+```r
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+*   &lt;style&gt;
+*     h1 {color: blue;}
+*   &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;A header&lt;/h1&gt;      
+    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+    &lt;ul&gt;
+       &lt;li&gt;This&lt;/li&gt;
+       &lt;li&gt;is a&lt;/li&gt;
+       &lt;li&gt;list&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+```
+]
+
+---
+## Webpage Source Code &amp;mdash; CSS &amp;mdash; External
+
+.pull-left[
+
+- CSS rules can be defined externally
+   - saved somewhere linkable
+   - defined with the the `linked` element
+   - as a child of the `head` element
+
+- Externally defined rules 
+   - are saved in a file with .css extension
+   - apply to all matching selectors
+       - on any page linked
+]
+
+
+.pull-right[
+
+
+```r
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+*   &lt;link rel="styles" href="simple.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;A header&lt;/h1&gt;      
+    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+    &lt;ul&gt;
+       &lt;li&gt;This&lt;/li&gt;
+       &lt;li&gt;is a&lt;/li&gt;
+       &lt;li&gt;list&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+```
+]
+
+---
+## Webpage Source Code &amp;mdash; CSS &amp;mdash; Inline
+
+CSS rules can also be defined inline
+- with the `style` attribute
+- does not require selector
+- applies only to that element
+
+```md   
+&lt;p&gt;This is a &lt;strong `style="color:blue;"`&gt;one&lt;/strong&gt; sentence paragraph.&lt;/p&gt;
+``` 
+   
+.out-t[
+&lt;p&gt;This is a &lt;strong style="color:blue;"&gt;one&lt;/strong&gt; sentence paragraph.&lt;/p&gt;
+]
 
 ---
 name: part4
@@ -1511,7 +1867,7 @@ df_tweets &lt;- df_tweets %&gt;%
 --
 class: action
 
-<div class="countdown" id="timer_60a66891" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a6b1d4" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1585,7 +1941,7 @@ class: action
 - pull the help file for the `iconv` function first
 
 
-<div class="countdown" id="timer_60a66b67" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a6b25c" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1743,7 +2099,7 @@ class: action
 - hint: the function is called `str_to_lower`
 
 
-<div class="countdown" id="timer_60a66841" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a6afdd" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1921,7 +2277,7 @@ class: action
 51) Remove stop words
 
 
-<div class="countdown" id="timer_60a66aa8" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a6b2f4" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 

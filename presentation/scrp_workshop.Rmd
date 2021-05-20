@@ -1150,6 +1150,9 @@ class: action
 <!DOCTYPE html>
 <html>
   <head>
+    <style>
+      h1 {color: blue;}
+    </style>
   </head>
   <body>
     <h1>A header</h1>      
@@ -1166,7 +1169,7 @@ class: action
 ]
 
 ---
-## Webpage Source Code &mdash; HTML &mdash; Anatomy
+## Webpage Source Code &mdash; HTML &mdash; Syntax
 
 HTML consists of .yellow-h[elements]
 
@@ -1190,7 +1193,7 @@ Note that
    - a paragraph
 
 ---
-## Webpage Source Code &mdash; HTML &mdash; Anatomy
+## Webpage Source Code &mdash; HTML &mdash; Syntax
 
 Most elements have opening and closing .yellow-h[tags]
 
@@ -1214,7 +1217,7 @@ Note that
 - the closing tag has a forward slash .yellow-h[/] before the element name
 
 ---
-## Webpage Source Code &mdash; HTML &mdash; Anatomy
+## Webpage Source Code &mdash; HTML &mdash; Syntax
 
 Most elements have some content
 
@@ -1230,7 +1233,7 @@ This is a one sentence paragraph.
 ]
 
 ---
-## Webpage Source Code &mdash; HTML &mdash; Anatomy
+## Webpage Source Code &mdash; HTML &mdash; Syntax
 
 Elements can be nested
 
@@ -1257,7 +1260,7 @@ Note that
 - paragraph is said to be the parent of the strong element
 
 ---
-## Webpage Source Code &mdash; HTML &mdash; Anatomy
+## Webpage Source Code &mdash; HTML &mdash; Syntax
 
 Elements can have .yellow-h[attributes]
 
@@ -1283,7 +1286,7 @@ Note that
 
 
 ---
-## Webpage Source Code &mdash; HTML &mdash; Anatomy
+## Webpage Source Code &mdash; HTML &mdash; Syntax
 
 There could be more than one attribute in an element
 
@@ -1313,10 +1316,361 @@ Note that
    - while the `id` attibute must be unique on a page
 
 ---
-## Webpage Source Code &mdash; HTML &mdash; Anatomy &mdash; Notes
+## Webpage Source Code &mdash; HTML &mdash; Important Elements & Attibutes 
+
+Links
+
+```md
+<p>Click <a href="https://www.google.com/">here</a> to google things.</p>
+
+```
+
+.out-t[
+<p>Click <a href="https://www.google.com/">here</a> to google things.</p>
+]
+
+<br>
+
+Note that
+
+- `href` (hypertext reference) is a required attribute for the the `a` (anchor) tag
+- most attributes are optional, some are required
+
+---
+## Webpage Source Code &mdash; HTML &mdash; Links 
+
+Links
+
+```md
+<p>Click <a title="This text appears when visitors hover over the link" 
+            href="https://www.google.com/">here</a> to google things.</p>
+
+```
+
+.out-t[
+<p>Click <a title="This text appears when visitors hover over the link" 
+            href="https://www.google.com/">here</a> to google things.</p>
+]
+
+<br>
+
+Note that
+
+- the `a` (anchor) tag is used with `href` (hypertext reference)
 
 
+---
+## Webpage Source Code &mdash; HTML &mdash; Lists
 
+The `<lu>` tag introduces unordered lists, while the `<li>` tag defines lists items
+
+```{r eval=FALSE}
+<ul>
+  <li>books</li>
+  <li>journal articles</li>
+  <li>reports</li>
+</ul>
+```
+
+.out-t[
+
+<ul>
+  <li>books</li>
+  <li>journal articles</li>
+  <li>reports</li>
+</ul>
+
+
+]
+
+<br>
+
+Note that
+
+- Ordered lists are introduced with the the `<lo>` tag instead
+
+---
+## Webpage Source Code &mdash; HTML &mdash; Notes
+
+By default, multiple spaces and/or lines breaks are not meaningful
+
+```{r eval=FALSE}
+<ul><li>books</li><li>journal                     articles</li><li>reports
+</li>
+  
+  
+</ul>
+```
+
+.out-t[
+
+<ul><li>books</li><li>journal                     articles</li><li>reports
+</li>
+  
+  
+</ul>
+
+]
+
+<br>
+
+Note that
+
+- plain source code may or may not be written in a readable manner
+- this is one reason why DOM is helpful
+
+---
+## Webpage Source Code &mdash; CSS &mdash; Overview
+
+
+- CSS stands for Cascading Stylesheets
+
+   - it gives the style to what is visible to visitors
+       - text, images, links      
+<br>
+   - would a piece of text appear in black or blue?
+       - depends on the CSS for that text
+       
+<br>
+
+- CSS can be defined
+   
+   - inline, as an attribute of an element
+   - internally, as a child element of the `head` element
+   - externally, but then linked in the `head` element
+
+---
+## Webpage Source Code &mdash; CSS &mdash; Syntax
+
+.pull-left[
+CSS is written in .yellow-h[rules]
+
+]
+
+.pull-right[
+```md
+`p {font-size:12px;}`
+
+`.count {background-color:yellow;}`
+
+`#sentence-count {color:red;}`
+
+```
+
+]
+
+---
+## Webpage Source Code &mdash; CSS &mdash; Syntax
+
+.pull-left[
+CSS is written in rules, with a syntax consisting of
+- one or more .yellow-h[selectors]
+
+]
+
+.pull-right[
+```md
+`p` {font-size:14px;}
+
+`h1 h2` {color:blue;}
+
+`.count` {background-color:yellow;}
+
+`#sentence-count` {color:red; font-size:14px;}
+
+```
+]
+
+<br>
+
+Note that
+
+- selector type defines the syntax
+   - elements are plain
+       - e.g., p, h1, h2
+   - classes start with a full stop
+   - ids start with a number sign
+
+---
+## Webpage Source Code &mdash; CSS &mdash; Syntax
+
+.pull-left[
+CSS is written in rules, with a syntax consisting of
+- one or more selectors
+- a .yellow-h[decleration]
+
+]
+
+.pull-right[
+```md
+p `{font-size:14px;}`
+
+h1 h2 `{color:blue;}`
+
+.count `{background-color:yellow;}`
+
+#sentence-count `{color:red; font-size:14px;}`
+
+```
+]
+
+<br>
+
+Note that
+
+- declerations are written in between two curly brackets
+
+---
+## Webpage Source Code &mdash; CSS &mdash; Syntax
+
+.pull-left[
+CSS is written in rules, with a syntax consisting of
+- one or more selectors
+- a decleration, with one or more .yellow-h[properties]
+
+]
+
+.pull-right[
+```md
+p {`font-size:`14px;}
+
+h1 h2 {`color:`blue;}
+
+.count {`background-color:`yellow;}
+
+#sentence-count {`color:`red;` font-size:`14px;}
+
+```
+]
+
+<br>
+
+Note that
+
+- properties are followed by a colon
+
+---
+## Webpage Source Code &mdash; CSS &mdash; Syntax
+
+.pull-left[
+CSS is written in rules, with a syntax consisting of
+- one or more selectors
+- a decleration, with one or more properties and .yellow-h[values]
+
+]
+
+.pull-right[
+```md
+p {font-size:`14px;`}
+
+h1 h2 {color:`blue;`}
+
+.count {background-color:`yellow;`}
+
+#sentence-count {color:`red;` font-size:`14px;`}
+
+```
+]
+
+<br>
+
+Note that
+
+- values are followed by a semicolon
+- `property:value;` pairs are seperated by a white space
+
+
+---
+## Webpage Source Code &mdash; CSS &mdash; Internal
+
+.pull-left[
+
+- CSS rules can be defined internally
+   - within the `style` element
+   - as a child of the `head` element
+
+- Internally defined rules apply to all matching selectors
+   - on the same page
+]
+
+.pull-right[
+
+```{r, eval=FALSE}
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>                   #<<
+      h1 {color: blue;}       #<<
+    </style>                  #<<
+  </head>
+  <body>
+    <h1>A header</h1>      
+    <p>This is a paragraph.</p>
+    <ul>
+       <li>This</li>
+       <li>is a</li>
+       <li>list</li>
+    </ul>
+  </body>
+</html>
+
+```
+]
+
+---
+## Webpage Source Code &mdash; CSS &mdash; External
+
+.pull-left[
+
+- CSS rules can be defined externally
+   - saved somewhere linkable
+   - defined with the the `linked` element
+   - as a child of the `head` element
+
+- Externally defined rules 
+   - are saved in a file with .css extension
+   - apply to all matching selectors
+       - on any page linked
+]
+
+
+.pull-right[
+
+```{r, eval=FALSE}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="styles" href="simple.css">                #<<
+  </head>
+  <body>
+    <h1>A header</h1>      
+    <p>This is a paragraph.</p>
+    <ul>
+       <li>This</li>
+       <li>is a</li>
+       <li>list</li>
+    </ul>
+  </body>
+</html>
+
+```
+]
+
+---
+## Webpage Source Code &mdash; CSS &mdash; Inline
+
+CSS rules can also be defined inline
+- with the `style` attribute
+- does not require selector
+- applies only to that element
+
+```md   
+<p>This is a <strong `style="color:blue;"`>one</strong> sentence paragraph.</p>
+``` 
+   
+.out-t[
+<p>This is a <strong style="color:blue;">one</strong> sentence paragraph.</p>
+]
 
 ---
 name: part4
