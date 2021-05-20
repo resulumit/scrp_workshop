@@ -205,12 +205,14 @@ name: contents-slide
 [Part 2. Preliminary Considerations](#part2)
    - e.g., ethics of web scraping
 
+[Part 3. Webpage Source Code](#part3)
+   - e.g., elements, tags, and classes
 
-[Part 3. Data Collection](#part3)
-   - e.g., acquiring a user's tweets
+[Part 4. Scraping Static Pages](#part3)
+   - e.g., getting text from an element
    
-[Part 4. Data Preperation](#part4)
-   - e.g., creating a tidy dataset of tweets
+[Part 5. Scraping Dynamic Pages](#part4)
+   - e.g., clicking before scraping
    
 ]
 
@@ -1052,7 +1054,7 @@ Scraped data frequently requires
 name: part3
 class: inverse, center, middle
 
-# Part 3. HTML Basics
+# Part 3. Webpage Source Code
 
 .footnote[
 
@@ -1061,10 +1063,257 @@ class: inverse, center, middle
 ]
 
 ---
+## Webpage Source Code &mdash; Overview
+
+- Webpages include more than what is immediately visible to visitors
+
+  - not only text, images, links
+  - but also code for structure, style, and functionality &mdash; interpreted by browsers first
+      - HTML provides the structure
+      - CSS provides the style
+      - JavaScript provides functionality, if any
+      
+<br>
+
+- Web scraping requires working with the source code
+
+   - even when harvesting the visible only
+   - but source code is rarely a nuisance    
+<br>
+      - allows choosing one or more desired parts of the visible
+           - e.g., text in table and/or bold only    
+<br>
+      - offers more, invisible, data
+           - e.g., URLs hidden under text
+           
+---
+## Webpage Source Code &mdash; View in Browser
+
+The `Ctrl` `+` `U` shortcut is to display source code &mdash; alternatively, right click and `View` `Page` `Source`
 
 
+```{r, echo=FALSE, fig.show="hold", out.width="45%"}
+knitr::include_graphics("scrp_workshop_files/images_data/homepage.png")
+knitr::include_graphics("scrp_workshop_files/images_data/homepage_source.png")
+```
 
 
+---
+## Webpage Source Code &mdash; View in Browser &mdash; DOM
+
+Browsers also offer putting source codes in a structure
+- known as DOM (document object model), initiated by the `F12` key on Chrome
+
+```{r, echo=FALSE, fig.show="hold", out.width="45%"}
+knitr::include_graphics("scrp_workshop_files/images_data/homepage.png")
+knitr::include_graphics("scrp_workshop_files/images_data/homepage_dom.png")
+```
+
+---
+class: action
+
+## Exercises
+
+4) View the source code of a page
+- as plain code and as in DOM
+- compare the look of the two
+
+<br>
+
+5) Search for a word or a phrase in source code
+- copy from the front-end page
+- search in plain text code or in DOM
+   - the `Ctrl` `+` `F`     
+<br>   
+- compare the look of the front- and back-end
+
+`r countdown(minutes = 5, seconds = 00, top = 0)`
+
+---
+## Webpage Source Code &mdash; HTML &mdash; Overview
+
+.pull-left[
+
+- HTML stands for Hypertext Markup Language
+
+   - it gives the structure to what is visible to visitors
+       - text, images, links      
+<br>
+   - would a piece of text appear in a paragraph or a list?
+       - depends on the HTML code around that text
+   
+]
+
+.pull-right[
+
+```md
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>A header</h1>      
+    <p>This is a paragraph.</p>
+    <ul>
+       <li>This</li>
+       <li>is a</li>
+       <li>list</li>
+    </ul>
+  </body>
+</html>
+
+```
+]
+
+---
+## Webpage Source Code &mdash; HTML &mdash; Anatomy
+
+HTML consists of .yellow-h[elements]
+
+```md
+`<p>This is a one sentence paragraph.</p>`
+
+```
+
+.out-t[
+
+This is a one sentence paragraph.
+
+]
+
+
+<br>
+
+Note that
+
+- there is only one element on this page
+   - a paragraph
+
+---
+## Webpage Source Code &mdash; HTML &mdash; Anatomy
+
+Most elements have opening and closing .yellow-h[tags]
+
+```md
+`<p>`This is a one sentence paragraph.`</p>`
+
+```
+
+.out-t[
+
+This is a one sentence paragraph.
+
+]
+
+
+<br>
+
+Note that
+
+- tag name, in this case .yellow-h[p], defines the structure of the element
+- the closing tag has a forward slash .yellow-h[/] before the element name
+
+---
+## Webpage Source Code &mdash; HTML &mdash; Anatomy
+
+Most elements have some content
+
+```md
+<p>`This is a one sentence paragraph.`</p>
+
+```
+
+.out-t[
+
+This is a one sentence paragraph.
+
+]
+
+---
+## Webpage Source Code &mdash; HTML &mdash; Anatomy
+
+Elements can be nested
+
+```md
+<p>This is a <strong>one</strong> sentence paragraph.</p>
+
+```
+
+.out-t[
+
+<p>This is a <strong>one</strong> sentence paragraph.</p>
+]
+
+
+<br>
+
+Note that
+
+- there are two elements above, a paragraph and a strong emphasis
+- strong is said to be the child of the paragraph element
+   - there could be more than one child
+   - in that case, children are numbered from the left      
+<br>   
+- paragraph is said to be the parent of the strong element
+
+---
+## Webpage Source Code &mdash; HTML &mdash; Anatomy
+
+Elements can have .yellow-h[attributes]
+
+```md
+<p>This is a <strong `id="sentence-count"`>one</strong> sentence paragraph.</p>
+
+```
+
+.out-t[
+<p>This is a <strong id="sentence-count">one</strong> sentence paragraph.</p>
+]
+
+
+<br>
+
+Note that
+
+- the id attribute is not visible to the visitors
+- attribute string .yellow-h[sentence-count] could have been anything I could come up with
+    - unlike the tag and attribute names &mdash; e.g., strong, id as they are pre-defined      
+<br>    
+- there are some other attributes that are visible
+
+
+---
+## Webpage Source Code &mdash; HTML &mdash; Anatomy
+
+There could be more than one attribute in an element
+
+```md
+<p>This is a <strong class="count" id="sentence-count">one</strong> sentence paragraph.</p>
+
+<p>There are now <strong class="count" id="paragraph-count">two</strong> paragraphs.</p>
+
+```
+
+.out-t[
+<p>This is a <strong class="count" id="sentence-count">one</strong> sentence paragraph.</p>
+
+<p>There are now <strong class="count" id="paragraph-count">two</strong> paragraphs.</p>
+
+]
+
+
+<br>
+
+Note that
+
+- there could be more than one attribute in an element
+    - with a white space in between them    
+<br>
+- the `class` attribute can apply to multiple elements
+   - while the `id` attibute must be unique on a page
+
+---
+## Webpage Source Code &mdash; HTML &mdash; Anatomy &mdash; Notes
 
 
 
@@ -1699,6 +1948,6 @@ class: middle, center
 
 ]
 
-```{r, print, eval=TRUE, echo=FALSE, message=FALSE}
+```{r, print, eval=FALSE, echo=FALSE, message=FALSE}
 pagedown::chrome_print("scrp_workshop.html", output = "scrp_workshop.pdf")
 ```
