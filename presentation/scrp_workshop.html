@@ -187,28 +187,31 @@ name: contents-slide
 
 ## The Workshop &amp;mdash; Contents
 
+&lt;br&gt;
+
 .pull-left[
 
 [Part 1. Getting the Tools Ready](#part1)
-   - e.g., installing packages
+   - e.g., installing software
    
 [Part 2. Preliminary Considerations](#part2)
    - e.g., ethics of web scraping
 
 [Part 3. Webpage Source Code](#part3)
-   - e.g., elements, tags, and classes
+   - e.g., elements and selectors
 
-[Part 4. Scraping Static Pages](#part3)
-   - e.g., getting text from an element
-   
-[Part 5. Scraping Dynamic Pages](#part4)
-   - e.g., clicking before scraping
-   
 ]
 
 .pull-right[
    
 
+[Part 4. Scraping Static Pages](#part4)
+   - e.g., getting text from an element
+   - by using `rvest`
+  
+[Part 5. Scraping Dynamic Pages](#part5)
+   - e.g., clicking before scraping
+   - by using `RSelenium` and `rvest`
    
 ]
 
@@ -258,7 +261,7 @@ Slides with this background colour indicate that your action is required, for
     - these slides have countdown timers
         - as a guide, not to be followed strictly
     
-<div class="countdown" id="timer_60a6b052" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a7746e" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -373,7 +376,7 @@ class: action
    - click on the links to see an individual page for 
        - states, constituencies, members, and documents
 
-<div class="countdown" id="timer_60a6b249" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a77294" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
    
@@ -476,7 +479,7 @@ install.packages(c("rvest", "RSelenium", "robotstxt", "polite",
 
 ]
 
-<div class="countdown" id="timer_60a6afdb" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a77348" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -529,6 +532,43 @@ install.packages(c("rvest", "RSelenium", "robotstxt", "polite",
 
 - `tidytext` ([Robinson &amp; Silge, 2021](https://cran.r-project.org/web/packages/tidytext/index.html)), for working with text as data
 
+
+---
+class: action
+
+## R Script &amp;mdash; Start Your Script
+
+.pull-left[
+
+- Check that you are in the newly created project
+    - indicated at the upper-right corner of RStudio window
+
+- Create a new R Script, following from the RStudio menu
+
+&gt; `File -&gt; New File -&gt; R Script`
+
+- Name and save your file
+    - to avoid the `Untitled123` problem
+    - e.g., `scrape_web.R`
+
+
+- Load the `rvest` and other packages
+
+]
+
+.pull-right[
+
+
+```r
+library(rvest)
+library(RSelenium)
+library(robotstxt)
+library(polite)
+library(tidyverse)
+library(tidytext)
+```
+
+]
 
 ---
 class: action
@@ -889,7 +929,6 @@ robotstxt(
 ## Considerations &amp;mdash; the Ethics &amp;mdash; `robotstxt`
 
 ```md
-library(robotstxt)
 robotstxt(domain = "https://parliament-luzland.netlify.app")
 ```
 &lt;br&gt;
@@ -999,7 +1038,7 @@ class: action
 
   - with the `robotstxt` function
 
-<div class="countdown" id="timer_60a6b018" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a7747e" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">07</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
 </div>
 
@@ -1122,7 +1161,7 @@ class: action
 &lt;br&gt;   
 - compare the look of the front- and back-end
 
-<div class="countdown" id="timer_60a6b208" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a773fe" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1675,7 +1714,7 @@ CSS rules can also be defined inline
 name: part4
 class: inverse, center, middle
 
-# Part 3. Data Collection
+# Part 3. Scraping Static Pages
 
 .footnote[
 
@@ -1684,10 +1723,83 @@ class: inverse, center, middle
 ]
 
 ---
-name: part4
+## Scraping Static Pages &amp;mdash; Overview
+
+- We will collect data from static pages with the `rvest` package
+
+   - static pages are those that display the same source code
+       - including the content &amp;mdash; it does not change    
+&lt;br&gt;       
+   - every visitor sees the same page at a given URL
+   - each page has a different URL
+
+&lt;br&gt;
+
+- Scraping static pages involves two main tasks
+
+   - download the source code from one or more page to R
+      - typically, the only interaction with the page itself     
+&lt;br&gt;
+   - select the exact information needed from the source code
+      - takes place locally, on your machine
+      - the main functionality that `rvest` offers
+      - working with selectors
+    
+---
+## Scraping Static Pages &amp;mdash; `rvest` &amp;mdash; Overview
+
+- A relative small R package for web scraping
+
+  - created by [Hadley Wickham](http://http://hadley.nz/)
+  - popular &amp;mdash; used by many for web scraping
+      - downloaded 639,546 times last month     
+&lt;br&gt;      
+  - last major revision was in March 2021
+      - better alignment with `tidyverse`
+
+--
+
+&lt;br&gt;
+
+- A lot has already been written on this package
+
+  - you will find solutions to, or help for, any issues online
+  - see first the [package documentation](https://cran.r-project.org/web/packages/rvest/rvest.pdf), numerous tutorials &amp;mdash; such as [this](https://rvest.tidyverse.org/) and [this](https://blog.rstudio.com/2014/11/24/rvest-easy-web-scraping-with-r/), and [this](https://steviep42.github.io/webscraping/book/index.html#quick-rvest-tutorial)
+     
+
+--
+
+&lt;br&gt;
+
+- Comes with the recommendation to combine it with the `polite` package
+
+   - for ethical web scraping
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+name: part5
 class: inverse, center, middle
 
-# Part 4. Data Preperation
+# Part 4. Scraping Dynamic Pages
 
 .footnote[
 
@@ -1867,7 +1979,7 @@ df_tweets &lt;- df_tweets %&gt;%
 --
 class: action
 
-<div class="countdown" id="timer_60a6b1d4" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a775bd" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1941,7 +2053,7 @@ class: action
 - pull the help file for the `iconv` function first
 
 
-<div class="countdown" id="timer_60a6b25c" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a773d0" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -2099,7 +2211,7 @@ class: action
 - hint: the function is called `str_to_lower`
 
 
-<div class="countdown" id="timer_60a6afdd" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a77609" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -2277,7 +2389,7 @@ class: action
 51) Remove stop words
 
 
-<div class="countdown" id="timer_60a6b2f4" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a773f0" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 

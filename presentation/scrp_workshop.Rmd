@@ -25,6 +25,7 @@ library(dplyr)
 library(ggplot2)
 library(stargazer)
 library(countdown)
+library(cranlogs)
 ```
 
 <style type="text/css">
@@ -197,28 +198,31 @@ name: contents-slide
 
 ## The Workshop &mdash; Contents
 
+<br>
+
 .pull-left[
 
 [Part 1. Getting the Tools Ready](#part1)
-   - e.g., installing packages
+   - e.g., installing software
    
 [Part 2. Preliminary Considerations](#part2)
    - e.g., ethics of web scraping
 
 [Part 3. Webpage Source Code](#part3)
-   - e.g., elements, tags, and classes
+   - e.g., elements and selectors
 
-[Part 4. Scraping Static Pages](#part3)
-   - e.g., getting text from an element
-   
-[Part 5. Scraping Dynamic Pages](#part4)
-   - e.g., clicking before scraping
-   
 ]
 
 .pull-right[
    
 
+[Part 4. Scraping Static Pages](#part4)
+   - e.g., getting text from an element
+   - by using `rvest`
+  
+[Part 5. Scraping Dynamic Pages](#part5)
+   - e.g., clicking before scraping
+   - by using `RSelenium` and `rvest`
    
 ]
 
@@ -530,6 +534,42 @@ install.packages(c("rvest", "RSelenium", "robotstxt", "polite",
 
 - `tidytext` ([Robinson & Silge, 2021](https://cran.r-project.org/web/packages/tidytext/index.html)), for working with text as data
 
+
+---
+class: action
+
+## R Script &mdash; Start Your Script
+
+.pull-left[
+
+- Check that you are in the newly created project
+    - indicated at the upper-right corner of RStudio window
+
+- Create a new R Script, following from the RStudio menu
+
+> `File -> New File -> R Script`
+
+- Name and save your file
+    - to avoid the `Untitled123` problem
+    - e.g., `scrape_web.R`
+
+
+- Load the `rvest` and other packages
+
+]
+
+.pull-right[
+
+```{r, eval=FALSE}
+library(rvest)
+library(RSelenium)
+library(robotstxt)
+library(polite)
+library(tidyverse)
+library(tidytext)
+```
+
+]
 
 ---
 class: action
@@ -890,7 +930,6 @@ robotstxt(
 ## Considerations &mdash; the Ethics &mdash; `robotstxt`
 
 ```md
-library(robotstxt)
 robotstxt(domain = "https://parliament-luzland.netlify.app")
 ```
 <br>
@@ -1676,7 +1715,7 @@ CSS rules can also be defined inline
 name: part4
 class: inverse, center, middle
 
-# Part 3. Data Collection
+# Part 3. Scraping Static Pages
 
 .footnote[
 
@@ -1685,10 +1724,83 @@ class: inverse, center, middle
 ]
 
 ---
-name: part4
+## Scraping Static Pages &mdash; Overview
+
+- We will collect data from static pages with the `rvest` package
+
+   - static pages are those that display the same source code
+       - including the content &mdash; it does not change    
+<br>       
+   - every visitor sees the same page at a given URL
+   - each page has a different URL
+
+<br>
+
+- Scraping static pages involves two main tasks
+
+   - download the source code from one or more page to R
+      - typically, the only interaction with the page itself     
+<br>
+   - select the exact information needed from the source code
+      - takes place locally, on your machine
+      - the main functionality that `rvest` offers
+      - working with selectors
+    
+---
+## Scraping Static Pages &mdash; `rvest` &mdash; Overview
+
+- A relative small R package for web scraping
+
+  - created by [Hadley Wickham](http://http://hadley.nz/)
+  - popular &mdash; used by many for web scraping
+      - downloaded `r format(sum(cran_downloads(when = "last-month", packages = "rvest")$count), big.mark=",")` times last month     
+<br>      
+  - last major revision was in March 2021
+      - better alignment with `tidyverse`
+
+--
+
+<br>
+
+- A lot has already been written on this package
+
+  - you will find solutions to, or help for, any issues online
+  - see first the [package documentation](https://cran.r-project.org/web/packages/rvest/rvest.pdf), numerous tutorials &mdash; such as [this](https://rvest.tidyverse.org/) and [this](https://blog.rstudio.com/2014/11/24/rvest-easy-web-scraping-with-r/), and [this](https://steviep42.github.io/webscraping/book/index.html#quick-rvest-tutorial)
+     
+
+--
+
+<br>
+
+- Comes with the recommendation to combine it with the `polite` package
+
+   - for ethical web scraping
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+name: part5
 class: inverse, center, middle
 
-# Part 4. Data Preperation
+# Part 4. Scraping Dynamic Pages
 
 .footnote[
 
