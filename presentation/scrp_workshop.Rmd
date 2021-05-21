@@ -1839,10 +1839,10 @@ bow(`url`,
 
 <br>
 
-Note that
+- Note that
 
-- the `user_agent` argument can communicate information to website administrators
-   - e.g., your name and contact details
+   - the `user_agent` argument can communicate information to website administrators
+      - e.g., your name and contact details
 
 ]
 
@@ -1852,7 +1852,8 @@ Note that
 
 bow(url,
   `user_agent = "polite R package - https://github.com/dmi3kno/polite"`,
-  delay = 5, 
+  delay = 5,
+  force = FALSE,
   ...
   )
   
@@ -1868,15 +1869,15 @@ bow(url,
 - First, use the `bow` function to check the protocol
 
    - for a specific URL
-   - for a specific .yellow-h[agent]
+   - for a specific agent
    - for .yellow-h[crawl-delay directives]
 
 <br>
 
-Note that
+- Note that
 
-- the `delay` argument cannot be smaller than the directive
-   - if there is one
+   - the `delay` argument cannot be set to a number smaller than in the directive
+       - if there is one
 
 ]
 
@@ -1886,7 +1887,8 @@ Note that
 
 bow(url,
   user_agent = "polite R package - https://github.com/dmi3kno/polite",
-  `delay = 5`, 
+  `delay = 5`,
+  force = FALSE,
   ...
   )
   
@@ -1898,18 +1900,53 @@ bow(url,
 
 .pull-left[
 
+- First, use the `bow` function to check the protocol
+
+   - for a specific URL
+   - for a specific agent
+   - for crawl-delay directives
+
+<br>
+
+- Note that
+
+   - the `delay` argument cannot be set to a number smaller than in the directive
+       - if there is one     
+<br>       
+   - the `force` argument avoids repeated, unnecessary interactions with web page
+       - by caching, and re-using, previously downloaded sources
+]
+
+
+.pull-right[
+```md
+
+bow(url,
+  user_agent = "polite R package - https://github.com/dmi3kno/polite",
+  delay = 5,
+  `force = FALSE`,
+  ...
+  )
+  
+```
+]
+---
+## Scraping Static Pages &mdash; `rvest` &mdash; Get Source Code &mdash; `polite`
+
+.pull-left[
+
 - Second, use the `scrape` function get source code
 
    - for an object created with the .yellow-h[`bow`] function
 
 <br>
 
-Note that
+- Note that
 
-- `scrape` will only work if the results from `bow` are positive
-    - creating a safety valve for ethical scraping     
+   - `scrape` will only work if the results from `bow` are positive
+       - creating a safety valve for ethical scraping     
 <br>    
-- by piping, `bow` into `scrape`, you can avoid creating objects
+   - by piping, `bow` into `scrape`, you can avoid creating objects
 
 ]
 
@@ -2214,32 +2251,338 @@ bow(url = "https://luzpar.netlify.app/members/") %>%
 ]
 
 ---
+## Scraping Static Pages &mdash; `rvest`
 
-.out-t[
+We can create the same tibble with `html_text`
+
+```{r, eval=FALSE}
+tibble(
+        
+"Member" = bow(url = "https://luzpar.netlify.app/members/") %>%
+        scrape() %>%
+        html_elements(css = "td:nth-child(1)") %>% 
+        html_text(),
+
+"Constituency" = bow(url = "https://luzpar.netlify.app/members/") %>%
+        scrape() %>%
+        html_elements(css = "td:nth-child(2)") %>% 
+        html_text(),
+
+"Party" = bow(url = "https://luzpar.netlify.app/members/") %>%
+        scrape() %>%
+        html_elements(css = "td:nth-child(3)") %>% 
+        html_text()
+
+)
+```
+
+---
+## Scraping Static Pages &mdash; `rvest`
+
+Keep the number of interactions with websites to minimum
+- by saving the source code as an object, which could be used repeatedly
+
+```{r, eval=FALSE}
+`the_page <- bow(url = "https://luzpar.netlify.app/members/")` %>%
+            `scrape()`
+
+tibble(
+        
+"Member" = `the_page` %>%
+        html_elements(css = "td:nth-child(1)") %>% 
+        html_text(),
+
+"Constituency" = `the_page` %>% 
+        html_elements(css = "td:nth-child(2)") %>% 
+        html_text(),
+
+"Party" = `the_page` %>% 
+        html_elements(css = "td:nth-child(3)") %>% 
+        html_text()
+
+)
+```
+
+---
+class: action
+
+## Exercises
+
+x) Create a dataframe out of the table at <https://luzpar.netlify.app/members/>
+- with as many variables as possible
+
+<br>
+
+Note that 
+- the first two columns have important attributes
+
+   - e.g., URLs for the pages for members and their constituencies
+       - make sure these URLs are absolute   
+<br>       
+  - see what other attributes are there to collect     
+
+---
+## Scraping Static Pages &mdash; Crawling &mdash; Overview
+
+- Rarely a single page includes all variables that we need
+
+  - instead, they are often scattered across different pages of a website
+  - e.g., we might need data on election results &mdash; in addition to constituency names
+
+<br>
+
+- Web scraping then requires crawling across pages
+  
+   - using information found on one page, to go to the next
+   - website design may or may not facilitate crawling
+
+<br>
+
+- We can write for loops to crawl
+
+  - the speed of our code matters the most when we crawl
+  - ethical concerns are higher
+
+---
+## Scraping Static Pages &mdash; Crawling &mdash; Example
+
+**Task:**    
+
+- I need data on the name and vote share of parties that came second in each constituency
+- This data is available on constituency pages, but
+   - there are too many such pages
+      - e.g., <https://luzpar.netlify.app/constituencies/arford/>
+   - I do not have the URL to these pages
+
+--
+
+<br>
+
+**Plan:**
+
+- Scrape <https://luzpar.netlify.app/members/> for URLs
+- Write a for loop to
+    - visit these pages one by one
+    - collect and save the variables needed
+    - write these variables into a list
+    - turn the list into a dataframe
+
+---
+## Scraping Static Pages &mdash; Crawling &mdash; Example
+
+Scrape the page that has all URLs, for absolute URLs
+
+```{r, eval=TRUE, cache=TRUE}
+the_links <- bow(url = "https://luzpar.netlify.app/members/") %>%
+        scrape() %>%
+        html_elements(css = "td+ td a") %>% 
+        html_attr("href") %>% 
+        url_absolute(base = "https://luzpar.netlify.app/")
+
+# check if it worked
+head(the_links)
 
 ```
 
-## [[1]]
-## # A tibble: 100 x 3
-##   Member           Constituency  Party      
-##   <chr>            <chr>         <chr>      
-##  1 Arthur Ali       Mühlshafen    Liberal    
-##  2 Chris Antony     Benwerder     Labour     
-##  3 Chloë Bakker     Steffisfelden Labour     
-##  4 Rose Barnes      Dillon        Liberal    
-##  5 Emilia Bauer     Kilnard       Green      
-##  6 Wilma Baumann    Granderry     Green      
-##  7 Matteo Becker    Enkmelo       Labour     
-##  8 Patricia Bernard Gänsernten    Labour     
-##  9 Lina Booth       Leonrau       Liberal    
-## 10 Sophie Bos       Zotburg       Independent
-## # ... with 90 more rows
+---
+## Scraping Static Pages &mdash; Crawling &mdash; Example
+
+Create an empty list
+
+```{r, eval=FALSE}
+temp_list <- list() #<<
+
+for (i in 1:length(the_links)) {
+        
+the_page <- bow(the_links[i]) %>% scrape()
+
+temp_tibble <- tibble(
+      
+"constituency" = the_page %>% html_elements("#constituency") %>% html_text(),
+      
+"second_party" = the_page %>% html_element("tr:nth-child(3) td:nth-child(1)") %>% 
+        html_text(),
+      
+"vote_share" = the_page %>% html_elements("tr:nth-child(3) td:nth-child(3)") %>% 
+        html_text()
+
+)
+
+temp_list[[i]] <- temp_tibble
+        
+}
+
+df <- as_tibble(do.call(rbind, temp_list))
+```
+
+---
+## Scraping Static Pages &mdash; Crawling &mdash; Example
+
+Start a for loop to iterate over the links one by one
+
+```{r, eval=FALSE}
+temp_list <- list()
+
+for (i in 1:length(the_links)) { #<<
+        
+the_page <- bow(the_links[i]) %>% scrape()
+
+temp_tibble <- tibble(
+      
+"constituency" = the_page %>% html_elements("#constituency") %>% html_text(),
+      
+"second_party" = the_page %>% html_element("tr:nth-child(3) td:nth-child(1)") %>% 
+        html_text(),
+      
+"vote_share" = the_page %>% html_elements("tr:nth-child(3) td:nth-child(3)") %>% 
+        html_text()
+
+)
+
+temp_list[[i]] <- temp_tibble
+        
+}    #<<
+
+df <- as_tibble(do.call(rbind, temp_list))
+```
+
+---
+## Scraping Static Pages &mdash; Crawling &mdash; Example
+
+Get the source code for the next link
+
+```{r, eval=FALSE}
+temp_list <- list()
+
+for (i in 1:length(the_links)) {
+        
+the_page <- bow(the_links[i]) %>% scrape() #<<
+
+temp_tibble <- tibble(
+      
+"constituency" = the_page %>% html_elements("#constituency") %>% html_text(),
+      
+"second_party" = the_page %>% html_element("tr:nth-child(3) td:nth-child(1)") %>% 
+        html_text(),
+      
+"vote_share" = the_page %>% html_elements("tr:nth-child(3) td:nth-child(3)") %>% 
+        html_text()
+
+)
+
+temp_list[[i]] <- temp_tibble
+        
+}   
+
+df <- as_tibble(do.call(rbind, temp_list))
+```
+
+---
+## Scraping Static Pages &mdash; Crawling &mdash; Example
+
+Get the variables needed, put them in a tibble
+
+```{r, eval=FALSE}
+temp_list <- list()
+
+for (i in 1:length(the_links)) {
+        
+the_page <- bow(the_links[i]) %>% scrape()
+
+temp_tibble <- tibble(                                                                 #<<
+                                                                                       #<<
+"constituency" = the_page %>% html_elements("#constituency") %>% html_text(),          #<<
+                                                                                       #<<
+"second_party" = the_page %>% html_element("tr:nth-child(3) td:nth-child(1)") %>%      #<<
+        html_text(),                                                                   #<<
+                                                                                       #<<
+"vote_share" = the_page %>% html_elements("tr:nth-child(3) td:nth-child(3)") %>%       #<<
+        html_text()                                                                    #<<
+                                                                                       #<<   
+)                                                                                      #<<
+
+temp_list[[i]] <- temp_tibble
+        
+}   
+
+df <- as_tibble(do.call(rbind, temp_list))
+```
+
+---
+## Scraping Static Pages &mdash; Crawling &mdash; Example
+
+Add each tibble into the previously-created list
+
+```{r, eval=FALSE}
+temp_list <- list()
+
+for (i in 1:length(the_links)) {
+        
+the_page <- bow(the_links[i]) %>% scrape()
+
+temp_tibble <- tibble(
+      
+"constituency" = the_page %>% html_elements("#constituency") %>% html_text(),
+      
+"second_party" = the_page %>% html_element("tr:nth-child(3) td:nth-child(1)") %>% 
+        html_text(),
+      
+"vote_share" = the_page %>% html_elements("tr:nth-child(3) td:nth-child(3)") %>% 
+        html_text()
+
+)
+
+temp_list[[i]] <- temp_tibble #<<
+        
+}   
+
+df <- as_tibble(do.call(rbind, temp_list))
+```
+
+---
+## Scraping Static Pages &mdash; Crawling &mdash; Example
+
+Turn the list into a tibble
+
+```{r, eval=TRUE, cache=TRUE}
+temp_list <- list()
+
+for (i in 1:length(the_links)) {
+        
+the_page <- bow(the_links[i]) %>% scrape()
+
+temp_tibble <- tibble(
+      
+"constituency" = the_page %>% html_elements("#constituency") %>% html_text(),
+      
+"second_party" = the_page %>% html_element("tr:nth-child(3) td:nth-child(1)") %>% 
+        html_text(),
+      
+"vote_share" = the_page %>% html_elements("tr:nth-child(3) td:nth-child(3)") %>% 
+        html_text()
+
+)
+
+temp_list[[i]] <- temp_tibble
+        
+}   
+
+df <- as_tibble(do.call(rbind, temp_list))       #<<
+```
+
+---
+## Scraping Static Pages &mdash; Crawling &mdash; Example
+
+Check the resulting dataset
+
+```{r, eval=TRUE, echo=TRUE}
+
+head(df)
 
 ```
-]
 
 
-   
+
 ---
 name: part5
 class: inverse, center, middle
