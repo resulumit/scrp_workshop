@@ -21,9 +21,11 @@ class: inverse, center, middle
 options(htmltools.dir.version = FALSE, crayon.enabled = TRUE)
 library(crayon)
 library(fansi)
-library(dplyr)
-library(ggplot2)
-library(stargazer)
+library(tidyverse)
+library(rvest)
+library(RSelenium)
+library(robotstxt)
+library(polite)
 library(countdown)
 library(cranlogs)
 ```
@@ -78,6 +80,14 @@ library(cranlogs)
 .action {
     background-color: #f2eecb;
   
+}
+
+.remark-code {
+  display: block;
+  overflow-x: auto;
+  padding: .5em;
+  color: #333;
+  background: #9fff9f;
 }
 
 
@@ -929,29 +939,9 @@ robotstxt(
 ---
 ## Considerations &mdash; the Ethics &mdash; `robotstxt`
 
-```md
+```{r}
 robotstxt(domain = "https://parliament-luzland.netlify.app")
 ```
-<br>
-
-.out-t[
-...
-
-User-agent: googlebot     
-Disallow: /states/
-
-User-agent: *     
-Allow: /
-
-$robexclobj
-
-&#60;Robots Exclusion Protocol Object>
-
-$bots
-[1] "googlebot" "*"  
-
-...
-]
 
 ---
 ## Considerations &mdash; the Ethics &mdash; `robotstxt`
@@ -985,37 +975,30 @@ paths_allowed(
 ---
 ## Considerations &mdash; the Ethics &mdash; `robotstxt`
 
-```md
+```{r, message=FALSE}
 paths_allowed(domain = "https://parliament-luzland.netlify.app")
 ```
 
-.out-t[
-
-[1] TRUE
-
-]
 
 ```md
 paths_allowed(domain = "https://parliament-luzland.netlify.app", 
               `paths = c("/states/", "/constituencies/")`)
 ```
 
-.out-t[
-
-[1] TRUE  TRUE
-
-]
+```{r, message=FALSE, echo=FALSE}
+paths_allowed(domain = "https://parliament-luzland.netlify.app", 
+              paths = c("/states/", "/constituencies/"))
+```
 
 ```md
 paths_allowed(domain = "https://parliament-luzland.netlify.app", 
               paths = c("/states/", "/constituencies/"), `bot = "googlebot"`)
 ```
 
-.out-t[
-
-[1] FALSE  TRUE
-
-]
+```{r, message=FALSE, echo=FALSE}
+paths_allowed(domain = "https://parliament-luzland.netlify.app", 
+              paths = c("/states/", "/constituencies/"), bot = "googlebot")
+```
 
 ---
 class: action
@@ -1032,6 +1015,7 @@ class: action
 2) Check a path with the `paths_allowed` function
 
    - such that it will return `FALSE`
+   - taking the information from Exercise 1 into account
    
 <br>
 
@@ -1777,11 +1761,23 @@ class: inverse, center, middle
    - for ethical web scraping
 
 ---
+## Scraping Static Pages &mdash; `rvest` &mdash; Get Source Code
 
+Use the `read_html` function to get the source code of a page into R
 
+```{r}
+read_html("https://parliament-luzland.netlify.app/")
+```
 
+---
+## Scraping Static Pages &mdash; `rvest` &mdash; Get Source Code
 
+You may wish to check the protocol first
 
+```{r, message=FALSE}
+paths_allowed("https://parliament-luzland.netlify.app/")
+read_html("https://parliament-luzland.netlify.app/")
+```
 
 
 

@@ -69,6 +69,14 @@ class: inverse, center, middle
   
 }
 
+.remark-code {
+  display: block;
+  overflow-x: auto;
+  padding: .5em;
+  color: #333;
+  background: #9fff9f;
+}
+
 
 &lt;/style&gt;
 
@@ -261,7 +269,7 @@ Slides with this background colour indicate that your action is required, for
     - these slides have countdown timers
         - as a guide, not to be followed strictly
     
-<div class="countdown" id="timer_60a7746e" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a7876c" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -376,7 +384,7 @@ class: action
    - click on the links to see an individual page for 
        - states, constituencies, members, and documents
 
-<div class="countdown" id="timer_60a77294" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a7869f" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
    
@@ -479,7 +487,7 @@ install.packages(c("rvest", "RSelenium", "robotstxt", "polite",
 
 ]
 
-<div class="countdown" id="timer_60a77348" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a7866f" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -928,29 +936,71 @@ robotstxt(
 ---
 ## Considerations &amp;mdash; the Ethics &amp;mdash; `robotstxt`
 
-```md
+
+```r
 robotstxt(domain = "https://parliament-luzland.netlify.app")
 ```
-&lt;br&gt;
 
-.out-t[
-...
-
-User-agent: googlebot     
-Disallow: /states/
-
-User-agent: *     
-Allow: /
-
-$robexclobj
-
-&amp;#60;Robots Exclusion Protocol Object&gt;
-
-$bots
-[1] "googlebot" "*"  
-
-...
-]
+```
+## $domain
+## [1] "https://parliament-luzland.netlify.app"
+## 
+## $text
+## [robots.txt]
+## --------------------------------------
+## 
+## User-agent: googlebot
+## Disallow: /states/
+## 
+## User-agent: *
+## Allow: /
+## 
+## 
+## 
+## 
+## 
+## $robexclobj
+## &lt;Robots Exclusion Protocol Object&gt;
+## $bots
+## [1] "googlebot" "*"        
+## 
+## $comments
+## [1] line    comment
+## &lt;0 rows&gt; (or 0-length row.names)
+## 
+## $permissions
+##      field useragent    value
+## 1 Disallow googlebot /states/
+## 2    Allow         *        /
+## 
+## $crawl_delay
+## [1] field     useragent value    
+## &lt;0 rows&gt; (or 0-length row.names)
+## 
+## $host
+## [1] field     useragent value    
+## &lt;0 rows&gt; (or 0-length row.names)
+## 
+## $sitemap
+## [1] field     useragent value    
+## &lt;0 rows&gt; (or 0-length row.names)
+## 
+## $other
+## [1] field     useragent value    
+## &lt;0 rows&gt; (or 0-length row.names)
+## 
+## $check
+## function (paths = "/", bot = "*") 
+## {
+##     spiderbar::can_fetch(obj = self$robexclobj, path = paths, 
+##         user_agent = bot)
+## }
+## &lt;bytecode: 0x0000020abf2f9c20&gt;
+## &lt;environment: 0x0000020abdfe2d68&gt;
+## 
+## attr(,"class")
+## [1] "robotstxt"
+```
 
 ---
 ## Considerations &amp;mdash; the Ethics &amp;mdash; `robotstxt`
@@ -984,37 +1034,35 @@ paths_allowed(
 ---
 ## Considerations &amp;mdash; the Ethics &amp;mdash; `robotstxt`
 
-```md
+
+```r
 paths_allowed(domain = "https://parliament-luzland.netlify.app")
 ```
 
-.out-t[
+```
+## [1] TRUE
+```
 
-[1] TRUE
-
-]
 
 ```md
 paths_allowed(domain = "https://parliament-luzland.netlify.app", 
               `paths = c("/states/", "/constituencies/")`)
 ```
 
-.out-t[
 
-[1] TRUE  TRUE
-
-]
+```
+## [1] TRUE TRUE
+```
 
 ```md
 paths_allowed(domain = "https://parliament-luzland.netlify.app", 
               paths = c("/states/", "/constituencies/"), `bot = "googlebot"`)
 ```
 
-.out-t[
 
-[1] FALSE  TRUE
-
-]
+```
+## [1] FALSE  TRUE
+```
 
 ---
 class: action
@@ -1031,6 +1079,7 @@ class: action
 2) Check a path with the `paths_allowed` function
 
    - such that it will return `FALSE`
+   - taking the information from Exercise 1 into account
    
 &lt;br&gt;
 
@@ -1038,7 +1087,7 @@ class: action
 
   - with the `robotstxt` function
 
-<div class="countdown" id="timer_60a7747e" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a786ba" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">07</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
 </div>
 
@@ -1161,7 +1210,7 @@ class: action
 &lt;br&gt;   
 - compare the look of the front- and back-end
 
-<div class="countdown" id="timer_60a773fe" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a7865b" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1776,11 +1825,46 @@ class: inverse, center, middle
    - for ethical web scraping
 
 ---
+## Scraping Static Pages &amp;mdash; `rvest` &amp;mdash; Get Source Code
+
+Use the `read_html` function to get the source code of a page into R
 
 
+```r
+read_html("https://parliament-luzland.netlify.app/")
+```
+
+```
+## {html_document}
+## &lt;html lang="en-us"&gt;
+## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;\n&lt;meta charset="utf-8"&gt;\n&lt;m ...
+## [2] &lt;body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-main" class="page-wrapper"&gt;\n&lt;sc ...
+```
+
+---
+## Scraping Static Pages &amp;mdash; `rvest` &amp;mdash; Get Source Code
+
+You may wish to check the protocol first
 
 
+```r
+paths_allowed("https://parliament-luzland.netlify.app/")
+```
 
+```
+## [1] TRUE
+```
+
+```r
+read_html("https://parliament-luzland.netlify.app/")
+```
+
+```
+## {html_document}
+## &lt;html lang="en-us"&gt;
+## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;\n&lt;meta charset="utf-8"&gt;\n&lt;m ...
+## [2] &lt;body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-main" class="page-wrapper"&gt;\n&lt;sc ...
+```
 
 
 
@@ -1979,7 +2063,7 @@ df_tweets &lt;- df_tweets %&gt;%
 --
 class: action
 
-<div class="countdown" id="timer_60a775bd" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a78405" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -2053,7 +2137,7 @@ class: action
 - pull the help file for the `iconv` function first
 
 
-<div class="countdown" id="timer_60a773d0" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a78778" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -2211,7 +2295,7 @@ class: action
 - hint: the function is called `str_to_lower`
 
 
-<div class="countdown" id="timer_60a77609" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a785de" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -2389,7 +2473,7 @@ class: action
 51) Remove stop words
 
 
-<div class="countdown" id="timer_60a773f0" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a7856f" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
