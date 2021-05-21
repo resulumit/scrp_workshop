@@ -1775,22 +1775,158 @@ read_html("https://parliament-luzland.netlify.app/")
 You may wish to check the protocol first
 
 ```{r, message=FALSE}
-paths_allowed("https://parliament-luzland.netlify.app/")
+paths_allowed(domain = "https://parliament-luzland.netlify.app/")
 read_html("https://parliament-luzland.netlify.app/")
 ```
 
+---
+## Scraping Static Pages &mdash; `rvest` &mdash; Get Source Code &mdash; `polite`
+
+- The `polite` package facilitates ethical scraping
+
+   - recommended by `rvest`
+
+<br>
+
+- It divides the process of getting source code into two
+   
+   - check the protocol
+   - get the source only if allowed
+
+<br>
+
+- It can also 
+
+   - wait for a period of time
+       - minimum by what is specified in the protocol     
+<br>
+   - introduce yourself to website administrators while scraping
+   
+---
+## Scraping Static Pages &mdash; `rvest` &mdash; Get Source Code &mdash; `polite`
+
+.pull-left[
+
+- First, use the `bow` function to check the protocol
+
+   - for a specific .yellow-h[URL]
 
 
 
+]
 
 
+.pull-right[
+```md
+
+bow(`url`,
+  user_agent = "polite R package - https://github.com/dmi3kno/polite",
+  delay = 5, 
+  ...
+  )
+  
+```
+
+]
+
+---
+## Scraping Static Pages &mdash; `rvest` &mdash; Get Source Code &mdash; `polite`
+
+.pull-left[
+
+- First, use the `bow` function to check the protocol
+
+   - for a specific URL
+   - for a specific .yellow-h[agent]
+
+<br>
+
+Note that
+
+- the `user_agent` argument can communicate information to website administrators
+   - e.g., your name and contact details
+
+]
 
 
+.pull-right[
+```md
+
+bow(url,
+  `user_agent = "polite R package - https://github.com/dmi3kno/polite"`,
+  delay = 5, 
+  ...
+  )
+  
+```
+
+]
+
+---
+## Scraping Static Pages &mdash; `rvest` &mdash; Get Source Code &mdash; `polite`
+
+.pull-left[
+
+- First, use the `bow` function to check the protocol
+
+   - for a specific URL
+   - for a specific .yellow-h[agent]
+   - for .yellow-h[crawl-delay directives]
+
+<br>
+
+Note that
+
+- the `delay` argument cannot be smaller than the directive
+   - if there is one
+
+]
 
 
+.pull-right[
+```md
+
+bow(url,
+  user_agent = "polite R package - https://github.com/dmi3kno/polite",
+  `delay = 5`, 
+  ...
+  )
+  
+```
+]
+
+---
+## Scraping Static Pages &mdash; `rvest` &mdash; Get Source Code &mdash; `polite`
+
+.pull-left[
+
+- Second, use the `scrape` function get source code
+
+   - for an object created with the .yellow-h[`bow`] function
+
+<br>
+
+Note that
+
+- `scrape` will only work if the results from `bow` are positive
+    - creating a safety valve for ethical scraping     
+<br>    
+- by piping, `bow` into `scrape`, you can avoid creating objects
+
+]
 
 
+.pull-right[
+```md
 
+scrape(`bow`,
+       ...
+       )
+  
+```
+]
+
+---
 
 ---
 name: part5
