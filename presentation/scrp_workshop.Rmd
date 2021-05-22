@@ -2544,7 +2544,7 @@ df <- as_tibble(do.call(rbind, temp_list))
 
 Turn the list into a tibble
 
-```{r, eval=TRUE, cache=TRUE}
+```{r, eval=FALSE, cache=TRUE}
 temp_list <- list()
 
 for (i in 1:length(the_links)) {
@@ -2575,13 +2575,30 @@ df <- as_tibble(do.call(rbind, temp_list))       #<<
 
 Check the resulting dataset
 
-```{r, eval=TRUE, echo=TRUE}
-
-head(df)
-
+```{r, eval=FALSE, echo=TRUE}
+head(df, 10)
 ```
 
+.out-t[
 
+```
+## # A tibble: 100 x 3
+##    constituency  second_party vote_share
+##    <chr>         <chr>        <chr>     
+##  1 Mühlshafen    Green        26.1%     
+##  2 Benwerder     Conservative 24.8%     
+##  3 Steffisfelden Green        25.7%     
+##  4 Dillon        Conservative 27%       
+##  5 Kilnard       Conservative 28.8%     
+##  6 Granderry     Labour       26.1%     
+##  7 Enkmelo       Liberal      26.8%     
+##  8 Gänsernten    Green        26.6%     
+##  9 Leonrau       Conservative 25%       
+## 10 Zotburg       Conservative 28.4%     
+## # ... with 90 more rows
+
+```
+]
 
 ---
 name: part5
