@@ -269,7 +269,7 @@ Slides with this background colour indicate that your action is required, for
     - these slides have countdown timers
         - as a guide, not to be followed strictly
     
-<div class="countdown" id="timer_60a81eb6" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a89683" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -384,7 +384,7 @@ class: action
    - click on the links to see an individual page for 
        - states, constituencies, members, and documents
 
-<div class="countdown" id="timer_60a81d68" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a8950c" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
    
@@ -487,7 +487,7 @@ install.packages(c("rvest", "RSelenium", "robotstxt", "polite",
 
 ]
 
-<div class="countdown" id="timer_60a81dd0" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a893be" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -996,8 +996,8 @@ robotstxt(domain = "https://luzpar.netlify.app")
 ##     spiderbar::can_fetch(obj = self$robexclobj, path = paths, 
 ##         user_agent = bot)
 ## }
-## &lt;bytecode: 0x00000000274e0ef0&gt;
-## &lt;environment: 0x00000000274e0358&gt;
+## &lt;bytecode: 0x0000000027327c98&gt;
+## &lt;environment: 0x0000000027327100&gt;
 ## 
 ## attr(,"class")
 ## [1] "robotstxt"
@@ -1088,7 +1088,7 @@ class: action
 
   - with the `robotstxt` function
 
-<div class="countdown" id="timer_60a81f93" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a8968c" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">07</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
 </div>
 
@@ -1211,7 +1211,7 @@ class: action
 &lt;br&gt;   
 - compare the look of the front- and back-end
 
-<div class="countdown" id="timer_60a81f26" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60a89601" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -2809,22 +2809,29 @@ Check the resulting dataset
 
 
 ```r
-head(df)
+head(df, 10)
 ```
 
-```
-## [90m# A tibble: 6 x 3[39m
-##   constituency  second_party vote_share
-##   [3m[90m&lt;chr&gt;[39m[23m         [3m[90m&lt;chr&gt;[39m[23m        [3m[90m&lt;chr&gt;[39m[23m     
-## [90m1[39m Mühlshafen    Green        26.1%     
-## [90m2[39m Benwerder     Conservative 24.8%     
-## [90m3[39m Steffisfelden Green        25.7%     
-## [90m4[39m Dillon        Conservative 27%       
-## [90m5[39m Kilnard       Conservative 28.8%     
-## [90m6[39m Granderry     Labour       26.1%
-```
+.out-t[
 
+```
+## # A tibble: 100 x 3
+##    constituency  second_party vote_share
+##    &lt;chr&gt;         &lt;chr&gt;        &lt;chr&gt;     
+##  1 Mühlshafen    Green        26.1%     
+##  2 Benwerder     Conservative 24.8%     
+##  3 Steffisfelden Green        25.7%     
+##  4 Dillon        Conservative 27%       
+##  5 Kilnard       Conservative 28.8%     
+##  6 Granderry     Labour       26.1%     
+##  7 Enkmelo       Liberal      26.8%     
+##  8 Gänsernten    Green        26.6%     
+##  9 Leonrau       Conservative 25%       
+## 10 Zotburg       Conservative 28.4%     
+## # ... with 90 more rows
 
+```
+]
 
 ---
 name: part5
@@ -2838,591 +2845,8 @@ class: inverse, center, middle
 
 ]
 
----
-## Data Preperation &amp;mdash; Overview
 
-- The `rtweet` package does a very good job with data preperation to start with
 
-   - returns data frames, with mostly tidy data
-   - although Twitter APIs return nested lists
-   - some variables are still lists
-      - e.g., `hastags`
-
---
-
-&lt;br&gt;
-
-- Further data preparation depends on your research project
-
-   - most importantly, on whether you will work with texts or not
-   - we will cover some common preparation steps
-
----
-## Data Preperation &amp;mdash; Overview &amp;mdash; Strings
-
-- Most researchers would be interested in textual Twitter data
-
-   - tweets as a whole, but also specifically hashtags *etc*.
-
---
-
-&lt;br&gt;
-
-- There are many components of tweets as texts
-
-   - e.g., mentions, hashtags, emojis, links *etc*.
-   - but also punctuation, white spaces, upper case letters *etc*.
-   - some of these may need to be taken out before analysis
-
---
-
-&lt;br&gt;
-
-- I use the `stringr` package ([Wickham, 2019](https://cran.r-project.org/web/packages/stringr/index.html)) for string operations
-
-   - part of the `tidyverse` family
-   - you might have another favourite already
-       - no need to change as long as it does the job
-       
----
-## Data Preperation &amp;mdash; Overview &amp;mdash; Numbers
-
-- There is more to Twitter data than just tweets
-      
-  - e.g., the number of followers, likes *etc*.
-     - see Silva and Proksch ([2020](https://doi.org/10.1017/S0003055420000817)) for a great example
-
---
-&lt;br&gt;
-
-- I use the `dplyr` package ([Wickham et al, 2020](https://cran.r-project.org/web/packages/dplyr/index.html) for most data operations
-
-   - part of the `tidyverse` family
-   - you might have another favourite already
-       - no need to change as long as it does the job
-
----
-## Data Preperation &amp;mdash; Remove Mentions
-
-
-```r
-tweet &lt;- "These from @handle1 are #socool. 👏 A #mustsee, @handle2! 
-          👉 t.co/aq7MJJ1
-          👉 https://t.co/aq7MJJ2"
-```
-
-
-```r
-str_remove_all(string = tweet, pattern = "[@][\\w_-]+")
-```
-
-
-.out-t[
-
-[1] "This from  are #socool. 👏 A #mustsee, ! 
-          👉 t.co/aq7MJJ1
-          👉 https://t.co/aq7MJJ2"
-
-]
-
-
----
-## Data Preperation &amp;mdash; Remove Hashtags
-
-
-
-```r
-tweet &lt;- "These from @handle1 are #socool. 👏 A #mustsee, @handle2! 
-          👉 t.co/aq7MJJ1
-          👉 https://t.co/aq7MJJ2"
-```
-
-
-```r
-str_remove_all(string = tweet, pattern = "[`#`][\\w_-]+")
-```
-
-
-.out-t[
-
-[1] "These from @handle1 are . 👏 A , @handle2! 
-          👉 t.co/aq7MJJ1
-          👉 https://t.co/aq7MJJ2"
-
-]
-
----
-## Data Preperation &amp;mdash; Remove Links
-
-
-```r
-tweet &lt;- "These from @handle1 are #socool. 👏 A #mustsee, @handle2! 
-          👉 t.co/aq7MJJ1
-          👉 https://t.co/aq7MJJ2"
-```
-
-
-```r
-str_remove_all(string = tweet, pattern = "http\\S+\\s*")
-```
-
-
-.out-t[
-
-[1] "These from @handle1 are. 👏 A, @handle2! 
-          👉 t.co/aq7MJJ1"
-
-]
-
-&lt;br&gt;
-
-- Notice that
-
-  - links come in various formats
-  - you may need multiple or complicated regular expression patterns
-
----
-## Data Preperation &amp;mdash; Remove Links &amp;mdash; Alternative
-
-Use the `urls_t.co` variable to remove all links
-
-- if there are more than one link in a tweet, they are stored as a list in this variable
-
-
-
-```r
-# start with your existing dataset of tweets
-df_tweets &lt;- df_tweets %&gt;%
-  
-# limit the operation to within individual tweets  
-  group_by(status_id) %&gt;%
-  
-# create a new variable of tweets without links  
-  mutate(tidy_text = 
-           
-# by removing them from the existing variable `text`           
-           str_remove_all(string = text, 
- 
-# that matches the `urls_t.co` variable, after being collapsed into a string      
-           pattern = str_c(unlist(urls_t.co), collapse = "|")))
-```
-
---
-class: action
-
-<div class="countdown" id="timer_60a8202f" style="top:0;right:0;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-
----
-## Data Preperation &amp;mdash; Remove Emojis
-
-
-```r
-tweet &lt;- "These from @handle1 are #socool. 👏 A #mustsee, @handle2! 
-          👉 t.co/aq7MJJ1
-          👉 https://t.co/aq7MJJ2"
-```
-
-
-```r
-iconv(x = tweet, from = "latin1", to = "ASCII", sub = "")
-```
-
-
-.out-t[
-
-[1] "These from @handle1 are #socool. A #mustsee, @handle2! 
-          t.co/aq7MJJ1
-          https://t.co/aq7MJJ2"
-
-]
-
-
----
-## Data Preperation &amp;mdash; Exercises &amp;mdash; Notes
-
-
-- The exercises in this part are best followed by
-
-  - using `tweets.rds` or similar dataset
-  - saving a new variable at every step of preparation
-  - observing the newly created variables 
-      - to confirm whether the code works as intended
-
-&lt;br&gt;
-
-- The `mutate` function, from the `dplyr` package, can be helpful, as follows
-
-   - recall that `text` is the variable for tweets
-
-
-```r
-tweets &lt;- read_rds("data/tweets.rds")
-
-clean_tweets &lt;- tweets %&gt;%
-  `mutate(no_mentions` = str_remove_all(string = `text`, pattern = "[@][\\w_-]+"))
-```
-
----
-class: action
-
-## Exercises
-
-
-41) Remove mentions
-
-- hint: the pattern is `"[@][\\w_-]+"`
-
-42) Remove hastags
-- hint: the pattern is `"[#][\\w_-]+"`
-
-43) Remove links
-- by using the links from the `urls_t.co` variable
-
-44) Remove emojis
-- pull the help file for the `iconv` function first
-
-
-<div class="countdown" id="timer_60a82139" style="top:0;right:0;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-
-
----
-## Data Preperation &amp;mdash; Remove Punctuations
-
-
-```r
-tweet &lt;- "These from @handle1 are #socool. 👏 A #mustsee, @handle2! 
-          👉 t.co/aq7MJJ1
-          👉 https://t.co/aq7MJJ2"
-```
-
-
-```r
-str_remove_all(string = tweet, pattern = "[[:punct:]]")
-```
-
-
-.out-t[
-
-[1] "This from are socool 👏 A mustsee handle2
-          👉 tcoaq7MJJ1
-          👉 httpst.coaq7MJJ2"
-
-]
-
-Notice that
-   - this removed all punctuation, including those in mentions, hashtags, and links
-   - if tweets are typed with no spaces after punctuation, this might lead to merged pieces of text
-      - alternatively, try the `str_replace` function to replace punctuation with space
-      
----
-## Data Preperation &amp;mdash; Remove Punctuations &amp;mdash; Alternative
-
-
-```r
-tweet &lt;- "This is a sentence.There is no space before this sentence."
-```
-
-
-```r
-str_`remove`_all(string = tweet, pattern = "[[:punct:]]")
-```
-
-.out-t[
-
-[1] "This is a sentenceThere is no space before this sentence"
-
-]
-
---
-
-&lt;br&gt;
-
-
-
-```r
-str_`replace`_all(string = tweet, pattern = "[[:punct:]]", replacement = " ")
-```
-
-.out-t[
-
-[1] "This is a sentence There is no space before this sentence "
-
-]
-
----
-## Data Preperation &amp;mdash; Remove Punctuations &amp;mdash; Alternative
-
-
-
-```r
-tweet &lt;- "This is a sentence.There is no space before this sentence."
-```
-
-
-```r
-str_replace_all(string = tweet, pattern = "[[:punct:]]", replacement = " ")
-```
-
-.out-t[
-
-[1] "This is a sentence There is no space before this sentence "
-
-]
-
----
-## Data Preperation &amp;mdash; Remove Repeated Whitespace
-
-
-
-```r
-tweet &lt;- "There are too many spaces after this sentence.   This is a new sentence."
-```
-
-
-```r
-str_squish(string = tweet)
-```
-
-.out-t[
-
-[1] "There are too many spaces after this sentence. This is a new sentence."
-
-]
-
-Note that
-- white spaces can be introduced not only by users on Twitter, but also by us, while cleaning the data
-   - e.g., removing and/or replacing operations above
-   - hence, this function might be useful after other operations
-
----
-## Data Preperation &amp;mdash; Change Case
-
-
-```r
-tweet &lt;- "lower case. Sentence case. Title Case. UPPER CASE."
-```
-
-
-```r
-str_to_lower(string = tweet)
-```
-
-.out-t[
-
-[1] "lower case. sentence case. title case. upper case."
-
-]
-
-Note that
-   - there are other functions in this family, including
-      - `str_to_sentence`, `str_to_title`, `str_to_upper`
-
-
----
-class: action
-
-## Exercises
-
-45) Remove punctuations
-- by using the `str_replace_all` function
-- hint: the pattern is `[[:punct:]]`
-
-&lt;br&gt;
-
-46) Remove whitespace
-- hint: the function is called `str_squish`
-
-&lt;br&gt;
-
-47) Change case to lower case
-- hint: the function is called `str_to_lower`
-
-
-<div class="countdown" id="timer_60a82231" style="top:0;right:0;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-
----
-## Data Preperation &amp;mdash; Change Unit of Observation
-
-Research designs might require changing the unit of observation
-   - aggregation
-      - e.g., at the level of users, locations, hashtags etc.
-      - summarise with `dplyr`
-   
-
-  - dis-aggregation
-     - e.g., to the level of words
-     - tokenise with `tidytext`
-     
----
-## Data Preperation &amp;mdash; Change Unit of Observation &amp;mdash; Aggregation
-
-Aggregate at the level of users
-
-- the number of tweets per user
-
-
-```r
-# load the tweets dataset
-df &lt;- read_rds("tweets.rds") %&gt;%
-  
-# group by users for aggregation  
-  group_by(user_id) %&gt;%
-  
-# create summary statistics for variables of interest
-  summarise(sum_tweets = n())
-```
-
----
-## Data Preperation &amp;mdash; Change Unit of Observation &amp;mdash; Aggregation
-
-What is aggregated at which level depends on your research design, such as
-   - aggregate the tweets into a single text
-   - at the level of users by source
-
-
-
-```r
-# load the tweets dataset
-df &lt;- read_rds("tweets.rds") %&gt;%
-  
-# group by users for aggregation  
-  group_by(user_id, `source`) %&gt;%
-  
-# create summary statistics for variables of interest
-  summarise(`merged_tweets = paste0(text, collapse = ". ")`) 
-```
-
----
-## Data Preperation &amp;mdash; Change Unit of Observation &amp;mdash; Dis-aggregation
-
-Disaggregate the tweets, by splitting them into smaller units
-  - also called .yellow-h[tokenisation]
-
-Note that
-- by default `sep = "[^[:alnum:].]+"`, which works well with separating tweets into words
-   - change this argument with a regular expression of your choice
-- this creates a tidy dataset, where each observation is a word
-   - all other tweet-level variables are repeated for each observation
-
-
-```r
-# load the tweets dataset
-df &lt;- read_rds("tweets.rds") %&gt;%
-  
-# split the variable `text`  
-    separate_rows(text)
-```
-
----
-## Data Preperation &amp;mdash; Change Unit of Observation &amp;mdash; Dis-aggregation
-
-The `tidytext` has a function that works better with tokenising tweets
-- with `token = "tweets"`, it dis-aggregates text into words
-   - except that it respects usernames, hashtags, and URLS 
-
-
-```r
-# load the tweets dataset
-df &lt;- read_rds("tweets.rds") %&gt;%
-  
-# split the variable `text`, create a new variable called `da_tweets`    
-    unnest_tokens(output = da_tweets, input = text, token = "tweets")
-```
-
----
-## Data Preperation &amp;mdash; Change Unit of Observation &amp;mdash; Dis-aggregation
-
-Tokenise variables to levels other than words
-- e.g., characters, words (the default),  sentences, lines
-
-
-```r
-# load the tweets dataset
-df &lt;- read_rds("tweets.rds") %&gt;%
-  
-# split the variable `text` into sentences, create a new variable called `da_tweets`    
-    unnest_tokens(output = da_tweets, input = text, `token = "sentences"`)
-```
-
----
-## Data Preperation &amp;mdash; Change Unit of Observation &amp;mdash; Dis-aggregation
-
-Tokenise variables other than tweets
-- recall that `rtweet` stores multiple hastags, mentions *etc*. as lists
-
-
-
-```r
-# load the tweets dataset
-df &lt;- read_rds("tweets.rds") %&gt;%
-  
-# unlist the lists of hashtags to create strings  
-  group_by(status_id) %&gt;%
-  mutate(tidy_hashtags = str_c(unlist(hashtags), collapse = " ")) %&gt;%
-  
-# split the string, create a new variable called `da_tweets`    
-  unnest_tokens(output = da_hashtags, input = tidy_hashtags, token = "words")
-```
-
----
-## Data Preperation &amp;mdash; Remove Stop Words
-
-Remove the common, uninformative words
-- e.g., the, a, i
-
-Note that 
-- this operation requires a tokenised-to-word variable
-- stop words for English are stored in the `stop_words` dataset in the `tidytext` variable
-- list of words for other languages are available elsewhere, including 
-   - the `stopwordslangs` function from the `rtweet` package
-   - the `stopwords` function from the `tm` package
-      - e.g., use `tm::stopwords("german")` for German
-
-
-```r
-# load the tweets dataset
-df &lt;- read_rds("tweets.rds") %&gt;%
-  
-# split the variable `text`, create a new variable called `da_tweets`    
-  unnest_tokens(output = da_tweets, input = text, token = "tweets") %&gt;%
- 
-# remove rows that match any of the stop words as stored in the stop_words dataset 
-  anti_join(stop_words, by = c("da_tweets" = "word"))
-```
-
----
-class: action
-
-## Exercises
-
-48) Aggregate `text` to a higher level
-- e.g., if you are not using `tweets.rds`, to MP level
-   - if not, perhaps to `source` level
-
-&lt;br&gt;
-
-49) Dis-aggregate `text` to a lower level
-- e.g., to words
-
-&lt;br&gt;
-
-50) Dis-aggregate `hashtags`
-- i.e., make sure each row has at most one hashtag
-
-&lt;br&gt;
-
-51) Remove stop words
-
-
-<div class="countdown" id="timer_60a82126" style="top:0;right:0;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
 
 ---
 name: reference-slide
