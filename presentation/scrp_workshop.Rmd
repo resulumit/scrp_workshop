@@ -1708,7 +1708,7 @@ class: inverse, center, middle
 ]
 
 ---
-## Scraping Static Pages &mdash; Overview
+## Static Pages &mdash; Overview
 
 - We will collect data from static pages with the `rvest` package
 
@@ -1731,7 +1731,7 @@ class: inverse, center, middle
       - working with selectors
     
 ---
-## Scraping Static Pages &mdash; `rvest` &mdash; Overview
+## Static Pages &mdash; `rvest` &mdash; Overview
 
 - A relative small R package for web scraping
 
@@ -1761,7 +1761,7 @@ class: inverse, center, middle
    - for ethical web scraping
 
 ---
-## Scraping Static Pages &mdash; `rvest` &mdash; Get Source Code
+## Static Pages &mdash; `rvest` &mdash; Get Source Code
 
 Use the `read_html` function to get the source code of a page into R
 
@@ -1770,7 +1770,7 @@ read_html("https://luzpar.netlify.app/")
 ```
 
 ---
-## Scraping Static Pages &mdash; `rvest` &mdash; Get Source Code
+## Static Pages &mdash; `rvest` &mdash; Get Source Code
 
 You may wish to check the protocol first
 
@@ -1780,7 +1780,7 @@ read_html("https://luzpar.netlify.app/")
 ```
 
 ---
-## Scraping Static Pages &mdash; `rvest` &mdash; Get Source Code &mdash; `polite`
+## Static Pages &mdash; `rvest` &mdash; Get Source Code &mdash; `polite`
 
 - The `polite` package facilitates ethical scraping
 
@@ -1803,7 +1803,7 @@ read_html("https://luzpar.netlify.app/")
    - introduce yourself to website administrators while scraping
    
 ---
-## Scraping Static Pages &mdash; `rvest` &mdash; Get Source Code &mdash; `polite`
+## Static Pages &mdash; `rvest` &mdash; Get Source Code &mdash; `polite`
 
 .pull-left[
 
@@ -1828,7 +1828,7 @@ bow(`url`,
 ]
 
 ---
-## Scraping Static Pages &mdash; `rvest` &mdash; Get Source Code &mdash; `polite`
+## Static Pages &mdash; `rvest` &mdash; Get Source Code &mdash; `polite`
 
 .pull-left[
 
@@ -1862,7 +1862,7 @@ bow(url,
 ]
 
 ---
-## Scraping Static Pages &mdash; `rvest` &mdash; Get Source Code &mdash; `polite`
+## Static Pages &mdash; `rvest` &mdash; Get Source Code &mdash; `polite`
 
 .pull-left[
 
@@ -1896,7 +1896,7 @@ bow(url,
 ]
 
 ---
-## Scraping Static Pages &mdash; `rvest` &mdash; Get Source Code &mdash; `polite`
+## Static Pages &mdash; `rvest` &mdash; Get Source Code &mdash; `polite`
 
 .pull-left[
 
@@ -1931,7 +1931,7 @@ bow(url,
 ```
 ]
 ---
-## Scraping Static Pages &mdash; `rvest` &mdash; Get Source Code &mdash; `polite`
+## Static Pages &mdash; `rvest` &mdash; Get Source Code &mdash; `polite`
 
 .pull-left[
 
@@ -1962,7 +1962,7 @@ scrape(`bow`,
 ]
 
 ---
-## Scraping Static Pages &mdash; `rvest` &mdash; Get Source Code
+## Static Pages &mdash; `rvest` &mdash; Get Source Code
 
 These two are equal, when there is no protocol against
 
@@ -1976,7 +1976,7 @@ read_html("https://luzpar.netlify.app/")
 ```
 
 ---
-## Scraping Static Pages &mdash; `rvest` &mdash; Get Source Code
+## Static Pages &mdash; `rvest` &mdash; Get Source Code
 
 The difference occurs when there is protocol against 
 
@@ -1993,7 +1993,7 @@ bow(url = "https://luzpar.netlify.app/states/",
 ```
 
 ---
-## Scraping Static Pages &mdash; `rvest` &mdash; `html_elements`
+## Static Pages &mdash; `rvest` &mdash; `html_elements`
 
 .pull-left[
 
@@ -2033,7 +2033,7 @@ html_elements(x,
 ]
 
 ---
-## Scraping Static Pages &mdash; `rvest` &mdash; `html_elements`
+## Static Pages &mdash; `rvest` &mdash; `html_elements`
 
 Get the anchor (a) elements on the homepage
 
@@ -2050,7 +2050,7 @@ bow(url = "https://luzpar.netlify.app") %>%
 ```
 
 ---
-## Scraping Static Pages &mdash; `rvest` &mdash; `html_elements`
+## Static Pages &mdash; `rvest` &mdash; `html_elements`
 
 I would like to get only the URLs on the main body of the page
 - ScrapeMate tells me the correct selector is `#title` `a`
@@ -2068,7 +2068,7 @@ bow(url = "https://luzpar.netlify.app") %>%
 ```
 
 ---
-## Scraping Static Pages &mdash; `rvest` &mdash; `html_text`
+## Static Pages &mdash; `rvest` &mdash; `html_text`
 
 .pull-left[
 
@@ -2102,7 +2102,7 @@ html_text2(x, preserve_nbsp = FALSE)
 ]
 
 ---
-## Scraping Static Pages &mdash; `rvest` &mdash; `html_text`
+## Static Pages &mdash; `rvest` &mdash; `html_text`
 
 ```{r, eval=FALSE}
 bow(url = "https://luzpar.netlify.app") %>%
@@ -2119,7 +2119,7 @@ bow(url = "https://luzpar.netlify.app") %>%
 ```
 
 ---
-## Scraping Static Pages &mdash; `rvest` &mdash; `html_attr`
+## Static Pages &mdash; `rvest` &mdash; `html_attr`
 
 .pull-left[
 
@@ -2155,7 +2155,7 @@ html_attrs(x)
 ]
 
 ---
-## Scraping Static Pages &mdash; `rvest` &mdash; `html_attrs`
+## Static Pages &mdash; `rvest` &mdash; `html_attrs`
 
 ```{r, eval=FALSE}
 bow(url = "https://luzpar.netlify.app") %>%
@@ -2172,7 +2172,7 @@ bow(url = "https://luzpar.netlify.app") %>%
 ```
 
 ---
-## Scraping Static Pages &mdash; `rvest` &mdash; `html_attr`
+## Static Pages &mdash; `rvest` &mdash; `html_attr`
 
 ```{r, eval=FALSE}
 bow(url = "https://luzpar.netlify.app") %>%
@@ -2197,7 +2197,7 @@ Note that
    - you can complete them with the `url_absolute` function
    
 ---
-## Scraping Static Pages &mdash; `rvest` &mdash; `url_absolute`
+## Static Pages &mdash; `rvest` &mdash; `url_absolute`
 
 Complete the relative URLs with the `url_absolute` function
 ```{r, eval=FALSE}
@@ -2217,7 +2217,7 @@ bow(url = "https://luzpar.netlify.app") %>%
 ```
 
 ---
-## Scraping Static Pages &mdash; `rvest` &mdash; `html_table`
+## Static Pages &mdash; `rvest` &mdash; `html_table`
 
 Use the `html_table()` function to get the text content of table elements
 
@@ -2251,7 +2251,7 @@ bow(url = "https://luzpar.netlify.app/members/") %>%
 ]
 
 ---
-## Scraping Static Pages &mdash; `rvest`
+## Static Pages &mdash; `rvest`
 
 We can create the same tibble with `html_text`
 
@@ -2277,7 +2277,7 @@ tibble(
 ```
 
 ---
-## Scraping Static Pages &mdash; `rvest`
+## Static Pages &mdash; `rvest`
 
 Keep the number of interactions with websites to minimum
 - by saving the source code as an object, which could be used repeatedly
@@ -2322,7 +2322,7 @@ Note that
   - see what other attributes are there to collect     
 
 ---
-## Scraping Static Pages &mdash; Crawling &mdash; Overview
+## Static Pages &mdash; Crawling &mdash; Overview
 
 - Rarely a single page includes all variables that we need
 
@@ -2344,7 +2344,7 @@ Note that
   - ethical concerns are higher
 
 ---
-## Scraping Static Pages &mdash; Crawling &mdash; Example
+## Static Pages &mdash; Crawling &mdash; Example
 
 **Task:**    
 
@@ -2368,7 +2368,7 @@ Note that
     - turn the list into a dataframe
 
 ---
-## Scraping Static Pages &mdash; Crawling &mdash; Example
+## Static Pages &mdash; Crawling &mdash; Example
 
 Scrape the page that has all URLs, for absolute URLs
 
@@ -2385,7 +2385,7 @@ head(the_links)
 ```
 
 ---
-## Scraping Static Pages &mdash; Crawling &mdash; Example
+## Static Pages &mdash; Crawling &mdash; Example
 
 Create an empty list
 
@@ -2416,7 +2416,7 @@ df <- as_tibble(do.call(rbind, temp_list))
 ```
 
 ---
-## Scraping Static Pages &mdash; Crawling &mdash; Example
+## Static Pages &mdash; Crawling &mdash; Example
 
 Start a for loop to iterate over the links one by one
 
@@ -2447,7 +2447,7 @@ df <- as_tibble(do.call(rbind, temp_list))
 ```
 
 ---
-## Scraping Static Pages &mdash; Crawling &mdash; Example
+## Static Pages &mdash; Crawling &mdash; Example
 
 Get the source code for the next link
 
@@ -2478,7 +2478,7 @@ df <- as_tibble(do.call(rbind, temp_list))
 ```
 
 ---
-## Scraping Static Pages &mdash; Crawling &mdash; Example
+## Static Pages &mdash; Crawling &mdash; Example
 
 Get the variables needed, put them in a tibble
 
@@ -2509,7 +2509,7 @@ df <- as_tibble(do.call(rbind, temp_list))
 ```
 
 ---
-## Scraping Static Pages &mdash; Crawling &mdash; Example
+## Static Pages &mdash; Crawling &mdash; Example
 
 Add each tibble into the previously-created list
 
@@ -2540,7 +2540,7 @@ df <- as_tibble(do.call(rbind, temp_list))
 ```
 
 ---
-## Scraping Static Pages &mdash; Crawling &mdash; Example
+## Static Pages &mdash; Crawling &mdash; Example
 
 Turn the list into a tibble
 
@@ -2571,7 +2571,7 @@ df <- as_tibble(do.call(rbind, temp_list))       #<<
 ```
 
 ---
-## Scraping Static Pages &mdash; Crawling &mdash; Example
+## Static Pages &mdash; Crawling &mdash; Example
 
 Check the resulting dataset
 
@@ -2612,7 +2612,430 @@ class: inverse, center, middle
 
 ]
 
+---
+## Dynamic Pages &mdash; Overview
 
+- Dynamic pages are ones that display custom content 
+
+   - different visitors might see different content on the same page
+        - while the URL remains the same    
+<br>
+   - depending on, for example, their own input
+       - e.g., clicks, scrolls
+
+--
+
+<br>
+
+- Dynamic pages are more difficult than static pages to scrape
+   
+   - it involves three, not two, steps
+   - we will have a new package, `RSelenium`, for the additional step
+
+
+---
+## Dynamic Pages &mdash; Three Steps to Scrape
+
+Scraping dynamic pages involves three main tasks      
+<br>
+- Create the desired instance of the dynamic page
+  - with the `RSelenium` package
+  - e.g., by clicking, scrolling, filling in forms
+      - from within R    
+<br>
+- Get the source code into R
+      - `RSelenium` downloads XML
+      - `rvest` turns it into HTML    
+<br>
+- Select the exact information needed from the source code
+      - as for static pages
+      - with the the`rvest` page
+    
+---
+## Dynamic Pages &mdash; `Rselenium` &mdash; Overview
+
+- A package that integrates [Selenium 2.0 WebDriver](https://www.selenium.dev/documentation/en/) into R
+
+  - created by [John Harrison](http://johndharrison.github.io/#/cover)
+  - downloaded `r format(sum(cran_downloads(when = "last-month", packages = "RSelenium")$count), big.mark=",")` times last month
+  - last updated in February 2020
+
+--
+<br>
+
+- it is a little bit of a special case
+  
+  - code might look slightly unfamiliar to beginners
+  - as it follows the logic behind Selenium
+  
+
+--
+
+<br>
+
+- A lot has already been written on this package
+
+  - you will find solutions to, or help for, any issues online
+  - see the [package documentation](https://cran.r-project.org/web/packages/RSelenium/RSelenium.pdf) and the [vignettes](https://cran.r-project.org/web/packages/RSelenium/vignettes/basics.html) for basic functionality
+  - Google searches return code in various languages
+      - not only R but also Python, Java
+
+---
+## Dynamic Pages &mdash; `Rselenium` &mdash; Starting a Server
+
+.pull-left[
+
+Use the `rdDriver` function to start a server
+
+- so that you can control a web browser from within R
+
+<br>
+
+]
+
+
+.pull-right[
+
+```md
+rsDriver(port = 4567L, 
+         browser = "chrome", 
+         version = "latest", 
+         chromever = "latest",
+         ...
+         )
+
+```
+
+
+]
+
+---
+## Dynamic Pages &mdash; `Rselenium` &mdash; Starting a Server
+
+.pull-left[
+
+- Use the `rdDriver` function to start a server
+    - so that you can control a web browser from within R
+
+<br>
+
+- Note that the defaults can cause errors, such as
+   - tying to start two servers from the same .yellow-[port]
+
+
+
+]
+
+
+.pull-right[
+
+```md
+rsDriver(`port` = 4567L, 
+         browser = "chrome", 
+         version = "latest", 
+         chromever = "latest",
+         ...
+         )
+
+```
+
+]
+
+---
+## Dynamic Pages &mdash; `Rselenium` &mdash; Starting a Server
+
+.pull-left[
+
+- Use the `rdDriver` function to start a server
+    - so that you can control a web browser from within R
+
+<br>
+
+- Note that the defaults can cause errors, such as
+   - tying to start two servers from the same port
+   - any mismatch between the .yellow[version and driver numbers]
+
+]
+
+
+.pull-right[
+
+```md
+rsDriver(port = 4567L, 
+         browser = "chrome", 
+         `version = "latest"`, 
+         `chromever = "latest"`,
+         ...
+         )
+
+```
+
+]
+
+---
+## Dynamic Pages &mdash; `Rselenium` &mdash; Starting a Server
+
+- The latest version of the driver is too new for my browser
+  - I have to use an older version to make it work
+  - after checking the available versions with the following code
+
+```{r}
+binman::list_versions("chromedriver")
+```
+
+--
+
+<br>
+
+- Note that
+
+  - you can only use the version that *you* get
+  - not one of the version that you see on this slide
+
+---
+## Dynamic Pages &mdash; `Rselenium` &mdash; Starting a Server
+
+.pull-left[
+
+- Then the function works
+
+  - and a web browser opens as a result
+
+<br>
+
+- Note that
+
+   - the browser says "Chrome is being controlled by automated test software."
+   
+   - you should avoid controlling this browser manually
+
+]
+
+.pull-right[
+
+```md
+rsDriver(`chromever = "90.0.4430.24"`)
+```
+
+```{r, echo=FALSE}
+knitr::include_graphics("scrp_workshop_files/images_data/chrome_works.png")
+```
+
+]
+
+---
+## Dynamic Pages &mdash; `Rselenium` &mdash; Starting a Server
+
+Save the client as an object
+
+```md
+`browser` <- rsDriver()`$[["client"]]`
+```
+
+<br>
+
+Note that
+
+- `rsDriver()` creates a client and a server
+   - our code will control the client
+   - client is best thought as the browser itself
+   - you can give it any name &mdash; I prefer to call it `browser`
+   
+---
+## Dynamic Pages &mdash; `Rselenium` &mdash; Navigate
+
+Navigate to a page with the following notation
+
+```md
+browser`$navigate`("https://luzpar.netlify.app")
+```
+
+```{r, echo=FALSE}
+knitr::include_graphics("scrp_workshop_files/images_data/navigate.png")
+```
+
+---
+## Dynamic Pages &mdash; `Rselenium` &mdash; Navigate
+
+Navigate to a page with the following notation
+
+```md
+browser`$`navigate("https://luzpar.netlify.app")
+```
+
+<br>
+
+Note that
+
+- `navigate` is called a method, not a function
+    - it cannot be piped into `browser`
+    - use the dollar sign <span style="background-color: #ffff88;">$</span> notation
+
+---
+## Dynamic Pages &mdash; `Rselenium` &mdash; Navigate
+
+Check the description of any method as follows
+- with no parentheses after the method name
+
+```md
+browser$navigate
+```
+
+.out-t[
+
+```
+Class method definition for method navigate()
+function (url) 
+{
+    "Navigate to a given url."
+    qpath <- sprintf("%s/session/%s/url", serverURL, sessionInfo[["id"]])
+    queryRD(qpath, "POST", qdata = list(url = url))
+}
+<environment: 0x00000173db9035a8>
+
+Methods used: 
+     "queryRD"
+```
+
+]
+
+---
+## Dynamic Pages &mdash; `Rselenium` &mdash; Navigate
+
+Go back to the previous URL
+
+```md
+browser$goBack()
+```
+<br>
+
+Go forward
+
+```md
+browser$goForward()
+```
+<br>
+
+Refresh the page
+
+```md
+browser$refresh()
+```
+---
+## Dynamic Pages &mdash; `Rselenium` &mdash; Navigate
+
+Get the URL of the current page
+
+```md
+browser$CurrentUrl()
+```
+<br>
+
+Get the title of the current page
+
+```md
+browser$getTitle()
+```
+
+---
+## Dynamic Pages &mdash; `Rselenium` &mdash; Close and Open
+
+Close the browser
+- which will not close the session on the server
+
+```md
+browser$close()
+```
+
+<br>
+
+Open a new browser
+- which does not require the `rdDriver` function
+
+```md
+browser$open()
+```
+---
+## Dynamic Pages &mdash; `Rselenium` &mdash; Get Page Source
+
+Get the page source
+
+```md
+browser$getPageSource()[[1]]
+```
+
+---
+## Dynamic Pages &mdash; `Rselenium` &mdash; Get Page Source
+
+Get the page source
+
+```md
+browser$getPageSource()`[[1]]`
+```
+
+<br>
+
+Note that
+
+- this method returns a list
+   - XML source is in the first item     
+<br>
+- `rvest` usually takes over after this step
+
+---
+## Dynamic Pages &mdash; `Rselenium` &mdash; Get Page Source
+
+Get the page source
+- by combining the two package
+
+```md
+browser$getPageSource()[[1]] %>% 
+        read_html() %>% 
+        html_elements("#title a") %>% 
+        html_attr("href")
+```
+
+.out-t[
+
+```
+[1] "https://github.com/resulumit/scrp_workshop"            
+[2] "https://resulumit.com/"                                
+[3] "https://parliament-luzland.netlify.app/documents/"     
+[4] "https://parliament-luzland.netlify.app/constituencies/"
+[5] "https://parliament-luzland.netlify.app/members/"       
+[6] "https://parliament-luzland.netlify.app/states/"        
+[7] "https://github.com/rstudio/blogdown"                   
+[8] "https://gohugo.io/"                                    
+[9] "https://github.com/wowchemy"   
+
+```
+
+]
+
+---
+## Dynamic Pages &mdash; `Rselenium` &mdash; Get Page Source
+
+Get the page source
+- by using both packages
+
+```md
+browser$getPageSource()[[1]] %>% 
+        read_html() %>% 
+        html_elements("#title a") %>% 
+        html_attr("href")
+```
+
+Note that
+
+- this method gets the source for only what is physically visible on the browser
+- window size and position might become important
+    - you may wish to maximise the window
+
+```md
+browser$browser$maxWindowSize()
+```
+
+---
 
 
 ---
