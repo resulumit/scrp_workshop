@@ -1664,7 +1664,7 @@ CSS rules can also be defined inline
 
 ```md   
 <p>This is a <strong `style="color:blue;"`>one</strong> sentence paragraph.</p>
-``` 
+```
    
 .out-t[
 <p>This is a <strong style="color:blue;">one</strong> sentence paragraph.</p>
@@ -1970,11 +1970,14 @@ bow(url = "https://luzpar.netlify.app/states/", user_agent = "googlebot")
 bow(url = "https://luzpar.netlify.app/states/", user_agent = "googlebot") `%>%` 
     `scrape()`
 ```
+.out-t[
 
-```{r, echo=FALSE}
-bow(url = "https://luzpar.netlify.app/states/", user_agent = "googlebot") %>%  
-    scrape()
 ```
+## Warning: No scraping allowed here!
+
+## NULL
+```
+]
 
 ---
 ## Static Pages &mdash; `rvest` &mdash; `html_elements`
@@ -2644,7 +2647,6 @@ Scraping dynamic pages involves three main tasks
   - downloaded `r format(sum(cran_downloads(when = "last-month", packages = "RSelenium")$count), big.mark=",")` times last month
   - last updated in February 2020
 
-
 --
 
 <br>
@@ -2682,7 +2684,7 @@ class: center, middle
 ## Interacting with Browsers
 
 ---
-## Dynamic Pages &mdash; `Rselenium` &mdash; Starting a Server
+## Dynamic Pages &mdash; Browsers &mdash; Starting a Server
 
 .pull-left[
 
@@ -2711,7 +2713,7 @@ rsDriver(port = 4567L,
 ]
 
 ---
-## Dynamic Pages &mdash; `Rselenium` &mdash; Starting a Server
+## Dynamic Pages &mdash; Browsers &mdash; Starting a Server
 
 .pull-left[
 
@@ -2739,11 +2741,10 @@ rsDriver(`port` = 4567L,
          )
 
 ```
-
 ]
 
 ---
-## Dynamic Pages &mdash; `Rselenium` &mdash; Starting a Server
+## Dynamic Pages &mdash; Browsers &mdash; Starting a Server
 
 .pull-left[
 
@@ -2774,7 +2775,7 @@ rsDriver(port = 4567L,
 ]
 
 ---
-## Dynamic Pages &mdash; `Rselenium` &mdash; Starting a Server
+## Dynamic Pages &mdash; Browsers &mdash; Starting a Server
 
 - The latest version of the driver is too new for my browser
   - I have to use an older version to make it work
@@ -2794,7 +2795,7 @@ binman::list_versions("chromedriver")
   - not one of the version that you see on this slide
 
 ---
-## Dynamic Pages &mdash; `Rselenium` &mdash; Starting a Server
+## Dynamic Pages &mdash; Browsers &mdash; Starting a Server
 
 .pull-left[
 
@@ -2825,7 +2826,7 @@ knitr::include_graphics("scrp_workshop_files/images_data/chrome_works.png")
 ]
 
 ---
-## Dynamic Pages &mdash; `Rselenium` &mdash; Starting a Server
+## Dynamic Pages &mdash; Browsers &mdash; Starting a Server
 
 Save the .yellow-h[client] as an object
 
@@ -2847,7 +2848,7 @@ Note that
        - it has the class of `remoteDriver`
 
 ---
-## Dynamic Pages &mdash; `Rselenium` &mdash; Navigate
+## Dynamic Pages &mdash; Browsers &mdash; Navigate
 
 Navigate to a page with the following notation
 
@@ -2860,7 +2861,7 @@ knitr::include_graphics("scrp_workshop_files/images_data/navigate.png")
 ```
 
 ---
-## Dynamic Pages &mdash; `Rselenium` &mdash; Navigate
+## Dynamic Pages &mdash; Browsers &mdash; Navigate
 
 Navigate to a page with the following notation
 
@@ -2877,7 +2878,7 @@ Note that
     - use the dollar sign <span style="background-color: #ffff88;">$</span> notation instead
 
 ---
-## Dynamic Pages &mdash; `Rselenium` &mdash; Navigate
+## Dynamic Pages &mdash; Browsers &mdash; Navigate
 
 Check the description of any method as follows
 - with no parentheses after the method name
@@ -2905,7 +2906,7 @@ Methods used:
 ]
 
 ---
-## Dynamic Pages &mdash; `Rselenium` &mdash; Navigate
+## Dynamic Pages &mdash; Browsers &mdash; Navigate
 
 Go back to the previous URL
 
@@ -2928,7 +2929,7 @@ browser$refresh()
 ```
 
 ---
-## Dynamic Pages &mdash; `Rselenium` &mdash; Navigate
+## Dynamic Pages &mdash; Browsers &mdash; Navigate
 
 Get the URL of the current page
 
@@ -2944,7 +2945,7 @@ browser$getTitle()
 ```
 
 ---
-## Dynamic Pages &mdash; `Rselenium` &mdash; Close and Open
+## Dynamic Pages &mdash; Browsers &mdash; Close and Open
 
 Close the browser
 - which will not close the session on the server
@@ -2965,7 +2966,7 @@ browser$open()
 ```
 
 ---
-## Dynamic Pages &mdash; `Rselenium` &mdash; Get Page Source
+## Dynamic Pages &mdash; Browsers &mdash; Get Page Source
 
 Get the page source
 
@@ -2974,7 +2975,7 @@ browser$getPageSource()[[1]]
 ```
 
 ---
-## Dynamic Pages &mdash; `Rselenium` &mdash; Get Page Source
+## Dynamic Pages &mdash; Browsers &mdash; Get Page Source
 
 Get the page source
 
@@ -2996,7 +2997,7 @@ Note that
 - `rvest` usually takes over after this step
 
 ---
-## Dynamic Pages &mdash; `Rselenium` &mdash; Get Page Source
+## Dynamic Pages &mdash; Browsers &mdash; Get Page Source
 
 Get the page source
 - by combining the two package
@@ -3026,7 +3027,7 @@ browser$getPageSource()[[1]] %>%
 ]
 
 ---
-## Dynamic Pages &mdash; `Rselenium` &mdash; Get Page Source
+## Dynamic Pages &mdash; Browsers &mdash; Get Page Source
 
 Get the page source
 - by using both packages
@@ -3051,7 +3052,7 @@ browser$browser$maxWindowSize()
 ```
 
 ---
-## Dynamic Pages &mdash; `Rselenium` &mdash; Get Page Source
+## Dynamic Pages &mdash; Browsers &mdash; Get Page Source
 
 Get the page source
 - by using both packages
@@ -3076,6 +3077,458 @@ class: center, middle
 ## Interacting with Elements
 
 ---
+## Dynamic Pages &mdash; Elements &mdash; Find
+
+.pull-left[
+
+- Locate an element on the open browser
+    - to be interacted later on
+        - e.g., clicking on the element
+        
+<br>
+
+- Note that
+   - the default selector is `xpath`
+   - requires entering the `xpath` value
+
+]
+
+
+.pull-right[
+
+```md
+
+findElement(using = "xpath", 
+            value
+            )
+
+```
+
+]
+
+---
+## Dynamic Pages &mdash; Elements &mdash; Find
+
+.pull-left[
+
+- Locate an element on the open browser
+    - using CSS selectors
+        
+<br>
+
+- Note that
+
+   - typing .yellow-h["css"], instead of .yellow-h["css selector"], also works
+
+   - there are other selector schemes as well, including
+      - id
+      - name
+      - link text
+      
+]
+
+
+.pull-right[
+
+```md
+
+findElement(using = `"css selector"`, 
+            value
+            )
+
+```
+
+]
+---
+## Dynamic Pages &mdash; Elements &mdash; Find &mdash; Selectors
+
+If there were a button on a page with the following DOM...
+
+```md
+<button class="big-button" id="only-button" name="clickable">Click Me</button>
+
+```
+
+<br>
+
+Any of the following would find it
+
+```md
+browser$findElement(using = "xpath", value = '//*[(@id = "only-button")]')
+
+browser$findElement(using = "css selector", value = ".big-button")
+
+browser$findElement(using = "css", value = "#only-button")
+
+browser$findElement(using = "id", value = "only-button")
+
+browser$findElement(using = "name", value = "clickable")
+```
+
+---
+## Dynamic Pages &mdash; Elements &mdash; Objects
+
+Save elements as R objects to be interacted later on
+
+```
+button <- browser$findElement(using = ..., value = ...)
+```
+
+<br>
+
+Note the difference between the classes of clients and elements
+
+.pull-left[
+
+```md
+class(browser)
+```
+
+.out-t[
+
+```
+[1] "remoteDriver"
+attr(,"package")
+[1] "RSelenium"
+```
+]
+
+]
+
+
+.pull-right[
+
+```md
+class(button)
+```
+
+.out-t[
+
+```
+[1] "webElement"
+attr(,"package")
+[1] "RSelenium"
+```
+]
+
+]
+
+---
+## Dynamic Pages &mdash; Elements &mdash; Highlight
+
+Highlight the element found in the previous step, with the `highlightElement` method
+
+```{r, eval=FALSE}
+# navitage to a page
+browser$navigate("http://luzpar.netlify.app/")
+
+# find the element
+menu_states <- browser$findElement(using = "link text", value = "States")
+
+# highlight it to see if we found the correct element
+menu_states$`highlightElement()`
+
+```
+
+<br>
+
+Note that
+
+- the highlighted element fill flash for a second or two on the browser
+    - helpful to check if selection worked as intended  
+    
+---
+## Dynamic Pages &mdash; Elements &mdash; Highlight
+
+Highlight the element found in the previous step, with the `highlightElement` method
+
+```{r, eval=FALSE}
+# navitage to a page
+browser$navigate("http://luzpar.netlify.app/")
+
+# find the element
+menu_states <- `browser$`findElement(using = "link text", value = "States")
+
+# hihglight it to see if we found the correct element
+`menu_states$`highlightElement()
+
+```
+
+<br>
+
+Note that
+
+- the highlighted element fill flash for a second or two on the browser
+    - helpful to check if selection worked as intended     
+<br>    
+- the highlight method is applied to the element (`menu_states`), not to the client (`browser`)
+   - compare it to the find method
+
+---
+## Dynamic Pages &mdash; Elements &mdash; Click
+
+Click on the element found in the previous step, with the `clickElement` method
+
+```{r, eval=FALSE}
+# navigate to a page
+browser$navigate("http://luzpar.netlify.app/")
+
+# find an element
+search_icon <- browser$findElement(using = "css", value = ".fa-search")
+
+# click on it
+search_icon$`clickElement()`
+
+```
+
+---
+## Dynamic Pages &mdash; Elements &mdash; Input
+
+.pull-left[
+
+- Provide input to elements, such as
+    - text, with the .yellow-h[value] argument
+    
+]
+
+.pull-right[
+
+```md
+
+sendKeysToElement(list(`value`, 
+                       key
+                       )
+                  )
+
+```
+
+]
+
+---
+## Dynamic Pages &mdash; Elements &mdash; Input
+
+.pull-left[
+
+- Provide input to elements, such as
+    - text, with the .yellow-h[value] argument
+    - keyboard presses or mouse gestures, with the .yellow-h[key] argument
+    
+<br>
+
+- Note that
+ 
+  - user provides values while the selenium keys are pre-defined
+    
+]
+
+.pull-right[
+
+```md
+
+sendKeysToElement(list(value, 
+                       `key`
+                       )
+                  )
+
+```
+
+]
+
+---
+## Dynamic Pages &mdash; Elements &mdash; Input &mdash; Selenium Keys
+
+View the list of Selenium keys
+
+```{r}
+as_tibble(selKeys) %>% names()
+```
+
+---
+## Dynamic Pages &mdash; Elements &mdash; Input &mdash; Selenium Keys &mdash; Note
+
+Choosing the body element, you can scroll up and down a page
+
+```{r, eval=FALSE}
+body <- broswer$findElement(using = "css", `value = "body"`)
+body$sendKeysToElement(list(`key = "page_down"`))
+
+```
+
+
+---
+## Dynamic Pages &mdash; Elements &mdash; Input &mdash; Example
+
+Search the demonstration site
+
+```{r, eval=FALSE}
+# navigate to the home page
+browser$navigate("http://luzpar.netlify.app/")
+
+# find the search icon and click on it
+search_icon <- browser$findElement(using = "css", value = ".fa-search")
+search_icon$clickElement()
+
+# find the search bar on the new page and click on it
+search_bar <- browser$findElement(using = "css", value = "#search-query")
+search_bar$clickElement()
+
+# search for the keyword "Law" and click enter
+search_bar$`sendKeysToElement(list(value = "Law", key = "enter"))`
+```
+
+---
+## Dynamic Pages &mdash; Elements &mdash; Input &mdash; Example
+
+Slow down the code where necessary, with the `Sys.sleep`
+- for ethical reasons
+- because R might be faster than the browser
+
+```{r, eval=FALSE}
+# navigate to the home page
+browser$navigate("http://luzpar.netlify.app/")
+
+# find the search icon and click on it
+search_icon <- browser$findElement(using = "css", value = ".fa-search")
+search_icon$clickElement()
+
+# sleep for 2 seconds
+Sys.sleep(2)   #<<
+
+# find the search bar on the new page and click on it
+search_bar <- browser$findElement(using = "css", value = "#search-query")
+search_bar$clickElement()
+
+# search for the keyword "Law" and click enter
+search_bar$sendKeysToElement(list(value = "Law", key = "enter"))
+```
+---
+## Dynamic Pages &mdash; Elements &mdash; Input &mdash; Clear
+
+Clear text, or a value, from an element
+
+```
+search_bar$clearElement()
+```
+
+---
+## Dynamic Pages &mdash; Elements &mdash; Switch Frames
+
+.pull-left[
+
+- Switch to a different frame on a page
+
+  - some pages have multiple frames
+  - you can think of them as browsers within browsers
+  - while in one frame, we cannot work with the page source of another frame
+
+]
+
+
+.pull-right[
+
+```md
+switchToFrame(Id
+             )
+
+```
+
+]
+
+<br>
+
+- Note that
+
+  - there is one such page on the demonstration website
+     - <https://luzpar.netlify.app/documents/>
+     - featuring a shiny app that lives originally lives at <https://resulumit.shinyapps.io/luzpar/>     
+<br>
+  - the `Id` argument takes an element object, unquoted
+     - setting it to `NULL` returns to the default frame
+
+
+---
+## Dynamic Pages &mdash; Elements &mdash; Switch Frames
+
+Switch to a non-default frame
+
+```{r, eval=FALSE}
+
+# navigate to a page and wait for the frame to load
+browser$navigate("https://luzpar.netlify.app/documents/")
+Sys.sleep(4)
+
+# find the frame, which is an element
+app_frame <- browser$findElement("css", "iframe")
+
+# switch to it
+browser$`switchToFrame(Id = app_frame)`
+
+#switch back to the default frame
+browser$`switchToFrame(Id = NULL)`
+
+```
+
+---
+## Dynamic Pages &mdash; Scraping &mdash; Example
+
+**Task:**    
+
+- I need to download specific documents published by the parliament
+   - e.g., proposals and reports
+- The related section of the website is a dynamic page
+    - initially it is empty, and clicking on things do not change the URL
+
+--
+
+<br>
+
+**Plan:**
+
+- Interact with the page until it displays the desired list of documents
+- Get the page source and keep separate the links
+- Write a for loop to
+    - visit the related pages one by one
+    - download the documents
+    
+---
+## Dynamic Pages &mdash; Scraping &mdash; Example
+
+Interact with the page until it displays the desired list of documents
+
+```{r, eval=FALSE}
+# navigate to the desired page and wait a little
+browser$navigate("https://luzpar.netlify.app/documents/")
+Sys.sleep(4)
+
+# switch to the frame with the app
+app_frame <- browser$findElement("css", "iframe")
+browser$switchToFrame(Id = app_frame)
+
+# find and open the drop down menu
+drop_down <- browser$findElement(using = "css", value = ".bs-placeholder")
+drop_down$clickElement()
+
+# choose proposals
+proposal <- browser$findElement(using = 'css', "[id='bs-select-1-1']")
+proposal$clickElement()
+
+# choose reports
+report <- browser$findElement(using = 'css', "[id='bs-select-1-2']")
+report$clickElement()
+
+# close the drop down menu
+drop_down$clickElement()
+
+```
+
+---
+## Dynamic Pages &mdash; Scraping &mdash; Example
+
+Get the page source and keep separate the links
+
+```
+
+```
 
 
 
