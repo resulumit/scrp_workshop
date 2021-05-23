@@ -3485,7 +3485,7 @@ browser$`switchToFrame(Id = NULL)`
 **Plan:**
 
 - Interact with the page until it displays the desired list of documents
-- Get the page source and keep separate the links
+- Get the page source and separate the links
 - Write a for loop to
     - visit the related pages one by one
     - download the documents
@@ -3524,13 +3524,48 @@ drop_down$clickElement()
 ---
 ## Dynamic Pages &mdash; Scraping &mdash; Example
 
-Get the page source and keep separate the links
+Get the page source and separate the links
 
+```{r, eval=FALSE}
+the_links <- browser$getPageSource()[[1]] %>% 
+        read_html() %>% 
+        html_elements("td a") %>% 
+        html_attr("href")
+
+print(the_links)
 ```
 
+.out-t[
 ```
+## [1] "https://luzpar.netlify.app/documents/human-rights-2021/"            
+## [2] "https://luzpar.netlify.app/documents/greenhouse-gas-emissions-2021/"
+## [3] "https://luzpar.netlify.app/documents/tax-reform-2020/"              
+## [4] "https://luzpar.netlify.app/documents/parliamentary-staff-2020/"     
+## [5] "https://luzpar.netlify.app/documents/cyber-security-2019/"          
+## [6] "https://luzpar.netlify.app/documents/electronic-cigarettes-2019/" 
 
+```
+]
 
+---
+## Dynamic Pages &mdash; Scraping &mdash; Example
+
+Write a for loop to download PDFs
+
+```
+for (i in 1:length(the_links)) {
+        
+pdf_link <- bow(url = the_links[i]) %>%
+        scrape() %>%
+        html_elements(css = ".btn-page-header") %>% 
+        html_attr("href") %>% 
+        url_absolute(base = "https://luzpar.netlify.app/")
+
+download.file(url = pdf_link, destfile = basename(pdf_link))
+        
+}
+
+```
 
 ---
 name: reference-slide
