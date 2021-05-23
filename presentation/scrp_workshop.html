@@ -269,7 +269,7 @@ Slides with this background colour indicate that your action is required, for
     - these slides have countdown timers
         - as a guide, not to be followed strictly
     
-<div class="countdown" id="timer_60a95256" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60aa093e" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -282,14 +282,11 @@ Slides with this background colour indicate that your action is required, for
 
 
 ```r
-# read in  the tweets dataset
-df &lt;- read_rds("tweets.rds") %&gt;%
-  
-# split the variable text, create a new variable called da_tweets   
-  unnest_tokens(output = da_tweets, input = text, token = "tweets") %&gt;%
- 
-# remove rows that match any of the stop words as stored in the stop_words dataset 
-  anti_join(stop_words, by = c("da_tweets" = "word")) 
+bow(url = "https://luzpar.netlify.app/members/") %&gt;%
+  scrape() %&gt;%
+  html_elements(css = "td+ td a") %&gt;% 
+  html_attr("href") %&gt;% 
+  url_absolute(base = "https://luzpar.netlify.app/")
 ```
 
 ---
@@ -303,7 +300,7 @@ df &lt;- read_rds("tweets.rds") %&gt;%
 
 - Results that come out as output .out-t[appear as such &amp;mdash; in the same font, on green background]    
 
-    - except very obvious results, such as figures and tables
+    - except some results, such as browsers popping up
     
 --
 
@@ -384,7 +381,7 @@ class: action
    - click on the links to see an individual page for 
        - states, constituencies, members, and documents
 
-<div class="countdown" id="timer_60a9537e" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60aa072f" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
    
@@ -487,7 +484,7 @@ install.packages(c("rvest", "RSelenium", "robotstxt", "polite",
 
 ]
 
-<div class="countdown" id="timer_60a95486" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60aa0621" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -996,8 +993,8 @@ robotstxt(domain = "https://luzpar.netlify.app")
 ##     spiderbar::can_fetch(obj = self$robexclobj, path = paths, 
 ##         user_agent = bot)
 ## }
-## &lt;bytecode: 0x00000173e29e3010&gt;
-## &lt;environment: 0x00000173dd1059c8&gt;
+## &lt;bytecode: 0x000001463d6bc658&gt;
+## &lt;environment: 0x0000014644b1a518&gt;
 ## 
 ## attr(,"class")
 ## [1] "robotstxt"
@@ -1088,7 +1085,7 @@ class: action
 
   - with the `robotstxt` function
 
-<div class="countdown" id="timer_60a9541d" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60aa086b" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">07</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
 </div>
 
@@ -1211,7 +1208,7 @@ class: action
 &lt;br&gt;   
 - compare the look of the front- and back-end
 
-<div class="countdown" id="timer_60a9523d" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60aa081f" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1838,8 +1835,8 @@ read_html("https://luzpar.netlify.app/")
 ```
 ## {html_document}
 ## &lt;html lang="en-us"&gt;
-## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;\n&lt;meta charset="utf-8"&gt;\n&lt;me ...
-## [2] &lt;body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-main" class="page-wrapper"&gt;\n&lt;scr ...
+## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;\n&lt;meta charset="utf-8"&gt;\n&lt;m ...
+## [2] &lt;body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-main" class="page-wrapper"&gt;\n&lt;sc ...
 ```
 
 ---
@@ -1863,8 +1860,8 @@ read_html("https://luzpar.netlify.app/")
 ```
 ## {html_document}
 ## &lt;html lang="en-us"&gt;
-## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;\n&lt;meta charset="utf-8"&gt;\n&lt;me ...
-## [2] &lt;body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-main" class="page-wrapper"&gt;\n&lt;scr ...
+## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;\n&lt;meta charset="utf-8"&gt;\n&lt;m ...
+## [2] &lt;body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-main" class="page-wrapper"&gt;\n&lt;sc ...
 ```
 
 ---
@@ -2063,8 +2060,8 @@ bow(url = "https://luzpar.netlify.app/") %&gt;%
 ```
 ## {html_document}
 ## &lt;html lang="en-us"&gt;
-## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;\n&lt;meta charset="utf-8"&gt;\n&lt;me ...
-## [2] &lt;body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-main" class="page-wrapper"&gt;\n&lt;scr ...
+## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;\n&lt;meta charset="utf-8"&gt;\n&lt;m ...
+## [2] &lt;body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-main" class="page-wrapper"&gt;\n&lt;sc ...
 ```
 
 
@@ -2075,8 +2072,8 @@ read_html("https://luzpar.netlify.app/")
 ```
 ## {html_document}
 ## &lt;html lang="en-us"&gt;
-## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;\n&lt;meta charset="utf-8"&gt;\n&lt;me ...
-## [2] &lt;body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-main" class="page-wrapper"&gt;\n&lt;scr ...
+## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;\n&lt;meta charset="utf-8"&gt;\n&lt;m ...
+## [2] &lt;body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-main" class="page-wrapper"&gt;\n&lt;sc ...
 ```
 
 ---
@@ -2150,7 +2147,7 @@ bow(url = "https://luzpar.netlify.app") %&gt;%
 
 ```
 ## {xml_nodeset (24)}
-##  [1] &lt;a class="js-search" href="#" aria-label="Close"&gt;&lt;i class="fas fa-times-circle text-muted" aria-hidden= ...
+##  [1] &lt;a class="js-search" href="#" aria-label="Close"&gt;&lt;i class="fas fa-times-circle text-muted" aria-hidden ...
 ##  [2] &lt;a class="navbar-brand" href="/"&gt;Parliament of Luzland&lt;/a&gt;
 ##  [3] &lt;a class="navbar-brand" href="/"&gt;Parliament of Luzland&lt;/a&gt;
 ##  [4] &lt;a class="nav-link active" href="/"&gt;&lt;span&gt;Home&lt;/span&gt;&lt;/a&gt;
@@ -2158,15 +2155,15 @@ bow(url = "https://luzpar.netlify.app") %&gt;%
 ##  [6] &lt;a class="nav-link" href="/constituencies/"&gt;&lt;span&gt;Constituencies&lt;/span&gt;&lt;/a&gt;
 ##  [7] &lt;a class="nav-link" href="/members/"&gt;&lt;span&gt;Members&lt;/span&gt;&lt;/a&gt;
 ##  [8] &lt;a class="nav-link" href="/documents/"&gt;&lt;span&gt;Documents&lt;/span&gt;&lt;/a&gt;
-##  [9] &lt;a class="nav-link js-search" href="#" aria-label="Search"&gt;&lt;i class="fas fa-search" aria-hidden="true"&gt; ...
-## [10] &lt;a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preference ...
+##  [9] &lt;a class="nav-link js-search" href="#" aria-label="Search"&gt;&lt;i class="fas fa-search" aria-hidden="true" ...
+## [10] &lt;a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferenc ...
 ## [11] &lt;a href="#" class="dropdown-item js-set-theme-light"&gt;&lt;span&gt;Light&lt;/span&gt;&lt;/a&gt;
 ## [12] &lt;a href="#" class="dropdown-item js-set-theme-dark"&gt;&lt;span&gt;Dark&lt;/span&gt;&lt;/a&gt;
 ## [13] &lt;a href="#" class="dropdown-item js-set-theme-auto"&gt;&lt;span&gt;Automatic&lt;/span&gt;&lt;/a&gt;
-## [14] &lt;a href="https://github.com/resulumit/scrp_workshop" target="_blank" rel="noopener"&gt;a workshop on autom ...
+## [14] &lt;a href="https://github.com/resulumit/scrp_workshop" target="_blank" rel="noopener"&gt;a workshop on auto ...
 ## [15] &lt;a href="https://resulumit.com/" target="_blank" rel="noopener"&gt;Resul Umit&lt;/a&gt;
 ## [16] &lt;a href="https://parliament-luzland.netlify.app/documents/" target="_blank" rel="noopener"&gt;documents&lt;/a&gt;
-## [17] &lt;a href="https://parliament-luzland.netlify.app/constituencies/" target="_blank" rel="noopener"&gt;constit ...
+## [17] &lt;a href="https://parliament-luzland.netlify.app/constituencies/" target="_blank" rel="noopener"&gt;consti ...
 ## [18] &lt;a href="https://parliament-luzland.netlify.app/members/" target="_blank" rel="noopener"&gt;members&lt;/a&gt;
 ## [19] &lt;a href="https://parliament-luzland.netlify.app/states/" target="_blank" rel="noopener"&gt;states&lt;/a&gt;
 ## [20] &lt;a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopener"&gt;Blogdown&lt;/a&gt;
@@ -2189,10 +2186,10 @@ bow(url = "https://luzpar.netlify.app") %&gt;%
 
 ```
 ## {xml_nodeset (9)}
-## [1] &lt;a href="https://github.com/resulumit/scrp_workshop" target="_blank" rel="noopener"&gt;a workshop on automa ...
+## [1] &lt;a href="https://github.com/resulumit/scrp_workshop" target="_blank" rel="noopener"&gt;a workshop on autom ...
 ## [2] &lt;a href="https://resulumit.com/" target="_blank" rel="noopener"&gt;Resul Umit&lt;/a&gt;
 ## [3] &lt;a href="https://parliament-luzland.netlify.app/documents/" target="_blank" rel="noopener"&gt;documents&lt;/a&gt;
-## [4] &lt;a href="https://parliament-luzland.netlify.app/constituencies/" target="_blank" rel="noopener"&gt;constitu ...
+## [4] &lt;a href="https://parliament-luzland.netlify.app/constituencies/" target="_blank" rel="noopener"&gt;constit ...
 ## [5] &lt;a href="https://parliament-luzland.netlify.app/members/" target="_blank" rel="noopener"&gt;members&lt;/a&gt;
 ## [6] &lt;a href="https://parliament-luzland.netlify.app/states/" target="_blank" rel="noopener"&gt;states&lt;/a&gt;
 ## [7] &lt;a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopener"&gt;Blogdown&lt;/a&gt;
@@ -2875,14 +2872,6 @@ Scraping dynamic pages involves three main tasks
   - downloaded 4,892 times last month
   - last updated in February 2020
 
---
-&lt;br&gt;
-
-- it is a little bit of a special case
-  
-  - code might look slightly unfamiliar to beginners
-  - as it follows the logic behind Selenium
-  
 
 --
 
@@ -2892,8 +2881,33 @@ Scraping dynamic pages involves three main tasks
 
   - you will find solutions to, or help for, any issues online
   - see the [package documentation](https://cran.r-project.org/web/packages/RSelenium/RSelenium.pdf) and the [vignettes](https://cran.r-project.org/web/packages/RSelenium/vignettes/basics.html) for basic functionality
-  - Google searches return code in various languages
+  - Google searches return code and turotials in various languages
       - not only R but also Python, Java
+
+---
+## Dynamic Pages &amp;mdash; `Rselenium` &amp;mdash; Overview
+
+- The package involves more methods than functions
+  
+  - code look slightly unusual
+  - as it follows the logic behind Selenium
+
+--
+
+&lt;br&gt;
+
+- It allows interacting with two things &amp;mdash; and it is crucial that we are aware of the differences
+
+  - browsers
+      - e.g., opening a browser and navigating to ta page     
+&lt;br&gt;
+  - elements
+      - e.g., opening and clicking on a drop-down menu
+
+---
+class: center, middle
+
+## Interacting with Browsers
 
 ---
 ## Dynamic Pages &amp;mdash; `Rselenium` &amp;mdash; Starting a Server
@@ -3026,7 +3040,7 @@ binman::list_versions("chromedriver")
 
 - Note that
 
-   - the browser says "Chrome is being controlled by automated test software."
+   - the browser says .yellow-h["Chrome is being controlled by automated test software."]
    
    - you should avoid controlling this browser manually
 
@@ -3045,10 +3059,14 @@ rsDriver(`chromever = "90.0.4430.24"`)
 ---
 ## Dynamic Pages &amp;mdash; `Rselenium` &amp;mdash; Starting a Server
 
-Save the client as an object
+Save the .yellow-h[client] as an object
 
 ```md
 `browser` &lt;- rsDriver()`$[["client"]]`
+```
+
+```md
+class(browser)
 ```
 
 &lt;br&gt;
@@ -3056,10 +3074,10 @@ Save the client as an object
 Note that
 
 - `rsDriver()` creates a client and a server
-   - our code will control the client
+   - the code above singles out the client, with which our code will interact
    - client is best thought as the browser itself
-   - you can give it any name &amp;mdash; I prefer to call it `browser`
-   
+       - it has the class of `remoteDriver`
+
 ---
 ## Dynamic Pages &amp;mdash; `Rselenium` &amp;mdash; Navigate
 
@@ -3084,9 +3102,9 @@ browser`$`navigate("https://luzpar.netlify.app")
 
 Note that
 
-- `navigate` is called a method, not a function
+- `navigate` is called .yellow-h[a method, not a function]
     - it cannot be piped into `browser`
-    - use the dollar sign &lt;span style="background-color: #ffff88;"&gt;$&lt;/span&gt; notation
+    - use the dollar sign &lt;span style="background-color: #ffff88;"&gt;$&lt;/span&gt; notation instead
 
 ---
 ## Dynamic Pages &amp;mdash; `Rselenium` &amp;mdash; Navigate
@@ -3138,6 +3156,7 @@ Refresh the page
 ```md
 browser$refresh()
 ```
+
 ---
 ## Dynamic Pages &amp;mdash; `Rselenium` &amp;mdash; Navigate
 
@@ -3159,6 +3178,7 @@ browser$getTitle()
 
 Close the browser
 - which will not close the session on the server
+    - recall that we singled the client out
 
 ```md
 browser$close()
@@ -3168,10 +3188,12 @@ browser$close()
 
 Open a new browser
 - which does not require the `rdDriver` function
+   - because the server is still running
 
 ```md
 browser$open()
 ```
+
 ---
 ## Dynamic Pages &amp;mdash; `Rselenium` &amp;mdash; Get Page Source
 
@@ -3195,8 +3217,12 @@ browser$getPageSource()`[[1]]`
 Note that
 
 - this method returns a list
-   - XML source is in the first item     
+   - XML source is in the first item
+   - this is why we need the .inline-c[[[1]]] bit         
 &lt;br&gt;
+- this is akin to `read_html()` for static pages
+    - or `bow()` `%&gt;%` `scrape()`    
+&lt;br&gt;    
 - `rvest` usually takes over after this step
 
 ---
@@ -3242,6 +3268,8 @@ browser$getPageSource()[[1]] %&gt;%
         html_attr("href")
 ```
 
+&lt;br&gt;
+
 Note that
 
 - this method gets the source for only what is physically visible on the browser
@@ -3253,7 +3281,26 @@ browser$browser$maxWindowSize()
 ```
 
 ---
+## Dynamic Pages &amp;mdash; `Rselenium` &amp;mdash; Get Page Source
 
+Get the page source
+- by using both packages
+
+```md
+browser$getPageSource()[[1]] %&gt;% 
+        `read_html() %&gt;%` 
+        html_elements("#title a") %&gt;% 
+        html_attr("href")
+```
+
+&lt;br&gt;
+
+Note that
+
+- we still need the `read_html()` function
+   - to turn XML into HTML
+
+---
 
 ---
 name: reference-slide

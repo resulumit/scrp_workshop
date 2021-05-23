@@ -292,14 +292,11 @@ Slides with this background colour indicate that your action is required, for
     - long codes and texts will have their own line(s)
 
 ```{r, demonstration, eval=FALSE}
-# read in  the tweets dataset
-df <- read_rds("tweets.rds") %>%
-  
-# split the variable text, create a new variable called da_tweets   
-  unnest_tokens(output = da_tweets, input = text, token = "tweets") %>%
- 
-# remove rows that match any of the stop words as stored in the stop_words dataset 
-  anti_join(stop_words, by = c("da_tweets" = "word")) 
+bow(url = "https://luzpar.netlify.app/members/") %>%
+  scrape() %>%
+  html_elements(css = "td+ td a") %>% 
+  html_attr("href") %>% 
+  url_absolute(base = "https://luzpar.netlify.app/")
 ```
 
 ---
@@ -313,7 +310,7 @@ df <- read_rds("tweets.rds") %>%
 
 - Results that come out as output .out-t[appear as such &mdash; in the same font, on green background]    
 
-    - except very obvious results, such as figures and tables
+    - except some results, such as browsers popping up
     
 --
 
@@ -2660,14 +2657,6 @@ Scraping dynamic pages involves three main tasks
   - downloaded `r format(sum(cran_downloads(when = "last-month", packages = "RSelenium")$count), big.mark=",")` times last month
   - last updated in February 2020
 
---
-<br>
-
-- it is a little bit of a special case
-  
-  - code might look slightly unfamiliar to beginners
-  - as it follows the logic behind Selenium
-  
 
 --
 
@@ -2677,8 +2666,33 @@ Scraping dynamic pages involves three main tasks
 
   - you will find solutions to, or help for, any issues online
   - see the [package documentation](https://cran.r-project.org/web/packages/RSelenium/RSelenium.pdf) and the [vignettes](https://cran.r-project.org/web/packages/RSelenium/vignettes/basics.html) for basic functionality
-  - Google searches return code in various languages
+  - Google searches return code and turotials in various languages
       - not only R but also Python, Java
+
+---
+## Dynamic Pages &mdash; `Rselenium` &mdash; Overview
+
+- The package involves more methods than functions
+  
+  - code look slightly unusual
+  - as it follows the logic behind Selenium
+
+--
+
+<br>
+
+- It allows interacting with two things &mdash; and it is crucial that we are aware of the differences
+
+  - browsers
+      - e.g., opening a browser and navigating to ta page     
+<br>
+  - elements
+      - e.g., opening and clicking on a drop-down menu
+
+---
+class: center, middle
+
+## Interacting with Browsers
 
 ---
 ## Dynamic Pages &mdash; `Rselenium` &mdash; Starting a Server
@@ -2805,7 +2819,7 @@ binman::list_versions("chromedriver")
 
 - Note that
 
-   - the browser says "Chrome is being controlled by automated test software."
+   - the browser says .yellow-h["Chrome is being controlled by automated test software."]
    
    - you should avoid controlling this browser manually
 
@@ -2826,10 +2840,14 @@ knitr::include_graphics("scrp_workshop_files/images_data/chrome_works.png")
 ---
 ## Dynamic Pages &mdash; `Rselenium` &mdash; Starting a Server
 
-Save the client as an object
+Save the .yellow-h[client] as an object
 
 ```md
 `browser` <- rsDriver()`$[["client"]]`
+```
+
+```md
+class(browser)
 ```
 
 <br>
@@ -2837,10 +2855,10 @@ Save the client as an object
 Note that
 
 - `rsDriver()` creates a client and a server
-   - our code will control the client
+   - the code above singles out the client, with which our code will interact
    - client is best thought as the browser itself
-   - you can give it any name &mdash; I prefer to call it `browser`
-   
+       - it has the class of `remoteDriver`
+
 ---
 ## Dynamic Pages &mdash; `Rselenium` &mdash; Navigate
 
@@ -2867,9 +2885,9 @@ browser`$`navigate("https://luzpar.netlify.app")
 
 Note that
 
-- `navigate` is called a method, not a function
+- `navigate` is called .yellow-h[a method, not a function]
     - it cannot be piped into `browser`
-    - use the dollar sign <span style="background-color: #ffff88;">$</span> notation
+    - use the dollar sign <span style="background-color: #ffff88;">$</span> notation instead
 
 ---
 ## Dynamic Pages &mdash; `Rselenium` &mdash; Navigate
@@ -2921,6 +2939,7 @@ Refresh the page
 ```md
 browser$refresh()
 ```
+
 ---
 ## Dynamic Pages &mdash; `Rselenium` &mdash; Navigate
 
@@ -2942,6 +2961,7 @@ browser$getTitle()
 
 Close the browser
 - which will not close the session on the server
+    - recall that we singled the client out
 
 ```md
 browser$close()
@@ -2951,10 +2971,12 @@ browser$close()
 
 Open a new browser
 - which does not require the `rdDriver` function
+   - because the server is still running
 
 ```md
 browser$open()
 ```
+
 ---
 ## Dynamic Pages &mdash; `Rselenium` &mdash; Get Page Source
 
@@ -2978,8 +3000,12 @@ browser$getPageSource()`[[1]]`
 Note that
 
 - this method returns a list
-   - XML source is in the first item     
+   - XML source is in the first item
+   - this is why we need the .inline-c[[[1]]] bit         
 <br>
+- this is akin to `read_html()` for static pages
+    - or `bow()` `%>%` `scrape()`    
+<br>    
 - `rvest` usually takes over after this step
 
 ---
@@ -3025,6 +3051,8 @@ browser$getPageSource()[[1]] %>%
         html_attr("href")
 ```
 
+<br>
+
 Note that
 
 - this method gets the source for only what is physically visible on the browser
@@ -3036,7 +3064,26 @@ browser$browser$maxWindowSize()
 ```
 
 ---
+## Dynamic Pages &mdash; `Rselenium` &mdash; Get Page Source
 
+Get the page source
+- by using both packages
+
+```md
+browser$getPageSource()[[1]] %>% 
+        `read_html() %>%` 
+        html_elements("#title a") %>% 
+        html_attr("href")
+```
+
+<br>
+
+Note that
+
+- we still need the `read_html()` function
+   - to turn XML into HTML
+
+---
 
 ---
 name: reference-slide
