@@ -480,8 +480,7 @@ class: action
 Install the packages that we need
 
 ```{r eval=FALSE, tidy=FALSE}
-install.packages(c("rvest", "RSelenium", "robotstxt", "polite",
-                   "tidyverse", "tidytext"))
+install.packages(c("rvest", "RSelenium", "robotstxt", "polite", "dplyr"))
 ```
 
 
@@ -501,8 +500,7 @@ class: action
 Install the packages that we need
 
 ```{r eval=FALSE, tidy=FALSE}
-install.packages(c("rvest", "RSelenium", "robotstxt", "polite",
-                   "tidyverse", "tidytext"))
+install.packages(c("rvest", "RSelenium", "robotstxt", "polite", "dplyr"))
 ```
 
 <br>
@@ -520,27 +518,8 @@ We will use
 --
 - `polite` ([Perepolkin, 2019](https://cran.r-project.org/web/packages/polite/index.html)), for compliance with permissions to scrape websites
 
----
-class: action
-
-## R Packages &mdash; Install from within RStudio
-
-```{r eval=FALSE, tidy=FALSE}
-install.packages(c("rvest", "RSelenium", "robotstxt", "polite",
-                   "tidyverse", "tidytext"))
-
-```
-
-- `tidyverse` ([Wickham & RStudio 2019](https://cran.r-project.org/web/packages/tidyverse/index.html)), for various tasks
-
-    - including data manipulation, visualisation
-    - alternative: e.g., `base` R
-
 --
-<br>
-
-- `tidytext` ([Robinson & Silge, 2021](https://cran.r-project.org/web/packages/tidytext/index.html)), for working with text as data
-
+- `dplyr` ([Wickham et al, 2021](https://cran.r-project.org/web/packages/dplyr/index.html)), for data manipulation
 
 ---
 class: action
@@ -572,8 +551,7 @@ library(rvest)
 library(RSelenium)
 library(robotstxt)
 library(polite)
-library(tidyverse)
-library(tidytext)
+library(dplyr)
 ```
 
 ]
@@ -1975,17 +1953,26 @@ read_html("https://luzpar.netlify.app/")
 ---
 ## Static Pages &mdash; `rvest` &mdash; Get Source Code
 
-The difference occurs when there is protocol against 
+The difference occurs when there is a protocol against 
 
 ```md
-bow(url = "https://luzpar.netlify.app`/states/`",
-    user_agent = `"googlebot"`) %>%  
-    scrape()
+bow(url = "https://luzpar.netlify.app`/states/`", user_agent = `"googlebot"`)
 ```
 
 ```{r, echo=FALSE}
-bow(url = "https://luzpar.netlify.app/states/",
-    user_agent = "googlebot") %>%  
+bow(url = "https://luzpar.netlify.app/states/", user_agent = "googlebot")
+```
+
+<br>
+
+
+```md
+bow(url = "https://luzpar.netlify.app/states/", user_agent = "googlebot") `%>%` 
+    `scrape()`
+```
+
+```{r, echo=FALSE}
+bow(url = "https://luzpar.netlify.app/states/", user_agent = "googlebot") %>%  
     scrape()
 ```
 
@@ -3084,6 +3071,13 @@ Note that
    - to turn XML into HTML
 
 ---
+class: center, middle
+
+## Interacting with Elements
+
+---
+
+
 
 ---
 name: reference-slide
@@ -3106,22 +3100,9 @@ Meissner, P., & Ren, K. (2020). [robotstxt: A 'robots.txt' Parser and 'Webbot'/'
 
 Perepolkin, D. (2019). [polite: Be Nice on the Web](https://cran.r-project.org/web/packages/polite/index.html). R package, version 0.1.1.
 
-Robinson, D., & Silge, J. (2021). [tidytext: Text mining using 'dplyr', 'ggplot2', and other tidy tools](https://cran.r-project.org/web/packages/tidytext/index.html). R package, version 0.3.0.
-
-Silge, J., & Robinson, D. (2017). [Text mining with R: A tidy approach](https://www.tidytextmining.com). O'Reilly. Open access at
-
-Wickham, H. (2019). [stringr: Simple, Consistent Wrappers for Common String Operations](https://cran.r-project.org/web/packages/stringr/index.html). R package, version 1.4.0.
-
 Wickham, H. (2021). [rvest: Easily Harvest (Scrape) Web Pages](https://cran.r-project.org/web/packages/rvest/index.html). R package, version 1.0.0.
 
-
-
-
-Wickham, H., Chang, W., Henry, L., Pedersen, T. L., Takahashi, K., Wilke, C., Woo, K., Yutani, H. and Dunnington, D. (2020). [dplyr: A grammar of data manipulation](https://cran.r-project.org/web/packages/dplyr/index.html). R package, version 0.8.5.
-
-Wickham, H. and Grolemund, G. (2019). [R for data science](https://r4ds.had.co.nz). O'Reilly. Open access at [https://r4ds.had.co.nz](https://r4ds.had.co.nz/).
-
-Wickham, H., RStudio (2019). [https://cran.r-project.org/web/packages/tidyverse/index.html](tidyverse: Easily Install and Load the 'Tidyverse'). R package, version 3.3.3.
+Wickham, H., François, R., Henry, L., & Müller, K. (2021). [dplyr: A grammar of data manipulation](https://cran.r-project.org/web/packages/dplyr/index.html). R package, version 1.0.6.
 
 Xie, Y. (2020). [xaringan: Presentation Ninja](https://cran.r-project.org/web/packages/xaringan/index.html). R package, version 0.19.
 
