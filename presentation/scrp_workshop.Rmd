@@ -139,7 +139,7 @@ Resul Umit
 
 - One day, on how to automate the process of extracting data from websites
 
-  - 150+ slides, many exercises
+  - 150+ slides, 15+ exercises
   - a [demonstration website](https://luzpar.netlify.app/) for practice
 
 --
@@ -2190,7 +2190,7 @@ bow(url = "https://luzpar.netlify.app/states/", user_agent = "googlebot") `%>%`
        - css or xpath     
 <br>
   - we will work with css in this workshop
-       - facilitated by ScrapeMate
+       - facilitated by Chrome and SelectorGagdet
        
 <br>
 
@@ -2240,7 +2240,7 @@ bow(url = "https://luzpar.netlify.app") %>%
 ## Static Pages &mdash; `rvest` &mdash; `html_elements`
 
 I would like to get only the URLs on the main body of the page
-- ScrapeMate tells me the correct selector is `#title` `a`
+- SelectorGadget tells me the correct selector is `#title` `a`
 
 ```{r, eval=FALSE}
 bow(url = "https://luzpar.netlify.app") %>%
@@ -2440,7 +2440,7 @@ bow(url = "https://luzpar.netlify.app/members/") %>%
 ---
 ## Static Pages &mdash; `rvest`
 
-We can create the same tibble with `html_text`
+We can create the same tibble with `html_text`, which requires getting each variable separately to be merged
 
 ```{r, eval=FALSE}
 tibble(
@@ -2469,7 +2469,7 @@ tibble(
 Keep the number of interactions with websites to minimum
 - by saving the source code as an object, which could be used repeatedly
 
-```{r, eval=FALSE}
+```md
 `the_page <- bow(url = "https://luzpar.netlify.app/members/")` %>%
             `scrape()`
 
@@ -2493,20 +2493,18 @@ tibble(
 ---
 class: action
 
-## Exercises
+## Exercise
 
-x) Create a dataframe out of the table at <https://luzpar.netlify.app/members/>
+9) Create a dataframe out of the table at <https://luzpar.netlify.app/members/>
 - with as many variables as possible
+- hints:
+   - start with the code in the previous slide, and add new variables from attributes
+   - the first two columns have important attributes
+      - e.g., URLs for the pages for members and their constituencies
+      - make these URLs absolute   
+      - see what other attributes are there to collect     
 
-<br>
-
-Note that 
-- the first two columns have important attributes
-
-   - e.g., URLs for the pages for members and their constituencies
-       - make sure these URLs are absolute   
-<br>       
-  - see what other attributes are there to collect     
+`r countdown(minutes = 15, seconds = 00, top = 0)`
 
 ---
 ## Static Pages &mdash; Crawling &mdash; Overview
@@ -2788,10 +2786,29 @@ head(df, 10)
 ]
 
 ---
+class: action
+
+## Exercise
+
+10) Crawl into members' personal pages to create a rich dataset
+- with members being the unit of observation
+
+
+<br>
+
+Hints:
+- see an example dataset at <https://luzpar.netlify.app/files/exercises/static_data.csv>
+- start with the related code in the previous slides, and adopt it to your needs
+-  practice with 3 members until you are ready to run the loop for all 
+    - e.g., by replacing `1:length(the_links)` with `1:3` for the loop
+
+`r countdown(minutes = 45, seconds = 00, top = 0)`
+
+---
 name: part5
 class: inverse, center, middle
 
-# Part 4. Scraping Dynamic Pages
+# Part 5. Scraping Dynamic Pages
 
 .footnote[
 
@@ -2808,7 +2825,9 @@ class: inverse, center, middle
         - while the URL remains the same    
 <br>
    - depending on, for example, their own input
-       - e.g., clicks, scrolls
+       - e.g., clicks, scrolls     
+<br>
+   - <https://luzpar.netlify.app/documents/> is a page with a dynamic part
 
 --
 
@@ -2816,7 +2835,7 @@ class: inverse, center, middle
 
 - Dynamic pages are more difficult than static pages to scrape
    
-   - it involves three, not two, steps
+   - it involves three, instead of two, steps
    - we will have a new package, `RSelenium`, for the additional step
 
 
@@ -2870,10 +2889,10 @@ Scraping dynamic pages involves three main tasks
 
 <br>
 
-- It allows interacting with two things &mdash; and it is crucial that we are aware of the differences
+- It allows interacting with two things &mdash; and it is crucial that we are aware of the difference
 
   - browsers
-      - e.g., opening a browser and navigating to ta page     
+      - e.g., opening a browser and navigating to a page     
 <br>
   - elements
       - e.g., opening and clicking on a drop-down menu
@@ -2888,9 +2907,9 @@ class: center, middle
 
 .pull-left[
 
-Use the `rdDriver` function to start a server
+- Use the `rsDriver` function to start a server
 
-- so that you can control a web browser from within R
+  - so that you can control a web browser from within R
 
 <br>
 
@@ -2917,7 +2936,7 @@ rsDriver(port = 4567L,
 
 .pull-left[
 
-- Use the `rdDriver` function to start a server
+- Use the `rsDriver` function to start a server
     - so that you can control a web browser from within R
 
 <br>
@@ -2948,7 +2967,7 @@ rsDriver(`port` = 4567L,
 
 .pull-left[
 
-- Use the `rdDriver` function to start a server
+- Use the `rsDriver` function to start a server
     - so that you can control a web browser from within R
 
 <br>
@@ -3001,22 +3020,26 @@ binman::list_versions("chromedriver")
 
 - Then the function works
 
-  - and a web browser opens as a result
+  - a web browser opens as a result
+  - an R object named .yellow-h[driver] is created
 
 <br>
 
 - Note that
 
    - the browser says .yellow-h["Chrome is being controlled by automated test software."]
+    
+    - you should avoid controlling this browser manually
+    
+    - you should also avoid creating multiple servers
    
-   - you should avoid controlling this browser manually
 
 ]
 
 .pull-right[
 
 ```md
-rsDriver(`chromever = "90.0.4430.24"`)
+driver <- rsDriver(`chromever = "90.0.4430.24"`)
 ```
 
 ```{r, echo=FALSE}
@@ -3028,14 +3051,11 @@ knitr::include_graphics("scrp_workshop_files/images_data/chrome_works.png")
 ---
 ## Dynamic Pages &mdash; Browsers &mdash; Starting a Server
 
-Save the .yellow-h[client] as an object
+Separate the .yellow-h[client] and .yellow-h[server] as different objects
 
-```md
-`browser` <- rsDriver()`$[["client"]]`
-```
-
-```md
-class(browser)
+```{r, eval=FALSE}
+browser <- driver$client
+server <- driver$server
 ```
 
 <br>
@@ -3053,7 +3073,7 @@ Note that
 Navigate to a page with the following notation
 
 ```md
-browser`$navigate`("https://luzpar.netlify.app")
+browser`$navigate`(url = "https://luzpar.netlify.app")
 ```
 
 ```{r, echo=FALSE}
@@ -3076,6 +3096,7 @@ Note that
 - `navigate` is called .yellow-h[a method, not a function]
     - it cannot be piped into `browser`
     - use the dollar sign <span style="background-color: #ffff88;">$</span> notation instead
+    - it is not necessary to type the name of the `url` argument 
 
 ---
 ## Dynamic Pages &mdash; Browsers &mdash; Navigate
@@ -3158,7 +3179,7 @@ browser$close()
 <br>
 
 Open a new browser
-- which does not require the `rdDriver` function
+- which does not require the `rsDriver` function
    - because the server is still running
 
 ```md
@@ -3270,6 +3291,33 @@ Note that
 
 - we still need the `read_html()` function
    - to turn XML into HTML
+
+
+---
+class: action
+
+## Exercises
+
+11) Navigate to and get the source code of a page
+- e.g., <https://luzpar.netlify.app/constituencies/>
+- by using both packages
+
+
+<br>
+
+13) See what other methods are available to interact with browsers
+- by typing the object name for your client into R console
+   - followed by the dollar sign
+   - and hitting the tab key on your keyboard if necessary
+- read the description for one or more of them
+
+<br>
+
+14) Try one or more new methods
+- e.g., take a screenshot of your browser
+   - and view it in R
+
+`r countdown(minutes = 15, seconds = 00, top = 0)`
 
 ---
 class: center, middle
@@ -3611,6 +3659,26 @@ search_bar$clearElement()
 ```
 
 ---
+class: action
+
+## Exercise
+
+15) Conduct an internet search programatically
+- navigate to <https://duckduckgo.com/>
+   - just to keep it simple as Google would require you to scroll down and accept a policy     
+<br>   
+- find, highlight, and fill in the search bar
+    - hit enter
+    
+<br>
+
+16) Scroll down programatically, and up
+- to see all results
+
+
+`r countdown(minutes = 10, seconds = 00, top = 0)`
+
+---
 ## Dynamic Pages &mdash; Elements &mdash; Switch Frames
 
 .pull-left[
@@ -3766,6 +3834,26 @@ download.file(url = pdf_link, destfile = basename(pdf_link))
 }
 
 ```
+
+---
+class: action
+
+## Exercise
+
+17) Collect data on a subset of documents
+- article tags and image credits
+- for documents within the Law and Proposal categories
+- published after 2019
+
+
+<br>
+
+Hint
+- start with the related code in the previous slides, and adopt it to your needs  
+
+
+`r countdown(minutes = 30, seconds = 00, top = 0)`
+
 
 ---
 name: reference-slide
