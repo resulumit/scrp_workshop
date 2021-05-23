@@ -104,10 +104,7 @@ library(cranlogs)
 
 .footnote[
 
-[Skip intro &mdash; To the contents slide](#contents-slide).
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="mailto:resuluy@uio.no?subject=Twitter workshop">I can teach this workshop at your institution &mdash; Email me</a>.
-
-]
+[Skip intro &mdash; To the contents slide](#contents-slide).]
 
 ---
 ## Who am I?
@@ -142,7 +139,7 @@ Resul Umit
 
 - One day, on how to automate the process of extracting data from websites
 
-  - 200+ slides, 75+ exercises
+  - 150+ slides, many exercises
   - a [demonstration website](https://luzpar.netlify.app/) for practice
 
 --
@@ -245,7 +242,7 @@ name: contents-slide
 ---
 ## The Workshop &mdash; Organisation
 
-- ~~Sit in groups of two~~ Breakout in groups of two for exercises
+- Breakout in groups of two for exercises
 
   - participants learn as much from their partner as from instructors
   - switch partners after every other part
@@ -277,8 +274,7 @@ Slides with this background colour indicate that your action is required, for
     - e.g., installing R 
     
 - completing the exercises
-    - e.g., downloading tweets
-    - there are 75+ exercises
+    - e.g., checking website protocols
     - these slides have countdown timers
         - as a guide, not to be followed strictly
     
@@ -287,7 +283,7 @@ Slides with this background colour indicate that your action is required, for
 ---
 ## The Workshop &mdash; Organisation &mdash; Slides
 
-- Codes and texts that go in R console or scripts .inline-c[appear as such &mdash; in a different font, on gray background]    
+- Code and text that go in R console or scripts .inline-c[appear as such &mdash; in a different font, on gray background]    
 
     - long codes and texts will have their own line(s)
 
@@ -310,7 +306,7 @@ bow(url = "https://luzpar.netlify.app/members/") %>%
 
 - Results that come out as output .out-t[appear as such &mdash; in the same font, on green background]    
 
-    - except some results, such as browsers popping up
+  - with some results, such as browsers popping up
     
 --
 
@@ -319,7 +315,7 @@ bow(url = "https://luzpar.netlify.app/members/") %>%
     
 - Specific sections are .yellow-h[highlighted yellow as such] for emphasis
 
-    - these could be for anything &mdash; codes and texts in input, results in output, and/or texts on slides
+  - these could be for anything &mdash; codes and texts in input, results in output, and/or texts on slides
     
 --
 
@@ -358,7 +354,7 @@ class: action
 
   - will remain accessible after the workshop
   - might crash for some Safari users
-      - if using a different browser application is not an option, view the [PDF version of the slides](https://github.com/resulumit/twtr_workshop/blob/master/presentation/twtr_workshop.pdf) on GitHub
+      - if using a different browser application is not an option, view the [PDF version of the slides](https://github.com/resulumit/scrp_workshop/blob/master/presentation/scrp_workshop.pdf) on GitHub
   
 .footnote[
 
@@ -387,9 +383,11 @@ class: action
 <br>
  
 - Explore the website now
-   - see the four sections
+
    - click on the links to see an individual page for 
        - states, constituencies, members, and documents
+   - notice that the documents section is different than the rest
+       - it is a page with dynamic frame
 
 `r countdown(minutes = 5, seconds = 00, top = 0)`
    
@@ -421,7 +419,6 @@ class: action
 <sup>*</sup> The same applies to all software that follows &mdash; consider updating if you have them already installed. This ensures everyone works with the latest, exactly the same, tools.
 
 ]
-
 
 ---
 class: action
@@ -540,7 +537,7 @@ class: action
     - e.g., `scrape_web.R`
 
 
-- Load the `rvest` and other packages
+- Load `rvest` and other packages
 
 ]
 
@@ -586,26 +583,28 @@ class: action
 ---
 class: action
 
-## ScrapeMate &mdash; Add Extension to Browser 
+## SelectorGadget &mdash; Add Extension to Browser 
 
-- An [open source software](https://github.com/hermit-crab/ScrapeMate) extension to Chrome, Firefox  
+- An extension for Chrome
 
    - facilitates selecting what to scrape from a webpage
    - optional, but highly recommended
+   - [open source software](https://github.com/cantino/selectorgadget)
+
 
 <br>
 
-- Add the extension to your preferred browser
+- Add the extension to your browser
    
-  - for Chrome, search at <https://chrome.google.com/webstore/category/extensions>
-  - for Firefox, search at <https://addons.mozilla.org/>
+  - search for it at <https://chrome.google.com/webstore/category/extensions>
+  - if you cannot use Chrome, <a href="javascript:(function(){var%20s=document.createElement('div');s.innerHTML='Loading...';s.style.color='black';s.style.padding='20px';s.style.position='fixed';s.style.zIndex='9999';s.style.fontSize='3.0em';s.style.border='2px%20solid%20black';s.style.right='40px';s.style.top='40px';s.setAttribute('class','selector_gadget_loading');s.style.background='white';document.body.appendChild(s);s=document.createElement('script');s.setAttribute('type','text/javascript');s.setAttribute('src','https://dv0akt2986vzh.cloudfront.net/unstable/lib/selectorgadget.js');document.body.appendChild(s);})();">drag and drop this link</a> to your bookmarks bar
 
 <br>
 
-- If you cannot use Chrome or Firefox
-   - drag and drop the following link to your bookmarks bar: <a href="javascript:(function(){var%20s=document.createElement('div');s.innerHTML='Loading...';s.style.color='black';s.style.padding='20px';s.style.position='fixed';s.style.zIndex='9999';s.style.fontSize='3.0em';s.style.border='2px%20solid%20black';s.style.right='40px';s.style.top='40px';s.setAttribute('class','selector_gadget_loading');s.style.background='white';document.body.appendChild(s);s=document.createElement('script');s.setAttribute('type','text/javascript');s.setAttribute('src','https://dv0akt2986vzh.cloudfront.net/unstable/lib/selectorgadget.js');document.body.appendChild(s);})();">SelectorGadget</a>
-       - another &mdash; similar but older &mdash; [open source software](https://github.com/cantino/selectorgadget) with the same functionality
+- [ScrapeMate](https://github.com/hermit-crab/ScrapeMate) is an alternative extension
 
+   - for both Chrome and Firefox
+   - on Firefox, search at <https://addons.mozilla.org/>
 
 ---
 ## Other Resources<sup>*</sup>
@@ -614,17 +613,11 @@ class: action
 
    - available at <https://cran.r-project.org/web/packages/RSelenium/vignettes/basics.html>
 
---
-
-<br>
 
 - R for Data Science ([Wickham & Grolemund, 2019](https://r4ds.had.co.nz/))
   
    - open access at <https://r4ds.had.co.nz>
    
---
-
-<br>
 
 - Text Mining with R: A Tidy Approach ([Silge & Robinson, 2017](https://www.tidytextmining.com/))
  
@@ -680,7 +673,6 @@ class: inverse, center, middle
 ## Considerations &mdash; the Ethics
 
 - Web scraping might be unethical
-   - even when it is legal
    - depending on who is scraping what, why, and how
    - reflect before you scrape
 
@@ -690,14 +682,13 @@ class: inverse, center, middle
 
 - Web scraping might be more likely to be unethical if, for example,    
 <br>
-   - it is &mdash; edging towards &mdash; illegal
+   - it is &mdash; edging towards &mdash; being illegal
    - it does not respect the restrictions
       - as defined in `robots.txt` files    
 <br>
    - it harvests data 
        - that is otherwise available to download, e.g., through APIs
        - without purpose, at dangerous speed, repeatedly
-
 
 ---
 ## Considerations &mdash; the Ethics &mdash; `robots.txt`
@@ -712,14 +703,14 @@ class: inverse, center, middle
 
 <br>
 
-- The rules in `robots.txt` cannot not enforced
+- The rules in `robots.txt` cannot not enforced upon scrapers
   - but should be respected for ethical reasons
   
 <br>
 
 - The language in `robots.txt` files is specific but intuitive
   - easy to read and understand
-  - the `robotstxt` package makes it even easier
+  - the `robotstxt` package makes these even easier
 
 ---
 ## Considerations &mdash; the Ethics &mdash; `robots.txt` &mdash; Syntax
@@ -764,7 +755,7 @@ class: inverse, center, middle
 
 - Websites define their own values
 
-   - after the colon and a white space
+   - after a colon and a white space
 
 <br>
 
@@ -773,7 +764,7 @@ class: inverse, center, middle
    - &#42; indicates the protocol is for everyone
    - `/` indicates all sections and pages
    - `/about/` indicates a specific path
-   - values for `Crawl-delay` indicate seconds    
+   - values for `Crawl-delay` are in seconds    
 <br>   
    - this website allows anyone to scrape, provided that
        - `/about/` is left out, and 
@@ -796,7 +787,7 @@ Crawl-delay: `5`
 ---
 ## Considerations &mdash; the Ethics &mdash; `robots.txt` &mdash; Syntax
 
-Files might include optional comments, written after he number sign .yellow-h[&#x23;]
+Files might include optional comments, written after the number sign .yellow-h[&#x23;]
 
 
 ```md
@@ -1005,7 +996,7 @@ class: action
 
 - Websites are designed for visitors with human-speed in mind
 
-   - computer-speed visits can overload servers, depending on their bandwidth
+   - computer-speed visits can overload servers, depending on bandwidth
       - popular websites might have more bandwidth
       - but, they might attract multiple scrapers at the same time
 
@@ -1016,7 +1007,7 @@ class: action
   - waiting time may or may not be defined in the protocol
       - lookout for, and respect, the `Crawl-delay` key in `robots.txt`     
 <br>
-  - [Part 4](#part4) covers how to wait
+  - [Part 4](#part4) and [Part 5](#part5) covers how to wait
   
 <br>
 
@@ -1075,14 +1066,13 @@ class: inverse, center, middle
 
 - Web scraping requires working with the source code
 
-   - even when harvesting the visible only
-   - but source code is rarely a nuisance    
+   - even when scraping only what is already visible
+   - to choose one or more desired parts of the visible
+      - e.g., text in table and/or bold only    
 <br>
-      - allows choosing one or more desired parts of the visible
-           - e.g., text in table and/or bold only    
-<br>
-      - offers more, invisible, data
-           - e.g., URLs hidden under text
+
+- Source code also offers more, invisible, data to be scraped
+      - e.g., URLs hidden under text
            
 ---
 ## Webpage Source Code &mdash; View in Browser
@@ -1121,7 +1111,7 @@ class: action
 5) Search for a word or a phrase in source code
 - copy from the front-end page
 - search in plain text code or in DOM
-   - the `Ctrl` `+` `F`     
+   - using the `Ctrl` `+` `F` shortcut    
 <br>   
 - compare the look of the front- and back-end
 
@@ -1132,7 +1122,7 @@ class: action
 
 .pull-left[
 
-- HTML stands for Hypertext Markup Language
+- HTML stands for .yellow-h[hypertext markup language]
 
    - it gives the structure to what is visible to visitors
        - text, images, links      
@@ -1151,6 +1141,7 @@ class: action
     <style>
       h1 {color: blue;}
     </style>
+    <title>A title for browsers</title>
   </head>
   <body>
     <h1>A header</h1>      
@@ -1167,28 +1158,189 @@ class: action
 ]
 
 ---
-## Webpage Source Code &mdash; HTML &mdash; Syntax
+## Webpage Source Code &mdash; HTML &mdash; Overview
 
-HTML consists of .yellow-h[elements]
+.pull-left[
 
-```md
-`<p>This is a one sentence paragraph.</p>`
+HTML documents 
 
-```
-
-.out-t[
-
-This is a one sentence paragraph.
-
+- start with a declaration
+    - so that browsers know what they are
+   
 ]
 
+.pull-right[
 
+```md
+`<!DOCTYPE html>`
+<html>
+  <head>
+    <style>
+      h1 {color: blue;}
+    </style>
+    <title>A title for browsers</title>
+  </head>
+  <body>
+    <h1>A header</h1>      
+    <p>This is a paragraph.</p>
+    <ul>
+       <li>This</li>
+       <li>is a</li>
+       <li>list</li>
+    </ul>
+  </body>
+</html>
+
+```
+]
+
+---
+## Webpage Source Code &mdash; HTML &mdash; Overview
+
+.pull-left[
+
+HTML documents 
+
+- start with a declaration
+  - so that browsers know what they are     
 <br>
+- consist of elements
+  - written in between opening and closing tags
+   
+]
 
-Note that
+.pull-right[
 
-- there is only one element on this page
-   - a paragraph
+```md
+<!DOCTYPE html>
+<html>
+  <head>
+    `<style>`
+      `h1 {color: blue;}`
+    `</style>`
+    <title>A title for browsers</title>
+  </head>
+  <body>
+    `<h1>A header</h1>`      
+    <p>This is a paragraph.</p>
+    <ul>
+       `<li>This</li>`         
+       <li>is a</li>
+       <li>list</li>
+    </ul>
+  </body>
+</html>
+
+```
+]
+---
+## Webpage Source Code &mdash; HTML &mdash; the Root
+
+.pull-left[
+
+<span style="background-color: #ffff88;">`html`</span> is the root element
+
+- it is also the parent to all other elements
+- its important children are the `head` and `body` elements
+
+   
+]
+
+.pull-right[
+
+```md
+<!DOCTYPE html>
+`<html>`
+  <head>
+    <style>
+      h1 {color: blue;}
+    </style>
+    <title>A title for browsers</title>
+  </head>
+  <body>
+    <h1>A header</h1>      
+    <p>This is a paragraph.</p>
+    <ul>
+       <li>This</li>
+       <li>is a</li>
+       <li>list</li>
+    </ul>
+  </body>
+`</html>`
+
+```
+]
+---
+## Webpage Source Code &mdash; HTML &mdash; the Head
+
+.pull-left[
+
+.yellow-h[head] contains metadata, such as
+
+- titles, which appear in browser bars and tabs
+- style elements
+   
+]
+
+.pull-right[
+
+```md
+<!DOCTYPE html>
+<html>
+  `<head>`
+    <style>
+      h1 {color: blue;}
+    </style>
+    <title>A title for browsers</title>
+  `</head>`
+  <body>
+    <h1>A header</h1>      
+    <p>This is a paragraph.</p>
+    <ul>
+       <li>This</li>
+       <li>is a</li>
+       <li>list</li>
+    </ul>
+  </body>
+</html>
+
+```
+]
+---
+## Webpage Source Code &mdash; HTML &mdash; Overview
+
+.pull-left[
+
+.yellow-h[body] contains the elements in the main body of pages, such as 
+
+- headers, paragraphs, lists, tables, images
+   
+]
+
+.pull-right[
+
+```md
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      h1 {color: blue;}
+    </style>
+    <title>A title for browsers</title>
+  </head>
+  `<body>`
+    <h1>A header</h1>      
+    <p>This is a paragraph.</p>
+    <ul>
+       <li>This</li>
+       <li>is a</li>
+       <li>list</li>
+    </ul>
+  `</body>`
+</html>
+
+```
+]
 
 ---
 ## Webpage Source Code &mdash; HTML &mdash; Syntax
@@ -1289,9 +1441,9 @@ Note that
 There could be more than one attribute in an element
 
 ```md
-<p>This is a <strong class="count" id="sentence-count">one</strong> sentence paragraph.</p>
+<p>This is a <strong `class="count"` `id="sentence-count"`>one</strong> sentence paragraph.</p>
 
-<p>There are now <strong class="count" id="paragraph-count">two</strong> paragraphs.</p>
+<p>There are now <strong `class="count"` `id="paragraph-count"`>two</strong> paragraphs.</p>
 
 ```
 
@@ -1316,7 +1468,7 @@ Note that
 ---
 ## Webpage Source Code &mdash; HTML &mdash; Important Elements & Attibutes 
 
-Links
+Links are provided with the a (anchor) element
 
 ```md
 <p>Click <a href="https://www.google.com/">here</a> to google things.</p>
@@ -1331,7 +1483,7 @@ Links
 
 Note that
 
-- `href` (hypertext reference) is a required attribute for the the `a` (anchor) tag
+- `href` (hypertext reference) is a required attribute for this element
 - most attributes are optional, some are required
 
 ---
@@ -1340,7 +1492,7 @@ Note that
 Links
 
 ```md
-<p>Click <a title="This text appears when visitors hover over the link" 
+<p>Click <a `title="This text appears when visitors hover over the link"` 
             href="https://www.google.com/">here</a> to google things.</p>
 
 ```
@@ -1354,8 +1506,8 @@ Links
 
 Note that
 
-- the `a` (anchor) tag is used with `href` (hypertext reference)
-
+- the `title` attribute is one of the optional attributes
+- it becomes visible when hovered over with mouse
 
 ---
 ## Webpage Source Code &mdash; HTML &mdash; Lists
@@ -1390,7 +1542,7 @@ Note that
 ---
 ## Webpage Source Code &mdash; HTML &mdash; Notes
 
-By default, multiple spaces and/or lines breaks are not meaningful
+By default, multiple spaces and/or lines breaks are ignored by browsers
 
 ```{r eval=FALSE}
 <ul><li>books</li><li>journal                     articles</li><li>reports
@@ -1418,10 +1570,36 @@ Note that
 - this is one reason why DOM is helpful
 
 ---
+class: action
+
+## Exercises
+
+6) Re-create the .yellow-h[body] of the page at <https://luzpar.netlify.app/states/> in R
+
+- start an HTML file, following from the RStudio menu:
+
+> `File -> New File -> HTML File`
+
+- copy the text from the website, paste in the HTML file
+- add the structure with HTML code
+- click `Preview` to view the result
+
+<br>
+
+7) Add an attribute to an element
+- which is not already on the original page
+- hints:
+   - there are at least two attributes for the list elements on the original page
+   - google to see what attributes list items accept
+   - <https://www.w3schools.com/> is a great place to look at
+   - save this document as we will continue working on it
+
+`r countdown(minutes = 10, seconds = 00, top = 0)`
+
+---
 ## Webpage Source Code &mdash; CSS &mdash; Overview
 
-
-- CSS stands for Cascading Stylesheets
+- CSS stands for .yellow-h[cascading stylesheets]
 
    - it gives the style to what is visible to visitors
        - text, images, links      
@@ -1461,8 +1639,16 @@ CSS is written in .yellow-h[rules]
 ## Webpage Source Code &mdash; CSS &mdash; Syntax
 
 .pull-left[
-CSS is written in rules, with a syntax consisting of
-- one or more .yellow-h[selectors]
+- CSS is written in rules, with a syntax consisting of
+   - one or more <span style="background-color: #ffff88;">selectors</span>, matching one or more HTML elements and/or attributes
+
+<br>
+
+- Note that
+
+   - the syntax changes with the selector type
+      - elements and attributes
+      - among attributes, classes and ids
 
 ]
 
@@ -1479,23 +1665,20 @@ CSS is written in rules, with a syntax consisting of
 ```
 ]
 
-<br>
-
-Note that
-
-- selector type defines the syntax
-   - elements are plain
-       - e.g., p, h1, h2
-   - classes start with a full stop
-   - ids start with a number sign
 
 ---
 ## Webpage Source Code &mdash; CSS &mdash; Syntax
 
 .pull-left[
-CSS is written in rules, with a syntax consisting of
-- one or more selectors
-- a .yellow-h[decleration]
+- CSS is written in rules, with a syntax consisting of
+  - one or more selectors, matching one or more HTML elements and/or attributes
+  - a .yellow-h[declaration]
+
+<br>
+
+- Note that
+
+   - declarations are written in between two curly brackets
 
 ]
 
@@ -1512,19 +1695,14 @@ h1 h2 `{color:blue;}`
 ```
 ]
 
-<br>
-
-Note that
-
-- declerations are written in between two curly brackets
 
 ---
 ## Webpage Source Code &mdash; CSS &mdash; Syntax
 
 .pull-left[
-CSS is written in rules, with a syntax consisting of
-- one or more selectors
-- a decleration, with one or more .yellow-h[properties]
+- CSS is written in rules, with a syntax consisting of
+  - one or more selectors, matching one or more HTML elements and/or attributes
+  - a declaration, with one or more .yellow-h[properties]
 
 ]
 
@@ -1543,17 +1721,25 @@ h1 h2 {`color:`blue;}
 
 <br>
 
-Note that
+- Note that
 
-- properties are followed by a colon
+  - properties are followed by a colon
 
 ---
 ## Webpage Source Code &mdash; CSS &mdash; Syntax
 
 .pull-left[
-CSS is written in rules, with a syntax consisting of
-- one or more selectors
-- a decleration, with one or more properties and .yellow-h[values]
+- CSS is written in rules, with a syntax consisting of
+   - one or more selectors
+   - a declaration, with one or more properties and .yellow-h[values]
+   
+<br>
+
+- Note that
+
+  - values are followed by a semicolon
+  - `property:value;` pairs are seperated by a white space
+
 
 ]
 
@@ -1569,14 +1755,6 @@ h1 h2 {color:`blue;`}
 
 ```
 ]
-
-<br>
-
-Note that
-
-- values are followed by a semicolon
-- `property:value;` pairs are seperated by a white space
-
 
 ---
 ## Webpage Source Code &mdash; CSS &mdash; Internal
@@ -1600,6 +1778,7 @@ Note that
     <style>                   #<<
       h1 {color: blue;}       #<<
     </style>                  #<<
+    <title>A title for browsers</title>
   </head>
   <body>
     <h1>A header</h1>      
@@ -1639,6 +1818,7 @@ Note that
 <html>
   <head>
     <link rel="styles" href="simple.css">                #<<
+    <title>A title for browsers</title>
   </head>
   <body>
     <h1>A header</h1>      
@@ -1671,6 +1851,22 @@ CSS rules can also be defined inline
 ]
 
 ---
+class: action
+
+## Exercise
+
+8) Provide some simple style to your HTML document
+- one that you created during the previous exercise
+- using internal or external style, but not inline
+   - so that you can practice selecting element and/or attributes     
+<br>
+- no idea what to do? try
+   - increasing the font size of the text in paragraph  
+   - change the colour of the second item in the list to red
+   
+`r countdown(minutes = 5, seconds = 00, top = 0)`
+
+---
 name: part4
 class: inverse, center, middle
 
@@ -1687,23 +1883,24 @@ class: inverse, center, middle
 
 - We will collect data from static pages with the `rvest` package
 
-   - static pages are those that display the same source code
+   - static pages are those that display the same source code to all visitors
        - including the content &mdash; it does not change    
 <br>       
    - every visitor sees the same page at a given URL
    - each page has a different URL
+   - <https://luzpar.netlify.app/> is a static page
 
 <br>
 
 - Scraping static pages involves two main tasks
 
-   - download the source code from one or more page to R
+   - download the source code from one or more pages to R
       - typically, the only interaction with the page itself     
 <br>
    - select the exact information needed from the source code
       - takes place locally, on your machine
       - the main functionality that `rvest` offers
-      - working with selectors
+          - with the help from selectors
     
 ---
 ## Static Pages &mdash; `rvest` &mdash; Overview
@@ -1712,7 +1909,8 @@ class: inverse, center, middle
 
   - created by [Hadley Wickham](http://http://hadley.nz/)
   - popular &mdash; used by many for web scraping
-      - downloaded `r format(sum(cran_downloads(when = "last-month", packages = "rvest")$count), big.mark=",")` times last month     
+      - downloaded `r format(sum(cran_downloads(when = "last-month", packages = "rvest")$count), big.mark=",")` times last month
+      - some of it must be thanks to being a part of the `tidyverse` family     
 <br>      
   - last major revision was in March 2021
       - better alignment with `tidyverse`
@@ -1726,7 +1924,6 @@ class: inverse, center, middle
   - you will find solutions to, or help for, any issues online
   - see first the [package documentation](https://cran.r-project.org/web/packages/rvest/rvest.pdf), numerous tutorials &mdash; such as [this](https://rvest.tidyverse.org/) and [this](https://blog.rstudio.com/2014/11/24/rvest-easy-web-scraping-with-r/), and [this](https://steviep42.github.io/webscraping/book/index.html#quick-rvest-tutorial)
      
-
 --
 
 <br>
@@ -1738,7 +1935,7 @@ class: inverse, center, middle
 ---
 ## Static Pages &mdash; `rvest` &mdash; Get Source Code
 
-Use the `read_html` function to get the source code of a page into R
+Use the `read_html` function to get the source code of a webpage into R
 
 ```{r}
 read_html("https://luzpar.netlify.app/")
@@ -1770,12 +1967,12 @@ read_html("https://luzpar.netlify.app/")
 
 <br>
 
-- It can also 
+- It also 
 
-   - wait for a period of time
+   - waits for a period of time
        - minimum by what is specified in the protocol     
 <br>
-   - introduce yourself to website administrators while scraping
+   - allows you to introduce yourself to website administrators while scraping
    
 ---
 ## Static Pages &mdash; `rvest` &mdash; Get Source Code &mdash; `polite`
@@ -1845,7 +2042,7 @@ bow(url,
 
    - for a specific URL
    - for a specific agent
-   - for .yellow-h[crawl-delay directives]
+   - for any .yellow-h[crawl-delay directives]
 
 <br>
 
@@ -1888,7 +2085,8 @@ bow(url,
    - the `delay` argument cannot be set to a number smaller than in the directive
        - if there is one     
 <br>       
-   - the `force` argument avoids repeated, unnecessary interactions with web page
+   - the `force` argument is set to `FALSE` by default
+        - avoids repeated, unnecessary interactions with web page
        - by caching, and re-using, previously downloaded sources
 ]
 
@@ -1939,21 +2137,23 @@ scrape(`bow`,
 ---
 ## Static Pages &mdash; `rvest` &mdash; Get Source Code
 
-These two are equal, when there is no protocol against
+These two are equal, when there is no protocol against the access
+
+```{r, message=FALSE}
+read_html("https://luzpar.netlify.app/")
+```
+
 
 ```{r, message=FALSE}
 bow(url = "https://luzpar.netlify.app/") %>%  
     scrape()
 ```
 
-```{r, message=FALSE}
-read_html("https://luzpar.netlify.app/")
-```
 
 ---
 ## Static Pages &mdash; `rvest` &mdash; Get Source Code
 
-The difference occurs when there is a protocol against 
+The difference occurs when there is a protocol against the access
 
 ```md
 bow(url = "https://luzpar.netlify.app`/states/`", user_agent = `"googlebot"`)
