@@ -699,7 +699,7 @@ class: inverse, center, middle
        - who is (not) allowed to scrape what, and sometimes, at what speed     
 <br>       
    - within `robots.txt` files
-       - available at, e.g., www.websiteurl.com/robots.txt
+       - available at, e.g., www.websiteurl.com<span style="background-color: #ffff88;">/robots.txt</span>
 
 <br>
 
@@ -882,7 +882,7 @@ Allow: /about/
 .pull-left[
 
 Use the `robotstxt` function to get a protocol
-- supply a base url with the `domain` argument
+- supply a base URL with the `domain` argument
    - as a string
    - probably the only argument that you will need
 
@@ -915,7 +915,7 @@ robotstxt(domain = "https://luzpar.netlify.app")
 .pull-left[
 
 Use the `paths_allowed` function to checks protocols for one or more specific paths
-- supply a base url with the `domain` argument
+- supply a base URL with the `domain` argument
 - `path` and `bot` are the other important arguments
    - notice the default values    
 <br>
@@ -1463,7 +1463,7 @@ Note that
     - with a white space in between them    
 <br>
 - the `class` attribute can apply to multiple elements
-   - while the `id` attibute must be unique on a page
+   - while the `id` attribute must be unique on a page
 
 ---
 ## Webpage Source Code &mdash; HTML &mdash; Important Elements & Attibutes 
@@ -1512,7 +1512,7 @@ Note that
 ---
 ## Webpage Source Code &mdash; HTML &mdash; Lists
 
-The `<lu>` tag introduces unordered lists, while the `<li>` tag defines lists items
+The `<lu>` tag introduces un-ordered lists, while the `<li>` tag defines lists items
 
 ```{r eval=FALSE}
 <ul>
@@ -1738,7 +1738,7 @@ h1 h2 {`color:`blue;}
 - Note that
 
   - values are followed by a semicolon
-  - `property:value;` pairs are seperated by a white space
+  - `property:value;` pairs are separated by a white space
 
 
 ]
@@ -2187,7 +2187,7 @@ bow(url = "https://luzpar.netlify.app/states/", user_agent = "googlebot") `%>%`
 - Get one or more HTML elements
 
    - specified with a selector
-       - css or xpath     
+       - CSS or XPATH    
 <br>
   - we will work with css in this workshop
        - facilitated by Chrome and SelectorGagdet
@@ -2316,7 +2316,7 @@ bow(url = "https://luzpar.netlify.app") %>%
       - with the `html_elements` function     
 <br>    
    - attributes are specified with their name 
-       - not css or xpath
+       - not CSS or XPATH
        
 <br>
 
@@ -2324,7 +2324,7 @@ bow(url = "https://luzpar.netlify.app") %>%
  
   - there are two versions of the same function
       - singular one gets a specified attribute
-      - plural one gets all available attibutes
+      - plural one gets all available attributes
       
 ]
 
@@ -2874,7 +2874,7 @@ Scraping dynamic pages involves three main tasks
 
   - you will find solutions to, or help for, any issues online
   - see the [package documentation](https://cran.r-project.org/web/packages/RSelenium/RSelenium.pdf) and the [vignettes](https://cran.r-project.org/web/packages/RSelenium/vignettes/basics.html) for basic functionality
-  - Google searches return code and turotials in various languages
+  - Google searches return code and tutorials in various languages
       - not only R but also Python, Java
 
 ---
@@ -3535,7 +3535,7 @@ search_icon$`clickElement()`
 .pull-left[
 
 - Provide input to elements, such as
-    - text, with the .yellow-h[value] argument
+    - text, with the <span style="background-color: #ffff88;">value</span> argument
     
 ]
 
@@ -3558,8 +3558,8 @@ sendKeysToElement(list(`value`,
 .pull-left[
 
 - Provide input to elements, such as
-    - text, with the .yellow-h[value] argument
-    - keyboard presses or mouse gestures, with the .yellow-h[key] argument
+    - text, with the value argument
+    - keyboard presses or mouse gestures, with the <span style="background-color: #ffff88;">key</span> argument
     
 <br>
 
