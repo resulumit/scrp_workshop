@@ -2447,12 +2447,12 @@ tibble(
         
 "Member" = bow(url = "https://luzpar.netlify.app/members/") %>%
         scrape() %>%
-        html_elements(css = "td:nth-child(1)") %>% 
+        html_elements(css = "td:nth-child(1) a") %>% 
         html_text(),
 
 "Constituency" = bow(url = "https://luzpar.netlify.app/members/") %>%
         scrape() %>%
-        html_elements(css = "td:nth-child(2)") %>% 
+        html_elements(css = "td:nth-child(2) a") %>% 
         html_text(),
 
 "Party" = bow(url = "https://luzpar.netlify.app/members/") %>%
