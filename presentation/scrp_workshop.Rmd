@@ -1512,7 +1512,7 @@ Note that
 ---
 ## Webpage Source Code &mdash; HTML &mdash; Lists
 
-The `<lu>` tag introduces un-ordered lists, while the `<li>` tag defines lists items
+The `<ul>` tag introduces un-ordered lists, while the `<li>` tag defines lists items
 
 ```{r eval=FALSE}
 <ul>
@@ -1537,7 +1537,7 @@ The `<lu>` tag introduces un-ordered lists, while the `<li>` tag defines lists i
 
 Note that
 
-- Ordered lists are introduced with the the `<lo>` tag instead
+- Ordered lists are introduced with the the `<ol>` tag instead
 
 ---
 ## Webpage Source Code &mdash; HTML &mdash; Notes
@@ -1625,11 +1625,11 @@ CSS is written in .yellow-h[rules]
 
 .pull-right[
 ```md
-`p {font-size:12px;}`
+ `p {font-size:12px;}`
 
-`.count {background-color:yellow;}`
-
-`#sentence-count {color:red;}`
+ `.count {background-color:yellow;}`
+ 
+ `#sentence-count {color:red;}`
 
 ```
 
@@ -1654,13 +1654,13 @@ CSS is written in .yellow-h[rules]
 
 .pull-right[
 ```md
-`p` {font-size:14px;}
+ `p` {font-size:14px;}
 
-`h1 h2` {color:blue;}
+ `h1 h2` {color:blue;}
 
-`.count` {background-color:yellow;}
+ `.count` {background-color:yellow;}
 
-`#sentence-count` {color:red; font-size:14px;}
+ `#sentence-count` {color:red; font-size:14px;}
 
 ```
 ]
@@ -1684,13 +1684,13 @@ CSS is written in .yellow-h[rules]
 
 .pull-right[
 ```md
-p `{font-size:14px;}`
+ p `{font-size:14px;}`
 
-h1 h2 `{color:blue;}`
+ h1 h2 `{color:blue;}`
 
-.count `{background-color:yellow;}`
+ .count `{background-color:yellow;}`
 
-#sentence-count `{color:red; font-size:14px;}`
+ #sentence-count `{color:red; font-size:14px;}`
 
 ```
 ]
@@ -1708,13 +1708,13 @@ h1 h2 `{color:blue;}`
 
 .pull-right[
 ```md
-p {`font-size:`14px;}
+ p {`font-size:`14px;}
 
-h1 h2 {`color:`blue;}
+ h1 h2 {`color:`blue;}
 
-.count {`background-color:`yellow;}
+ .count {`background-color:`yellow;}
 
-#sentence-count {`color:`red;` font-size:`14px;}
+ #sentence-count {`color:`red;` font-size:`14px;}
 
 ```
 ]
@@ -1745,13 +1745,13 @@ h1 h2 {`color:`blue;}
 
 .pull-right[
 ```md
-p {font-size:`14px;`}
+ p {font-size:`14px;`}
 
-h1 h2 {color:`blue;`}
+ h1 h2 {color:`blue;`}
 
-.count {background-color:`yellow;`}
+ .count {background-color:`yellow;`}
 
-#sentence-count {color:`red;` font-size:`14px;`}
+ #sentence-count {color:`red;` font-size:`14px;`}
 
 ```
 ]
