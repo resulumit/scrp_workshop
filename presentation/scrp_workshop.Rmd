@@ -3467,7 +3467,7 @@ attr(,"package")
 Highlight the element found in the previous step, with the `highlightElement` method
 
 ```{r, eval=FALSE}
-# navitage to a page
+# navigate to a page
 browser$navigate("http://luzpar.netlify.app/")
 
 # find the element
@@ -3491,13 +3491,13 @@ Note that
 Highlight the element found in the previous step, with the `highlightElement` method
 
 ```{r, eval=FALSE}
-# navitage to a page
+# navigate to a page
 browser$navigate("http://luzpar.netlify.app/")
 
 # find the element
 menu_states <- `browser$`findElement(using = "link text", value = "States")
 
-# hihglight it to see if we found the correct element
+# highlight it to see if we found the correct element
 `menu_states$`highlightElement()
 
 ```
