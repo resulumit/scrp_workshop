@@ -8,6 +8,6 @@ Unless otherwise noted, all material is copyright Resul Umit, licensed [CC-BY-SA
 
 |[]() |      |
 |------|------|
-| **Part 1. Getting the Tools Ready** <br /> - e.g., installing software | **Part 4. Preliminary Considerations** <br /> - e.g., ethics of web scraping | 
+| **Part 1. Getting the Tools Ready** <br /> - e.g., installing software | **Part 4. CSS Selectors** <br /> - e.g., selecting an element | 
 | **Part 2. Preliminary Considerations** <br /> - e.g., ethics of web scraping | **Part 5. Scraping Static Pages** <br /> - e.g., getting text from an element | 
 | **Part 3. HTML Basics** <br /> - e.g., elements and attributes | **Part 6. Scraping Dynamic Pages** <br /> - e.g., clicking to create an element |
