@@ -215,21 +215,21 @@ name: contents-slide
 [Part 2. Preliminary Considerations](#part2)
    - e.g., ethics of web scraping
 
-[Part 3. Webpage Source Code](#part3)
-   - e.g., elements and selectors
+[Part 3. HTML Basics](#part3)
+   - e.g., elements and attributes
 
 ]
 
 .pull-right[
    
+[Part 4. CSS Selectors](#part4)
+   - e.g., selecting an element   
 
-[Part 4. Scraping Static Pages](#part4)
+[Part 5. Scraping Static Pages](#part5)
    - e.g., getting text from an element
-   - by using `rvest`
   
-[Part 5. Scraping Dynamic Pages](#part5)
-   - e.g., clicking before scraping
-   - by using `RSelenium` and `rvest`
+[Part 6. Scraping Dynamic Pages](#part6)
+   - e.g., clicking to create an element
    
 ]
 
@@ -1007,7 +1007,7 @@ class: action
   - waiting time may or may not be defined in the protocol
       - lookout for, and respect, the `Crawl-delay` key in `robots.txt`     
 <br>
-  - [Part 4](#part4) and [Part 5](#part5) covers how to wait
+  - [Part 5](#part5) and [Part 6](#part6) covers how to wait
   
 <br>
 
@@ -1043,7 +1043,7 @@ Scraped data frequently requires
 name: part3
 class: inverse, center, middle
 
-# Part 3. Webpage Source Code
+# Part 3. HTML Basics
 
 .footnote[
 
@@ -1052,7 +1052,7 @@ class: inverse, center, middle
 ]
 
 ---
-## Webpage Source Code &mdash; Overview
+## HTML &mdash; Overview
 
 - Webpages include more than what is immediately visible to visitors
 
@@ -1075,7 +1075,7 @@ class: inverse, center, middle
       - e.g., URLs hidden under text
            
 ---
-## Webpage Source Code &mdash; View in Browser
+## HTML &mdash; View in Browser
 
 The `Ctrl` `+` `U` shortcut is to display source code &mdash; alternatively, right click and `View` `Page` `Source`
 
@@ -1087,7 +1087,7 @@ knitr::include_graphics("scrp_workshop_files/images_data/homepage_source.png")
 
 
 ---
-## Webpage Source Code &mdash; View in Browser &mdash; DOM
+## HTML &mdash; View in Browser &mdash; DOM
 
 Browsers also offer putting source codes in a structure
 - known as DOM (document object model), initiated by the `F12` key on Chrome
@@ -1118,7 +1118,7 @@ class: action
 `r countdown(minutes = 5, seconds = 00, top = 0)`
 
 ---
-## Webpage Source Code &mdash; HTML &mdash; Overview
+## HTML &mdash; HTML &mdash; Overview
 
 .pull-left[
 
@@ -1158,7 +1158,7 @@ class: action
 ]
 
 ---
-## Webpage Source Code &mdash; HTML &mdash; Overview
+## HTML &mdash; HTML &mdash; Overview
 
 .pull-left[
 
@@ -1195,7 +1195,7 @@ HTML documents
 ]
 
 ---
-## Webpage Source Code &mdash; HTML &mdash; Overview
+## HTML &mdash; HTML &mdash; Overview
 
 .pull-left[
 
@@ -1234,7 +1234,7 @@ HTML documents
 ```
 ]
 ---
-## Webpage Source Code &mdash; HTML &mdash; the Root
+## HTML &mdash; HTML &mdash; the Root
 
 .pull-left[
 
@@ -1271,7 +1271,7 @@ HTML documents
 ```
 ]
 ---
-## Webpage Source Code &mdash; HTML &mdash; the Head
+## HTML &mdash; HTML &mdash; the Head
 
 .pull-left[
 
@@ -1307,7 +1307,7 @@ HTML documents
 ```
 ]
 ---
-## Webpage Source Code &mdash; HTML &mdash; Overview
+## HTML &mdash; HTML &mdash; Overview
 
 .pull-left[
 
@@ -1343,7 +1343,7 @@ HTML documents
 ]
 
 ---
-## Webpage Source Code &mdash; HTML &mdash; Syntax
+## HTML &mdash; HTML &mdash; Syntax
 
 Most elements have opening and closing .yellow-h[tags]
 
@@ -1367,7 +1367,7 @@ Note that
 - the closing tag has a forward slash .yellow-h[/] before the element name
 
 ---
-## Webpage Source Code &mdash; HTML &mdash; Syntax
+## HTML &mdash; HTML &mdash; Syntax
 
 Most elements have some content
 
@@ -1383,7 +1383,7 @@ This is a one sentence paragraph.
 ]
 
 ---
-## Webpage Source Code &mdash; HTML &mdash; Syntax
+## HTML &mdash; HTML &mdash; Syntax
 
 Elements can be nested
 
@@ -1410,7 +1410,7 @@ Note that
 - paragraph is said to be the parent of the strong element
 
 ---
-## Webpage Source Code &mdash; HTML &mdash; Syntax
+## HTML &mdash; HTML &mdash; Syntax
 
 Elements can have .yellow-h[attributes]
 
@@ -1436,7 +1436,7 @@ Note that
 
 
 ---
-## Webpage Source Code &mdash; HTML &mdash; Syntax
+## HTML &mdash; HTML &mdash; Syntax
 
 There could be more than one attribute in an element
 
@@ -1466,7 +1466,7 @@ Note that
    - while the `id` attribute must be unique on a page
 
 ---
-## Webpage Source Code &mdash; HTML &mdash; Important Elements & Attibutes 
+## HTML &mdash; HTML &mdash; Important Elements & Attibutes 
 
 Links are provided with the a (anchor) element
 
@@ -1487,7 +1487,7 @@ Note that
 - most attributes are optional, some are required
 
 ---
-## Webpage Source Code &mdash; HTML &mdash; Links 
+## HTML &mdash; HTML &mdash; Links 
 
 Links
 
@@ -1510,7 +1510,7 @@ Note that
 - it becomes visible when hovered over with mouse
 
 ---
-## Webpage Source Code &mdash; HTML &mdash; Lists
+## HTML &mdash; HTML &mdash; Lists
 
 The `<ul>` tag introduces un-ordered lists, while the `<li>` tag defines lists items
 
@@ -1540,7 +1540,7 @@ Note that
 - Ordered lists are introduced with the the `<ol>` tag instead
 
 ---
-## Webpage Source Code &mdash; HTML &mdash; Notes
+## HTML &mdash; HTML &mdash; Notes
 
 By default, multiple spaces and/or lines breaks are ignored by browsers
 
@@ -1597,7 +1597,19 @@ class: action
 `r countdown(minutes = 10, seconds = 00, top = 0)`
 
 ---
-## Webpage Source Code &mdash; CSS &mdash; Overview
+name: part4
+class: inverse, center, middle
+
+# Part 3. CSS Selectors
+
+.footnote[
+
+[Back to the contents slide](#contents-slide).
+
+]
+
+---
+## CSS &mdash; Overview
 
 - CSS stands for .yellow-h[cascading stylesheets]
 
@@ -1616,7 +1628,7 @@ class: action
    - externally, but then linked in the `head` element
 
 ---
-## Webpage Source Code &mdash; CSS &mdash; Syntax
+## CSS &mdash; Syntax
 
 .pull-left[
 CSS is written in .yellow-h[rules]
@@ -1636,7 +1648,7 @@ CSS is written in .yellow-h[rules]
 ]
 
 ---
-## Webpage Source Code &mdash; CSS &mdash; Syntax
+## CSS &mdash; Syntax
 
 .pull-left[
 - CSS is written in rules, with a syntax consisting of
@@ -1667,7 +1679,7 @@ CSS is written in .yellow-h[rules]
 
 
 ---
-## Webpage Source Code &mdash; CSS &mdash; Syntax
+## CSS &mdash; Syntax
 
 .pull-left[
 - CSS is written in rules, with a syntax consisting of
@@ -1697,7 +1709,7 @@ CSS is written in .yellow-h[rules]
 
 
 ---
-## Webpage Source Code &mdash; CSS &mdash; Syntax
+## CSS &mdash; Syntax
 
 .pull-left[
 - CSS is written in rules, with a syntax consisting of
@@ -1726,7 +1738,7 @@ CSS is written in .yellow-h[rules]
   - properties are followed by a colon
 
 ---
-## Webpage Source Code &mdash; CSS &mdash; Syntax
+## CSS &mdash; Syntax
 
 .pull-left[
 - CSS is written in rules, with a syntax consisting of
@@ -1757,7 +1769,7 @@ CSS is written in .yellow-h[rules]
 ]
 
 ---
-## Webpage Source Code &mdash; CSS &mdash; Internal
+## CSS &mdash; Internal
 
 .pull-left[
 
@@ -1795,7 +1807,7 @@ CSS is written in .yellow-h[rules]
 ]
 
 ---
-## Webpage Source Code &mdash; CSS &mdash; External
+## CSS &mdash; External
 
 .pull-left[
 
@@ -1835,7 +1847,7 @@ CSS is written in .yellow-h[rules]
 ]
 
 ---
-## Webpage Source Code &mdash; CSS &mdash; Inline
+## CSS &mdash; Inline
 
 CSS rules can also be defined inline
 - with the `style` attribute
@@ -1867,10 +1879,10 @@ class: action
 `r countdown(minutes = 5, seconds = 00, top = 0)`
 
 ---
-name: part4
+name: part5
 class: inverse, center, middle
 
-# Part 3. Scraping Static Pages
+# Part 5. Scraping Static Pages
 
 .footnote[
 
@@ -2805,10 +2817,10 @@ Hints:
 `r countdown(minutes = 45, seconds = 00, top = 0)`
 
 ---
-name: part5
+name: part6
 class: inverse, center, middle
 
-# Part 5. Scraping Dynamic Pages
+# Part 6. Scraping Dynamic Pages
 
 .footnote[
 
