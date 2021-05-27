@@ -104,8 +104,9 @@ library(cranlogs)
 
 .footnote[
 
-[Skip intro &mdash; To the contents slide](#contents-slide).]
+[Skip intro &mdash; To the contents slide](#contents-slide). &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="mailto:resuluy@uio.no?subject=Workshop on web scraping">I can teach this workshop at your institution &mdash; Email me</a>.
 
+]
 ---
 ## Who am I?
 
@@ -1075,7 +1076,7 @@ class: inverse, center, middle
       - e.g., URLs hidden under text
            
 ---
-## HTML &mdash; View in Browser
+## HTML &mdash; Webpage Source
 
 The `Ctrl` `+` `U` shortcut is to display source code &mdash; alternatively, right click and `View` `Page` `Source`
 
@@ -1087,7 +1088,7 @@ knitr::include_graphics("scrp_workshop_files/images_data/homepage_source.png")
 
 
 ---
-## HTML &mdash; View in Browser &mdash; DOM
+## HTML &mdash; DOM
 
 Browsers also offer putting source codes in a structure
 - known as DOM (document object model), initiated by the `F12` key on Chrome
@@ -1118,7 +1119,7 @@ class: action
 `r countdown(minutes = 5, seconds = 00, top = 0)`
 
 ---
-## HTML &mdash; HTML &mdash; Overview
+## HTML &mdash; Overview
 
 .pull-left[
 
@@ -1158,7 +1159,7 @@ class: action
 ]
 
 ---
-## HTML &mdash; HTML &mdash; Overview
+## HTML &mdash; Overview
 
 .pull-left[
 
@@ -1195,7 +1196,7 @@ HTML documents
 ]
 
 ---
-## HTML &mdash; HTML &mdash; Overview
+## HTML &mdash; Overview
 
 .pull-left[
 
@@ -1234,7 +1235,7 @@ HTML documents
 ```
 ]
 ---
-## HTML &mdash; HTML &mdash; the Root
+## HTML &mdash; the Root
 
 .pull-left[
 
@@ -1271,7 +1272,7 @@ HTML documents
 ```
 ]
 ---
-## HTML &mdash; HTML &mdash; the Head
+## HTML &mdash; the Head
 
 .pull-left[
 
@@ -1307,7 +1308,7 @@ HTML documents
 ```
 ]
 ---
-## HTML &mdash; HTML &mdash; Overview
+## HTML &mdash; Overview
 
 .pull-left[
 
@@ -1343,7 +1344,7 @@ HTML documents
 ]
 
 ---
-## HTML &mdash; HTML &mdash; Syntax
+## HTML &mdash; Syntax
 
 Most elements have opening and closing .yellow-h[tags]
 
@@ -1367,7 +1368,7 @@ Note that
 - the closing tag has a forward slash .yellow-h[/] before the element name
 
 ---
-## HTML &mdash; HTML &mdash; Syntax
+## HTML &mdash; Syntax
 
 Most elements have some content
 
@@ -1383,7 +1384,7 @@ This is a one sentence paragraph.
 ]
 
 ---
-## HTML &mdash; HTML &mdash; Syntax
+## HTML &mdash; Syntax
 
 Elements can be nested
 
@@ -1410,7 +1411,7 @@ Note that
 - paragraph is said to be the parent of the strong element
 
 ---
-## HTML &mdash; HTML &mdash; Syntax
+## HTML &mdash; Syntax
 
 Elements can have .yellow-h[attributes]
 
@@ -1436,7 +1437,7 @@ Note that
 
 
 ---
-## HTML &mdash; HTML &mdash; Syntax
+## HTML &mdash; Syntax
 
 There could be more than one attribute in an element
 
@@ -1466,7 +1467,7 @@ Note that
    - while the `id` attribute must be unique on a page
 
 ---
-## HTML &mdash; HTML &mdash; Important Elements & Attibutes 
+## HTML &mdash; Important Elements & Attibutes 
 
 Links are provided with the a (anchor) element
 
@@ -1487,7 +1488,7 @@ Note that
 - most attributes are optional, some are required
 
 ---
-## HTML &mdash; HTML &mdash; Links 
+## HTML &mdash; Links 
 
 Links
 
@@ -1510,7 +1511,7 @@ Note that
 - it becomes visible when hovered over with mouse
 
 ---
-## HTML &mdash; HTML &mdash; Lists
+## HTML &mdash; Lists
 
 The `<ul>` tag introduces un-ordered lists, while the `<li>` tag defines lists items
 
@@ -1676,7 +1677,6 @@ CSS is written in .yellow-h[rules]
 
 ```
 ]
-
 
 ---
 ## CSS &mdash; Syntax
