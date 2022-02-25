@@ -2909,18 +2909,17 @@ class: inverse, center, middle
 
 Scraping dynamic pages involves three main tasks      
 <br>
-- Create the desired instance of the dynamic page
+- .yellow-h[Create] the desired instance of the dynamic page
   - with the `RSelenium` package
-  - e.g., by clicking, scrolling, filling in forms
-      - from within R    
+  - e.g., by clicking, scrolling, filling in forms, from within R    
 <br>
-- Get the source code into R
+- .yellow-h[Get] the source code into R
       - `RSelenium` downloads XML
       - `rvest` turns it into HTML    
 <br>
-- Select the exact information needed from the source code
+- .yellow-h[Extract] the exact information needed from the source code
       - as for static pages
-      - with the the`rvest` page
+      - with the the `rvest` package
     
 ---
 ## Dynamic Pages &mdash; `Rselenium` &mdash; Overview
@@ -2947,7 +2946,7 @@ Scraping dynamic pages involves three main tasks
 
 - The package involves more methods than functions
   
-  - code look slightly unusual
+  - code look slightly unusual for R
   - as it follows the logic behind Selenium
 
 --
@@ -2956,10 +2955,10 @@ Scraping dynamic pages involves three main tasks
 
 - It allows interacting with two things &mdash; and it is crucial that we are aware of the difference
 
-  - browsers
+  - browsers on your computer
       - e.g., opening a browser and navigating to a page     
 <br>
-  - elements
+  - elements on a webpage
       - e.g., opening and clicking on a drop-down menu
 
 ---
@@ -3033,16 +3032,17 @@ rsDriver(`port` = 4567L,
 .pull-left[
 
 - Use the `rsDriver` function to start a server
-    - so that you can control a web browser from within R
+
+  - so that you can control a web browser from within R
 
 <br>
 
 - Note that the defaults can cause errors, such as
-   - tying to start two servers from the same port
-   - any mismatch between the .yellow[version and driver numbers]
+
+  - trying to start two servers from the same port
+  - any mismatch between the .yellow[version and driver numbers]
 
 ]
-
 
 .pull-right[
 
@@ -3075,8 +3075,8 @@ binman::list_versions("chromedriver")
 
 - Note that
 
-  - you can only use the version that *you* get
-  - not one of the version that you see on this slide
+  - you can only use the version that *you* have
+  - you might have a different the version than the ones on this slide
 
 ---
 ## Dynamic Pages &mdash; Browsers &mdash; Starting a Server
@@ -3104,7 +3104,7 @@ binman::list_versions("chromedriver")
 .pull-right[
 
 ```md
-driver <- rsDriver(`chromever = "90.0.4430.24"`)
+driver <- rsDriver(`chromever = "98.0.4758.102"`)
 ```
 
 ```{r, echo=FALSE}
@@ -3235,7 +3235,7 @@ browser$getTitle()
 
 Close the browser
 - which will not close the session on the server
-    - recall that we singled the client out
+    - recall that we have singled the client out
 
 ```md
 browser$close()
@@ -3370,7 +3370,7 @@ class: action
 
 <br>
 
-13) See what other methods are available to interact with browsers
+12) See what other methods are available to interact with browsers
 - by typing the object name for your client into R console
    - followed by the dollar sign
    - and hitting the tab key on your keyboard if necessary
@@ -3378,7 +3378,7 @@ class: action
 
 <br>
 
-14) Try one or more new methods
+13) Try one or more new methods
 - e.g., take a screenshot of your browser
    - and view it in R
 
@@ -3728,7 +3728,7 @@ class: action
 
 ## Exercise
 
-15) Conduct an internet search programatically
+14) Conduct an internet search programatically
 - navigate to <https://duckduckgo.com/>
    - just to keep it simple as Google would require you to scroll down and accept a policy     
 <br>   
@@ -3737,7 +3737,7 @@ class: action
     
 <br>
 
-16) Scroll down programatically, and up
+15) Scroll down programatically, and up
 - to see all results
 
 

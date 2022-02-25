@@ -148,8 +148,47 @@ as_tibble(do.call(rbind, temp_list)) %>%
         write.csv("static_data.csv", row.names = FALSE)
 
 
-# selenium additional elements --------------------------------------------
-# these are additional to the stuff on the slides
+
+# exercise 11 -------------------------------------------------------------
+
+# start a server
+driver <- rsDriver(chromever = "98.0.4758.102")
+
+# single out the client (browser)
+browser <- driver$client
+
+# navigate to the page
+browser$navigate(url = "https://luzpar.netlify.app/constituencies/")
+
+# get the source code
+browser$getPageSource()[[1]] %>% 
+        read_html()
+        
+
+# exercise 12 -------------------------------------------------------------
+
+# see the available methods
+# by typing the following into your console (without the number sign):
+# browser$
+
+# read the description for two methods
+browser$acceptAlert
+browser$getTitle
+
+# exercise 13 -------------------------------------------------------------
+
+# get the title of the current page
+browser$getTitle()
+
+# take a screenshot of the page and view it in rstudio
+browser$screenshot(display = TRUE, useViewer = TRUE)
+
+# exercise 13 -------------------------------------------------------------
+
+# navigate to the website
+browser$navigate(url = "https://duckduckgo.com/")
+
+the_bar <- browser$findElement(using = "css", value = "#search_form_input_homepage")
 
 # try searching -----------------------------------------------------------
 
