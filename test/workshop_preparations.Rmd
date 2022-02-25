@@ -1,5 +1,5 @@
 ---
-title: "Workshop Preperations"
+title: "Workshop Preparations"
 author: "Resul Umit"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output: pdf_document
@@ -43,19 +43,18 @@ After the restart, and while in R or RStudio, please install `RSelenium` to your
 install.packages("RSelenium")
 ```
 
-Once the package is installed, first restart your R session, and then load the package.
+Once the package is installed, first restart your R session (from the RStudio menu, follow `Session -> Restart R`), and then load the package.
 
 ```{r, load, eval=FALSE}
 library(RSelenium)
 ```
 
-Finally, try starting a browser from within R. The R code below should lead to a Chrome window, as shown in Figure \ref{pop_up}, popping up. It should not disappear on its own.
+Finally, try starting Chrome from within R. The R code below should lead to a Chrome window, as shown in Figure \ref{pop_up}, popping up. It should not disappear on its own.
 
 If this works, congratulations, you are ready for the workshop.
 
 ```{r, run, eval=FALSE}
-rD <- rsDriver(port = sample(4500:4600, 1))
-remDr <- rD[["client"]]
+driver <- rsDriver(port = sample(4500:4600, 1))
 ```
 
 ```{r, image, echo=FALSE, out.width="75%", fig.align='center', fig.cap="If you see this window popping up, and it stays still until you close it, you are ready for the workshop. \\label{pop_up}"}
@@ -87,15 +86,20 @@ binman::list_versions("chromedriver")
 
 One of the resulting numbers that *you* get is what you possibly need, but we do not know which one. It is a trial-and-error situation. Try supplying them *one by one* to the `rsDriver` function, with the `chromever` argument. 
 
-For me, it is the middle number that works. This might be different for you. Please note that you should try *the numbers that you get, not the numbers on this document*.
+For me, it is the first number that works. This might be different for you. Please note that you should try *the numbers that you get, not the numbers on this document*.
 
 ```{r, run_again, eval=FALSE}
-rD <- rsDriver(port = sample(4500:4600, 1), chromever = "90.0.4430.24")
-remDr <- rD[["client"]]
+driver <- rsDriver(port = sample(4500:4600, 1), chromever = "98.0.4758.102")
 ```
 
-If this does not help, or if you get a different error message, please google the message to see if there is a solution available on the internet. 
+If this does not help, or if you get a different error message, please google that message to see if there is a quick solution available on the internet. 
 
-If googling does not solve the issue, please send me an email with as much information as possible, including the exact error message.
+If googling does not solve the issue, you may wish to use a different browser, such as Firefox. It would be great if all of us use the same browser (that is, Chrome) during the workshop, but this is not absolutely necessary. You would also be fine by using Firefox instead. 
 
-If we cannot solve the issue via emails, we can set up a pre-workshop meeting.
+Assuming that you have Firefox installed on your computer, try running the following code. Again, if a browser pops up as a result, and it stays on, you are ready for the workshop.
+
+```{r, run_firefox, eval=FALSE}
+driver <- rsDriver(port = sample(4500:4600, 1), browser = "firefox")
+```
+
+If none of these solutions help, please send me an email with as much information as possible, including exact error messages.
