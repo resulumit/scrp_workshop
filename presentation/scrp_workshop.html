@@ -87,7 +87,7 @@ class: inverse, center, middle
 
 ### Resul Umit
 
-### May 2021
+### March 2022
 
 .footnote[
 
@@ -125,9 +125,9 @@ Resul Umit
 ---
 ## The Workshop &amp;mdash; Overview
 
-- One day, on how to automate the process of extracting data from websites
+- One and a half day, on how to automate the process of extracting data from websites
 
-  - 150+ slides, 15+ exercises
+  - 160+ slides, 15+ exercises
   - a [demonstration website](https://luzpar.netlify.app/) for practice
 
 --
@@ -164,19 +164,19 @@ Resul Umit
 
 - Typically, such skills are not part of academic training
 
-  - for my PhD, I hand-visited close to 3000 webpages to collect data manually
+  - for my PhD, I visited close to 3000 webpages to collect data manually
       - on members of ten parliaments
       - multiple times, to update the dataset as needed
 
 ---
 ## The Workshop &amp;mdash; Motivation &amp;mdash; Aims
 
-- To provide you with an understanding of what is ethically possible
+- To provide you with an understanding of what is .yellow-h[ethically] possible
 
   - we will cover a large breath of issues, not all of it is for long-term memory
       - hence the slides are designed for self study as well    
 &lt;br&gt;
-  - awareness of what is ethical and possible, `Google`, and perseverance are all you need
+  - awareness of what is ethical and possible, Google, and perseverance are all you need
 
 --
 
@@ -185,7 +185,8 @@ Resul Umit
 - To start you with acquiring and practicing the skills needed 
 
   - practice with the demonstration website
-     - plenty of data, stable structure, and an ethical playground
+     - plenty of data, stable structure, and an ethical playground    
+&lt;br&gt;
   - start working on a real project
 
 ---
@@ -230,26 +231,25 @@ name: contents-slide
 ---
 ## The Workshop &amp;mdash; Organisation
 
-- Breakout in groups of two for exercises
+- I will go through a number of slides...
 
-  - participants learn as much from their partner as from instructors
-  - switch partners after every other part
-  - leave your breakout room manually, when everyone in the group is ready
-
-&lt;br&gt; 
-
-- Type, rather than copy and paste, the code that you will find on these slides
-
-  - typing is a part of the learning process
-  - slides are, and will remain, available at [resulumit.com/teaching/scrp_workshop.html](https://resulumit.com/teaching/scrp_workshop.html)
+  - introducing things
+  - demonstrating how-to do things
 
 &lt;br&gt; 
 
-- When you have a question
+- ... and then pause, for you to use/do those things
 
-  - ask your partner
-  - google together
-  - ask me
+  - e.g., prepare your computer for the workshop, and/or
+  - complete a number of exercises
+    
+&lt;br&gt; 
+
+- We are here to help
+
+  - ask me, other participants
+  - consult Google, [slides](https://resulumit.com/teaching/scrp_workshop.html), [answer script]()
+      - type, rather than copy and paste, the code you will find on the slides or the script
 
 ---
 class: action
@@ -266,7 +266,7 @@ Slides with this background colour indicate that your action is required, for
     - these slides have countdown timers
         - as a guide, not to be followed strictly
     
-<div class="countdown" id="timer_60afd79a" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_6218a756" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -297,7 +297,7 @@ bow(url = "https://luzpar.netlify.app/members/") %&gt;%
 
 - Results that come out as output .out-t[appear as such &amp;mdash; in the same font, on green background]    
 
-  - with some results, such as browsers popping up
+  - except for some results, such as a browser popping up
     
 --
 
@@ -336,7 +336,8 @@ class: action
 - Having the workshop slides&lt;sup&gt;*&lt;/sup&gt; on your own machine might be helpful
 
   - flexibility to go back and forward on your own
-      - especially while in a breakout room
+      - especially while in a breakout room     
+&lt;br&gt;      
   - ability to scroll across long codes on some slides
 
 &lt;br&gt;
@@ -364,23 +365,48 @@ class: action
    - includes fabricated data on the imaginary Parliament of Luzland
    - provides us with plenty of data, stable structure, and an ethical playground
 
-&lt;br&gt;
+- Using this demonstration website for practice is recommended
+
+   - tailored to exercises, no ethical concern
+   - but not compulsory &amp;mdash; use a different one if you prefer so
+ 
+- Explore the website now
+
+   - click on the links to see an individual page for 
+       - states, constituencies, members, and documents     
+&lt;br&gt;       
+   - notice that the documents section is different than the rest
+       - it is a page with dynamic frame
+
+<div class="countdown" id="timer_6218a499" style="top:0;right:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+   
+---
+class: action
+
+## Demonstration Website &amp;mdash; Explore on Your Browser
+
+- There is a demonstration website for this workshop
+
+   - available at &lt;https://luzpar.netlify.app/&gt;
+   - includes fabricated data on the imaginary Parliament of Luzland
+   - provides us with plenty of data, stable structure, and an ethical playground
 
 - Using this demonstration website for practice is recommended
 
    - tailored to exercises, no ethical concern
    - but not compulsory &amp;mdash; use a different one if you prefer so
-
-&lt;br&gt;
  
 - Explore the website now
 
    - click on the links to see an individual page for 
-       - states, constituencies, members, and documents
+       - states, constituencies, members, and documents     
+&lt;br&gt;       
    - notice that the documents section is different than the rest
        - it is a page with dynamic frame
 
-<div class="countdown" id="timer_60afd421" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_6218a4fb" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
    
@@ -481,7 +507,7 @@ install.packages(c("rvest", "RSelenium", "robotstxt", "polite", "dplyr"))
 
 ]
 
-<div class="countdown" id="timer_60afd550" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_6218a4dc" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -605,6 +631,21 @@ class: action
    - on Firefox, search at &lt;https://addons.mozilla.org/&gt;
 
 ---
+class: action
+
+## Solutions &amp;mdash; Note Where They Are
+
+- Solutions to exercises, or links to them, are available online
+
+   - can be downloaded at &lt;https://luzpar.netlify.app/exercises/solutions.R&gt;
+
+&lt;br&gt;
+
+- I recommend the solutions to be consulted as a last resort
+
+  - after a genuine effort to complete the exercises yourself first
+
+---
 ## Other Resources&lt;sup&gt;*&lt;/sup&gt;
 
 - `RSelenium` vignettes
@@ -623,7 +664,6 @@ class: action
    - comes with [a course website](https://juliasilge.shinyapps.io/learntidytext/) where you can practice
    
 
-   
 .footnote[
 
 &lt;sup&gt;*&lt;/sup&gt; I recommend these to be consulted not during but after the workshop.
@@ -656,10 +696,8 @@ class: inverse, center, middle
 
 - Web scraping might be more likely to be illegal if, for example,      
 &lt;br&gt;
-   - it is harmful to the source
-      - commercially
+   - it is harmful to the source commercially and/or physically
           - e.g., scraping a commercial website to create a rival website     
-      - physically
           - e.g., scraping a website so hard and fast that it collapses    
 &lt;br&gt;
    - it gathers data that is
@@ -794,7 +832,7 @@ Files might include optional comments, written after the number sign .yellow-h[&
 User-agent: *
 Allow: /
 Disallow: /about/
-Crawl-delay: 5    `# five second delay, to ensure our servers are not overloaded`
+Crawl-delay: 5    `# please delay for five seconds, to ensure our servers are not overloaded`
 
 ```
 
@@ -839,21 +877,21 @@ User-agent: googlebot
 
 This website has different protocols for different agents
 
-- Google is allowed to scrape everything, with a 5-second delay
-- Bing is not allowed to scrape anything
-- everyone else can scrape the section or page located at www.websiteurl/about/
+- .yellow-h[Google] is allowed to scrape everything, with a 5-second delay
+- .yellow-h[Bing] is not allowed to scrape anything
+- .yellow-h[everyone else] can scrape the section or page located at www.websiteurl/about/
 
 &lt;br&gt;
 
 ```md
-User-agent: googlebot
+User-agent: `googlebot`
 Allow: /
 Crawl-delay: 5
 
-User-agent: bing
+User-agent: `bing`
 Disallow: /
 
-User-agent: *
+User-agent: `*`
 Allow: /about/
 
 ```
@@ -963,8 +1001,8 @@ robotstxt(domain = "https://luzpar.netlify.app")
 ##     spiderbar::can_fetch(obj = self$robexclobj, path = paths, 
 ##         user_agent = bot)
 ## }
-## &lt;bytecode: 0x0000000027931670&gt;
-## &lt;environment: 0x0000000027930ad8&gt;
+## &lt;bytecode: 0x00000274e2b29f68&gt;
+## &lt;environment: 0x00000274d48661a8&gt;
 ## 
 ## attr(,"class")
 ## [1] "robotstxt"
@@ -973,9 +1011,26 @@ robotstxt(domain = "https://luzpar.netlify.app")
 ---
 ## Considerations &amp;mdash; the Ethics &amp;mdash; `robotstxt`
 
+Check the list of permissions for the most relevant part in the output
+
+
+```r
+robotstxt(domain = "https://luzpar.netlify.app")`$permissions`
+```
+
+
+```
+##      field useragent    value
+## 1 Disallow googlebot /states/
+## 2    Allow         *        /
+```
+
+---
+## Considerations &amp;mdash; the Ethics &amp;mdash; `robotstxt`
+
 .pull-left[
 
-Use the `paths_allowed` function to checks protocols for one or more specific paths
+Use the `paths_allowed` function to check protocols for one or more specific paths
 - supply a base URL with the `domain` argument
 - `path` and `bot` are the other important arguments
    - notice the default values    
@@ -1039,7 +1094,7 @@ class: action
 
 1) Check the protocols for &lt;https://www.theguardian.com&gt;
 
-   - via a browser and with the `robotstxt` function
+   - via (a) your browser and (b) with the `robotstxt` function in R
    - compare what you see
    
 &lt;br&gt;
@@ -1048,14 +1103,16 @@ class: action
 
    - such that it will return `FALSE`
    - taking the information from Exercise 1 into account
+   - hint: try looking at the list of permissions first
    
 &lt;br&gt;
 
 3) Check the protocols for any website that you might wish to scrape
 
   - with the `robotstxt` function
+  - reflect on the ethics of scraping that website
 
-<div class="countdown" id="timer_60afd634" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_6218a73f" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">07</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
 </div>
 
@@ -1177,7 +1234,7 @@ class: action
 &lt;br&gt;   
 - compare the look of the front- and back-end
 
-<div class="countdown" id="timer_60afd41a" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_6218a5eb" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1492,17 +1549,17 @@ Elements can have .yellow-h[attributes]
 
 Note that
 
-- the id attribute is not visible to the visitors
+- the `id` attribute is not visible to the visitors
 - attribute string .yellow-h[sentence-count] could have been anything I could come up with
-    - unlike the tag and attribute names &amp;mdash; e.g., strong, id as they are pre-defined      
+    - unlike the tag and attribute names &amp;mdash; e.g., `strong`, `id` as they are pre-defined      
 &lt;br&gt;    
-- there are some other attributes that are visible
+- some other attributes, such as `style`, can have visible effects 
 
 
 ---
 ## HTML &amp;mdash; Syntax
 
-There could be more than one attribute in an element
+There could be more than one attribute in a single element
 
 ```md
 &lt;p&gt;This is a &lt;strong `class="count"` `id="sentence-count"`&gt;one&lt;/strong&gt; sentence paragraph.&lt;/p&gt;
@@ -1526,13 +1583,13 @@ Note that
 - there could be more than one attribute in an element
     - with a white space in between them    
 &lt;br&gt;
-- the `class` attribute can apply to multiple elements
+- the same `class` attribute (e.i., `count`) can apply to multiple elements
    - while the `id` attribute must be unique on a page
 
 ---
-## HTML &amp;mdash; Important Elements &amp; Attibutes 
+## HTML &amp;mdash; Important Elements &amp; Attibutes &amp;mdash; Links 
 
-Links are provided with the a (anchor) element
+Links are provided with the `a` (anchor) element
 
 ```md
 &lt;p&gt;Click &lt;a href="https://www.google.com/"&gt;here&lt;/a&gt; to google things.&lt;/p&gt;
@@ -1547,13 +1604,13 @@ Links are provided with the a (anchor) element
 
 Note that
 
-- `href` (hypertext reference) is a required attribute for this element
-- most attributes are optional, some are required
+- `href` (hypertext reference) is a .yellow-h[required attribute] for this element
+- most attributes are optional, but some are required
 
 ---
-## HTML &amp;mdash; Links 
+## HTML &amp;mdash; Important Elements &amp; Attibutes &amp;mdash; Links 
 
-Links
+Links can have titles
 
 ```md
 &lt;p&gt;Click &lt;a `title="This text appears when visitors hover over the link"` 
@@ -1574,7 +1631,7 @@ Note that
 - it becomes visible when hovered over with mouse
 
 ---
-## HTML &amp;mdash; Lists
+## HTML &amp;mdash; Important Elements &amp; Attibutes &amp;mdash; Lists
 
 The `&lt;ul&gt;` tag introduces un-ordered lists, while the `&lt;li&gt;` tag defines lists items
 
@@ -1605,7 +1662,7 @@ Note that
 - Ordered lists are introduced with the the `&lt;ol&gt;` tag instead
 
 ---
-## HTML &amp;mdash; HTML &amp;mdash; Notes
+## HTML &amp;mdash; Notes
 
 By default, multiple spaces and/or lines breaks are ignored by browsers
 
@@ -1652,15 +1709,13 @@ class: action
 
 &lt;br&gt;
 
-7) Add an attribute to an element
-- which is not already on the original page
+7) Add an extra attribute that is not already on the original page
 - hints:
-   - there are at least two attributes for the list elements on the original page
-   - google to see what attributes list items accept
+   - google to see what attributes `p` elements can accept
    - &lt;https://www.w3schools.com/&gt; is a great place to look at
    - save this document as we will continue working on it
 
-<div class="countdown" id="timer_60afd56d" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_6218a5f6" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1699,7 +1754,7 @@ class: inverse, center, middle
 ## CSS &amp;mdash; Syntax
 
 .pull-left[
-CSS is written in .yellow-h[rules]
+- CSS is written in .yellow-h[rules]
 
 ]
 
@@ -1773,7 +1828,6 @@ CSS is written in .yellow-h[rules]
 
 ```
 ]
-
 
 ---
 ## CSS &amp;mdash; Syntax
@@ -1943,7 +1997,7 @@ class: action
    - increasing the font size of the text in paragraph  
    - change the colour of the second item in the list to red
    
-<div class="countdown" id="timer_60afd51e" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_6218a67c" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1990,7 +2044,7 @@ class: inverse, center, middle
 
   - created by [Hadley Wickham](http://http://hadley.nz/)
   - popular &amp;mdash; used by many for web scraping
-      - downloaded 635,132 times last month
+      - downloaded 559,070 times last month
       - some of it must be thanks to being a part of the `tidyverse` family     
 &lt;br&gt;      
   - last major revision was in March 2021
@@ -2026,8 +2080,8 @@ read_html("https://luzpar.netlify.app/")
 ```
 ## {html_document}
 ## &lt;html lang="en-us"&gt;
-## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8 ...
-## [2] &lt;body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-ma ...
+## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;\n&lt;meta charset="utf-8"&gt;\n&lt;meta name="viewport" content=" ...
+## [2] &lt;body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-main" class="page-wrapper"&gt;\n&lt;script src="/js/wowchemy-init.m ...
 ```
 
 ---
@@ -2051,8 +2105,8 @@ read_html("https://luzpar.netlify.app/")
 ```
 ## {html_document}
 ## &lt;html lang="en-us"&gt;
-## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8 ...
-## [2] &lt;body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-ma ...
+## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;\n&lt;meta charset="utf-8"&gt;\n&lt;meta name="viewport" content=" ...
+## [2] &lt;body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-main" class="page-wrapper"&gt;\n&lt;script src="/js/wowchemy-init.m ...
 ```
 
 ---
@@ -2251,8 +2305,8 @@ read_html("https://luzpar.netlify.app/")
 ```
 ## {html_document}
 ## &lt;html lang="en-us"&gt;
-## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8 ...
-## [2] &lt;body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-ma ...
+## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;\n&lt;meta charset="utf-8"&gt;\n&lt;meta name="viewport" content=" ...
+## [2] &lt;body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-main" class="page-wrapper"&gt;\n&lt;script src="/js/wowchemy-init.m ...
 ```
 
 
@@ -2265,8 +2319,8 @@ bow(url = "https://luzpar.netlify.app/") %&gt;%
 ```
 ## {html_document}
 ## &lt;html lang="en-us"&gt;
-## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8 ...
-## [2] &lt;body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-ma ...
+## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;\n&lt;meta charset="utf-8"&gt;\n&lt;meta name="viewport" content=" ...
+## [2] &lt;body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-main" class="page-wrapper"&gt;\n&lt;script src="/js/wowchemy-init.m ...
 ```
 
 
@@ -2359,7 +2413,7 @@ bow(url = "https://luzpar.netlify.app") %&gt;%
 
 ```
 ## {xml_nodeset (24)}
-##  [1] &lt;a class="js-search" href="#" aria-label="Close"&gt;&lt;i class="fas fa-times- ...
+##  [1] &lt;a class="js-search" href="#" aria-label="Close"&gt;&lt;i class="fas fa-times-circle text-muted" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;
 ##  [2] &lt;a class="navbar-brand" href="/"&gt;Parliament of Luzland&lt;/a&gt;
 ##  [3] &lt;a class="navbar-brand" href="/"&gt;Parliament of Luzland&lt;/a&gt;
 ##  [4] &lt;a class="nav-link active" href="/"&gt;&lt;span&gt;Home&lt;/span&gt;&lt;/a&gt;
@@ -2367,18 +2421,18 @@ bow(url = "https://luzpar.netlify.app") %&gt;%
 ##  [6] &lt;a class="nav-link" href="/constituencies/"&gt;&lt;span&gt;Constituencies&lt;/span&gt;&lt;/a&gt;
 ##  [7] &lt;a class="nav-link" href="/members/"&gt;&lt;span&gt;Members&lt;/span&gt;&lt;/a&gt;
 ##  [8] &lt;a class="nav-link" href="/documents/"&gt;&lt;span&gt;Documents&lt;/span&gt;&lt;/a&gt;
-##  [9] &lt;a class="nav-link js-search" href="#" aria-label="Search"&gt;&lt;i class="fas ...
-## [10] &lt;a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" ...
+##  [9] &lt;a class="nav-link js-search" href="#" aria-label="Search"&gt;&lt;i class="fas fa-search" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;
+## [10] &lt;a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences"&gt;&lt;i class="fas fa-moon" ar ...
 ## [11] &lt;a href="#" class="dropdown-item js-set-theme-light"&gt;&lt;span&gt;Light&lt;/span&gt;&lt;/a&gt;
 ## [12] &lt;a href="#" class="dropdown-item js-set-theme-dark"&gt;&lt;span&gt;Dark&lt;/span&gt;&lt;/a&gt;
-## [13] &lt;a href="#" class="dropdown-item js-set-theme-auto"&gt;&lt;span&gt;Automatic&lt;/spa ...
-## [14] &lt;a href="https://github.com/resulumit/scrp_workshop" target="_blank" rel ...
-## [15] &lt;a href="https://resulumit.com/" target="_blank" rel="noopener"&gt;Resul Um ...
+## [13] &lt;a href="#" class="dropdown-item js-set-theme-auto"&gt;&lt;span&gt;Automatic&lt;/span&gt;&lt;/a&gt;
+## [14] &lt;a href="https://github.com/resulumit/scrp_workshop" target="_blank" rel="noopener"&gt;a workshop on automated web scraping&lt;/a&gt;
+## [15] &lt;a href="https://resulumit.com/" target="_blank" rel="noopener"&gt;Resul Umit&lt;/a&gt;
 ## [16] &lt;a href="/documents/"&gt;documents&lt;/a&gt;
 ## [17] &lt;a href="/constituencies/"&gt;constituencies&lt;/a&gt;
 ## [18] &lt;a href="/members/"&gt;members&lt;/a&gt;
 ## [19] &lt;a href="/states/"&gt;states&lt;/a&gt;
-## [20] &lt;a href="https://github.com/rstudio/blogdown" target="_blank" rel="noope ...
+## [20] &lt;a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopener"&gt;Blogdown&lt;/a&gt;
 ## ...
 ```
 
@@ -2398,15 +2452,15 @@ bow(url = "https://luzpar.netlify.app") %&gt;%
 
 ```
 ## {xml_nodeset (9)}
-## [1] &lt;a href="https://github.com/resulumit/scrp_workshop" target="_blank" rel= ...
-## [2] &lt;a href="https://resulumit.com/" target="_blank" rel="noopener"&gt;Resul Umi ...
+## [1] &lt;a href="https://github.com/resulumit/scrp_workshop" target="_blank" rel="noopener"&gt;a workshop on automated web scraping&lt;/a&gt;
+## [2] &lt;a href="https://resulumit.com/" target="_blank" rel="noopener"&gt;Resul Umit&lt;/a&gt;
 ## [3] &lt;a href="/documents/"&gt;documents&lt;/a&gt;
 ## [4] &lt;a href="/constituencies/"&gt;constituencies&lt;/a&gt;
 ## [5] &lt;a href="/members/"&gt;members&lt;/a&gt;
 ## [6] &lt;a href="/states/"&gt;states&lt;/a&gt;
-## [7] &lt;a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopen ...
+## [7] &lt;a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopener"&gt;Blogdown&lt;/a&gt;
 ## [8] &lt;a href="https://gohugo.io/" target="_blank" rel="noopener"&gt;Hugo&lt;/a&gt;
-## [9] &lt;a href="https://github.com/wowchemy" target="_blank" rel="noopener"&gt;Wowc ...
+## [9] &lt;a href="https://github.com/wowchemy" target="_blank" rel="noopener"&gt;Wowchemy&lt;/a&gt;
 ```
 
 ---
@@ -2456,15 +2510,9 @@ bow(url = "https://luzpar.netlify.app") %&gt;%
 
 
 ```
-## [1] "a workshop on automated web scraping"
-## [2] "Resul Umit"                          
-## [3] "documents"                           
-## [4] "constituencies"                      
-## [5] "members"                             
-## [6] "states"                              
-## [7] "Blogdown"                            
-## [8] "Hugo"                                
-## [9] "Wowchemy"
+## [1] "a workshop on automated web scraping" "Resul Umit"                           "documents"                           
+## [4] "constituencies"                       "members"                              "states"                              
+## [7] "Blogdown"                             "Hugo"                                 "Wowchemy"
 ```
 
 ---
@@ -2517,12 +2565,8 @@ bow(url = "https://luzpar.netlify.app") %&gt;%
 
 ```
 ## [[1]]
-##                                         href 
-## "https://github.com/resulumit/scrp_workshop" 
-##                                       target 
-##                                     "_blank" 
-##                                          rel 
-##                                   "noopener" 
+##                                         href                                       target                                          rel 
+## "https://github.com/resulumit/scrp_workshop"                                     "_blank"                                   "noopener" 
 ## 
 ## [[2]]
 ##                     href                   target                      rel 
@@ -2545,20 +2589,16 @@ bow(url = "https://luzpar.netlify.app") %&gt;%
 ## "/states/" 
 ## 
 ## [[7]]
-##                                  href                                target 
-## "https://github.com/rstudio/blogdown"                              "_blank" 
-##                                   rel 
-##                            "noopener" 
+##                                  href                                target                                   rel 
+## "https://github.com/rstudio/blogdown"                              "_blank"                            "noopener" 
 ## 
 ## [[8]]
 ##                 href               target                  rel 
 ## "https://gohugo.io/"             "_blank"           "noopener" 
 ## 
 ## [[9]]
-##                          href                        target 
-## "https://github.com/wowchemy"                      "_blank" 
-##                           rel 
-##                    "noopener"
+##                          href                        target                           rel 
+## "https://github.com/wowchemy"                      "_blank"                    "noopener"
 ```
 
 ---
@@ -2574,15 +2614,9 @@ bow(url = "https://luzpar.netlify.app") %&gt;%
 
 
 ```
-## [1] "https://github.com/resulumit/scrp_workshop"
-## [2] "https://resulumit.com/"                    
-## [3] "/documents/"                               
-## [4] "/constituencies/"                          
-## [5] "/members/"                                 
-## [6] "/states/"                                  
-## [7] "https://github.com/rstudio/blogdown"       
-## [8] "https://gohugo.io/"                        
-## [9] "https://github.com/wowchemy"
+## [1] "https://github.com/resulumit/scrp_workshop" "https://resulumit.com/"                     "/documents/"                               
+## [4] "/constituencies/"                           "/members/"                                  "/states/"                                  
+## [7] "https://github.com/rstudio/blogdown"        "https://gohugo.io/"                         "https://github.com/wowchemy"
 ```
 
 --
@@ -2608,15 +2642,9 @@ bow(url = "https://luzpar.netlify.app") %&gt;%
 
 
 ```
-## [1] "https://github.com/resulumit/scrp_workshop"
-## [2] "https://resulumit.com/"                    
-## [3] "https://luzpar.netlify.app/documents/"     
-## [4] "https://luzpar.netlify.app/constituencies/"
-## [5] "https://luzpar.netlify.app/members/"       
-## [6] "https://luzpar.netlify.app/states/"        
-## [7] "https://github.com/rstudio/blogdown"       
-## [8] "https://gohugo.io/"                        
-## [9] "https://github.com/wowchemy"
+## [1] "https://github.com/resulumit/scrp_workshop" "https://resulumit.com/"                     "https://luzpar.netlify.app/documents/"     
+## [4] "https://luzpar.netlify.app/constituencies/" "https://luzpar.netlify.app/members/"        "https://luzpar.netlify.app/states/"        
+## [7] "https://github.com/rstudio/blogdown"        "https://gohugo.io/"                         "https://github.com/wowchemy"
 ```
 
 ---
@@ -2722,7 +2750,7 @@ class: action
       - make these URLs absolute   
       - see what other attributes are there to collect     
 
-<div class="countdown" id="timer_60afd610" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_6218a3ee" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -2790,12 +2818,9 @@ head(the_links)
 ```
 
 ```
-## [1] "https://luzpar.netlify.app/constituencies/muhlshafen/"   
-## [2] "https://luzpar.netlify.app/constituencies/benwerder/"    
-## [3] "https://luzpar.netlify.app/constituencies/steffisfelden/"
-## [4] "https://luzpar.netlify.app/constituencies/dillon/"       
-## [5] "https://luzpar.netlify.app/constituencies/kilnard/"      
-## [6] "https://luzpar.netlify.app/constituencies/granderry/"
+## [1] "https://luzpar.netlify.app/constituencies/muhlshafen/"    "https://luzpar.netlify.app/constituencies/benwerder/"    
+## [3] "https://luzpar.netlify.app/constituencies/steffisfelden/" "https://luzpar.netlify.app/constituencies/dillon/"       
+## [5] "https://luzpar.netlify.app/constituencies/kilnard/"       "https://luzpar.netlify.app/constituencies/granderry/"
 ```
 
 ---
@@ -3038,7 +3063,7 @@ Hints:
 -  practice with 3 members until you are ready to run the loop for all 
     - e.g., by replacing `1:length(the_links)` with `1:3` for the loop
 
-<div class="countdown" id="timer_60afd3eb" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_6218a70e" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">45</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -3101,7 +3126,7 @@ Scraping dynamic pages involves three main tasks
 - A package that integrates [Selenium 2.0 WebDriver](https://www.selenium.dev/documentation/en/) into R
 
   - created by [John Harrison](http://johndharrison.github.io/#/cover)
-  - downloaded 4,966 times last month
+  - downloaded 4,900 times last month
   - last updated in February 2020
 
 --
@@ -3245,7 +3270,7 @@ binman::list_versions("chromedriver")
 
 ```
 ## $win32
-## [1] "89.0.4389.23" "90.0.4430.24" "91.0.4472.19"
+## [1] "98.0.4758.102" "99.0.4844.17"  "99.0.4844.35"
 ```
 
 --
@@ -3558,7 +3583,7 @@ class: action
 - e.g., take a screenshot of your browser
    - and view it in R
 
-<div class="countdown" id="timer_60afd6c0" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_6218a5b6" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -3836,17 +3861,13 @@ as_tibble(selKeys) %&gt;% names()
 ```
 
 ```
-##  [1] "null"         "cancel"       "help"         "backspace"    "tab"         
-##  [6] "clear"        "return"       "enter"        "shift"        "control"     
-## [11] "alt"          "pause"        "escape"       "space"        "page_up"     
-## [16] "page_down"    "end"          "home"         "left_arrow"   "up_arrow"    
-## [21] "right_arrow"  "down_arrow"   "insert"       "delete"       "semicolon"   
-## [26] "equals"       "numpad_0"     "numpad_1"     "numpad_2"     "numpad_3"    
-## [31] "numpad_4"     "numpad_5"     "numpad_6"     "numpad_7"     "numpad_8"    
-## [36] "numpad_9"     "multiply"     "add"          "separator"    "subtract"    
-## [41] "decimal"      "divide"       "f1"           "f2"           "f3"          
-## [46] "f4"           "f5"           "f6"           "f7"           "f8"          
-## [51] "f9"           "f10"          "f11"          "f12"          "command_meta"
+##  [1] "null"         "cancel"       "help"         "backspace"    "tab"          "clear"        "return"       "enter"        "shift"       
+## [10] "control"      "alt"          "pause"        "escape"       "space"        "page_up"      "page_down"    "end"          "home"        
+## [19] "left_arrow"   "up_arrow"     "right_arrow"  "down_arrow"   "insert"       "delete"       "semicolon"    "equals"       "numpad_0"    
+## [28] "numpad_1"     "numpad_2"     "numpad_3"     "numpad_4"     "numpad_5"     "numpad_6"     "numpad_7"     "numpad_8"     "numpad_9"    
+## [37] "multiply"     "add"          "separator"    "subtract"     "decimal"      "divide"       "f1"           "f2"           "f3"          
+## [46] "f4"           "f5"           "f6"           "f7"           "f8"           "f9"           "f10"          "f11"          "f12"         
+## [55] "command_meta"
 ```
 
 ---
@@ -3936,7 +3957,7 @@ class: action
 - to see all results
 
 
-<div class="countdown" id="timer_60afd7c3" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_6218a46c" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -4114,7 +4135,7 @@ Hint
 - start with the related code in the previous slides, and adopt it to your needs  
 
 
-<div class="countdown" id="timer_60afd62d" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_6218a546" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">30</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 

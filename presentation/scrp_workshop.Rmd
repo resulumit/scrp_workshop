@@ -100,7 +100,7 @@ library(cranlogs)
 
 ### Resul Umit
 
-### May 2021
+### March 2022
 
 .footnote[
 
@@ -138,9 +138,9 @@ Resul Umit
 ---
 ## The Workshop &mdash; Overview
 
-- One day, on how to automate the process of extracting data from websites
+- One and a half day, on how to automate the process of extracting data from websites
 
-  - 150+ slides, 15+ exercises
+  - 160+ slides, 15+ exercises
   - a [demonstration website](https://luzpar.netlify.app/) for practice
 
 --
@@ -177,19 +177,19 @@ Resul Umit
 
 - Typically, such skills are not part of academic training
 
-  - for my PhD, I hand-visited close to 3000 webpages to collect data manually
+  - for my PhD, I visited close to 3000 webpages to collect data manually
       - on members of ten parliaments
       - multiple times, to update the dataset as needed
 
 ---
 ## The Workshop &mdash; Motivation &mdash; Aims
 
-- To provide you with an understanding of what is ethically possible
+- To provide you with an understanding of what is .yellow-h[ethically] possible
 
   - we will cover a large breath of issues, not all of it is for long-term memory
       - hence the slides are designed for self study as well    
 <br>
-  - awareness of what is ethical and possible, `Google`, and perseverance are all you need
+  - awareness of what is ethical and possible, Google, and perseverance are all you need
 
 --
 
@@ -198,7 +198,8 @@ Resul Umit
 - To start you with acquiring and practicing the skills needed 
 
   - practice with the demonstration website
-     - plenty of data, stable structure, and an ethical playground
+     - plenty of data, stable structure, and an ethical playground    
+<br>
   - start working on a real project
 
 ---
@@ -243,26 +244,25 @@ name: contents-slide
 ---
 ## The Workshop &mdash; Organisation
 
-- Breakout in groups of two for exercises
+- I will go through a number of slides...
 
-  - participants learn as much from their partner as from instructors
-  - switch partners after every other part
-  - leave your breakout room manually, when everyone in the group is ready
-
-<br> 
-
-- Type, rather than copy and paste, the code that you will find on these slides
-
-  - typing is a part of the learning process
-  - slides are, and will remain, available at [resulumit.com/teaching/scrp_workshop.html](https://resulumit.com/teaching/scrp_workshop.html)
+  - introducing things
+  - demonstrating how-to do things
 
 <br> 
 
-- When you have a question
+- ... and then pause, for you to use/do those things
 
-  - ask your partner
-  - google together
-  - ask me
+  - e.g., prepare your computer for the workshop, and/or
+  - complete a number of exercises
+    
+<br> 
+
+- We are here to help
+
+  - ask me, other participants
+  - consult Google, [slides](https://resulumit.com/teaching/scrp_workshop.html), [answer script]()
+      - type, rather than copy and paste, the code you will find on the slides or the script
 
 ---
 class: action
@@ -307,7 +307,7 @@ bow(url = "https://luzpar.netlify.app/members/") %>%
 
 - Results that come out as output .out-t[appear as such &mdash; in the same font, on green background]    
 
-  - with some results, such as browsers popping up
+  - except for some results, such as a browser popping up
     
 --
 
@@ -346,7 +346,8 @@ class: action
 - Having the workshop slides<sup>*</sup> on your own machine might be helpful
 
   - flexibility to go back and forward on your own
-      - especially while in a breakout room
+      - especially while in a breakout room     
+<br>      
   - ability to scroll across long codes on some slides
 
 <br>
@@ -374,19 +375,42 @@ class: action
    - includes fabricated data on the imaginary Parliament of Luzland
    - provides us with plenty of data, stable structure, and an ethical playground
 
-<br>
+- Using this demonstration website for practice is recommended
+
+   - tailored to exercises, no ethical concern
+   - but not compulsory &mdash; use a different one if you prefer so
+ 
+- Explore the website now
+
+   - click on the links to see an individual page for 
+       - states, constituencies, members, and documents     
+<br>       
+   - notice that the documents section is different than the rest
+       - it is a page with dynamic frame
+
+`r countdown(minutes = 5, seconds = 00, top = 0)`
+   
+---
+class: action
+
+## Demonstration Website &mdash; Explore on Your Browser
+
+- There is a demonstration website for this workshop
+
+   - available at <https://luzpar.netlify.app/>
+   - includes fabricated data on the imaginary Parliament of Luzland
+   - provides us with plenty of data, stable structure, and an ethical playground
 
 - Using this demonstration website for practice is recommended
 
    - tailored to exercises, no ethical concern
    - but not compulsory &mdash; use a different one if you prefer so
-
-<br>
  
 - Explore the website now
 
    - click on the links to see an individual page for 
-       - states, constituencies, members, and documents
+       - states, constituencies, members, and documents     
+<br>       
    - notice that the documents section is different than the rest
        - it is a page with dynamic frame
 
@@ -608,6 +632,21 @@ class: action
    - on Firefox, search at <https://addons.mozilla.org/>
 
 ---
+class: action
+
+## Solutions &mdash; Note Where They Are
+
+- Solutions to exercises, or links to them, are available online
+
+   - can be downloaded at <https://luzpar.netlify.app/exercises/solutions.R>
+
+<br>
+
+- I recommend the solutions to be consulted as a last resort
+
+  - after a genuine effort to complete the exercises yourself first
+
+---
 ## Other Resources<sup>*</sup>
 
 - `RSelenium` vignettes
@@ -626,7 +665,6 @@ class: action
    - comes with [a course website](https://juliasilge.shinyapps.io/learntidytext/) where you can practice
    
 
-   
 .footnote[
 
 <sup>*</sup> I recommend these to be consulted not during but after the workshop.
@@ -659,10 +697,8 @@ class: inverse, center, middle
 
 - Web scraping might be more likely to be illegal if, for example,      
 <br>
-   - it is harmful to the source
-      - commercially
+   - it is harmful to the source commercially and/or physically
           - e.g., scraping a commercial website to create a rival website     
-      - physically
           - e.g., scraping a website so hard and fast that it collapses    
 <br>
    - it gathers data that is
@@ -797,7 +833,7 @@ Files might include optional comments, written after the number sign .yellow-h[&
 User-agent: *
 Allow: /
 Disallow: /about/
-Crawl-delay: 5    `# five second delay, to ensure our servers are not overloaded`
+Crawl-delay: 5    `# please delay for five seconds, to ensure our servers are not overloaded`
 
 ```
 
@@ -842,21 +878,21 @@ User-agent: googlebot
 
 This website has different protocols for different agents
 
-- Google is allowed to scrape everything, with a 5-second delay
-- Bing is not allowed to scrape anything
-- everyone else can scrape the section or page located at www.websiteurl/about/
+- .yellow-h[Google] is allowed to scrape everything, with a 5-second delay
+- .yellow-h[Bing] is not allowed to scrape anything
+- .yellow-h[everyone else] can scrape the section or page located at www.websiteurl/about/
 
 <br>
 
 ```md
-User-agent: googlebot
+User-agent: `googlebot`
 Allow: /
 Crawl-delay: 5
 
-User-agent: bing
+User-agent: `bing`
 Disallow: /
 
-User-agent: *
+User-agent: `*`
 Allow: /about/
 
 ```
@@ -913,9 +949,22 @@ robotstxt(domain = "https://luzpar.netlify.app")
 ---
 ## Considerations &mdash; the Ethics &mdash; `robotstxt`
 
+Check the list of permissions for the most relevant part in the output
+
+```{r, eval=FALSE}
+robotstxt(domain = "https://luzpar.netlify.app")`$permissions`
+```
+
+```{r, echo=FALSE}
+robotstxt(domain = "https://luzpar.netlify.app")$permissions
+```
+
+---
+## Considerations &mdash; the Ethics &mdash; `robotstxt`
+
 .pull-left[
 
-Use the `paths_allowed` function to checks protocols for one or more specific paths
+Use the `paths_allowed` function to check protocols for one or more specific paths
 - supply a base URL with the `domain` argument
 - `path` and `bot` are the other important arguments
    - notice the default values    
@@ -974,7 +1023,7 @@ class: action
 
 1) Check the protocols for <https://www.theguardian.com>
 
-   - via a browser and with the `robotstxt` function
+   - via (a) your browser and (b) with the `robotstxt` function in R
    - compare what you see
    
 <br>
@@ -983,12 +1032,14 @@ class: action
 
    - such that it will return `FALSE`
    - taking the information from Exercise 1 into account
+   - hint: try looking at the list of permissions first
    
 <br>
 
 3) Check the protocols for any website that you might wish to scrape
 
   - with the `robotstxt` function
+  - reflect on the ethics of scraping that website
 
 `r countdown(minutes = 7, seconds = 30, top = 0)`
 
@@ -1429,17 +1480,17 @@ Elements can have .yellow-h[attributes]
 
 Note that
 
-- the id attribute is not visible to the visitors
+- the `id` attribute is not visible to the visitors
 - attribute string .yellow-h[sentence-count] could have been anything I could come up with
-    - unlike the tag and attribute names &mdash; e.g., strong, id as they are pre-defined      
+    - unlike the tag and attribute names &mdash; e.g., `strong`, `id` as they are pre-defined      
 <br>    
-- there are some other attributes that are visible
+- some other attributes, such as `style`, can have visible effects 
 
 
 ---
 ## HTML &mdash; Syntax
 
-There could be more than one attribute in an element
+There could be more than one attribute in a single element
 
 ```md
 <p>This is a <strong `class="count"` `id="sentence-count"`>one</strong> sentence paragraph.</p>
@@ -1463,13 +1514,13 @@ Note that
 - there could be more than one attribute in an element
     - with a white space in between them    
 <br>
-- the `class` attribute can apply to multiple elements
+- the same `class` attribute (e.i., `count`) can apply to multiple elements
    - while the `id` attribute must be unique on a page
 
 ---
-## HTML &mdash; Important Elements & Attibutes 
+## HTML &mdash; Important Elements & Attibutes &mdash; Links 
 
-Links are provided with the a (anchor) element
+Links are provided with the `a` (anchor) element
 
 ```md
 <p>Click <a href="https://www.google.com/">here</a> to google things.</p>
@@ -1484,13 +1535,13 @@ Links are provided with the a (anchor) element
 
 Note that
 
-- `href` (hypertext reference) is a required attribute for this element
-- most attributes are optional, some are required
+- `href` (hypertext reference) is a .yellow-h[required attribute] for this element
+- most attributes are optional, but some are required
 
 ---
-## HTML &mdash; Links 
+## HTML &mdash; Important Elements & Attibutes &mdash; Links 
 
-Links
+Links can have titles
 
 ```md
 <p>Click <a `title="This text appears when visitors hover over the link"` 
@@ -1511,7 +1562,7 @@ Note that
 - it becomes visible when hovered over with mouse
 
 ---
-## HTML &mdash; Lists
+## HTML &mdash; Important Elements & Attibutes &mdash; Lists
 
 The `<ul>` tag introduces un-ordered lists, while the `<li>` tag defines lists items
 
@@ -1541,7 +1592,7 @@ Note that
 - Ordered lists are introduced with the the `<ol>` tag instead
 
 ---
-## HTML &mdash; HTML &mdash; Notes
+## HTML &mdash; Notes
 
 By default, multiple spaces and/or lines breaks are ignored by browsers
 
@@ -1587,11 +1638,9 @@ class: action
 
 <br>
 
-7) Add an attribute to an element
-- which is not already on the original page
+7) Add an extra attribute that is not already on the original page
 - hints:
-   - there are at least two attributes for the list elements on the original page
-   - google to see what attributes list items accept
+   - google to see what attributes `p` elements can accept
    - <https://www.w3schools.com/> is a great place to look at
    - save this document as we will continue working on it
 
@@ -1632,7 +1681,7 @@ class: inverse, center, middle
 ## CSS &mdash; Syntax
 
 .pull-left[
-CSS is written in .yellow-h[rules]
+- CSS is written in .yellow-h[rules]
 
 ]
 
@@ -1706,7 +1755,6 @@ CSS is written in .yellow-h[rules]
 
 ```
 ]
-
 
 ---
 ## CSS &mdash; Syntax
