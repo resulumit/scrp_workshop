@@ -1256,7 +1256,7 @@ HTML documents
 - start with a declaration
   - so that browsers know what they are     
 <br>
-- consist of elements
+- consist of .yellow-h[elements]
   - written in between opening and closing tags
    
 ]
@@ -1395,7 +1395,7 @@ HTML documents
 ]
 
 ---
-## HTML &mdash; Syntax
+## HTML &mdash; Syntax &mdash; Elements &mdash; Tags
 
 Most elements have opening and closing .yellow-h[tags]
 
@@ -1419,9 +1419,9 @@ Note that
 - the closing tag has a forward slash .yellow-h[/] before the element name
 
 ---
-## HTML &mdash; Syntax
+## HTML &mdash; Syntax &mdash; Elements &mdash; Content
 
-Most elements have some content
+Most elements have some .yellow-h[content]
 
 ```md
 <p>`This is a one sentence paragraph.`</p>
@@ -1435,34 +1435,7 @@ This is a one sentence paragraph.
 ]
 
 ---
-## HTML &mdash; Syntax
-
-Elements can be nested
-
-```md
-<p>This is a <strong>one</strong> sentence paragraph.</p>
-
-```
-
-.out-t[
-
-<p>This is a <strong>one</strong> sentence paragraph.</p>
-]
-
-
-<br>
-
-Note that
-
-- there are two elements above, a paragraph and a strong emphasis
-- strong is said to be the child of the paragraph element
-   - there could be more than one child
-   - in that case, children are numbered from the left      
-<br>   
-- paragraph is said to be the parent of the strong element
-
----
-## HTML &mdash; Syntax
+## HTML &mdash; Syntax &mdash; Elements &mdash; Attributes
 
 Elements can have .yellow-h[attributes]
 
@@ -1488,7 +1461,7 @@ Note that
 
 
 ---
-## HTML &mdash; Syntax
+## HTML &mdash; Syntax &mdash; Elements &mdash; Attributes
 
 There could be more than one attribute in a single element
 
@@ -1518,7 +1491,7 @@ Note that
    - while the `id` attribute must be unique on a page
 
 ---
-## HTML &mdash; Important Elements & Attibutes &mdash; Links 
+## HTML &mdash; Important Elements &mdash; Links 
 
 Links are provided with the `a` (anchor) element
 
@@ -1539,7 +1512,7 @@ Note that
 - most attributes are optional, but some are required
 
 ---
-## HTML &mdash; Important Elements & Attibutes &mdash; Links 
+## HTML &mdash; Important Elements &mdash; Links 
 
 Links can have titles
 
@@ -1562,7 +1535,7 @@ Note that
 - it becomes visible when hovered over with mouse
 
 ---
-## HTML &mdash; Important Elements & Attibutes &mdash; Lists
+## HTML &mdash; Important Elements &mdash; Lists
 
 The `<ul>` tag introduces un-ordered lists, while the `<li>` tag defines lists items
 
@@ -1592,7 +1565,36 @@ Note that
 - Ordered lists are introduced with the the `<ol>` tag instead
 
 ---
-## HTML &mdash; Notes
+## HTML &mdash; Syntax &mdash; Notes
+
+Elements can be nested
+
+```md
+<p>This is a <strong>one</strong> sentence paragraph.</p>
+
+```
+
+.out-t[
+
+<p>This is a <strong>one</strong> sentence paragraph.</p>
+]
+
+
+<br>
+
+Note that
+
+- there are two elements above, a paragraph and a strong emphasis
+- strong is said to be the child of the paragraph element
+   - there could be more than one child
+   - in that case, children are numbered from the left      
+<br>   
+- paragraph is said to be the parent of the strong element
+
+---
+
+
+## HTML &mdash; Syntax &mdash; Notes
 
 By default, multiple spaces and/or lines breaks are ignored by browsers
 
@@ -1626,7 +1628,7 @@ class: action
 
 ## Exercises
 
-6) Re-create the .yellow-h[body] of the page at <https://luzpar.netlify.app/states/> in R
+6) Re-create the page at <https://luzpar.netlify.app/states/> in R
 
 - start an HTML file, following from the RStudio menu:
 
@@ -1638,11 +1640,14 @@ class: action
 
 <br>
 
-7) Add an extra attribute that is not already on the original page
-- hints:
-   - google to see what attributes `p` elements can accept
-   - <https://www.w3schools.com/> is a great place to look at
-   - save this document as we will continue working on it
+7) Add at least one extra tag and/or attribute
+
+- with a visible effect on how the page looks at the front end
+   - hints:
+       - google if you need to
+       - [www.w3schools.com](https://www.w3schools.com/) has a lot resources
+       
+- save this document as we will continue working on it
 
 `r countdown(minutes = 10, seconds = 00, top = 0)`
 
@@ -1836,7 +1841,7 @@ class: inverse, center, middle
 <html>
   <head>
     <style>                   #<<
-      h1 {color: blue;}       #<<
+      h1 {color:blue;}       #<<
     </style>                  #<<
     <title>A title for browsers</title>
   </head>
@@ -1918,11 +1923,12 @@ class: action
 8) Provide some simple style to your HTML document
 - one that you created during the previous exercise
 - using internal or external style, but not inline
-   - so that you can practice selecting element and/or attributes     
+   - so that you can practice selecting elements     
 <br>
 - no idea what to do? try
    - increasing the font size of the text in paragraph  
    - change the colour of the second item in the list to red
+   - get more ideas from [www.w3schools.com/css](https://www.w3schools.com/css/default.asp)
    
 `r countdown(minutes = 5, seconds = 00, top = 0)`
 
@@ -1982,7 +1988,7 @@ class: inverse, center, middle
 - A lot has already been written on this package
 
   - you will find solutions to, or help for, any issues online
-  - see first the [package documentation](https://cran.r-project.org/web/packages/rvest/rvest.pdf), numerous tutorials &mdash; such as [this](https://rvest.tidyverse.org/) and [this](https://blog.rstudio.com/2014/11/24/rvest-easy-web-scraping-with-r/), and [this](https://steviep42.github.io/webscraping/book/index.html#quick-rvest-tutorial)
+  - see first the [package documentation](https://cran.r-project.org/web/packages/rvest/rvest.pdf), numerous tutorials &mdash; such as [this](https://rvest.tidyverse.org/), [this](https://blog.rstudio.com/2014/11/24/rvest-easy-web-scraping-with-r/), and [this](https://steviep42.github.io/webscraping/book/index.html#quick-rvest-tutorial)
      
 --
 
@@ -2004,7 +2010,7 @@ read_html("https://luzpar.netlify.app/")
 ---
 ## Static Pages &mdash; `rvest` &mdash; Get Source Code
 
-You may wish to check the protocol first
+You may wish to check the protocol first, for ethical scraping
 
 ```{r, message=FALSE}
 paths_allowed(domain = "https://luzpar.netlify.app/")
@@ -2197,46 +2203,45 @@ scrape(`bow`,
 ---
 ## Static Pages &mdash; `rvest` &mdash; Get Source Code
 
-These two are equal, when there is no protocol against the access
+These two pieces of code lead to the same outcome, as there is no protocol against the access
+
+.pull-left[
 
 ```{r, message=FALSE}
 read_html("https://luzpar.netlify.app/")
 ```
 
+]
+
+.pull-right[
 
 ```{r, message=FALSE}
 bow(url = "https://luzpar.netlify.app/") %>%  
     scrape()
 ```
 
+]
 
 ---
 ## Static Pages &mdash; `rvest` &mdash; Get Source Code
 
 The difference occurs when there is a protocol against the access
 
-```md
-bow(url = "https://luzpar.netlify.app`/states/`", user_agent = `"googlebot"`)
+.pull-left[
+
+```{r}
+read_html("https://luzpar.netlify.app/exercises/exercise_6.Rhtml")
 ```
 
-```{r, echo=FALSE}
-bow(url = "https://luzpar.netlify.app/states/", user_agent = "googlebot")
+]
+
+.pull-right[
+
+```{r}
+bow(url = "https://luzpar.netlify.app/exercises/exercise_6.Rhtml") %>% 
+    scrape()
 ```
 
-<br>
-
-
-```md
-bow(url = "https://luzpar.netlify.app/states/", user_agent = "googlebot") `%>%` 
-    `scrape()`
-```
-.out-t[
-
-```
-## Warning: No scraping allowed here!
-
-## NULL
-```
 ]
 
 ---
@@ -2249,7 +2254,7 @@ bow(url = "https://luzpar.netlify.app/states/", user_agent = "googlebot") `%>%`
    - specified with a selector
        - CSS or XPATH    
 <br>
-  - we will work with css in this workshop
+  - we will work with CSS in this workshop
        - facilitated by Chrome and SelectorGagdet
        
 <br>
@@ -2282,7 +2287,7 @@ html_elements(x,
 ---
 ## Static Pages &mdash; `rvest` &mdash; `html_elements`
 
-Get the anchor (a) elements on the homepage
+Get the `a` (anchor) elements on the homepage
 
 ```{r, eval=FALSE}
 bow(url = "https://luzpar.netlify.app") %>%
@@ -2391,7 +2396,7 @@ bow(url = "https://luzpar.netlify.app") %>%
 
 .pull-right[
 
-```md
+```{r, eval=FALSE}
 
 html_attr(x, name, default = NA_character_)
 
@@ -2440,7 +2445,7 @@ bow(url = "https://luzpar.netlify.app") %>%
 Note that
 
 - some URLs are given relative to the base URL
-   - e.g., `/states/`, which is actually `/states/`
+   - e.g., `/states/`, which is actually <https://luzpar.netlify.app/states/>
    - you can complete them with the `url_absolute` function
    
 ---

@@ -48,6 +48,10 @@ robotstxt(domain = "https://www.parliament.uk/")$permissions
 # rhtml file available to download at:
 # https://luzpar.netlify.app/exercises/exercise_7.Rhtml
 
+# exercise 8 --------------------------------------------------------------
+
+# rhtml file available to download at:
+# https://luzpar.netlify.app/exercises/exercise_8.Rhtml
 
 # exercise 9 on slide 99 --------------------------------------------------
 
@@ -86,7 +90,8 @@ df <- data.frame(
 
 
 # exercise 10 on slide 110 ------------------------------------------------
-# note: the code below creates the csv file available at:
+
+# note that the code below creates the csv file available at:
 # https://luzpar.netlify.app/exercises/static_data.csv
 
 # scrape the /members/ section for links to personal pages
