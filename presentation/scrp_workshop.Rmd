@@ -18,7 +18,11 @@ output:
 class: inverse, center, middle
 
 ```{r setup, include=FALSE}
+
+# global options
 options(htmltools.dir.version = FALSE, crayon.enabled = TRUE)
+
+# libraries
 library(crayon)
 library(fansi)
 library(tidyverse)
@@ -28,6 +32,30 @@ library(robotstxt)
 library(polite)
 library(countdown)
 library(cranlogs)
+library(RefManageR)
+
+# references
+c("rvest", "RSelenium", "robotstxt", "polite",  "dplyr", "xaringan") %>% 
+        knitr::write_bib("scrp_workshop_files/bibliography/packages.bib")
+
+bib_files <- c("scrp_workshop_files/bibliography/packages.bib", 
+               "scrp_workshop_files/bibliography/manuals.bib")
+
+bib_data <- lapply(bib_files, readLines)
+
+write(unlist(bib_data),
+      file = "scrp_workshop_files/bibliography/presentation.bib")
+
+BibOptions(check.entries = FALSE,
+           bib.style = "authoryear",
+           cite.style = "authoryear",
+           style = "markdown",
+           hyperlink = "to.doc",
+           dashed = FALSE)
+
+bibliography <- ReadBib("scrp_workshop_files/bibliography/presentation.bib", 
+                        check = FALSE)
+
 ```
 
 <style type="text/css">
@@ -360,7 +388,7 @@ class: action
   
 .footnote[
 
-<sup>*</sup> These slides are produced in R, with the `xaringan` package ([Xie, 2020](https://cran.r-project.org/web/packages/xaringan/xaringan.pdf)).
+<sup>*</sup> These slides are produced in R, with the `xaringan` package `r Citep(bibliography, "R-xaringan")`.
 
 ]
 
@@ -529,19 +557,19 @@ install.packages(c("rvest", "RSelenium", "robotstxt", "polite", "dplyr"))
 
 We will use
 
-- `rvest` ([Wickham, 2021](https://cran.r-project.org/web/packages/rvest/index.html)), for scraping websites
+- `rvest` `r Citep(bibliography, "R-rvest")`, for scraping websites
 
 --
-- `RSelenium` ([Harrison, 2020](https://cran.r-project.org/web/packages/RSelenium/index.html)), for browsing the web programmatically
+- `RSelenium` `r Citep(bibliography, "R-RSelenium")`, for browsing the web programmatically
 
 --
-- `robotstxt` ([Meissner & Ren, 2020](https://cran.r-project.org/web/packages/robotstxt/index.html)), for checking permissions to scrape websites
+- `robotstxt` `r Citep(bibliography, "R-robotstxt")`, for checking permissions to scrape websites
 
 --
-- `polite` ([Perepolkin, 2019](https://cran.r-project.org/web/packages/polite/index.html)), for compliance with permissions to scrape websites
+- `polite` `r Citep(bibliography, "R-polite")`, for compliance with permissions to scrape websites
 
 --
-- `dplyr` ([Wickham et al, 2021](https://cran.r-project.org/web/packages/dplyr/index.html)), for data manipulation
+- `dplyr` `r gsub("Ã§", "ç", Citep(bibliography, "R-dplyr"))`, for data manipulation
 
 ---
 class: action
@@ -654,12 +682,12 @@ class: action
    - available at <https://cran.r-project.org/web/packages/RSelenium/vignettes/basics.html>
 
 
-- R for Data Science ([Wickham & Grolemund, 2019](https://r4ds.had.co.nz/))
+- R for Data Science `r Citep(bibliography, "rfordatascience")`
   
    - open access at <https://r4ds.had.co.nz>
    
 
-- Text Mining with R: A Tidy Approach ([Silge & Robinson, 2017](https://www.tidytextmining.com/))
+- Text Mining with R: A Tidy Approach `r Citep(bibliography, "textminingwithr")`
  
    - open access at [tidytextmining.com](https://www.tidytextmining.com/)
    - comes with [a course website](https://juliasilge.shinyapps.io/learntidytext/) where you can practice
@@ -3932,20 +3960,22 @@ class: inverse, center, middle
 
 ]
 
+
 ---
 ## References
 
-Harrison, J. (2020). [RSelenium: R Bindings for 'Selenium WebDriver'](https://cran.r-project.org/web/packages/RSelenium/index.html). R package, version 1.7.7.
+```{r echo=FALSE, warning=FALSE, results="asis"}
 
-Meissner, P., & Ren, K. (2020). [robotstxt: A 'robots.txt' Parser and 'Webbot'/'Spider'/'Crawler' Permissions Checker](https://cran.r-project.org/web/packages/robotstxt/index.html). R package, version 0.7.13.
+capture.output({
+  
+PrintBibliography(bibliography, .opts = list(style = "text"))
+}) %>%
+  { gsub("<URL:", "", ., fixed = TRUE) } %>%
+  { gsub(">", "", ., fixed = TRUE) } %>%
+  { gsub("Ã§", "ç", ., fixed = TRUE) } %>%
+  cat(sep="\n")
 
-Perepolkin, D. (2019). [polite: Be Nice on the Web](https://cran.r-project.org/web/packages/polite/index.html). R package, version 0.1.1.
-
-Wickham, H. (2021). [rvest: Easily Harvest (Scrape) Web Pages](https://cran.r-project.org/web/packages/rvest/index.html). R package, version 1.0.0.
-
-Wickham, H., François, R., Henry, L., & Müller, K. (2021). [dplyr: A grammar of data manipulation](https://cran.r-project.org/web/packages/dplyr/index.html). R package, version 1.0.6.
-
-Xie, Y. (2020). [xaringan: Presentation Ninja](https://cran.r-project.org/web/packages/xaringan/index.html). R package, version 0.19.
+```
 
 ---
 class: middle, center
