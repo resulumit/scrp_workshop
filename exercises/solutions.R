@@ -53,7 +53,8 @@ robotstxt(domain = "https://www.parliament.uk/")$permissions
 # rhtml file available to download at:
 # https://luzpar.netlify.app/exercises/exercise_8.Rhtml
 
-# exercise 9 on slide 99 --------------------------------------------------
+
+# exercise 9 --------------------------------------------------------------
 
 the_page <- bow(url = "https://luzpar.netlify.app/members/") %>%
         scrape()
@@ -89,7 +90,7 @@ df <- data.frame(
 )
 
 
-# exercise 10 on slide 110 ------------------------------------------------
+# exercise 10 -------------------------------------------------------------
 
 # note that the code below creates the csv file available at:
 # https://luzpar.netlify.app/exercises/static_data.csv
@@ -133,7 +134,7 @@ for (i in 1:length(the_links)) {
                 "email" = the_page %>% html_elements("#email a") %>% html_text(),
                 "phone" = the_page %>% html_elements("#phone span") %>% html_text(),
                 "website" = the_page %>% html_elements("#website a") %>% html_attr("href"),
-                "preference" = the_page %>% html_elements("#contact-preference") %>% html_text(),
+                "preference" = the_page %>% html_elements("#contact-preference") %>% html_text()
                 
         )
         
@@ -143,10 +144,11 @@ for (i in 1:length(the_links)) {
 }
 
 # flatten the list and save the data in a csv file
+df_mps <- as_tibble(do.call(rbind, temp_list)) 
 
-as_tibble(do.call(rbind, temp_list)) %>% 
-        write.csv("static_data.csv", row.names = FALSE)
-
+# view and (optionally) print it
+View(df_mps)
+write.csv(df_mps, "static_data.csv", row.names = FALSE)
 
 
 # exercise 11 -------------------------------------------------------------
@@ -183,27 +185,108 @@ browser$getTitle()
 # take a screenshot of the page and view it in rstudio
 browser$screenshot(display = TRUE, useViewer = TRUE)
 
-# exercise 13 -------------------------------------------------------------
+# exercise 14 -------------------------------------------------------------
 
 # navigate to the website
 browser$navigate(url = "https://duckduckgo.com/")
 
+# find the bar
 the_bar <- browser$findElement(using = "css", value = "#search_form_input_homepage")
 
-# try searching -----------------------------------------------------------
+# check if you really found it
+the_bar$highlightElement()
 
-search_box <- browser$findElement(using = "css", value = "#sbox")
-search_box$clickElement()
-search_box$sendKeysToElement(list("Luzland", key = "enter"))
+# click on it
+the_bar$clickElement()
 
-search_box <- browser$findElement(using = "css", value = "body > div.container-fluid > div > div.col-sm-4 > form")
-search_box$clickElement()
+# conduct a search
+the_bar$sendKeysToElement(list("Luzland", key = "enter"))
 
+# exercise 15 -------------------------------------------------------------
 
-# try years ---------------------------------------------------------------
+# find the body
+the_body <- browser$findElement(using = "css", value = "body")
 
-year_box <- browser$findElement(using = "css", value = "#yrange > div > div:nth-child(1) > label > input[type=checkbox]")
+# scroll down
+the_body$sendKeysToElement(list(key = "page_down"))
+
+# scroll up
+the_body$sendKeysToElement(list(key = "page_up"))
+
+# exercise 16 -------------------------------------------------------------
+
+# go back
+browser$goBack()
+
+# try to conduct a new search
+# note that this won't work
+the_bar$sendKeysToElement(list("Lucerne", key = "enter"))
+
+# find the bar again, and click on it
+the_bar <- browser$findElement(using = "css", value = "#search_form_input_homepage")
+the_bar$clickElement()
+
+# conduct a new search now
+the_bar$sendKeysToElement(list("Lucerne", key = "enter"))
+
+# exercise 17 -------------------------------------------------------------
+
+# navigate to the desired page and wait a little
+browser$navigate("https://luzpar.netlify.app/documents/")
+Sys.sleep(4)
+
+# switch to the frame with the app
+app_frame <- browser$findElement("css", "iframe")
+browser$switchToFrame(Id = app_frame)
+
+# find and open the drop down menu
+drop_down <- browser$findElement(using = "css", value = ".bs-placeholder")
+drop_down$clickElement()
+
+# choose document type: law
+report <- browser$findElement(using = 'css', "[id='bs-select-1-2']")
+report$clickElement()
+
+# choose document type: proposal
+proposal <- browser$findElement(using = 'css', "[id='bs-select-1-1']")
+proposal$clickElement()
+
+# close the drop down menu
+drop_down$clickElement()
+
+# find and un-check year: 2019
+year_box <- browser$findElement(using = "css", value = "#yrange > div > div:nth-child(3) > label > input[type=checkbox]")
 year_box$clickElement()
 
-year_box <- browser$findElement(using = "css", value = "#yrange > div > div:nth-child(2) > label > input[type=checkbox]")
-year_box$clickElement()
+# get the page source and separate the links
+the_links <- browser$getPageSource()[[1]] %>% 
+        read_html() %>% 
+        html_elements("td a") %>% 
+        html_attr("href")
+
+# create an empty list to be filled
+temp_list <- list()
+
+# write a loop
+for (i in 1:length(the_links)) {
+        
+        the_page <- bow(url = the_links[i]) %>%
+                scrape()
+        
+        
+        # create a temporary tibble with information from each page        
+        temp_tibble <- tibble(
+                
+                "tags" = the_page %>% html_elements(".article-categories") %>% html_text(),
+                "credits" = the_page %>% html_elements(".article-header-caption a") %>% html_text()
+                
+        )
+        
+        # add data from each iteration to the list        
+        temp_list[[i]] <- temp_tibble
+        
+}
+
+# flatten the list and print it in the console
+as_tibble(do.call(rbind, temp_list))
+

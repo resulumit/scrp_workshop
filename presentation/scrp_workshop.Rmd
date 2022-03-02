@@ -3690,7 +3690,7 @@ as_tibble(selKeys) %>% names()
 Choosing the body element, you can scroll up and down a page
 
 ```{r, eval=FALSE}
-body <- broswer$findElement(using = "css", `value = "body"`)
+body <- browser$findElement(using = "css", `value = "body"`)
 body$sendKeysToElement(list(`key = "page_down"`))
 
 ```
@@ -3767,6 +3767,11 @@ class: action
 
 15) Scroll down programatically, and up
 - to see all results
+
+<br>
+
+16) Go back, and conduct another search
+- hint: you will have to find the search bar again
 
 
 `r countdown(minutes = 10, seconds = 00, top = 0)`
@@ -3939,14 +3944,7 @@ class: action
 - published after 2019
 
 
-<br>
-
-Hint
-- start with the related code in the previous slides, and adopt it to your needs  
-
-
 `r countdown(minutes = 30, seconds = 00, top = 0)`
-
 
 ---
 name: reference-slide
