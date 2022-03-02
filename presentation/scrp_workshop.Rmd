@@ -289,7 +289,7 @@ name: contents-slide
 - We are here to help
 
   - ask me, other participants
-  - consult Google, [slides](https://resulumit.com/teaching/scrp_workshop.html), [answer script]()
+  - consult Google, [slides](https://resulumit.com/teaching/scrp_workshop.html), [answer script](https://luzpar.netlify.app/exercises/solutions.R)
       - type, rather than copy and paste, the code you will find on the slides or the script
 
 ---
