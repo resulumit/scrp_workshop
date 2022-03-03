@@ -2140,7 +2140,7 @@ class: inverse, center, middle
 
 <br>
 
-- Scraping static pages involves two main tasks
+- Scraping static pages involves two main steps
 
    - download the source code from one or more pages to R
       - typically, the only interaction with the page itself     
@@ -2189,6 +2189,13 @@ Use the `read_html` function to get the source code of a webpage into R
 read_html("https://luzpar.netlify.app/")
 ```
 
+<br>
+Note that
+- this is the first of two steps in scraping static pages 
+      - typically, the only interaction with the page itself     
+<br>
+   - we still need to select the exact information that we need
+   
 ---
 ## Static Pages &mdash; `rvest` &mdash; Get Source Code
 
@@ -2208,19 +2215,19 @@ read_html("https://luzpar.netlify.app/")
 
 <br>
 
-- It divides the process of getting source code into two
+- It divides the step of getting source code into two
    
    - check the protocol
    - get the source only if allowed
 
 <br>
 
-- It also 
+- Among its other fuctions are  
 
-   - waits for a period of time
+   - waiting for a period of time
        - minimum by what is specified in the protocol     
 <br>
-   - allows you to introduce yourself to website administrators while scraping
+   - introducing you to website administrators while scraping
    
 ---
 ## Static Pages &mdash; `rvest` &mdash; Get Source Code &mdash; `polite`
@@ -2385,7 +2392,7 @@ scrape(`bow`,
 ---
 ## Static Pages &mdash; `rvest` &mdash; Get Source Code
 
-These two pieces of code lead to the same outcome, as there is no protocol against the access
+These two pieces of code lead to the same outcome, as there is .yellow-h[no protocol against the access]
 
 .pull-left[
 
@@ -2407,7 +2414,7 @@ bow(url = "https://luzpar.netlify.app/") %>%
 ---
 ## Static Pages &mdash; `rvest` &mdash; Get Source Code
 
-The difference occurs when there is a protocol against the access
+The difference occurs when there is .yellow-h[a protocol against the access]
 
 .pull-left[
 
@@ -2431,21 +2438,53 @@ bow(url = "https://luzpar.netlify.app/exercises/exercise_6.Rhtml") %>%
 
 .pull-left[
 
+- Get one or more<span>*</span> HTML elements
+
+  - from the .yellow-h[source code] downloaded in the previous step
+      
+]
+
+
+.pull-right[
+
+```md
+
+html_element(`x`, 
+             css, 
+             xpath)
+
+html_element`s`(`x`, 
+              css, 
+              xpath)
+
+```
+
+]
+
+.footnote[
+
+<span>*</span> Note that there are two versions of the same function: singular one gets the first instance of an element, plural one gets all instances.
+
+]
+
+---
+## Static Pages &mdash; `rvest` &mdash; `html_elements`
+
+.pull-left[
+
 - Get one or more HTML elements
 
-   - specified with a selector
-       - CSS or XPATH    
-<br>
-  - we will work with CSS in this workshop
-       - facilitated by Chrome and SelectorGagdet
+  - from the source code downloaded in the previous step
+
+  - specified with .yellow-h[a selector], CSS .yellow-h[or] XPATH    
+      
        
 <br>
 
 - Note that
  
-  - there are two versions of the same function
-      - singular one gets the first instance of an element
-      - plural one gets all instances
+  - we will work with CSS only in this workshop
+  - using CSS is facilitated by Chrome and SelectorGagdet
       
 ]
 
@@ -2455,16 +2494,49 @@ bow(url = "https://luzpar.netlify.app/exercises/exercise_6.Rhtml") %>%
 ```md
 
 html_element(x, 
-             css, 
-             xpath)
+             `css`, 
+             `xpath`)
 
-html_elements(x, 
+html_element`s`(x, 
               css, 
               xpath)
 
 ```
 
 ]
+
+---
+## Static Pages &mdash; Finding Selectors
+
+- Finding the correct selector(s) is the key to successful scraping, and there are three ways to do it
+
+  - figure it out yourself, by looking at the source code and/or the DOM
+     - difficult, time consuming, prone to error    
+<br>
+  - use SelectorGagdet or other browser extensions
+     - easy and quick
+     - works well when selecting both single and multiple elements
+     - but sometimes not accurate    
+<br>
+  - use the functionality that Chrome provides
+     - an in-between option in terms of ease and time
+     - works very well with single elements
+<br>
+--
+
+- I recommend using
+   - the SelectorGagdet method first, and if it does not help
+   - then the Chrome method, especially when selecting single elements
+
+---
+## Static Pages &mdash; Finding Selectors &mdash; SelectorGagdet
+
+To find the selectors for the hyperlinks on the homepage of the Parliamenta of Luzland
+
+1. visit the page on a Chrome browser
+2. click on SelectorGagdet to activate it
+3. click on a hyperlink
+
 
 ---
 ## Static Pages &mdash; `rvest` &mdash; `html_elements`
@@ -3089,7 +3161,7 @@ class: inverse, center, middle
 ---
 ## Dynamic Pages &mdash; Three Steps to Scrape
 
-Scraping dynamic pages involves three main tasks      
+Scraping dynamic pages involves three main steps      
 <br>
 - .yellow-h[Create] the desired instance of the dynamic page
   - with the `RSelenium` package
