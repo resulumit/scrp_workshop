@@ -1157,7 +1157,7 @@ class: inverse, center, middle
 ---
 ## HTML &mdash; Webpage Source
 
-The `Ctrl` `+` `U` shortcut is to display source code &mdash; alternatively, right click and `View` `Page` `Source`
+The `Ctrl` `+` `U` shortcut displays source code &mdash; alternatively, right click and `View` `Page` `Source`
 
 
 ```{r, echo=FALSE, fig.show="hold", out.width="45%"}
@@ -1165,12 +1165,12 @@ knitr::include_graphics("scrp_workshop_files/images_data/homepage.png")
 knitr::include_graphics("scrp_workshop_files/images_data/homepage_source.png")
 ```
 
-
 ---
 ## HTML &mdash; DOM
 
-Browsers also offer putting source codes in a structure
-- known as DOM (document object model), initiated by the `F12` key on Chrome
+Browsers also offer putting source codes in a structure, known as DOM (document object model)
+
+- initiated by the `F12` key on Chrome &mdash; alternatively, right click and `Inspect`
 
 ```{r, echo=FALSE, fig.show="hold", out.width="45%"}
 knitr::include_graphics("scrp_workshop_files/images_data/homepage.png")
@@ -1244,7 +1244,7 @@ class: action
 
 HTML documents 
 
-- start with a declaration
+- start with a .yellow-h[declaration]
     - so that browsers know what they are
    
 ]
@@ -1318,7 +1318,7 @@ HTML documents
 
 .pull-left[
 
-<span style="background-color: #ffff88;">`html`</span> is the root element
+<span style="background-color: #ffff88;">`html`</span> holds together the root element
 
 - it is also the parent to all other elements
 - its important children are the `head` and `body` elements
@@ -1387,7 +1387,7 @@ HTML documents
 ```
 ]
 ---
-## HTML &mdash; Overview
+## HTML &mdash; the Body
 
 .pull-left[
 
@@ -1423,7 +1423,7 @@ HTML documents
 ]
 
 ---
-## HTML &mdash; Syntax &mdash; Elements &mdash; Tags
+## HTML &mdash; Syntax &mdash; Tags
 
 Most elements have opening and closing .yellow-h[tags]
 
@@ -1447,7 +1447,7 @@ Note that
 - the closing tag has a forward slash .yellow-h[/] before the element name
 
 ---
-## HTML &mdash; Syntax &mdash; Elements &mdash; Content
+## HTML &mdash; Syntax &mdash; Content
 
 Most elements have some .yellow-h[content]
 
@@ -1463,7 +1463,7 @@ This is a one sentence paragraph.
 ]
 
 ---
-## HTML &mdash; Syntax &mdash; Elements &mdash; Attributes
+## HTML &mdash; Syntax &mdash; Attributes
 
 Elements can have .yellow-h[attributes]
 
@@ -1481,15 +1481,17 @@ Elements can have .yellow-h[attributes]
 
 Note that
 
-- the `id` attribute is not visible to the visitors
-- attribute string .yellow-h[sentence-count] could have been anything I could come up with
-    - unlike the tag and attribute names &mdash; e.g., `strong`, `id` as they are pre-defined      
-<br>    
-- some other attributes, such as `style`, can have visible effects 
+- attributes are added to the opening tags
+ - separated from anything else in the tag with a white space   
 
+- attribute string .yellow-h[sentence-count] could have been anything I could come up with
+ - unlike the tag and attribute names &mdash; e.g., `strong`, `id` as they are pre-defined      
+<br>
+- the `id` attribute has no visible effects
+  - some other attributes, such as `style`, can have visible effects 
 
 ---
-## HTML &mdash; Syntax &mdash; Elements &mdash; Attributes
+## HTML &mdash; Syntax &mdash; Attributes
 
 There could be more than one attribute in a single element
 
@@ -1512,85 +1514,8 @@ There could be more than one attribute in a single element
 
 Note that
 
-- there could be more than one attribute in an element
-    - with a white space in between them    
-<br>
 - the same `class` attribute (e.i., `count`) can apply to multiple elements
-   - while the `id` attribute must be unique on a page
-
----
-## HTML &mdash; Important Elements &mdash; Links 
-
-Links are provided with the `a` (anchor) element
-
-```md
-<p>Click <a href="https://www.google.com/">here</a> to google things.</p>
-
-```
-
-.out-t[
-<p>Click <a href="https://www.google.com/">here</a> to google things.</p>
-]
-
-<br>
-
-Note that
-
-- `href` (hypertext reference) is a .yellow-h[required attribute] for this element
-- most attributes are optional, but some are required
-
----
-## HTML &mdash; Important Elements &mdash; Links 
-
-Links can have titles
-
-```md
-<p>Click <a `title="This text appears when visitors hover over the link"` 
-            href="https://www.google.com/">here</a> to google things.</p>
-
-```
-
-.out-t[
-<p>Click <a title="This text appears when visitors hover over the link" 
-            href="https://www.google.com/">here</a> to google things.</p>
-]
-
-<br>
-
-Note that
-
-- the `title` attribute is one of the optional attributes
-- it becomes visible when hovered over with mouse
-
----
-## HTML &mdash; Important Elements &mdash; Lists
-
-The `<ul>` tag introduces un-ordered lists, while the `<li>` tag defines lists items
-
-```{r eval=FALSE}
-<ul>
-  <li>books</li>
-  <li>journal articles</li>
-  <li>reports</li>
-</ul>
-```
-
-.out-t[
-
-<ul>
-  <li>books</li>
-  <li>journal articles</li>
-  <li>reports</li>
-</ul>
-
-
-]
-
-<br>
-
-Note that
-
-- Ordered lists are introduced with the the `<ol>` tag instead
+   - while the `id` attribute must be unique on a given page
 
 ---
 ## HTML &mdash; Syntax &mdash; Notes
@@ -1620,8 +1545,6 @@ Note that
 - paragraph is said to be the parent of the strong element
 
 ---
-
-
 ## HTML &mdash; Syntax &mdash; Notes
 
 By default, multiple spaces and/or lines breaks are ignored by browsers
@@ -1649,8 +1572,155 @@ By default, multiple spaces and/or lines breaks are ignored by browsers
 Note that
 
 - plain source code may or may not be written in a readable manner
-- this is one reason why DOM is helpful
+  - this is one reason why DOM is helpful
 
+---
+## HTML &mdash; Other Important Elements &mdash; Links 
+
+Links are provided with the `a` (anchor) element
+
+```md
+<p>Click <a href="https://www.google.com/">here</a> to google things.</p>
+
+```
+
+.out-t[
+<p>Click <a href="https://www.google.com/">here</a> to google things.</p>
+]
+
+<br>
+
+Note that
+
+- `href` (hypertext reference) is a .yellow-h[required attribute] for this element
+   - most attributes are optional, but some are required
+
+---
+## HTML &mdash; Other Important Elements &mdash; Links 
+
+Links can have titles
+
+```md
+<p>Click <a `title="This text appears when visitors hover over the link"` 
+            href="https://www.google.com/">here</a> to google things.</p>
+
+```
+
+.out-t[
+<p>Click <a title="This text appears when visitors hover over the link" 
+            href="https://www.google.com/">here</a> to google things.</p>
+]
+
+<br>
+
+Note that
+
+- the `title` attribute is one of the optional attributes
+  - it becomes visible when hovered over with mouse
+
+---
+## HTML &mdash; Other Important Elements &mdash; Lists
+
+The `<ul>` tag introduces un-ordered lists, while the `<li>` tag defines lists items
+
+```{r eval=FALSE}
+<ul>
+  <li>books</li>
+  <li>journal articles</li>
+  <li>reports</li>
+</ul>
+```
+
+.out-t[
+
+<ul>
+  <li>books</li>
+  <li>journal articles</li>
+  <li>reports</li>
+</ul>
+
+
+]
+
+<br>
+
+Note that
+
+- Ordered lists are introduced with the the `<ol>` tag instead
+
+---
+## HTML &mdash; Other Important Elements &mdash; Containers 
+
+The `<div>` tag defines a section, containing one or often more elements
+
+.pull-left[
+
+<br>
+
+```{r eval=FALSE}
+<p>This is an introductory paragraph.</p>
+
+<`div` style="text-decoration: underline;">
+<p>In this important division there are two 
+elements, which are:</p>
+<ul>
+  <li>a paragraph, and</li>
+  <li>an unordered list.</li>
+</ul>
+<`/div`>
+
+<p>This is the concluding paragraph.<p>
+```
+
+]
+
+.pull-right[
+
+<br>
+
+.out-t[
+
+<p>This is an introductory paragraph.</p>
+
+<div style="text-decoration: underline;">
+<p>In this important division there are two 
+elements, which are:</p>
+<ul>
+  <li>a paragraph, and</li>
+  <li>an unordered list.</li>
+</ul>
+</div>
+
+<p>This is the concluding paragraph.<p>
+
+]
+
+]
+
+---
+## HTML &mdash; Other Important Elements &mdash; Containers 
+
+The `<span>` tag also defines a section, containing a part of an element
+
+
+```{r eval=FALSE}
+<p>This is an <`span` style="text-decoration: underline;">importnat paragraph<`/span`>, which
+you must read carefully.<p>
+```
+
+
+.out-t[
+
+<p>This is an <span style="text-decoration: underline;">importnat paragraph</span>, which you must read carefully.<p>
+
+]
+
+<br>
+
+Note that
+ - containers are useful in applying styles to sections
+    - or, attributing classes or ids to them
+ 
 ---
 class: action
 
