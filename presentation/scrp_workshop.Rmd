@@ -168,7 +168,7 @@ Resul Umit
 
 - One and a half day, on how to automate the process of extracting data from websites
 
-  - 160+ slides, 15+ exercises
+  - 180+ slides, 25+ exercises
   - a [demonstration website](https://luzpar.netlify.app/) for practice
 
 --
@@ -1069,7 +1069,7 @@ class: action
   - with the `robotstxt` function
   - reflect on the ethics of scraping that website
 
-`r countdown(minutes = 7, seconds = 30, top = 0)`
+`r countdown(minutes = 10, seconds = 00, top = 0)`
 
 ---
 ## Considerations &mdash; the Ethics &mdash; Speed
@@ -1703,14 +1703,14 @@ The `<span>` tag also defines a section, containing a part of an element
 
 
 ```{r eval=FALSE}
-<p>This is an <`span` style="text-decoration: underline;">importnat paragraph<`/span`>, which
+<p>This is an <`span` style="text-decoration: underline;">important paragraph<`/span`>, which
 you must read carefully.<p>
 ```
 
 
 .out-t[
 
-<p>This is an <span style="text-decoration: underline;">importnat paragraph</span>, which you must read carefully.<p>
+<p>This is an <span style="text-decoration: underline;">important paragraph</span>, which you must read carefully.<p>
 
 ]
 
@@ -1746,7 +1746,7 @@ class: action
        
 - save this document as we will continue working on it
 
-`r countdown(minutes = 10, seconds = 00, top = 0)`
+`r countdown(minutes = 15, seconds = 00, top = 0)`
 
 ---
 name: part4
@@ -2433,6 +2433,24 @@ bow(url = "https://luzpar.netlify.app/exercises/exercise_6.Rhtml") %>%
 ]
 
 ---
+class: action
+
+## Exercises
+
+9) Get the source code of the page at <https://luzpar.netlify.app/states/> in R
+
+- using the `read_html` function
+
+<br>
+
+10) Get the same page source, this time in the `polite` way
+
+- let the website know who you are
+- define delay time
+
+`r countdown(minutes = 5, seconds = 00, top = 0)`
+
+---
 ## Static Pages &mdash; `rvest` &mdash; `html_elements`
 
 .pull-left[
@@ -2714,6 +2732,30 @@ Note that
 - but the outcome is the same
 
 ---
+class: action
+
+## Exercises
+
+11) Get the fist list element on the page at <https://luzpar.netlify.app/states/>
+
+- find the selector with the functionality Chrome offers
+
+<br>
+
+12) Get all list elements on the same page
+
+- find the selector with SelectorGadget
+
+<br>
+
+13) Get only the second and fourth element on the list
+
+- without repeating the code
+- that is, use only a single selector that would return both list elements
+
+`r countdown(minutes = 10, seconds = 00, top = 0)`
+
+---
 ## Static Pages &mdash; `rvest` &mdash; `html_text`
 
 .pull-left[
@@ -2763,6 +2805,20 @@ bow(url = "https://luzpar.netlify.app") %>%
   html_elements(css = "#title a") %>% 
   html_text()
 ```
+
+---
+class: action
+
+## Exercises
+
+14) Get the text on the list elements on the page at <https://luzpar.netlify.app/states/>
+
+<br>
+
+15) Get the constituency names on the page at <https://luzpar.netlify.app/constituencies/>
+
+
+`r countdown(minutes = 5, seconds = 00, top = 0)`
 
 ---
 ## Static Pages &mdash; `rvest` &mdash; `html_attr`
@@ -2863,6 +2919,21 @@ bow(url = "https://luzpar.netlify.app") %>%
 ```
 
 ---
+class: action
+
+## Exercises
+
+16) Get the hyperlink attributes for the constituencies at <https://luzpar.netlify.app/constituencies/>
+
+<br>
+
+17) Create complete links to the constituency pages
+
+
+`r countdown(minutes = 5, seconds = 00, top = 0)`
+
+
+---
 ## Static Pages &mdash; `rvest` &mdash; `html_table`
 
 Use the `html_table()` function to get the text content of table elements
@@ -2954,7 +3025,7 @@ class: action
 
 ## Exercise
 
-9) Create a dataframe out of the table at <https://luzpar.netlify.app/members/>
+18) Create a dataframe out of the table at <https://luzpar.netlify.app/members/>
 - with as many variables as possible
 - hints:
    - start with the code in the previous slide, and add new variables from attributes
@@ -3249,7 +3320,7 @@ class: action
 
 ## Exercise
 
-10) Crawl into members' personal pages to create a rich dataset
+19) Crawl into members' personal pages to create a rich dataset
 - with members being the unit of observation
 
 
@@ -3757,14 +3828,14 @@ class: action
 
 ## Exercises
 
-11) Navigate to and get the source code of a page
+20) Navigate to and get the source code of a page
 - e.g., <https://luzpar.netlify.app/constituencies/>
 - by using both packages
 
 
 <br>
 
-12) See what other methods are available to interact with browsers
+21) See what other methods are available to interact with browsers
 - by typing the object name for your client into R console
    - followed by the dollar sign
    - and hitting the tab key on your keyboard if necessary
@@ -3772,7 +3843,7 @@ class: action
 
 <br>
 
-13) Try one or more new methods
+22) Try one or more new methods
 - e.g., take a screenshot of your browser
    - and view it in R
 
@@ -4122,7 +4193,7 @@ class: action
 
 ## Exercise
 
-14) Conduct an internet search programatically
+23) Conduct an internet search programatically
 - navigate to <https://duckduckgo.com/>
    - just to keep it simple as Google would require you to scroll down and accept a policy     
 <br>   
@@ -4131,12 +4202,12 @@ class: action
     
 <br>
 
-15) Scroll down programatically, and up
+24) Scroll down programatically, and up
 - to see all results
 
 <br>
 
-16) Go back, and conduct another search
+25) Go back, and conduct another search
 - hint: you will have to find the search bar again
 
 
@@ -4304,7 +4375,7 @@ class: action
 
 ## Exercise
 
-17) Collect data on a subset of documents
+26) Collect data on a subset of documents
 - article tags and image credits
 - for documents within the Law and Proposal categories
 - published after 2019

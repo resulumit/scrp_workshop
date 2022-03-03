@@ -48,6 +48,7 @@ robotstxt(domain = "https://www.parliament.uk/")$permissions
 # rhtml file available to download at:
 # https://luzpar.netlify.app/exercises/exercise_7.Rhtml
 
+
 # exercise 8 --------------------------------------------------------------
 
 # rhtml file available to download at:
@@ -55,6 +56,71 @@ robotstxt(domain = "https://www.parliament.uk/")$permissions
 
 
 # exercise 9 --------------------------------------------------------------
+
+read_html("https://luzpar.netlify.app/states/")
+
+
+# exercise 10 -------------------------------------------------------------
+
+bow(url = "https://luzpar.netlify.app/states/",
+    user_agent = "I am Resul Umit (resulumit@gmail.com)",
+    delay = 3) %>%
+        scrape()
+
+
+# exercise 11 -------------------------------------------------------------
+
+bow(url = "https://luzpar.netlify.app/states/") %>%
+        scrape() %>% 
+        html_element(css = "#top > div.page-body > div:nth-child(2) > div > div.col-lg-12 > div > ul > li:nth-child(1) > a")
+            
+# exercise 12 -------------------------------------------------------------
+
+bow(url = "https://luzpar.netlify.app/states/") %>%
+        scrape() %>% 
+        html_elements(css = ".article-style a")
+
+
+# exercise 13 -------------------------------------------------------------
+
+bow(url = "https://luzpar.netlify.app/states/") %>%
+        scrape() %>% 
+        html_elements(css = ".article-style li:nth-child(3) a , .article-style li:nth-child(1) a")
+
+
+# exercise 14 -------------------------------------------------------------
+
+bow(url = "https://luzpar.netlify.app/states/") %>%
+        scrape() %>% 
+        html_elements(css = ".article-style a") %>% 
+        html_text()
+
+# exercise 15 -------------------------------------------------------------
+
+bow(url = "https://luzpar.netlify.app/constituencies/") %>%
+        scrape() %>% 
+        html_elements(css = "h2 a") %>% 
+        html_text()
+
+
+# exercise 16 -------------------------------------------------------------
+
+bow(url = "https://luzpar.netlify.app/constituencies/") %>%
+        scrape() %>% 
+        html_elements(css = "h2 a") %>% 
+        html_attr(name = "href")
+
+
+# exercise 17 -------------------------------------------------------------
+
+bow(url = "https://luzpar.netlify.app/constituencies/") %>%
+        scrape() %>% 
+        html_elements(css = "h2 a") %>% 
+        html_attr(name = "href") %>% 
+        url_absolute(base = "https://luzpar.netlify.app/constituencies/")
+
+
+# exercise 18 -------------------------------------------------------------
 
 the_page <- bow(url = "https://luzpar.netlify.app/members/") %>%
         scrape()
@@ -90,7 +156,7 @@ df <- data.frame(
 )
 
 
-# exercise 10 -------------------------------------------------------------
+# exercise 19 -------------------------------------------------------------
 
 # note that the code below creates the csv file available at:
 # https://luzpar.netlify.app/exercises/static_data.csv
@@ -151,7 +217,7 @@ View(df_mps)
 write.csv(df_mps, "static_data.csv", row.names = FALSE)
 
 
-# exercise 11 -------------------------------------------------------------
+# exercise 20 -------------------------------------------------------------
 
 # start a server
 driver <- rsDriver(chromever = "98.0.4758.102")
@@ -167,7 +233,7 @@ browser$getPageSource()[[1]] %>%
         read_html()
         
 
-# exercise 12 -------------------------------------------------------------
+# exercise 21 -------------------------------------------------------------
 
 # see the available methods
 # by typing the following into your console (without the number sign):
@@ -177,7 +243,7 @@ browser$getPageSource()[[1]] %>%
 browser$acceptAlert
 browser$getTitle
 
-# exercise 13 -------------------------------------------------------------
+# exercise 22 -------------------------------------------------------------
 
 # get the title of the current page
 browser$getTitle()
@@ -185,7 +251,7 @@ browser$getTitle()
 # take a screenshot of the page and view it in rstudio
 browser$screenshot(display = TRUE, useViewer = TRUE)
 
-# exercise 14 -------------------------------------------------------------
+# exercise 23 -------------------------------------------------------------
 
 # navigate to the website
 browser$navigate(url = "https://duckduckgo.com/")
@@ -202,7 +268,7 @@ the_bar$clickElement()
 # conduct a search
 the_bar$sendKeysToElement(list("Luzland", key = "enter"))
 
-# exercise 15 -------------------------------------------------------------
+# exercise 24 -------------------------------------------------------------
 
 # find the body
 the_body <- browser$findElement(using = "css", value = "body")
@@ -213,7 +279,7 @@ the_body$sendKeysToElement(list(key = "page_down"))
 # scroll up
 the_body$sendKeysToElement(list(key = "page_up"))
 
-# exercise 16 -------------------------------------------------------------
+# exercise 25 -------------------------------------------------------------
 
 # go back
 browser$goBack()
@@ -229,7 +295,7 @@ the_bar$clickElement()
 # conduct a new search now
 the_bar$sendKeysToElement(list("Lucerne", key = "enter"))
 
-# exercise 17 -------------------------------------------------------------
+# exercise 26 -------------------------------------------------------------
 
 # navigate to the desired page and wait a little
 browser$navigate("https://luzpar.netlify.app/documents/")
