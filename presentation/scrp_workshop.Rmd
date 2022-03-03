@@ -1159,7 +1159,6 @@ class: inverse, center, middle
 
 The `Ctrl` `+` `U` shortcut displays source code &mdash; alternatively, right click and `View` `Page` `Source`
 
-
 ```{r, echo=FALSE, fig.show="hold", out.width="45%"}
 knitr::include_graphics("scrp_workshop_files/images_data/homepage.png")
 knitr::include_graphics("scrp_workshop_files/images_data/homepage_source.png")
@@ -2533,11 +2532,25 @@ html_element`s`(x,
 
 To find the selectors for the hyperlinks on the homepage of the Parliamenta of Luzland
 
+.pull-left[
 1. visit the page on a Chrome browser
 2. click on SelectorGagdet to activate it
 3. click on a hyperlink
 
+Note that
+- the element that you clicked is highlighted green
+- many other elements, including menu items, are in yellow
+- SelectorGagdet says the selector is `a`
 
+]
+
+.pull-right[
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("scrp_workshop_files/images_data/sg1.png")
+```
+
+]
 ---
 ## Static Pages &mdash; `rvest` &mdash; `html_elements`
 
@@ -2556,10 +2569,55 @@ bow(url = "https://luzpar.netlify.app") %>%
 ```
 
 ---
+## Static Pages &mdash; `rvest` &mdash; `html_element`
+
+Get the .yellow-h[first] `a` (anchor) element on the homepage
+
+```{r, eval=FALSE}
+bow(url = "https://luzpar.netlify.app") %>%
+  scrape() %>%
+  html_element`(c`ss = "a")
+```
+
+```{r, echo=FALSE}
+bow(url = "https://luzpar.netlify.app") %>%
+  scrape() %>%
+  html_element(css = "a")
+```
+
+<br>
+
+Note that
+
+- the function on this slide is the singular version
+
+---
+## Static Pages &mdash; Finding Selectors &mdash; SelectorGagdet
+
+Click on a menu item as we are not interested in them
+
+.pull-left[
+4. click on a menu item as we are not interested in them
+
+Note that
+- the element that you clicked is highlighted red
+- other menu items are not highlighted at all
+- SelectorGagdet says the selector is now  
+`#title` `a`
+]
+
+.pull-right[
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("scrp_workshop_files/images_data/sg2.png")
+```
+
+]
+
+---
 ## Static Pages &mdash; `rvest` &mdash; `html_elements`
 
-I would like to get only the URLs on the main body of the page
-- SelectorGadget tells me the correct selector is `#title` `a`
+Get the `a` (anchor) elements on the homepage with a `#title` attribute
 
 ```{r, eval=FALSE}
 bow(url = "https://luzpar.netlify.app") %>%
@@ -2572,6 +2630,88 @@ bow(url = "https://luzpar.netlify.app") %>%
   scrape() %>%
   html_elements(css = "#title a")
 ```
+
+---
+## Static Pages &mdash; Finding Selectors &mdash; SelectorGagdet
+
+You can click further to exclude/include everything, or the only thing, that you want
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("scrp_workshop_files/images_data/sg3.png")
+```
+
+---
+## Static Pages &mdash; `rvest` &mdash; `html_element`
+
+Get the link behind one element
+
+```{r, eval=FALSE}
+bow(url = "https://luzpar.netlify.app") %>%
+  scrape() %>%
+  html_elemen`t(c`ss = `"br+ p a+ a"`)
+```
+
+```{r, echo=FALSE}
+bow(url = "https://luzpar.netlify.app") %>%
+  scrape() %>%
+  html_element(css = "br+ p a+ a")
+```
+
+<br>
+
+Note that
+
+- the function on this slide is the singular version
+  - but the plural one would result in the same output as the selector itself is for a single element
+
+---
+## Static Pages &mdash; Finding Selectors &mdash; Chrome
+
+To find the selector for a single item, you could also use Chrome itself
+
+.pull-left[
+
+1. right click, and then `Inspect`
+2. click ![](scrp_workshop_files/images_data/ch2.png)
+3. click on an element on the front end
+4. right click on the highlighted section in the DOM
+4. follow `Copy -> Copy selector` 
+
+]
+
+.pull-right[
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("scrp_workshop_files/images_data/ch1.png")
+```
+
+]
+
+---
+## Static Pages &mdash; `rvest` &mdash; `html_element`
+
+Get the link behind one element
+
+```{r, eval=FALSE}
+bow(url = "https://luzpar.netlify.app") %>%
+  scrape() %>%
+  html_element(css = `"#title > div.container > div > p:nth-child(2) > a:nth-child(2)"`)
+```
+
+```{r, echo=FALSE}
+bow(url = "https://luzpar.netlify.app") %>%
+  scrape() %>%
+  html_element(css = "#title > div.container > div > p:nth-child(2) > a:nth-child(2)")
+```
+
+<br>
+
+Note that
+
+- the selector is different
+   - longer, and therefore, more specific and accurate
+
+- but the outcome is the same
 
 ---
 ## Static Pages &mdash; `rvest` &mdash; `html_text`
