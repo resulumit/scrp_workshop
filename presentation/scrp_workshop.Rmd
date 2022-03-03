@@ -1809,12 +1809,6 @@ class: inverse, center, middle
 
 <br>
 
-- Note that
-
-   - the syntax changes with the selector type
-      - elements and attributes
-      - among attributes, classes and ids
-
 ]
 
 .pull-right[
@@ -1826,6 +1820,96 @@ class: inverse, center, middle
  `.count` {background-color:yellow;}
 
  `#sentence-count` {color:red; font-size:14px;}
+
+```
+]
+
+---
+## CSS &mdash; Syntax
+
+.pull-left[
+- CSS is written in rules, with a syntax consisting of
+   - one or more <span style="background-color: #ffff88;">selectors</span>, matching one or more HTML elements and/or attributes
+
+<br>
+
+- Note that
+
+   - the syntax changes with the selector type
+      - elements and attributes are written as they are
+
+]
+
+.pull-right[
+```md
+ `p` {font-size:14px;}
+
+ `h1 h2` {color:blue;}
+
+ .count {background-color:yellow;}
+
+ #sentence-count {color:red; font-size:14px;}
+
+```
+]
+
+---
+## CSS &mdash; Syntax
+
+.pull-left[
+- CSS is written in rules, with a syntax consisting of
+   - one or more <span style="background-color: #ffff88;">selectors</span>, matching one or more HTML elements and/or attributes
+
+<br>
+
+- Note that
+
+   - the syntax changes with the selector type
+      - elements and attributes are written as they are
+      - classes are prefixed with a full stop, ids with a number sign
+
+]
+
+.pull-right[
+```md
+ p {font-size:14px;}
+
+ h1 h2 {color:blue;}
+
+ `.count` {background-color:yellow;}
+
+ `#sentence-count` {color:red; font-size:14px;}
+
+```
+]
+
+---
+## CSS &mdash; Syntax
+
+.pull-left[
+- CSS is written in rules, with a syntax consisting of
+   - one or more <span style="background-color: #ffff88;">selectors</span>, matching one or more HTML elements and/or attributes
+
+<br>
+
+- Note that
+
+   - the syntax changes with the selector type
+      - elements and attributes are written as they are
+      - classes are prefixed with a full stop, ids with a number sign
+ 
+   - you can define the same rule for more than one element and/or attribute
+]
+
+.pull-right[
+```md
+ p {font-size:14px;}
+
+ `h1 h2` {color:blue;}
+
+ .count {background-color:yellow;}
+
+ #sentence-count {color:red; font-size:14px;}
 
 ```
 ]
@@ -2028,7 +2112,7 @@ class: action
    - change the colour of the second item in the list to red
    - get more ideas from [www.w3schools.com/css](https://www.w3schools.com/css/default.asp)
    
-`r countdown(minutes = 5, seconds = 00, top = 0)`
+`r countdown(minutes = 7, seconds = 30, top = 0)`
 
 ---
 name: part5
