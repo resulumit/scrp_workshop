@@ -219,21 +219,27 @@ write.csv(df_mps, "static_data.csv", row.names = FALSE)
 
 # exercise 20 -------------------------------------------------------------
 
-# start a server
 driver <- rsDriver(chromever = "98.0.4758.102")
 
-# single out the client (browser)
-browser <- driver$client
-
-# navigate to the page
-browser$navigate(url = "https://luzpar.netlify.app/constituencies/")
-
-# get the source code
-browser$getPageSource()[[1]] %>% 
-        read_html()
-        
 
 # exercise 21 -------------------------------------------------------------
+
+browser <- driver$client
+
+
+# exercise 22 -------------------------------------------------------------
+
+browser$navigate(url = "https://www.theguardian.com/")
+browser$navigate(url = "https://luzpar.netlify.app")
+
+
+# exercise 23 -------------------------------------------------------------
+
+browser$goBack()
+browser$goForward()
+
+
+# exercise 24 -------------------------------------------------------------
 
 # see the available methods
 # by typing the following into your console (without the number sign):
@@ -243,7 +249,8 @@ browser$getPageSource()[[1]] %>%
 browser$acceptAlert
 browser$getTitle
 
-# exercise 22 -------------------------------------------------------------
+
+# exercise 25 -------------------------------------------------------------
 
 # get the title of the current page
 browser$getTitle()
@@ -251,7 +258,38 @@ browser$getTitle()
 # take a screenshot of the page and view it in rstudio
 browser$screenshot(display = TRUE, useViewer = TRUE)
 
-# exercise 23 -------------------------------------------------------------
+
+# exercise 26 -------------------------------------------------------------
+
+read_html("https://luzpar.netlify.app/members/") %>% 
+        html_elements("td:nth-child(1) a") %>% 
+        html_text()
+
+# exercise 27 -------------------------------------------------------------
+
+# navigate to the page
+browser$navigate(url = "https://luzpar.netlify.app/members/")
+
+# collect names
+browser$getPageSource()[[1]] %>% 
+        read_html() %>% 
+        html_elements("td:nth-child(1) a") %>% 
+        html_text()
+
+
+# exercise 28 -------------------------------------------------------------
+
+# maximize the window
+browser$browser$maxWindowSize()
+
+# collect names again
+browser$getPageSource()[[1]] %>% 
+        read_html() %>% 
+        html_elements("td:nth-child(1) a") %>% 
+        html_text()
+        
+
+# exercise 29 -------------------------------------------------------------
 
 # navigate to the website
 browser$navigate(url = "https://duckduckgo.com/")
@@ -268,7 +306,8 @@ the_bar$clickElement()
 # conduct a search
 the_bar$sendKeysToElement(list("Luzland", key = "enter"))
 
-# exercise 24 -------------------------------------------------------------
+
+# exercise 30 -------------------------------------------------------------
 
 # find the body
 the_body <- browser$findElement(using = "css", value = "body")
@@ -279,7 +318,8 @@ the_body$sendKeysToElement(list(key = "page_down"))
 # scroll up
 the_body$sendKeysToElement(list(key = "page_up"))
 
-# exercise 25 -------------------------------------------------------------
+
+# exercise 31 -------------------------------------------------------------
 
 # go back
 browser$goBack()
@@ -295,7 +335,9 @@ the_bar$clickElement()
 # conduct a new search now
 the_bar$sendKeysToElement(list("Lucerne", key = "enter"))
 
-# exercise 26 -------------------------------------------------------------
+
+
+# exercise 32 -------------------------------------------------------------
 
 # navigate to the desired page and wait a little
 browser$navigate("https://luzpar.netlify.app/documents/")

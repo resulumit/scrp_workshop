@@ -168,7 +168,7 @@ Resul Umit
 
 - One and a half day, on how to automate the process of extracting data from websites
 
-  - 180+ slides, 25+ exercises
+  - 180+ slides, 30+ exercises
   - a [demonstration website](https://luzpar.netlify.app/) for practice
 
 --
@@ -3435,7 +3435,7 @@ Scraping dynamic pages involves three main steps
 
 <br>
 
-- It allows interacting with two things &mdash; and it is crucial that we are aware of the difference
+- It allows interacting with two things &mdash; and it is crucial that users are aware of the difference
 
   - browsers on your computer
       - e.g., opening a browser and navigating to a page     
@@ -3483,12 +3483,14 @@ rsDriver(port = 4567L,
 .pull-left[
 
 - Use the `rsDriver` function to start a server
-    - so that you can control a web browser from within R
+
+  - so that you can control a web browser from within R
 
 <br>
 
 - Note that the defaults can cause errors, such as
-   - tying to start two servers from the same .yellow-[port]
+
+  - trying to start two servers from the same .yellow-[port]
 
 
 
@@ -3615,6 +3617,22 @@ Note that
        - it has the class of `remoteDriver`
 
 ---
+class: action
+
+## Exercises
+
+20) Start a server
+- supply a driver version if necessary
+
+<br>
+
+21) Single out the client
+- call it `browser` to help you follow the slides
+
+
+`r countdown(minutes = 2, seconds = 30, top = 0)`
+
+---
 ## Dynamic Pages &mdash; Browsers &mdash; Navigate
 
 Navigate to a page with the following notation
@@ -3641,7 +3659,7 @@ browser`$`navigate("https://luzpar.netlify.app")
 Note that
 
 - `navigate` is called .yellow-h[a method, not a function]
-    - it cannot be piped into `browser`
+    - it cannot be piped <span style="background-color: #ffff88;">%>%</span> into `browser`
     - use the dollar sign <span style="background-color: #ffff88;">$</span> notation instead
     - it is not necessary to type the name of the `url` argument 
 
@@ -3694,7 +3712,37 @@ Refresh the page
 
 ```md
 browser$refresh()
+
 ```
+
+---
+class: action
+
+## Exercises
+
+22) Navigate to a website, and then to another one
+
+- from within R, all the while observing the outcome in the automated browser
+
+<br>
+
+23) Go back, and go forward
+
+<br>
+
+24) See what other methods are available to interact with browsers
+- by typing the object name for your client into R console
+   - followed by the dollar sign
+   - and hitting the tab key on your keyboard if necessary
+- read the description for one or more of them
+
+<br>
+
+25) Try one or more new methods
+- e.g., take a screenshot of your browser
+   - and view it in R
+
+`r countdown(minutes = 10, seconds = 00, top = 0)`
 
 ---
 ## Dynamic Pages &mdash; Browsers &mdash; Navigate
@@ -3745,7 +3793,7 @@ browser$getPageSource()[[1]]
 ---
 ## Dynamic Pages &mdash; Browsers &mdash; Get Page Source
 
-Get the page source
+Get the page source with the `RSelenium` package
 
 ```md
 browser$getPageSource()`[[1]]`
@@ -3767,8 +3815,7 @@ Note that
 ---
 ## Dynamic Pages &mdash; Browsers &mdash; Get Page Source
 
-Get the page source
-- by combining the two package
+Extract links with functions from both the `RSelenium` and `rvest` packages
 
 ```md
 browser$getPageSource()[[1]] %>% 
@@ -3797,8 +3844,7 @@ browser$getPageSource()[[1]] %>%
 ---
 ## Dynamic Pages &mdash; Browsers &mdash; Get Page Source
 
-Get the page source
-- by using both packages
+Extract links with functions from both the `RSelenium` and `rvest` packages
 
 ```md
 browser$getPageSource()[[1]] %>% 
@@ -3822,8 +3868,7 @@ browser$browser$maxWindowSize()
 ---
 ## Dynamic Pages &mdash; Browsers &mdash; Get Page Source
 
-Get the page source
-- by using both packages
+Extract links with functions from both the `RSelenium` and `rvest` packages
 
 ```md
 browser$getPageSource()[[1]] %>% 
@@ -3845,26 +3890,24 @@ class: action
 
 ## Exercises
 
-20) Navigate to and get the source code of a page
-- e.g., <https://luzpar.netlify.app/constituencies/>
-- by using both packages
+26) Collect names from <https://luzpar.netlify.app/members/>
 
-
-<br>
-
-21) See what other methods are available to interact with browsers
-- by typing the object name for your client into R console
-   - followed by the dollar sign
-   - and hitting the tab key on your keyboard if necessary
-- read the description for one or more of them
+- using functions from `rvest` only
 
 <br>
 
-22) Try one or more new methods
-- e.g., take a screenshot of your browser
-   - and view it in R
+27) Repeat collecting them, this time in an automated browser
 
-`r countdown(minutes = 15, seconds = 00, top = 0)`
+- using both `RSelenium` and `rvest`
+- is the outcome different than in Exercise 26?
+
+<br>
+
+28) Maximize the automated browser window, and repeat again
+
+- is the outcome different than in Exercise 26 and/or 27?
+
+`r countdown(minutes = 10, seconds = 00, top = 0)`
 
 ---
 class: center, middle
@@ -4201,7 +4244,7 @@ search_bar$sendKeysToElement(list(value = "Law", key = "enter"))
 
 Clear text, or a value, from an element
 
-```
+```{r, eval=FALSE}
 search_bar$clearElement()
 ```
 
@@ -4210,25 +4253,25 @@ class: action
 
 ## Exercise
 
-23) Conduct an internet search programatically
+29) Conduct an internet search programatically
 - navigate to <https://duckduckgo.com/>
-   - just to keep it simple as Google would require you to scroll down and accept a policy     
+   - just to keep it simple, as Google would require you to scroll down and accept a policy     
 <br>   
 - find, highlight, and fill in the search bar
     - hit enter
     
 <br>
 
-24) Scroll down programatically, and up
+30) Scroll down programatically, and up
 - to see all results
 
 <br>
 
-25) Go back, and conduct another search
+31) Go back, and conduct another search
 - hint: you will have to find the search bar again
 
 
-`r countdown(minutes = 10, seconds = 00, top = 0)`
+`r countdown(minutes = 15, seconds = 00, top = 0)`
 
 ---
 ## Dynamic Pages &mdash; Elements &mdash; Switch Frames
@@ -4392,7 +4435,7 @@ class: action
 
 ## Exercise
 
-26) Collect data on a subset of documents
+32) Collect data on a subset of documents
 - article tags and image credits
 - for documents within the Law and Proposal categories
 - published after 2019
