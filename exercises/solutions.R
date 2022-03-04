@@ -33,7 +33,7 @@ paths_allowed(domain = "https://theguardian.com", paths = "/sendarticle/")
 
 # exercise 3 --------------------------------------------------------------
 
-# check a website that *i* might wish to scrape for reseach
+# check a website that *i* might wish to scrape for research
 robotstxt(domain = "https://www.parliament.uk/")$permissions
 
 
