@@ -3327,7 +3327,7 @@ class: action
 <br>
 
 Hints:
-- see an example dataset at <https://luzpar.netlify.app/files/exercises/static_data.csv>
+- see an example dataset at <https://luzpar.netlify.app/exercises/static_data.csv>
 - start with the related code in the previous slides, and adopt it to your needs
 -  practice with 3 members until you are ready to run the loop for all 
     - e.g., by replacing `1:length(the_links)` with `1:3` for the loop

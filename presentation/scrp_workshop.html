@@ -266,7 +266,7 @@ Slides with this background colour indicate that your action is required, for
     - these slides have countdown timers
         - as a guide, not to be followed strictly
     
-<div class="countdown" id="timer_62212f76" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62222c8b" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -350,7 +350,7 @@ class: action
   
 .footnote[
 
-&lt;sup&gt;*&lt;/sup&gt; These slides are produced in R, with the `xaringan` package ([Xie, 2021](https://github.com/yihui/xaringan)).
+&lt;sup&gt;*&lt;/sup&gt; These slides are produced in R, with the `xaringan` package &lt;a name=cite-R-xaringan&gt;&lt;/a&gt;([Xie, 2021](https://github.com/yihui/xaringan)).
 
 ]
 
@@ -378,7 +378,7 @@ class: action
    - notice that the documents section is different than the rest
        - it is a page with dynamic frame
 
-<div class="countdown" id="timer_622131bc" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62222e8c" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
    
@@ -406,7 +406,7 @@ class: action
    - notice that the documents section is different than the rest
        - it is a page with dynamic frame
 
-<div class="countdown" id="timer_622132ba" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62222fdc" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
    
@@ -507,7 +507,7 @@ install.packages(c("rvest", "RSelenium", "robotstxt", "polite", "dplyr"))
 
 ]
 
-<div class="countdown" id="timer_62213182" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_6222304f" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -527,19 +527,19 @@ install.packages(c("rvest", "RSelenium", "robotstxt", "polite", "dplyr"))
 
 We will use
 
-- `rvest` ([Wickham, 2021](https://CRAN.R-project.org/package=rvest)), for scraping websites
+- `rvest` &lt;a name=cite-R-rvest&gt;&lt;/a&gt;([Wickham, 2021](https://CRAN.R-project.org/package=rvest)), for scraping websites
 
 --
-- `RSelenium` ([Harrison, 2020](http://docs.ropensci.org/RSelenium)), for browsing the web programmatically
+- `RSelenium` &lt;a name=cite-R-RSelenium&gt;&lt;/a&gt;([Harrison, 2020](http://docs.ropensci.org/RSelenium)), for browsing the web programmatically
 
 --
-- `robotstxt` ([Meissner and Ren, 2020](https://CRAN.R-project.org/package=robotstxt)), for checking permissions to scrape websites
+- `robotstxt` &lt;a name=cite-R-robotstxt&gt;&lt;/a&gt;([Meissner and Ren, 2020](https://CRAN.R-project.org/package=robotstxt)), for checking permissions to scrape websites
 
 --
-- `polite` ([Perepolkin, 2019](https://github.com/dmi3kno/polite)), for compliance with permissions to scrape websites
+- `polite` &lt;a name=cite-R-polite&gt;&lt;/a&gt;([Perepolkin, 2019](https://github.com/dmi3kno/polite)), for compliance with permissions to scrape websites
 
 --
-- `dplyr` ([Wickham, François, Henry, et al., 2021](https://CRAN.R-project.org/package=dplyr)), for data manipulation
+- `dplyr` &lt;a name=cite-R-dplyr&gt;&lt;/a&gt;([Wickham, François, Henry, and MÃ¼ller, 2022](https://CRAN.R-project.org/package=dplyr)), for data manipulation
 
 ---
 class: action
@@ -653,12 +653,12 @@ class: action
    - available at &lt;https://cran.r-project.org/web/packages/RSelenium/vignettes/basics.html&gt;
 
 
-- R for Data Science ([Wickham and Grolemund, 2021](#bib-rfordatascience))
+- R for Data Science &lt;a name=cite-rfordatascience&gt;&lt;/a&gt;([Wickham and Grolemund, 2021](#bib-rfordatascience))
   
    - open access at &lt;https://r4ds.had.co.nz&gt;
    
 
-- Text Mining with R: A Tidy Approach ([Silge and Robinson, 2017](#bib-textminingwithr))
+- Text Mining with R: A Tidy Approach &lt;a name=cite-textminingwithr&gt;&lt;/a&gt;([Silge and Robinson, 2017](#bib-textminingwithr))
  
    - open access at [tidytextmining.com](https://www.tidytextmining.com/)
    - comes with [a course website](https://juliasilge.shinyapps.io/learntidytext/) where you can practice
@@ -1005,8 +1005,8 @@ robotstxt(domain = "https://luzpar.netlify.app")
 ##     spiderbar::can_fetch(obj = self$robexclobj, path = paths, 
 ##         user_agent = bot)
 ## }
-## &lt;bytecode: 0x000001b458594838&gt;
-## &lt;environment: 0x000001b453beed70&gt;
+## &lt;bytecode: 0x00000000236ecca0&gt;
+## &lt;environment: 0x00000000236ec0d0&gt;
 ## 
 ## attr(,"class")
 ## [1] "robotstxt"
@@ -1117,7 +1117,7 @@ class: action
   - with the `robotstxt` function
   - reflect on the ethics of scraping that website
 
-<div class="countdown" id="timer_62212fdd" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62222fd2" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1238,7 +1238,7 @@ class: action
 &lt;br&gt;   
 - compare the look of the front- and back-end
 
-<div class="countdown" id="timer_622130f5" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62222d01" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1796,7 +1796,7 @@ class: action
        
 - save this document as we will continue working on it
 
-<div class="countdown" id="timer_6221300f" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62222d53" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -2163,7 +2163,7 @@ class: action
    - change the colour of the second item in the list to red
    - get more ideas from [www.w3schools.com/css](https://www.w3schools.com/css/default.asp)
    
-<div class="countdown" id="timer_62213175" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62222d01" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">07</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
 </div>
 
@@ -2246,8 +2246,8 @@ read_html("https://luzpar.netlify.app/")
 ```
 ## {html_document}
 ## &lt;html lang="en-us"&gt;
-## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;\n&lt;meta ...
-## [2] &lt;body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-main" class ...
+## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8 ...
+## [2] &lt;body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-ma ...
 ```
 
 &lt;br&gt;
@@ -2278,8 +2278,8 @@ read_html("https://luzpar.netlify.app/")
 ```
 ## {html_document}
 ## &lt;html lang="en-us"&gt;
-## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;\n&lt;meta ...
-## [2] &lt;body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-main" class ...
+## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8 ...
+## [2] &lt;body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-ma ...
 ```
 
 ---
@@ -2480,8 +2480,8 @@ read_html("https://luzpar.netlify.app/")
 ```
 ## {html_document}
 ## &lt;html lang="en-us"&gt;
-## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;\n&lt;meta ...
-## [2] &lt;body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-main" class ...
+## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8 ...
+## [2] &lt;body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-ma ...
 ```
 
 ]
@@ -2497,8 +2497,8 @@ bow(url = "https://luzpar.netlify.app/") %&gt;%
 ```
 ## {html_document}
 ## &lt;html lang="en-us"&gt;
-## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;\n&lt;meta ...
-## [2] &lt;body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-main" class ...
+## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8 ...
+## [2] &lt;body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-ma ...
 ```
 
 ]
@@ -2518,8 +2518,8 @@ read_html("https://luzpar.netlify.app/exercises/exercise_6.Rhtml")
 ```
 ## {html_document}
 ## &lt;html&gt;
-## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;\n&lt;titl ...
-## [2] &lt;body&gt;\r\n\r\n&lt;h1&gt;States of Luzland&lt;/h1&gt;\r\n        \r\n&lt;p&gt;There are four states i ...
+## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8 ...
+## [2] &lt;body&gt;\r\n\r\n&lt;h1&gt;States of Luzland&lt;/h1&gt;\r\n        \r\n&lt;p&gt;There are four ...
 ```
 
 ]
@@ -2530,6 +2530,10 @@ read_html("https://luzpar.netlify.app/exercises/exercise_6.Rhtml")
 ```r
 bow(url = "https://luzpar.netlify.app/exercises/exercise_6.Rhtml") %&gt;% 
     scrape()
+```
+
+```
+## Warning: No scraping allowed here!
 ```
 
 ```
@@ -2554,7 +2558,7 @@ class: action
 - let the website know who you are
 - define delay time
 
-<div class="countdown" id="timer_6221307a" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62222cad" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -2690,7 +2694,7 @@ bow(url = "https://luzpar.netlify.app") %&gt;%
 
 ```
 ## {xml_nodeset (24)}
-##  [1] &lt;a class="js-search" href="#" aria-label="Close"&gt;&lt;i class="fas fa-times-circle te ...
+##  [1] &lt;a class="js-search" href="#" aria-label="Close"&gt;&lt;i class="fas fa-times- ...
 ##  [2] &lt;a class="navbar-brand" href="/"&gt;Parliament of Luzland&lt;/a&gt;
 ##  [3] &lt;a class="navbar-brand" href="/"&gt;Parliament of Luzland&lt;/a&gt;
 ##  [4] &lt;a class="nav-link active" href="/"&gt;&lt;span&gt;Home&lt;/span&gt;&lt;/a&gt;
@@ -2698,18 +2702,18 @@ bow(url = "https://luzpar.netlify.app") %&gt;%
 ##  [6] &lt;a class="nav-link" href="/constituencies/"&gt;&lt;span&gt;Constituencies&lt;/span&gt;&lt;/a&gt;
 ##  [7] &lt;a class="nav-link" href="/members/"&gt;&lt;span&gt;Members&lt;/span&gt;&lt;/a&gt;
 ##  [8] &lt;a class="nav-link" href="/documents/"&gt;&lt;span&gt;Documents&lt;/span&gt;&lt;/a&gt;
-##  [9] &lt;a class="nav-link js-search" href="#" aria-label="Search"&gt;&lt;i class="fas fa-searc ...
-## [10] &lt;a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-lab ...
+##  [9] &lt;a class="nav-link js-search" href="#" aria-label="Search"&gt;&lt;i class="fas ...
+## [10] &lt;a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" ...
 ## [11] &lt;a href="#" class="dropdown-item js-set-theme-light"&gt;&lt;span&gt;Light&lt;/span&gt;&lt;/a&gt;
 ## [12] &lt;a href="#" class="dropdown-item js-set-theme-dark"&gt;&lt;span&gt;Dark&lt;/span&gt;&lt;/a&gt;
-## [13] &lt;a href="#" class="dropdown-item js-set-theme-auto"&gt;&lt;span&gt;Automatic&lt;/span&gt;&lt;/a&gt;
-## [14] &lt;a href="https://github.com/resulumit/scrp_workshop" target="_blank" rel="noopene ...
-## [15] &lt;a href="https://resulumit.com/" target="_blank" rel="noopener"&gt;Resul Umit&lt;/a&gt;
+## [13] &lt;a href="#" class="dropdown-item js-set-theme-auto"&gt;&lt;span&gt;Automatic&lt;/spa ...
+## [14] &lt;a href="https://github.com/resulumit/scrp_workshop" target="_blank" rel ...
+## [15] &lt;a href="https://resulumit.com/" target="_blank" rel="noopener"&gt;Resul Um ...
 ## [16] &lt;a href="/documents/"&gt;documents&lt;/a&gt;
 ## [17] &lt;a href="/constituencies/"&gt;constituencies&lt;/a&gt;
 ## [18] &lt;a href="/members/"&gt;members&lt;/a&gt;
 ## [19] &lt;a href="/states/"&gt;states&lt;/a&gt;
-## [20] &lt;a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopener"&gt;Blog ...
+## [20] &lt;a href="https://github.com/rstudio/blogdown" target="_blank" rel="noope ...
 ## ...
 ```
 
@@ -2774,15 +2778,15 @@ bow(url = "https://luzpar.netlify.app") %&gt;%
 
 ```
 ## {xml_nodeset (9)}
-## [1] &lt;a href="https://github.com/resulumit/scrp_workshop" target="_blank" rel="noopener ...
-## [2] &lt;a href="https://resulumit.com/" target="_blank" rel="noopener"&gt;Resul Umit&lt;/a&gt;
+## [1] &lt;a href="https://github.com/resulumit/scrp_workshop" target="_blank" rel= ...
+## [2] &lt;a href="https://resulumit.com/" target="_blank" rel="noopener"&gt;Resul Umi ...
 ## [3] &lt;a href="/documents/"&gt;documents&lt;/a&gt;
 ## [4] &lt;a href="/constituencies/"&gt;constituencies&lt;/a&gt;
 ## [5] &lt;a href="/members/"&gt;members&lt;/a&gt;
 ## [6] &lt;a href="/states/"&gt;states&lt;/a&gt;
-## [7] &lt;a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopener"&gt;Blogd ...
+## [7] &lt;a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopen ...
 ## [8] &lt;a href="https://gohugo.io/" target="_blank" rel="noopener"&gt;Hugo&lt;/a&gt;
-## [9] &lt;a href="https://github.com/wowchemy" target="_blank" rel="noopener"&gt;Wowchemy&lt;/a&gt;
+## [9] &lt;a href="https://github.com/wowchemy" target="_blank" rel="noopener"&gt;Wowc ...
 ```
 
 ---
@@ -2887,7 +2891,7 @@ class: action
 - without repeating the code
 - that is, use only a single selector that would return both list elements
 
-<div class="countdown" id="timer_62213157" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62222da9" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -2938,10 +2942,14 @@ bow(url = "https://luzpar.netlify.app") %&gt;%
 
 
 ```
-## [1] "a workshop on automated web scraping" "Resul Umit"                          
-## [3] "documents"                            "constituencies"                      
-## [5] "members"                              "states"                              
-## [7] "Blogdown"                             "Hugo"                                
+## [1] "a workshop on automated web scraping"
+## [2] "Resul Umit"                          
+## [3] "documents"                           
+## [4] "constituencies"                      
+## [5] "members"                             
+## [6] "states"                              
+## [7] "Blogdown"                            
+## [8] "Hugo"                                
 ## [9] "Wowchemy"
 ```
 
@@ -2957,7 +2965,7 @@ class: action
 15) Get the constituency names on the page at &lt;https://luzpar.netlify.app/constituencies/&gt;
 
 
-<div class="countdown" id="timer_6221309b" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62222e3f" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -3124,7 +3132,7 @@ class: action
 17) Create complete links to the constituency pages
 
 
-<div class="countdown" id="timer_622130a1" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62222c7f" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -3232,7 +3240,7 @@ class: action
       - make these URLs absolute   
       - see what other attributes are there to collect     
 
-<div class="countdown" id="timer_62212f81" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62222fee" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -3543,12 +3551,12 @@ class: action
 &lt;br&gt;
 
 Hints:
-- see an example dataset at &lt;https://luzpar.netlify.app/files/exercises/static_data.csv&gt;
+- see an example dataset at &lt;https://luzpar.netlify.app/exercises/static_data.csv&gt;
 - start with the related code in the previous slides, and adopt it to your needs
 -  practice with 3 members until you are ready to run the loop for all 
     - e.g., by replacing `1:length(the_links)` with `1:3` for the loop
 
-<div class="countdown" id="timer_6221304e" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62222f04" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">45</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -3755,7 +3763,7 @@ binman::list_versions("chromedriver")
 
 ```
 ## $win32
-## [1] "89.0.4389.23" "90.0.4430.24" "91.0.4472.19"
+## [1] "98.0.4758.102" "99.0.4844.17"  "99.0.4844.35"
 ```
 
 --
@@ -4068,7 +4076,7 @@ class: action
 - e.g., take a screenshot of your browser
    - and view it in R
 
-<div class="countdown" id="timer_6221322e" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62222ea2" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -4451,7 +4459,7 @@ class: action
 - hint: you will have to find the search bar again
 
 
-<div class="countdown" id="timer_62213198" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62222d77" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -4623,7 +4631,7 @@ class: action
 - published after 2019
 
 
-<div class="countdown" id="timer_62213260" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62222f30" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">30</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -4643,30 +4651,30 @@ class: inverse, center, middle
 ---
 ## References
 
-Harrison, J. (2020). _RSelenium: R Bindings for Selenium WebDriver_. R package
-version 1.7.7.  http://docs.ropensci.org/RSelenium.
+Harrison, J. (2020). _RSelenium: R Bindings for Selenium WebDriver_. R
+package version 1.7.7.  http://docs.ropensci.org/RSelenium.
 
 Meissner, P. and K. Ren (2020). _robotstxt: A robots.txt Parser and
-Webbot/'Spider'/Crawler Permissions Checker_. R package version 0.7.13. 
-https://CRAN.R-project.org/package=robotstxt.
+Webbot/'Spider'/Crawler Permissions Checker_. R package version 0.7.13.
+ https://CRAN.R-project.org/package=robotstxt.
 
-Perepolkin, D. (2019). _polite: Be Nice on the Web_. R package version 0.1.1.
- https://github.com/dmi3kno/polite.
+Perepolkin, D. (2019). _polite: Be Nice on the Web_. R package version
+0.1.1.  https://github.com/dmi3kno/polite.
 
-Silge, J. and D. Robinson (2017). _Text mining with R: A tidy approach_.
-O'Reilly.
+Silge, J. and D. Robinson (2017). _Text mining with R: A tidy
+approach_. O'Reilly.
 
-Wickham, H. (2021). _rvest: Easily Harvest (Scrape) Web Pages_. R package
-version 1.0.2.  https://CRAN.R-project.org/package=rvest.
+Wickham, H. (2021). _rvest: Easily Harvest (Scrape) Web Pages_. R
+package version 1.0.2.  https://CRAN.R-project.org/package=rvest.
 
-Wickham, H., R. François, L. Henry, et al. (2021). _dplyr: A Grammar of Data
-Manipulation_. R package version 1.0.7. 
+Wickham, H., R. François, L. Henry, et al. (2022). _dplyr: A Grammar
+of Data Manipulation_. R package version 1.0.8. 
 https://CRAN.R-project.org/package=dplyr.
 
 Wickham, H. and G. Grolemund (2021). _R for data science_. O'Reilly.
 
-Xie, Y. (2021). _xaringan: Presentation Ninja_. R package version 0.22. 
-https://github.com/yihui/xaringan.
+Xie, Y. (2021). _xaringan: Presentation Ninja_. R package version 0.22.
+ https://github.com/yihui/xaringan.
 
 ---
 class: middle, center
