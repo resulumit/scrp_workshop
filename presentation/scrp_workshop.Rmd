@@ -850,23 +850,7 @@ Crawl-delay: `5`
 ]
 
 ---
-## Considerations &mdash; the Ethics &mdash; `robots.txt` &mdash; Syntax
-
-Files might include optional comments, written after the number sign .yellow-h[&#x23;]
-
-
-```md
-`# thank you for respecting our protocol`
-
-User-agent: *
-Allow: /
-Disallow: /about/
-Crawl-delay: 5    `# please delay for five seconds, to ensure our servers are not overloaded`
-
-```
-
----
-## Considerations &mdash; the Ethics &mdash; `robots.txt` &mdash; Syntax
+## Considerations &mdash; the Ethics &mdash; `robots.txt` &mdash; Examples
 
 The protocol of this website only applies to Google
 
@@ -882,7 +866,7 @@ Allow: /
 ```
 
 ---
-## Considerations &mdash; the Ethics &mdash; `robots.txt` &mdash; Syntax
+## Considerations &mdash; the Ethics &mdash; `robots.txt` &mdash; Examples
 
 
 The protocol of this website only applies to Google
@@ -901,7 +885,7 @@ User-agent: googlebot
 ```
 
 ---
-## Considerations &mdash; the Ethics &mdash; `robots.txt` &mdash; Syntax
+## Considerations &mdash; the Ethics &mdash; `robots.txt` &mdash; Examples
 
 
 This website has different protocols for different agents
@@ -922,6 +906,38 @@ Disallow: /
 
 User-agent: `*`
 Allow: /about/
+
+```
+
+---
+## Considerations &mdash; the Ethics &mdash; `robots.txt` &mdash; Notes
+
+There are also some other, lesser known, directives
+
+```md
+User-agent: *
+Allow: /
+Disallow: /about/
+Crawl-delay: 5    
+`Visit-time: 01:45-08:30`
+
+```
+
+--
+
+<br>
+
+Files might include optional comments, written after the number sign .yellow-h[&#x23;]
+
+
+```md
+`# thank you for respecting our protocol`
+
+User-agent: *
+Allow: /
+Disallow: /about/
+Visit-time: 01:45-08:30    `# please visit when it is night time in the UK (GMT)`
+Crawl-delay: 5    `# please delay for five seconds, to ensure our servers are not overloaded`
 
 ```
 
@@ -1790,10 +1806,12 @@ class: inverse, center, middle
 .pull-right[
 ```md
  `p {font-size:12px;}`
+ 
+ `h1 h2 {color:blue;}`
 
  `.count {background-color:yellow;}`
  
- `#sentence-count {color:red;}`
+ `#sentence-count {color:red; font-size:16px;}`
 
 ```
 
@@ -1818,7 +1836,7 @@ class: inverse, center, middle
 
  `.count` {background-color:yellow;}
 
- `#sentence-count` {color:red; font-size:14px;}
+ `#sentence-count` {color:red; font-size:16px;}
 
 ```
 ]
@@ -1847,7 +1865,7 @@ class: inverse, center, middle
 
  .count {background-color:yellow;}
 
- #sentence-count {color:red; font-size:14px;}
+ #sentence-count {color:red; font-size:16px;}
 
 ```
 ]
@@ -1877,7 +1895,7 @@ class: inverse, center, middle
 
  `.count` {background-color:yellow;}
 
- `#sentence-count` {color:red; font-size:14px;}
+ `#sentence-count` {color:red; font-size:16px;}
 
 ```
 ]
@@ -1908,7 +1926,7 @@ class: inverse, center, middle
 
  .count {background-color:yellow;}
 
- #sentence-count {color:red; font-size:14px;}
+ #sentence-count {color:red; font-size:16px;}
 
 ```
 ]
@@ -1937,7 +1955,7 @@ class: inverse, center, middle
 
  .count `{background-color:yellow;}`
 
- #sentence-count `{color:red; font-size:14px;}`
+ #sentence-count `{color:red; font-size:16px;}`
 
 ```
 ]
@@ -1960,7 +1978,7 @@ class: inverse, center, middle
 
  .count {`background-color:`yellow;}
 
- #sentence-count {`color:`red;` font-size:`14px;}
+ #sentence-count {`color:`red; `font-size:`16px;}
 
 ```
 ]
@@ -2106,8 +2124,8 @@ class: action
 - using internal or external style, but not inline
    - so that you can practice selecting elements     
 <br>
-- no idea what to do? try
-   - increasing the font size of the text in paragraph  
+- no idea what to do?
+   - increase the font size of the text in paragraph
    - change the colour of the second item in the list to red
    - get more ideas from [www.w3schools.com/css](https://www.w3schools.com/css/default.asp)
    
@@ -2736,22 +2754,21 @@ class: action
 
 ## Exercises
 
-11) Get the fist list element on the page at <https://luzpar.netlify.app/states/>
+11) Get the fist item on the list on the page at <https://luzpar.netlify.app/states/>
 
 - find the selector with the functionality Chrome offers
 
 <br>
 
-12) Get all list elements on the same page
+12) Get all items on the list
 
 - find the selector with SelectorGadget
 
 <br>
 
-13) Get only the second and fourth element on the list
+13) Get only the second and fourth items on the list
 
-- without repeating the code
-- that is, use only a single selector that would return both list elements
+- using a single selector that would return both
 
 `r countdown(minutes = 10, seconds = 00, top = 0)`
 
