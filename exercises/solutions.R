@@ -229,9 +229,8 @@ browser <- driver$client
 
 # exercise 22 -------------------------------------------------------------
 
-browser$navigate(url = "https://www.theguardian.com/")
 browser$navigate(url = "https://luzpar.netlify.app")
-
+browser$navigate(url = "https://www.theguardian.com/")
 
 # exercise 23 -------------------------------------------------------------
 
@@ -246,8 +245,8 @@ browser$goForward()
 # browser$
 
 # read the description for two methods
-browser$acceptAlert
 browser$getTitle
+browser$screenshot
 
 
 # exercise 25 -------------------------------------------------------------
@@ -261,35 +260,61 @@ browser$screenshot(display = TRUE, useViewer = TRUE)
 
 # exercise 26 -------------------------------------------------------------
 
-read_html("https://luzpar.netlify.app/members/") %>% 
-        html_elements("td:nth-child(1) a") %>% 
-        html_text()
+read_html("https://luzpar.netlify.app/members/") 
+
 
 # exercise 27 -------------------------------------------------------------
 
 # navigate to the page
 browser$navigate(url = "https://luzpar.netlify.app/members/")
 
-# collect names
+# get page source
+browser$getPageSource()[[1]] 
+
+
+# exercise 27 -------------------------------------------------------------
+
+# rvest
+read_html("https://luzpar.netlify.app/members/") %>% 
+        html_elements("td:nth-child(1) a") %>% 
+        html_text()
+
+
+# rselenium and rvest
+browser$navigate(url = "https://luzpar.netlify.app/members/")
 browser$getPageSource()[[1]] %>% 
         read_html() %>% 
         html_elements("td:nth-child(1) a") %>% 
         html_text()
 
-
-# exercise 28 -------------------------------------------------------------
-
-# maximize the window
-browser$browser$maxWindowSize()
-
-# collect names again
-browser$getPageSource()[[1]] %>% 
-        read_html() %>% 
-        html_elements("td:nth-child(1) a") %>% 
-        html_text()
-        
 
 # exercise 29 -------------------------------------------------------------
+
+# navigate to the website
+browser$navigate(url = "https://luzpar.netlify.app/constituencies/")
+
+# find the button
+the_button <- browser$findElement(using = "css", value = ".page-link")
+
+# check if you really found it (optional)
+the_button$highlightElement()
+
+# click on it
+the_button$clickElement()
+
+# exercise 30 -------------------------------------------------------------
+
+# find the button
+the_button <- browser$findElement(using = "css", value = ".page-item+ .page-item .page-link")
+
+# check if you really found it (optional)
+the_button$highlightElement()
+
+# click on it
+the_button$clickElement()
+
+
+# exercise 31 -------------------------------------------------------------
 
 # navigate to the website
 browser$navigate(url = "https://duckduckgo.com/")
@@ -307,7 +332,7 @@ the_bar$clickElement()
 the_bar$sendKeysToElement(list("Luzland", key = "enter"))
 
 
-# exercise 30 -------------------------------------------------------------
+# exercise 32 -------------------------------------------------------------
 
 # find the body
 the_body <- browser$findElement(using = "css", value = "body")
@@ -319,7 +344,7 @@ the_body$sendKeysToElement(list(key = "page_down"))
 the_body$sendKeysToElement(list(key = "page_up"))
 
 
-# exercise 31 -------------------------------------------------------------
+# exercise 33 -------------------------------------------------------------
 
 # go back
 browser$goBack()
@@ -336,8 +361,7 @@ the_bar$clickElement()
 the_bar$sendKeysToElement(list("Lucerne", key = "enter"))
 
 
-
-# exercise 32 -------------------------------------------------------------
+# exercise 34 -------------------------------------------------------------
 
 # navigate to the desired page and wait a little
 browser$navigate("https://luzpar.netlify.app/documents/")

@@ -3404,7 +3404,7 @@ Scraping dynamic pages involves three main steps
       - with the the `rvest` package
     
 ---
-## Dynamic Pages &mdash; `Rselenium` &mdash; Overview
+## Dynamic Pages &mdash; `RSelenium` &mdash; Overview
 
 - A package that integrates [Selenium 2.0 WebDriver](https://www.selenium.dev/documentation/en/) into R
 
@@ -3546,6 +3546,7 @@ rsDriver(port = 4567L,
 ## Dynamic Pages &mdash; Browsers &mdash; Starting a Server
 
 - The latest version of the driver is too new for my browser
+
   - I have to use an older version to make it work
   - after checking the available versions with the following code
 
@@ -3731,9 +3732,7 @@ class: action
 <br>
 
 24) See what other methods are available to interact with browsers
-- by typing the object name for your client into R console
-   - followed by the dollar sign
-   - and hitting the tab key on your keyboard if necessary
+
 - read the description for one or more of them
 
 <br>
@@ -3857,13 +3856,8 @@ browser$getPageSource()[[1]] %>%
 
 Note that
 
-- this method gets the source for only what is physically visible on the browser
+- this method gets the dynamic source for only what is visible on the browser
 - window size and position might become important
-    - you may wish to maximise the window
-
-```md
-browser$browser$maxWindowSize()
-```
 
 ---
 ## Dynamic Pages &mdash; Browsers &mdash; Get Page Source
@@ -3890,24 +3884,26 @@ class: action
 
 ## Exercises
 
-26) Collect names from <https://luzpar.netlify.app/members/>
+26) Get the page source for <https://luzpar.netlify.app/members/>
+
+- using function(s) from `rvest` or `polite`
+
+<br>
+
+27) Get the same page source, using `RSelenium`
+
+- compare the outcome with the one from Exercise 26
+
+<br>
+
+28) Collect names from <https://luzpar.netlify.app/members/>
 
 - using functions from `rvest` only
+- using `RSelenium` and `rvest` together
+- compare the outcomes
 
-<br>
 
-27) Repeat collecting them, this time in an automated browser
-
-- using both `RSelenium` and `rvest`
-- is the outcome different than in Exercise 26?
-
-<br>
-
-28) Maximize the automated browser window, and repeat again
-
-- is the outcome different than in Exercise 26 and/or 27?
-
-`r countdown(minutes = 10, seconds = 00, top = 0)`
+`r countdown(minutes = 7, seconds = 30, top = 0)`
 
 ---
 class: center, middle
@@ -4057,14 +4053,14 @@ attr(,"package")
 Highlight the element found in the previous step, with the `highlightElement` method
 
 ```{r, eval=FALSE}
-# navigate to a page
-browser$navigate("http://luzpar.netlify.app/")
+ # navigate to a page
+ browser$navigate("http://luzpar.netlify.app/")
 
-# find the element
-menu_states <- browser$findElement(using = "link text", value = "States")
+ # find the element
+ menu_states <- browser$findElement(using = "link text", value = "States")
 
-# highlight it to see if we found the correct element
-menu_states$`highlightElement()`
+ # highlight it to see if we found the correct element
+ menu_states$`highlightElement()`
 
 ```
 
@@ -4081,15 +4077,14 @@ Note that
 Highlight the element found in the previous step, with the `highlightElement` method
 
 ```{r, eval=FALSE}
-# navigate to a page
-browser$navigate("http://luzpar.netlify.app/")
+ # navigate to a page
+ browser$navigate("http://luzpar.netlify.app/")
 
-# find the element
-menu_states <- `browser$`findElement(using = "link text", value = "States")
+ # find the element
+ menu_states <- `browser$`findElement(using = "link text", value = "States")
 
-# highlight it to see if we found the correct element
-`menu_states$`highlightElement()
-
+ # highlight it to see if we found the correct element
+ `menu_states$`highlightElement()
 ```
 
 <br>
@@ -4118,6 +4113,24 @@ search_icon <- browser$findElement(using = "css", value = ".fa-search")
 search_icon$`clickElement()`
 
 ```
+
+---
+class: action
+
+## Exercises
+
+29) Go to <https://luzpar.netlify.app/constituencies/>, and click the next page button
+
+- using the automated browser
+
+<br>
+
+30) While on the second page, click the next page button again
+
+- hint: you will have to find the button again
+
+
+`r countdown(minutes = 7, seconds = 30, top = 0)`
 
 ---
 ## Dynamic Pages &mdash; Elements &mdash; Input
@@ -4253,7 +4266,7 @@ class: action
 
 ## Exercise
 
-29) Conduct an internet search programatically
+31) Conduct an internet search programatically
 - navigate to <https://duckduckgo.com/>
    - just to keep it simple, as Google would require you to scroll down and accept a policy     
 <br>   
@@ -4262,14 +4275,13 @@ class: action
     
 <br>
 
-30) Scroll down programatically, and up
+32) Scroll down programatically, and up
 - to see all results
 
 <br>
 
-31) Go back, and conduct another search
+33) Go back, and conduct another search
 - hint: you will have to find the search bar again
-
 
 `r countdown(minutes = 15, seconds = 00, top = 0)`
 
@@ -4415,7 +4427,7 @@ print(the_links)
 
 Write a for loop to download PDFs
 
-```
+```md
 for (i in 1:length(the_links)) {
         
 pdf_link <- bow(url = the_links[i]) %>%
@@ -4435,7 +4447,7 @@ class: action
 
 ## Exercise
 
-32) Collect data on a subset of documents
+34) Collect data on a subset of documents
 - article tags and image credits
 - for documents within the Law and Proposal categories
 - published after 2019
