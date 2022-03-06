@@ -4,7 +4,7 @@
 # for the workshop (https://github.com/resulumit/scrp_workshop) on 
 # web scraping with r, by resul umit
 
-# last updated on: 25.02.2022
+# last updated on: 2022-03-05
 
 
 # load the packages -------------------------------------------------------
