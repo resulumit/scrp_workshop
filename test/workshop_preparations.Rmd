@@ -1,8 +1,10 @@
 ---
-title: "Workshop Preparations"
+title: "Technical preparations"
+subtitle: "for the workshop on web scraping with R"
 author: "Resul Umit"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output: pdf_document
+fontsize: 12pt
 header-includes:
     - \usepackage{setspace}\doublespacing
     - \hypersetup{pdftoolbar=true, pdfmenubar=true, pdffitwindow=false, pdfstartview={FitH}}
@@ -12,15 +14,13 @@ header-includes:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This document includes instructions to prepare your computer for the workshop on automated web scraping. 
+This document includes instructions for preparing your computer for the workshop on web scraping with R. 
 
-One of the R packages that we will use for the workshop, `RSelenium`, is a package that requires an unusual setup. This setup might be short, but it frequently goes wrong. 
+If you encounter issues while following these instructions, please do not hesitate to email me at [resulumit@gmail.com](mailto:resulumit@gmail.com) --- you can expect a prompt, welcoming reply. 
 
-To avoid having to deal with potential issues during the workshop, it would be great if you could please follow the instructions below at your earliest opportunity. 
+I am confident that we can solve any issues that you might encounter --- provided that (1) you contact me as early as possible and that (2) you have administrative rights (that is, you can install software) on your computer. 
 
-If you encounter any issues while following these instructions, please do not hesitate to email me. I would be happy to hear from you, and I am confident that we can solve those issues --- provided that you have administrative rights (e.g., you can install software) on your computer. 
-
-## 1. Software
+# 1. Software
 
 Please download and install the following software to your computer:
 
@@ -29,15 +29,15 @@ Please download and install the following software to your computer:
 - **Java**: <https://www.java.com/en/download/>
 - **Chrome**: <https://www.google.com/chrome/>
 
-You may already have one or more of them installed. In that case, please consider updating them, which will ensure that we will all be working with exactly the same set of tools during the workshop.
+You may already have one or more of them installed. In that case, please consider updating them to their latest versions, which will ensure that we will all be working with exactly the same set of tools during the workshop.
 
-Once you install them, I would recommend restarting your computer.
+Once you install the above, I recommend restarting your computer.
 
-## 2. RSelenium
+## RSelenium
 
-`RSelenium` is a great package. It has functions for, among others, visiting a website, clicking on a button, or scrolling down a page --- all controlled within R. We will use it to learn how to scrape dynamic websites.
+`RSelenium` is a great package for, among others, visiting a website, clicking on a button, or scrolling down a page --- all controlled from within R. We will use it to scrape *dynamic* websites.
 
-After the restart, and while in R or RStudio, please install `RSelenium` to your computer. 
+After the restart, and while in R or RStudio, please install the `RSelenium` package. 
 
 ```{r, install, eval=FALSE}
 install.packages("RSelenium")
@@ -49,9 +49,7 @@ Once the package is installed, first restart your R session (from the RStudio me
 library(RSelenium)
 ```
 
-Finally, try starting Chrome from within R. The R code below should lead to a Chrome window, as shown in Figure \ref{pop_up}, popping up. It should not disappear on its own.
-
-If this works, congratulations, you are ready for the workshop.
+Finally, try starting Chrome from within R. The code below should lead to a Chrome window, as shown in Figure \ref{pop_up}, popping up. The window should not disappear on its own.
 
 ```{r, run, eval=FALSE}
 driver <- rsDriver(port = sample(4500:4600, 1))
@@ -63,11 +61,11 @@ knitr::include_graphics("chrome_works.PNG")
 
 ```
 
-If it does not work as expected --- it happens --- please see the next section.
+If this works, congratulations, your computer is ready for the workshop. If it does not work as expected, please see the next section.
 
-## 3. Troubleshooting
+# 2. Troubleshooting
 
-The instructions above may not work, for various reasons. In this section, I will provide you with a solution to one of the most common problems: a mismatch between the versions of *ChromeDriver* that comes with `RSelenium` and the *Chrome browser* on your computer. There are two main symptoms of this problem:
+The instructions above may not work on all computers, for various reasons. In this section, I will provide you with a solution to one of the most common problems: a mismatch between the versions of *ChromeDriver* that comes with `RSelenium` and the *Chrome browser* on your computer. There are two main symptoms of this problem:
 
 - a window pops up for a split second, and then disappears without any error messages
 - nothing pops up, leading to an error message as follows:
@@ -78,23 +76,21 @@ only supports Chrome version XX
 
 ```
 
-If any of these is the case for you, run the following code in R Console. This will result in a list of numbers (driver versions):
+If either of these is the case for you, please run the following code in R Console. This will result in a list of numbers (driver versions):
 
 ```{r, binman}
 binman::list_versions("chromedriver")
 ```
 
-One of the resulting numbers that *you* get is what you possibly need, but we do not know which one. It is a trial-and-error situation. Try supplying them *one by one* to the `rsDriver` function, with the `chromever` argument. 
-
-For me, it is the first number that works. This might be different for you. Please note that you should try *the numbers that you get, not the numbers on this document*.
+One of the resulting numbers that you see *in your R Console* is possibly what you need to get it to work, but we do not know which one that might be. It is a trial-and-error situation. Try supplying them *one by one* to the `rsDriver` function, with the `chromever` argument, as shown below. For me, it is the third number that works. This might be different for you.
 
 ```{r, run_again, eval=FALSE}
-driver <- rsDriver(port = sample(4500:4600, 1), chromever = "98.0.4758.102")
+driver <- rsDriver(port = sample(4500:4600, 1), chromever = "102.0.5005.27")
 ```
 
-If this does not help, or if you get a different error message, please google that message to see if there is a quick solution available on the internet. 
+If this does not help, please google the error message that you have to see if there is a solution available on the internet. 
 
-If googling does not solve the issue, you may wish to use a different browser, such as Firefox. It would be great if all of us use the same browser (that is, Chrome) during the workshop, but this is not absolutely necessary. You would also be fine by using Firefox instead. 
+If googling does not help you solve the issue, you may wish to use a different browser, such as Firefox. It would be great if all of us use the same browser (that is, Chrome) during the workshop, but this is not absolutely necessary. You would also be fine by using Firefox. 
 
 Assuming that you have Firefox installed on your computer, try running the following code. Again, if a browser pops up as a result, and it stays on, you are ready for the workshop.
 
@@ -102,4 +98,4 @@ Assuming that you have Firefox installed on your computer, try running the follo
 driver <- rsDriver(port = sample(4500:4600, 1), browser = "firefox")
 ```
 
-If none of these solutions help, please send me an email with as much information as possible, including exact error messages.
+If none of these solutions help, please send me an email at [resulumit@gmail.com](mailto:resulumit@gmail.com) with as much information as possible, including exact error message that you get. I would be happy to hear from you.
