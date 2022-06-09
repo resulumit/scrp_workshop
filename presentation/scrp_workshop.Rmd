@@ -316,7 +316,7 @@ Slides with this background colour indicate that your action is required, for
     - long codes and texts will have their own line(s)
 
 ```{r, demonstration, eval=FALSE}
-bow(url = "https://luzpar.netlify.app/members/") %>%
+bow("https://luzpar.netlify.app/members/") %>%
   scrape() %>%
   html_elements(css = "td+ td a") %>% 
   html_attr("href") %>% 
@@ -1161,7 +1161,7 @@ class: inverse, center, middle
       - e.g., URLs hidden under text
            
 ---
-## Source Code &mdash; Example
+## Source Code &mdash; Plain Text
 
 The `Ctrl` `+` `U` shortcut displays source code &mdash; alternatively, right click and `View` `Page` `Source`
 
@@ -2391,9 +2391,7 @@ bow(url,
 - Note that
 
    - `scrape` will only work if the results from `bow` are positive
-       - creating a safety valve for ethical scraping     
-<br>    
-   - by piping, `bow` into `scrape`, you can avoid creating objects
+       - creating a safety valve for ethical scraping
 
 ]
 
@@ -2405,6 +2403,43 @@ scrape(`bow`,
        ...
        )
   
+```
+]
+
+---
+## Static Pages &mdash; `rvest` &mdash; Get Source Code &mdash; `polite`
+
+.pull-left[
+
+- First, use the `bow` function to check the protocol
+- Second, use the `scrape` function get source code
+
+   - for an object created with the `bow` function
+
+<br>
+
+- Note that
+
+   - `scrape` will only work if the results from `bow` are positive
+       - creating a safety valve for ethical scraping     
+<br>    
+   - by .yellow-h[piping], `bow` into `scrape`, you can avoid creating objects
+
+]
+
+
+.pull-right[
+
+```md
+
+scrape(bow,
+       ...
+       )
+```
+
+```md
+bow() `%>%`
+  scrape()
 ```
 ]
 
@@ -2424,7 +2459,7 @@ read_html("https://luzpar.netlify.app/")
 .pull-right[
 
 ```{r, message=FALSE}
-bow(url = "https://luzpar.netlify.app/") %>%  
+bow("https://luzpar.netlify.app/") %>%  
     scrape()
 ```
 
@@ -2446,7 +2481,7 @@ read_html("https://luzpar.netlify.app/exercises/exercise_6.Rhtml")
 .pull-right[
 
 ```{r}
-bow(url = "https://luzpar.netlify.app/exercises/exercise_6.Rhtml") %>% 
+bow("https://luzpar.netlify.app/exercises/exercise_6.Rhtml") %>% 
     scrape()
 ```
 
@@ -2602,13 +2637,13 @@ knitr::include_graphics("scrp_workshop_files/images_data/sg1.png")
 Get the `a` (anchor) elements on the homepage
 
 ```{r, eval=FALSE}
-bow(url = "https://luzpar.netlify.app") %>%
+bow("https://luzpar.netlify.app") %>%
   scrape() %>%
   `html_elements(css = "a")`
 ```
 
 ```{r, echo=FALSE}
-bow(url = "https://luzpar.netlify.app") %>%
+bow("https://luzpar.netlify.app") %>%
   scrape() %>%
   html_elements(css = "a")
 ```
@@ -2619,13 +2654,13 @@ bow(url = "https://luzpar.netlify.app") %>%
 Get the .yellow-h[first] `a` (anchor) element on the homepage
 
 ```{r, eval=FALSE}
-bow(url = "https://luzpar.netlify.app") %>%
+bow("https://luzpar.netlify.app") %>%
   scrape() %>%
   html_elemen`t(`css = "a")
 ```
 
 ```{r, echo=FALSE}
-bow(url = "https://luzpar.netlify.app") %>%
+bow("https://luzpar.netlify.app") %>%
   scrape() %>%
   html_element(css = "a")
 ```
@@ -2668,13 +2703,13 @@ knitr::include_graphics("scrp_workshop_files/images_data/sg2.png")
 Get the `a` (anchor) elements on the homepage with a `#title` attribute
 
 ```{r, eval=FALSE}
-bow(url = "https://luzpar.netlify.app") %>%
+bow("https://luzpar.netlify.app") %>%
   scrape() %>%
   html_elements(css = `"#title a"`)
 ```
 
 ```{r, echo=FALSE}
-bow(url = "https://luzpar.netlify.app") %>%
+bow("https://luzpar.netlify.app") %>%
   scrape() %>%
   html_elements(css = "#title a")
 ```
@@ -2709,13 +2744,13 @@ knitr::include_graphics("scrp_workshop_files/images_data/sg3.png")
 Get the link behind the selected elements
 
 ```{r, eval=FALSE}
-bow(url = "https://luzpar.netlify.app") %>%
+bow("https://luzpar.netlify.app") %>%
   scrape() %>%
   html_elements(css = `"br+ p a"`)
 ```
 
 ```{r, echo=FALSE}
-bow(url = "https://luzpar.netlify.app") %>%
+bow("https://luzpar.netlify.app") %>%
   scrape() %>%
   html_elements(css = "br+ p a")
 ```
@@ -2728,13 +2763,13 @@ You can click further to select .yellow-h[a single element]
 .pull-left[
 
 ```{r, eval=FALSE}
-bow(url = "https://luzpar.netlify.app") %>%
+bow("https://luzpar.netlify.app") %>%
   scrape() %>%
   html_elements(css = `"br+ p a+ a"`)
 ```
 
 ```{r, echo=FALSE}
-bow(url = "https://luzpar.netlify.app") %>%
+bow("https://luzpar.netlify.app") %>%
   scrape() %>%
   html_elements(css = "br+ p a+ a")
 ```
@@ -2778,13 +2813,13 @@ knitr::include_graphics("scrp_workshop_files/images_data/ch1.png")
 Get the link behind one element, with css from Chrome
 
 ```{r, eval=FALSE}
-bow(url = "https://luzpar.netlify.app") %>%
+bow("https://luzpar.netlify.app") %>%
   scrape() %>%
   html_elements(css = `"#title > div.container > div > p:nth-child(2) > a:nth-child(2)"`)
 ```
 
 ```{r, echo=FALSE}
-bow(url = "https://luzpar.netlify.app") %>%
+bow("https://luzpar.netlify.app") %>%
   scrape() %>%
   html_elements(css = "#title > div.container > div > p:nth-child(2) > a:nth-child(2)")
 ```
@@ -2859,14 +2894,14 @@ html_text2(x, preserve_nbsp = FALSE)
 ## Static Pages &mdash; `rvest` &mdash; `html_text`
 
 ```{r, eval=FALSE}
-bow(url = "https://luzpar.netlify.app") %>%
+bow("https://luzpar.netlify.app") %>%
   scrape() %>%
   html_elements(css = "#title a") %>% 
   `html_text()`
 ```
 
 ```{r, echo=FALSE}
-bow(url = "https://luzpar.netlify.app") %>%
+bow("https://luzpar.netlify.app") %>%
   scrape() %>%
   html_elements(css = "#title a") %>% 
   html_text()
@@ -2926,14 +2961,14 @@ html_attrs(x)
 ## Static Pages &mdash; `rvest` &mdash; `html_attrs`
 
 ```{r, eval=FALSE}
-bow(url = "https://luzpar.netlify.app") %>%
+bow("https://luzpar.netlify.app") %>%
   scrape() %>%
   html_elements(css = "#title a") %>% 
   `html_attrs()`
 ```
 
 ```{r, echo=FALSE}
-bow(url = "https://luzpar.netlify.app") %>%
+bow("https://luzpar.netlify.app") %>%
   scrape() %>%
   html_elements(css = "#title a") %>% 
   html_attrs()
@@ -2943,14 +2978,14 @@ bow(url = "https://luzpar.netlify.app") %>%
 ## Static Pages &mdash; `rvest` &mdash; `html_attr`
 
 ```{r, eval=FALSE}
-bow(url = "https://luzpar.netlify.app") %>%
+bow("https://luzpar.netlify.app") %>%
   scrape() %>%
   html_elements(css = "#title a") %>% 
   `html_attr(name = "href")`
 ```
 
 ```{r, echo=FALSE}
-bow(url = "https://luzpar.netlify.app") %>%
+bow("https://luzpar.netlify.app") %>%
   scrape() %>%
   html_elements(css = "#title a") %>% 
   html_attr(name = "href")
@@ -2969,7 +3004,7 @@ Note that
 
 Complete the relative URLs with the `url_absolute` function
 ```{r, eval=FALSE}
-bow(url = "https://luzpar.netlify.app") %>%
+bow("https://luzpar.netlify.app") %>%
   scrape() %>%
   html_elements(css = "#title a") %>% 
   html_attr(name = "href") %>% 
@@ -2977,7 +3012,7 @@ bow(url = "https://luzpar.netlify.app") %>%
 ```
 
 ```{r, echo=FALSE}
-bow(url = "https://luzpar.netlify.app") %>%
+bow("https://luzpar.netlify.app") %>%
   scrape() %>%
   html_elements(css = "#title a") %>% 
   html_attr(name = "href") %>% 
@@ -3005,7 +3040,7 @@ class: action
 Use the `html_table()` function to get the text content of table elements
 
 ```{r, eval=FALSE}
-bow(url = "https://luzpar.netlify.app/members/") %>%
+bow("https://luzpar.netlify.app/members/") %>%
   scrape() %>%
   html_elements(css = "table") %>% 
   `html_table()`
@@ -3038,17 +3073,17 @@ We can create the same tibble with `html_text`, which requires getting each vari
 ```{r, eval=FALSE}
 tibble(
         
-"Member" = bow(url = "https://luzpar.netlify.app/members/") %>%
+"Member" = bow("https://luzpar.netlify.app/members/") %>%
         scrape() %>%
         html_elements(css = "td:nth-child(1) a") %>% 
         html_text(),
 
-"Constituency" = bow(url = "https://luzpar.netlify.app/members/") %>%
+"Constituency" = bow("https://luzpar.netlify.app/members/") %>%
         scrape() %>%
         html_elements(css = "td:nth-child(2) a") %>% 
         html_text(),
 
-"Party" = bow(url = "https://luzpar.netlify.app/members/") %>%
+"Party" = bow("https://luzpar.netlify.app/members/") %>%
         scrape() %>%
         html_elements(css = "td:nth-child(3)") %>% 
         html_text()
@@ -3063,7 +3098,7 @@ Keep the number of interactions with websites to minimum
 - by saving the source code as an object, which could be used repeatedly
 
 ```md
-`the_page <- bow(url = "https://luzpar.netlify.app/members/")` %>%
+`the_page <- bow("https://luzpar.netlify.app/members/")` %>%
             `scrape()`
 
 tibble(
@@ -3151,7 +3186,7 @@ class: action
 Scrape the page that has all URLs, for absolute URLs
 
 ```{r, eval=TRUE, cache=TRUE}
-the_links <- bow(url = "https://luzpar.netlify.app/members/") %>%
+the_links <- bow("https://luzpar.netlify.app/members/") %>%
         scrape() %>%
         html_elements(css = "td+ td a") %>% 
         html_attr("href") %>% 
@@ -4498,7 +4533,7 @@ Write a for loop to download PDFs
 ```md
 for (i in 1:length(the_links)) {
         
-pdf_link <- bow(url = the_links[i]) %>%
+pdf_link <- bow(the_links[i]) %>%
         scrape() %>%
         html_elements(css = ".btn-page-header") %>% 
         html_attr("href") %>% 
