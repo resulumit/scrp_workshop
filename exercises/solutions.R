@@ -4,7 +4,7 @@
 # for the workshop (https://github.com/resulumit/scrp_workshop) on 
 # web scraping with r, by resul umit
 
-# last updated on: 2022-03-05
+# last updated on: 2022-06-09
 
 
 # load the packages -------------------------------------------------------
@@ -346,16 +346,17 @@ the_body$sendKeysToElement(list(key = "page_up"))
 
 # exercise 33 -------------------------------------------------------------
 
-# go back
-browser$goBack()
-
 # try to conduct a new search
-# note that this won't work
+# note that this won't work because the bar on this current page has a
+# different selector
 the_bar$sendKeysToElement(list("Lucerne", key = "enter"))
 
 # find the bar again, and click on it
-the_bar <- browser$findElement(using = "css", value = "#search_form_input_homepage")
+the_bar <- browser$findElement(using = "css", value = "#search_form_input")
 the_bar$clickElement()
+
+# clear the previous search
+the_bar$clearElement()
 
 # conduct a new search now
 the_bar$sendKeysToElement(list("Lucerne", key = "enter"))
