@@ -2148,7 +2148,7 @@ class: inverse, center, middle
 
 <br>
 
-- Static pages are often scraped in two steps 
+- Static pages are scraped typically in two steps 
 
    - the `rvest` package can handle both steps
    - we may still wish to use other packages to ensure ethical scraping
@@ -3457,10 +3457,10 @@ class: inverse, center, middle
 
 <br>
 
-- Dynamic pages are more difficult than static pages to scrape
-   
-   - it involves three, instead of two, steps
-   - we will have a new package, `RSelenium`, for the additional step
+- Dynamic pages are scraped typically in three steps 
+
+   - as opposed to two steps, in scraping static pages
+   - we will use an additional package, `RSelenium`, for the new step
 
 
 ---
@@ -3716,7 +3716,7 @@ class: action
 Navigate to a page with the following notation
 
 ```md
-browser`$navigate`(url = "https://luzpar.netlify.app")
+browser`$navigate`("https://luzpar.netlify.app")
 ```
 
 ```{r, echo=FALSE, out.width="50%", fig.align="center"}
@@ -3739,9 +3739,7 @@ Note that
 - `navigate` is called .yellow-h[a method, not a function]
 
     - it cannot be piped <span style="background-color: #ffff88;">%>%</span> into `browser`
-        - use the dollar sign <span style="background-color: #ffff88;">$</span> notation instead     
-<br>
-    - it is not necessary to type the name of the `url` argument 
+        - use the dollar sign <span style="background-color: #ffff88;">$</span> notation instead
 
 ---
 ## Dynamic Pages &mdash; Browsers &mdash; Navigate
@@ -4199,7 +4197,6 @@ Note that
     - helpful to check if selection worked as intended     
 <br>    
 - the highlight method is applied to the element (`menu_states`), not to the client (`browser`)
-   - compare it to the find method
 
 ---
 ## Dynamic Pages &mdash; Elements &mdash; Click
@@ -4226,6 +4223,8 @@ class: action
 29) Go to <https://luzpar.netlify.app/constituencies/>, and click the next page button
 
 - using the automated browser
+- hint: to find the selector for the button, use an additional browser manually
+
 
 <br>
 
@@ -4539,7 +4538,7 @@ pdf_link <- bow(the_links[i]) %>%
         html_attr("href") %>% 
         url_absolute(base = "https://luzpar.netlify.app/")
 
-download.file(url = pdf_link, destfile = basename(pdf_link))
+download.file(url = pdf_link, destfile = basename(pdf_link), mode = "wb")
         
 }
 
@@ -4555,6 +4554,10 @@ class: action
 - for documents within the Law and Proposal categories
 - published after 2019
 
+Hint:
+
+- start with the related code in the previous slides
+  - modify as necessary
 
 `r countdown(minutes = 30, seconds = 00, top = 0)`
 

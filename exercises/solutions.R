@@ -70,34 +70,34 @@ bow(url = "https://luzpar.netlify.app/states/",
 
 # exercise 11 -------------------------------------------------------------
 
-bow(url = "https://luzpar.netlify.app/states/") %>%
+bow("https://luzpar.netlify.app/states/") %>%
         scrape() %>% 
         html_element(css = "#top > div.page-body > div:nth-child(2) > div > div.col-lg-12 > div > ul > li:nth-child(1) > a")
             
 # exercise 12 -------------------------------------------------------------
 
-bow(url = "https://luzpar.netlify.app/states/") %>%
+bow("https://luzpar.netlify.app/states/") %>%
         scrape() %>% 
         html_elements(css = ".article-style a")
 
 
 # exercise 13 -------------------------------------------------------------
 
-bow(url = "https://luzpar.netlify.app/states/") %>%
+bow("https://luzpar.netlify.app/states/") %>%
         scrape() %>% 
         html_elements(css = ".article-style li:nth-child(3) a , .article-style li:nth-child(1) a")
 
 
 # exercise 14 -------------------------------------------------------------
 
-bow(url = "https://luzpar.netlify.app/states/") %>%
+bow("https://luzpar.netlify.app/states/") %>%
         scrape() %>% 
         html_elements(css = ".article-style a") %>% 
         html_text()
 
 # exercise 15 -------------------------------------------------------------
 
-bow(url = "https://luzpar.netlify.app/constituencies/") %>%
+bow("https://luzpar.netlify.app/constituencies/") %>%
         scrape() %>% 
         html_elements(css = "h2 a") %>% 
         html_text()
@@ -105,7 +105,7 @@ bow(url = "https://luzpar.netlify.app/constituencies/") %>%
 
 # exercise 16 -------------------------------------------------------------
 
-bow(url = "https://luzpar.netlify.app/constituencies/") %>%
+bow("https://luzpar.netlify.app/constituencies/") %>%
         scrape() %>% 
         html_elements(css = "h2 a") %>% 
         html_attr(name = "href")
@@ -113,7 +113,7 @@ bow(url = "https://luzpar.netlify.app/constituencies/") %>%
 
 # exercise 17 -------------------------------------------------------------
 
-bow(url = "https://luzpar.netlify.app/constituencies/") %>%
+bow("https://luzpar.netlify.app/constituencies/") %>%
         scrape() %>% 
         html_elements(css = "h2 a") %>% 
         html_attr(name = "href") %>% 
@@ -122,7 +122,7 @@ bow(url = "https://luzpar.netlify.app/constituencies/") %>%
 
 # exercise 18 -------------------------------------------------------------
 
-the_page <- bow(url = "https://luzpar.netlify.app/members/") %>%
+the_page <- bow("https://luzpar.netlify.app/members/") %>%
         scrape()
 
 df <- data.frame(
@@ -163,7 +163,7 @@ df <- data.frame(
 
 # scrape the /members/ section for links to personal pages
 
-the_links <- bow(url = "https://luzpar.netlify.app/members/") %>%
+the_links <- bow("https://luzpar.netlify.app/members/") %>%
         scrape() %>%
         html_elements(css = "td:nth-child(1) a") %>% 
         html_attr("href") %>% 
@@ -219,7 +219,11 @@ write.csv(df_mps, "static_data.csv", row.names = FALSE)
 
 # exercise 20 -------------------------------------------------------------
 
-driver <- rsDriver(chromever = "98.0.4758.102")
+# note that the chrome version below is the one I have installed, and yours
+# might be different. if you are unsure about what this means, see
+# https://github.com/resulumit/scrp_workshop/blob/master/test/workshop_preparations.pdf
+
+driver <- rsDriver(chromever = "102.0.5005.27")
 
 
 # exercise 21 -------------------------------------------------------------
