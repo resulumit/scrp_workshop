@@ -329,7 +329,7 @@ the_bar$highlightElement()
 the_bar$clickElement()
 
 # conduct a search
-the_bar$sendKeysToElement(list("Luzland", key = "enter"))
+the_bar$sendKeysToElement(list(value = "Luzland", key = "enter"))
 
 
 # exercise 32 -------------------------------------------------------------
@@ -349,7 +349,7 @@ the_body$sendKeysToElement(list(key = "page_up"))
 # try to conduct a new search
 # note that this won't work because the bar on this current page has a
 # different selector
-the_bar$sendKeysToElement(list("Lucerne", key = "enter"))
+the_bar$sendKeysToElement(list(value = "Lucerne", key = "enter"))
 
 # find the bar again, and click on it
 the_bar <- browser$findElement(using = "css", value = "#search_form_input")
@@ -359,7 +359,7 @@ the_bar$clickElement()
 the_bar$clearElement()
 
 # conduct a new search now
-the_bar$sendKeysToElement(list("Lucerne", key = "enter"))
+the_bar$sendKeysToElement(list(value = "Lucerne", key = "enter"))
 
 
 # exercise 34 -------------------------------------------------------------
