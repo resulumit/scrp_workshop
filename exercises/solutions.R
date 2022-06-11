@@ -381,7 +381,7 @@ drop_down <- browser$findElement(using = "css", value = ".bs-placeholder")
 drop_down$clickElement()
 
 # choose document type: law
-report <- browser$findElement(using = 'css', "[id='bs-select-1-2']")
+report <- browser$findElement(using = 'css', "[id='bs-select-1-0']")
 report$clickElement()
 
 # choose document type: proposal

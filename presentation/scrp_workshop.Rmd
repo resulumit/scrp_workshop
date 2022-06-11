@@ -2,7 +2,7 @@
 title: "Automated Web Scraping with R"
 subtitle: "Resul Umit"
 institute: ""
-date: "May 2021"
+date: "June 2022"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -4373,8 +4373,7 @@ class: action
 - navigate to <https://duckduckgo.com/>
    - just to keep it simple, as Google would require you to scroll down and accept a policy     
 <br>   
-- find, highlight, and fill in the search bar
-    - hit enter
+- find, highlight, and conduct a search
     
 <br>
 
